@@ -1,5 +1,5 @@
 // import Test model
-const Test = require('./../../database/Test') // INSERT ACTUAL FILE NAME
+// const Test = require('./../../database/Test') // INSERT ACTUAL FILE NAME
 
 exports.getAllTests = (req, res) => {
   // get all tests, nothing in req body, just run get all tests from DB helpers
