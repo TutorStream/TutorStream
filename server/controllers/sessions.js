@@ -8,7 +8,7 @@ exports.bookSession = (req, res) => {
   const date = req.body.date;
   const duration = req.body.duration;
   // use Session model to add a new session with tutor 
-  // send back all requisitie session info (id, test id, tutor id, userId, date, duration) to client
+  // send back all requisite session info (id, test id, tutor id, userId, date, duration) to client
 };
 
 exports.deleteSession = (req, res) => {
@@ -22,8 +22,6 @@ exports.changeSession = (req, res) => {
   // use session model to update a session
   // send back 201 to  client
 ;}
-
-
 
 
 // already exporting each method, no need to export entire file

@@ -1,14 +1,17 @@
 const router = require('express').Router();
 // all controller files
-const signupControllers = require('./controllers/Users');
+const usersControllers = require('./controllers/Users');
 const testsControllers = require('./controllers/tests');
 const sessionControllers = require('./controllers/sessions');
 
 // USERS
 
-router.post('/signup', signupControllers.addNewUser);
+router.post('/users/signup', usersControllers.addNewUser);
 
-router.get('/login', loginControllers.loginUserCheck);
+router.get('/users/login', usersControllers.loginUserCheck);
+
+router.get('/users/tutors', usersControllers.getAllTutors);
+
 
 // TESTS
 

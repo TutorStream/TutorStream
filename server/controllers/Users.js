@@ -21,14 +21,10 @@ exports.loginUserCheck = (req, res) => {
   // KEY DISTINCTION --> User or Tutor
 }; 
 
-exports.getAllUsers = (req, res) => {
-  // simply run get all users function?
-  // send back all users, (for mentor view?)
-};
-
 exports.getAllTutors = (req, res) => {
   // use testid to get all Tutors for a given test
   var testId = req.body.testId;
+  var isTutor = true;  // automatically passed in ? just hard-code
   // use testId to query DB for all tutors of a particular test
   // send back ALL tutors for a given test for rendering by client
 ;}
