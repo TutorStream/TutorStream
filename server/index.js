@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const {router} = require('./server/routes.js');
 const path = require('path')
 const app = express();
@@ -6,7 +7,8 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, './../client/dist')));
 
 
 app.listen(port, () => {
