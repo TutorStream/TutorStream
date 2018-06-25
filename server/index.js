@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const app = express();
 const router = require('./routes');
-// const db = require ('./server/database/connection.js');
+const db = require ('./../database/connection.js');
 
 const port = process.env.PORT || 8000;
 
