@@ -16,6 +16,7 @@ CREATE TABLE tutors (
   ID int,
   Bio varchar(255) NOT NULL,
   Price int NOT NULL,
+  Rating int NOT NULL,
   FOREIGN KEY (ID) references users(id)
 );
 
@@ -57,6 +58,8 @@ CREATE TABLE feedback (
   tutor_id int,
   rating int,
   content varchar(255),
+  date DATE NOT NULL,
+  time TIME NOT NULL,
   FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (tutor_id) references tutors(id)
 );
