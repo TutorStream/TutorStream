@@ -27,9 +27,9 @@ class Sessions extends Component {
             <div>
                 <h1>Session Component!</h1> 
                 <ul>
-                {this.state.sessions.map((info, index) => {
+                {/* {this.state.sessions.map((info, index) => {
                     return (<li key={index} >{info.date}</li>)
-                })}
+                })} */}
                 </ul>
             </div>
         )
