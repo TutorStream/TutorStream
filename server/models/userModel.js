@@ -1,18 +1,20 @@
 const db = require('./../../database');
 
 exports.addNewUser = (newUser, callback) => {
-  let queryStr = 'INSERT INTO users (NAME, Password, Email, Tutor, Bio) VALUES ?;';
-  let params = [newUser.username, newUser.password, newUser.email, newUser.isTutor, newUser.bio];
+  // console.log('wahts the new user ', newUser);
+  let queryStr = 'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?);';
+  let params = [newUser.Name, newUser.Password, newUser.Email, newUser.Tutor, newUser.Bio];
   db.query(queryStr, params, callback);
 };
 
-exports.addNewUserTests = (tests, callback) => {
-  let queryStr = 'INSERT INTO user_tests (user_id, test_id) VALUES ?;'
-  let params = newUser.tests; // this should already be an array
-  db.query(queryStr, params, callback);
+exports.addNewUserTests = (userId, testId, callback) => {
+  // console.log('user id ', userId);
+  // console.log('tests ', newUser.Tests);
+  let queryStr = `INSERT INTO user_tests (user_id, test_id) VALUES (${userId}, ${testId});`
+  db.query(queryStr, callback);
 };
 
 exports.loginUser = (userCreds, callback) => {
-  let queryStr = `SELECT * FROM users WHERE Name = ${userCreds.username} AND WHERE Password = ${userCreds.password};`
+  let queryStr = `SELECT * FROM users WHERE Name = ${userCreds.Name} AND WHERE Password = ${userCreds.Password};`
   db.query(queryStr, callback);
 ;}

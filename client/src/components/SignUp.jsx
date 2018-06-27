@@ -43,11 +43,10 @@ class SignUp extends React.Component {
 
   handleTestsChange (e) {
     var options = e.target.options;
-    // console.log('options', options)
     var selectedTests = [];
     for(var i = 0; i < options.length; i++) {
       if (options[i].selected) {
-        selectedTests.push(options[i].value);
+        selectedTests.push(Number(options[i].value));
       }
     }
     this.setState({

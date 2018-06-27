@@ -9,14 +9,24 @@ exports.addNewUser = (req, res) => {
     if(err) {
       res.send(400);
     } else {
+      console.log('req.body.Tests', req.body.Tests);
       console.log('what is coming back from DB', addedUserResults);
-      User.addNewUserTests(req.body.tests, (err, addedTestsResults) => {
-        if(err) {
-          res.sendStatus(400);
-        } else {
-          res.sendStatus(201) // just send back successful creation
-        }
+      req.body.Tests.map((testId) => {
+        User.addNewUserTests(addedUserResults.insertId, testId, (err, result) => {
+          if(err) {
+            console.error(err);
+          }
+          console.log('result', result);
+        });
       })
+      res.sendStatus(201);
+      // User.addNewUserTests(req.body, addedUserResults.insertId, (err, addedTestsResults) => {
+      //   if(err) {
+      //     res.sendStatus(400);
+      //   } else {
+      //     res.sendStatus(201) // just send back successful creation
+      //   }
+      // })
     }
   });
 };
