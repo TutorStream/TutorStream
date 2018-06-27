@@ -1,5 +1,7 @@
 const db = require('./../../database');
 
+
+
 const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
     let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date) values (${testId}, ${tutorId}, ${userId}, ${date})`
 
