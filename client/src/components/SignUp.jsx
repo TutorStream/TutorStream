@@ -11,7 +11,7 @@ class SignUp extends React.Component {
       password: '',
       email: '',
       tests: [],
-      isTutor: false,
+      isTutor: 0,
       bio: '',
       // availableTests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A']
       // ID, NAME, DESCRIPTION
@@ -60,15 +60,16 @@ class SignUp extends React.Component {
   }
 
   handleSignup (e) {
-    console.log('sending axios to add new user');
     e.preventDefault();
+    console.log('sending axios to add new user');
+    // console.log('this.state.tests', this.state.tests);
     axios.post('/users/signup', {
       username : this.state.username,
       password: this.state.password,
       email: this.state.email,
       tests: this.state.tests,
-      isTutor: false,
-      bio: ''
+      isTutor: this.state.isTutor,
+      bio: this.state.bio
     })
     .then(({data}) => {
       // no need to set state, just redirect to login page (auto login?)
@@ -109,14 +110,14 @@ class SignUp extends React.Component {
           {/*can create a separate box where all selected tests are added to*/}
           <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
             {this.state.availableTests.map((test, i) => {
-              return <option key={i} value={test}>{test.name}</option>
+              return <option key={i} value={test.id}>{test.name}</option>
             })}
           </select>
           <br></br>
           <label>Tutor Profile: </label>
-          <select value={this.state.isTutor} onChange={(e) => {this.isTutorChange(e)}}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+          <select value={this.state.isTutor} onChange={(e) => {this.handleIsTutorChange(e)}}>
+            <option value={1}>Yes</option>
+            <option value={0}>No</option>
           </select>
           <br></br>
           <label>Bio: </label>

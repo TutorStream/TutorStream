@@ -5,10 +5,10 @@ USE TutorStream;
 
 CREATE TABLE users (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  Name varchar(255) NOT NULL,
+  Name varchar(255) NOT NULL, --change to username?
   Password varchar(255) NOT NULL,
   Email varchar(255) NOT NULL,
-  Tutor int NOT NULL,
+  Tutor int NOT NULL, --change to boolean?
   Bio varchar(255)
 );
 

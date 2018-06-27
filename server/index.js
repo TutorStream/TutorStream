@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './../client/dist')));
 
-// mount router
+// mount router, just use homepage
 app.use('/', router);
 
 
