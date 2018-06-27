@@ -1,5 +1,8 @@
 const {connection:{query}} = require('./../../database/connection')
 
+const {connection} = require('./../../database/connection')
+
+console.log(connection)
 
 const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
     let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date) values (${testId}, ${tutorId}, ${userId}, ${date})`
@@ -24,7 +27,7 @@ const deleteSessionDB = ({sessionId}, callback) => {
     })
 }
 
-export default {
+module.exports = {
     bookSessionDB,
     deleteSessionDB
 }

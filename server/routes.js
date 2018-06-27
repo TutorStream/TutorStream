@@ -1,9 +1,10 @@
 const router = require('express').Router();
 // all controller files
 const usersControllers = require('./controllers/Users');
-const testsControllers = require('./controllers/tests');
-const sessionControllers = require('./controllers/sessions');
+const testsControllers = require('./controllers/Tests');
+const sessionControllers = require('./controllers/Sessions');
 const videoChatControllers = require('./controllers/VideoChat');
+const feedbackControllers = require('./controllers/Feedback');
 
 // USERS
 
@@ -31,6 +32,14 @@ router.put('/sessions', sessionControllers.deleteSession);
 
 // get Twilio  APIkey
 // router.get('/videoChat')
+
+// other twilio server-reqs
+
+// FEEDBACK
+
+router.post('/feedback', feedbackControllers.addFeedback);
+
+router.put('/updateFeedback', feedbackControllers.updateFeedback);
 
 
 module.exports = router;
