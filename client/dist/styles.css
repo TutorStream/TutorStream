@@ -1,0 +1,24 @@
+body{
+    color: maroon;
+}
+
+.student-view{
+    border:1px solid blue;
+}
+
+
+.student-main{
+    display: flex;
+    border:1px solid teal;
+    justify-content: space-evenly;
+}
+
+.student-options{
+    border: 1px solid maroon;
+    display: flex;
+    flex-direction: column;
+}
+
+.student-option{
+    padding: 3px;
+}
