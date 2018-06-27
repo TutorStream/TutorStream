@@ -1,13 +1,83 @@
 import React from 'react';
+import SignUp from './SignUp.jsx';
+import Login from './Login.jsx';
 
 
 class Home extends React.Component {
-    render() {
-        return (
-            <div>Home Page</div>
-            
-        )
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSignup : false,
+      showLogin: false
     }
+    this.flipLoginHandler = this.flipLoginHandler.bind(this);
+    this.flipSignupHandler = this.flipSignupHandler.bind(this);
+    this.returnToHomepage = this.returnToHomepage.bind(this);
+  }
+
+  flipLoginHandler (e) {
+    this.setState({
+      // [e.target.name] : !this.state[e.target.name]
+      showLogin : !this.state.showLogin,
+      // showSignup : !this.state.showSignup
+    })
+  }
+  flipSignupHandler (e) {
+    this.setState({
+      // [e.target.name] : !this.state[e.target.name]
+      showSignup : !this.state.showSignup,
+      // showLogin : !this.state.showLogin
+    })
+  }
+
+  returnToHomepage () {
+    this.setState({
+      showSignup: false,
+      showLogin : false
+    })
+  }
+
+  render () {
+    // HANY'S STUFF
+    // <div>
+    //   <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
+    //   <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+    //   <h1>Home Page</h1>
+    // </div>
+    return (
+      <div>
+        {this.state.showSignup
+        ? 
+        <div>
+          Create Profile:
+          <SignUp returnToHomepage={this.returnToHomepage}/>
+        </div>
+        :
+        this.state.showLogin
+        ?
+        <div>
+          Access Account
+          <Login returnToHomepage={this.returnToHomepage}/>
+        </div>
+        :
+        <div>
+          <div>Home Page</div>
+          <div>
+            <label>Access Account</label>
+            <br></br>
+            <button name="showLogin" onClick={(e) => {this.flipLoginHandler(e)}}>login</button>
+          </div>
+          <br></br>
+          <div>
+            <label>Create Profile</label>
+            <br></br>
+            <button name="showSignup" onClick={(e) => {this.flipSignupHandler(e)}}>create profile!</button>
+          </div>
+        </div>
+        }
+      </div>
+    )
+  }
 }
 
 
