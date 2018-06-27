@@ -65,7 +65,6 @@ class App extends React.Component {
 
     render() {
         if(this.state.homepage){
-<<<<<<< HEAD
             return <Home handleSwitchView={this.handleSwitchView}/>  
         }else if(this.state.isStudentLoggedIn){
             return <StudentView handleSwitchView={this.handleSwitchView}/>
@@ -74,14 +73,6 @@ class App extends React.Component {
         }else if(this.state.tuturRegistration){
             return <TutorRegistration handleSwitchView={this.handleSwitchView} goToTutor={this.goToTutor}/>
         }
-=======
-            return <Home isStudentLoggedIn={this.state.isStudentLoggedIn}/>  
-        } else if(isStudentLoggedIn){
-            return <StudentView />
-        } else if(isTutorLoggedIn){
-            return <TutorHome />
-        }        
->>>>>>> dev
     }
 }
 
