@@ -10,9 +10,10 @@ const feedbackControllers = require('./controllers/Feedback');
 
 router.post('/users/signup', usersControllers.addNewUser);
 
-router.get('/users/login', usersControllers.loginUserCheck);
+router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
+
 
 // TESTS
 

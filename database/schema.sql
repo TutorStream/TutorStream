@@ -8,7 +8,7 @@ CREATE TABLE users (
   Name varchar(255) NOT NULL, --change to username?
   Password varchar(255) NOT NULL,
   Email varchar(255) NOT NULL,
-  Tutor int NOT NULL, --change to boolean?
+  Tutor int NOT NULL,
   Bio varchar(255)
 );
 
