@@ -15,6 +15,7 @@ class App extends React.Component {
             tutor: false ,
             settings: false
         }
+        
         this.goToHome = this.goToHome.bind(this)
         this.tutorHome = this.tutorHome.bind(this)
         this.goToStudent = this.goToStudent.bind(this)
