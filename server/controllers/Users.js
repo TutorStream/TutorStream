@@ -20,13 +20,6 @@ exports.addNewUser = (req, res) => {
         });
       })
       res.sendStatus(201);
-      // User.addNewUserTests(req.body, addedUserResults.insertId, (err, addedTestsResults) => {
-      //   if(err) {
-      //     res.sendStatus(400);
-      //   } else {
-      //     res.sendStatus(201) // just send back successful creation
-      //   }
-      // })
     }
   });
 };
@@ -38,7 +31,8 @@ exports.loginUserCheck = (req, res) => {
     if(err) {
       res.sendStatus(400);
     } else {
-      res.sendStatus(201) // just send back authentication? eventually, will send back token?
+      console.log('authenticated');
+      res.sendStatus(200) // just send back authentication? eventually, will send back token?
     }
   })
 }; 
