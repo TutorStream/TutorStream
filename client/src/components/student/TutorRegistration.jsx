@@ -31,11 +31,11 @@ class TutorRegistration extends React.Component {
             form: {
                 test: this.state.test,
                 bio: this.state.bio,
-                rate: this.state.rate
+                rate: Number(this.state.rate)
             }
         },()=>{
             console.log('form collected', this.state.form);
-            this.props.goToTutor();
+            this.props.tutorHome();
         })
       }
     
@@ -46,7 +46,7 @@ class TutorRegistration extends React.Component {
         return (
             <div>
                 <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+                <button onClick={this.props.handleSwitchView} name= 'tutorHome'>Tutor Home</button>
                 <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
                 <h1>Tutor Registration</h1>
                 <br/><br/>
