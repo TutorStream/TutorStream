@@ -27,11 +27,7 @@ const deleteSessionDB = ({sessionId}, callback) => {
     })
 }
 
-<<<<<<< HEAD
-module.exports = {
-=======
 module.exports =  {
->>>>>>> dev
     bookSessionDB,
     deleteSessionDB
 }
