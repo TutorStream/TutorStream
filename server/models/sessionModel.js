@@ -1,4 +1,4 @@
-const db = require('./../../database')
+const db = require('./../../database');
 
 
 
@@ -7,25 +7,25 @@ const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
 
     db.query(queryStr, (err, result) => {
         if(err) {
-            console.log('Error initializin session')
+            console.log('Error initializin session');
         } else {
-            callback(result)
+            callback(result);
         }
-    })
-}
+    });
+};
 
 const deleteSessionDB = ({sessionId}, callback) => {
-    let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`
+    let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`;
     db.squery(queryStr, (err, result) => {
         if(err) {
-            console.log(`Error deleting ${sessionId} from the database`)
+            console.log(`Error deleting ${sessionId} from the database`);
         } else {
-            callback(result)
-     }
-    })
-}
+            callback(result);
+    }
+    });
+};
 
 module.exports =  {
     bookSessionDB,
     deleteSessionDB
-}
+};

@@ -1,5 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar.jsx'
+import Sessions from './Sessions.jsx'
+
 
 class StudentView extends React.Component {
     constructor(props){
@@ -49,6 +51,8 @@ class StudentView extends React.Component {
                     </div>
 
                 </div>
+                <hr/>
+                <Sessions />
             </div>
             
             
