@@ -4,11 +4,14 @@ import Login from './Login.jsx';
 
 
 class Home extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
       showSignup : false,
       showLogin: false
+
     }
     this.flipLoginHandler = this.flipLoginHandler.bind(this);
     this.flipSignupHandler = this.flipSignupHandler.bind(this);
@@ -38,43 +41,47 @@ class Home extends React.Component {
   }
 
   render () {
-    // HANY'S STUFF
-    // <div>
-    //   <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
-    //   <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
-    //   <h1>Home Page</h1>
-    // </div>
+   
+    
     return (
       <div>
-        {this.state.showSignup
-        ? 
-        <div>
-          Create Profile:
-          <SignUp returnToHomepage={this.returnToHomepage}/>
-        </div>
-        :
-        this.state.showLogin
-        ?
-        <div>
-          Access Account
-          <Login returnToHomepage={this.returnToHomepage}/>
-        </div>
-        :
-        <div>
-          <div>Home Page</div>
+
           <div>
-            <label>Access Account</label>
-            <br></br>
-            <button name="showLogin" onClick={(e) => {this.flipLoginHandler(e)}}>login</button>
+            <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
+            <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+            <h1>Home Page</h1>
           </div>
-          <br></br>
           <div>
-            <label>Create Profile</label>
-            <br></br>
-            <button name="showSignup" onClick={(e) => {this.flipSignupHandler(e)}}>create profile!</button>
+            {this.state.showSignup
+            ? 
+            <div>
+              Create Profile:
+              <SignUp returnToHomepage={this.returnToHomepage}/>
+            </div>
+            :
+            this.state.showLogin
+            ?
+            <div>
+              Access Account
+              <Login returnToHomepage={this.returnToHomepage}/>
+            </div>
+            :
+            <div>
+              <div>Home Page</div>
+              <div>
+                <label>Access Account</label>
+                <br></br>
+                <button name="showLogin" onClick={(e) => {this.flipLoginHandler(e)}}>login</button>
+              </div>
+              <br></br>
+              <div>
+                <label>Create Profile</label>
+                <br></br>
+                <button name="showSignup" onClick={(e) => {this.flipSignupHandler(e)}}>create profile!</button>
+              </div>
+            </div>
+            }
           </div>
-        </div>
-        }
       </div>
     )
   }
