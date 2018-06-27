@@ -28,7 +28,7 @@ const deleteSessionDB = ({sessionId}, callback) => {
 const getSessionDB = (id, callback) => {
     // still need to decide whether to sort 
     // need name field tutors table
-    let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id ORDER BY date DESC`
+    let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id WHERE student_id = ${id} ORDER BY date DESC`
     db.query(queryStr, (err, result) => {
         if(err) {
             console.log(`Error retrieving sessions for ${sessionId}`)
