@@ -7,6 +7,8 @@ class Sessions extends Component {
         this.state = {
             sessions: []
         }
+        this.getUpcomingSessions = this.getUpcomingSessions.bind(this)
+        this.deleteSession = this.deleteSession.bind(this)
     }
     componentDidMount(){
         this.getUpcomingSessions()
@@ -22,7 +24,16 @@ class Sessions extends Component {
         //     })
         // })
     }
+    deleteSession(id){
+        axios.delete(`/sessions/${id}`)
+        .then(() => {
+            this.getUpcomingSessions()
+        })
+    }
     render() {
+        // import Link from react-router-dom and wrap around info.date or whatever we decide to put in there
+        // also wrap whatever we put in there with a button that also has access to the id of the session 
+        // put onClick => this.deleteSession
         return (
             <div>
                 <h1>Session Component!</h1> 
