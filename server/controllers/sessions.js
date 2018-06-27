@@ -30,7 +30,11 @@ exports.changeSession = (req, res) => {
   var sessionId = req.body
   // use session model to update a session
   // send back 201 to  client
-;}
+}
 
+exports.getSession = (req, res) => {
+  const sessionId = req.params.id 
+
+}
 
 // already exporting each method, no need to export entire file
