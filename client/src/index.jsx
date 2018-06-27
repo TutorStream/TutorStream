@@ -66,11 +66,11 @@ class App extends React.Component {
     render() {
         if(this.state.homepage){
             return <Home handleSwitchView={this.handleSwitchView}/>  
-        }else if(this.state.isStudentLoggedIn){
+        } else if(this.state.isStudentLoggedIn){
             return <StudentView handleSwitchView={this.handleSwitchView}/>
-        }else if(this.state.isTutorLoggedIn){
+        } else if(this.state.isTutorLoggedIn){
             return <TutorHome handleSwitchView={this.handleSwitchView}/>
-        }else if(this.state.tuturRegistration){
+        } else if(this.state.tuturRegistration){
             return <TutorRegistration handleSwitchView={this.handleSwitchView} goToTutor={this.goToTutor}/>
         }
     }

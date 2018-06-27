@@ -28,6 +28,8 @@ router.delete('/sessions', sessionControllers.deleteSession);
 
 router.put('/sessions', sessionControllers.deleteSession);
 
+router.get('/sessions', sessionControllers.getSession)
+
 // VIDEOCHAT
 
 // get Twilio  APIkey
