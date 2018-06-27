@@ -13,7 +13,16 @@ class SignUp extends React.Component {
       tests: [],
       isTutor: false,
       bio: '',
-      availableTests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A']
+      // availableTests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A']
+      // ID, NAME, DESCRIPTION
+      availableTests: [
+        {id: 1, name: 'DAT', description: 'dental school test'},
+        {id: 2, name: 'LSAT', description: 'law school test'},
+        {id: 3, name: 'SAT', description: 'high school test'},
+        {id: 4, name: 'GRE', description: 'grad school regular test'},
+        {id: 5, name: 'GMAT', description: 'grad school business test'},
+        {id: 6, name: 'Hack Reactor T A', description: 'smartest ppl alive test'}
+      ]
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
@@ -100,7 +109,7 @@ class SignUp extends React.Component {
           {/*can create a separate box where all selected tests are added to*/}
           <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
             {this.state.availableTests.map((test, i) => {
-              return <option key={i} value={test}>{test}</option>
+              return <option key={i} value={test}>{test.name}</option>
             })}
           </select>
           <br></br>

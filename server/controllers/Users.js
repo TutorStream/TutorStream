@@ -1,12 +1,12 @@
-// import User model
-// const User = require('./../../database/User') // INSERT ACTUAL FILE NAME
+const User = require('./../models/userModel');
 
 exports.addNewUser = (req, res) => {
   // create new User
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
-  const tests = req.body.tests // ARRAY
+  const tests = req.body.tests // needs to be an array of arrays --> [user_id, test_id] // do on front end
+  const 
   // user User model to add new test
   // send back new User info, and all relevant tests
 };
