@@ -5,7 +5,6 @@ import Login from './Login.jsx';
 
 class Home extends React.Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -48,7 +47,7 @@ class Home extends React.Component {
 
           <div>
             <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
-            <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+            <button onClick={this.props.handleSwitchView} name= 'tutorHome'>Tutor Home</button>
             <h1>Home Page</h1>
           </div>
           <div>

@@ -10,7 +10,7 @@ const feedbackControllers = require('./controllers/Feedback');
 
 router.post('/users/signup', usersControllers.addNewUser);
 
-router.get('/users/login', usersControllers.loginUserCheck);
+router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
 
@@ -27,6 +27,8 @@ router.post('/sessions', sessionControllers.bookSession);
 router.delete('/sessions', sessionControllers.deleteSession);
 
 router.put('/sessions', sessionControllers.deleteSession);
+
+router.get('/sessions', sessionControllers.getSession)
 
 // VIDEOCHAT
 
