@@ -1,4 +1,5 @@
 import React from 'react';
+import Sessions from './Sessions.jsx'
 
 
 class StudentView extends React.Component {
@@ -8,9 +9,6 @@ class StudentView extends React.Component {
             
         }
     }
-
-
-
     render() {
         return (
             <div>
@@ -34,6 +32,8 @@ class StudentView extends React.Component {
                     </div>
 
                 </div>
+                <hr/>
+                <Sessions />
             </div>
             
             

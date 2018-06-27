@@ -1,8 +1,6 @@
 const db = require('./../../database')
 
-const {connection} = require('./../../database/connection')
 
-console.log(connection)
 
 const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
     let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date) values (${testId}, ${tutorId}, ${userId}, ${date})`
@@ -18,20 +16,30 @@ const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
 
 const deleteSessionDB = ({sessionId}, callback) => {
     let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`
-    db.squery(queryStr, (err, result) => {
+    db.query(queryStr, (err, result) => {
         if(err) {
             console.log(`Error deleting ${sessionId} from the database`)
         } else {
             callback(result)
-     }
+        }
     })
 }
 
-<<<<<<< HEAD
-module.exports = {
-=======
+const getSessionDB = (id, callback) => {
+    // still need to decide whether to sort 
+    // need name field tutors table
+    let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id WHERE user_id = ${id} ORDER BY date DESC`
+    db.query(queryStr, (err, result) => {
+        if(err) {
+            console.log(`Error retrieving sessions for ${sessionId}`)
+        } else {
+            callback(result)
+        }
+    })
+}
+
 module.exports =  {
->>>>>>> dev
     bookSessionDB,
-    deleteSessionDB
+    deleteSessionDB,
+    getSessionDB
 }
