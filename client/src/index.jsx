@@ -11,30 +11,33 @@ class App extends React.Component {
         this.state = {
             homepage: true,
             isStudentLoggedIn: false,
-            isTutorLoggedIn: false,
-            tuturRegistration: false 
+            tutorHome: false,
+            tutor: false ,
+            settings: false
         }
+        
         this.goToHome = this.goToHome.bind(this)
-        this.goToTutor = this.goToTutor.bind(this)
+        this.tutorHome = this.tutorHome.bind(this)
         this.goToStudent = this.goToStudent.bind(this)
         this.handleSwitchView = this.handleSwitchView.bind(this)
-        this.becomeTutor = this.becomeTutor.bind(this)
+        this.tutor = this.tutor.bind(this)
+        this.settings = this.settings.bind(this)
     }
 
     goToStudent(){
         this.setState({
             homepage : false,
             isStudentLoggedIn : true,
-            isTutorLoggedIn : false,
+            tutorHome : false,
             tuturRegistration: false 
         })
     }
 
-    goToTutor(){
+    tutorHome(){
         this.setState({
             homepage : false,
             isStudentLoggedIn : false,
-            isTutorLoggedIn : true,
+            tutorHome : true,
             tuturRegistration: false 
         })
     }
@@ -43,23 +46,33 @@ class App extends React.Component {
         this.setState({
             homepage : true,
             isStudentLoggedIn : false,
-            isTutorLoggedIn : false,
+            tutorHome : false,
             tuturRegistration: false 
         })
+    }
+
+    settings(){
+        this.setState({
+            homepage: false,
+            isStudentLoggedIn: false,
+            tutorHome: false,
+            tutor: false ,
+            settings: true
+        })
+
     }
 
     handleSwitchView(e){
         console.log('handling switch view', e.target.name)
             this[e.target.name]()
-        
     }
 
-    becomeTutor(){
+    tutor(){
         this.setState({
             homepage : false,
             isStudentLoggedIn : false,
-            isTutorLoggedIn : false,
-            tuturRegistration: true
+            tutorHome : false,
+            tutor: true
         })
     }
 
@@ -68,10 +81,12 @@ class App extends React.Component {
             return <Home handleSwitchView={this.handleSwitchView}/>  
         } else if(this.state.isStudentLoggedIn){
             return <StudentView handleSwitchView={this.handleSwitchView}/>
-        } else if(this.state.isTutorLoggedIn){
+        }else if(this.state.tutorHome){
             return <TutorHome handleSwitchView={this.handleSwitchView}/>
-        } else if(this.state.tuturRegistration){
-            return <TutorRegistration handleSwitchView={this.handleSwitchView} goToTutor={this.goToTutor}/>
+        }else if(this.state.tutor){
+            return <TutorRegistration handleSwitchView={this.handleSwitchView} tutorHome={this.tutorHome}/>
+        }else if(this.state.settings){
+            return <Settings handleSwitchView={this.handleSwitchView}/>
         }
     }
 }

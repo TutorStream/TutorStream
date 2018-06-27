@@ -105,7 +105,7 @@ class SignUp extends React.Component {
           </select>
           <br></br>
           <label>Tutor Profile: </label>
-          <select value={this.state.isTutor} onChange={(e) => {this.isTutorChange(e)}}>
+          <select value={this.state.isTutor} onChange={(e) => {this.handleIsTutorChange(e)}}>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
