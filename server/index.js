@@ -5,7 +5,7 @@ const app = express();
 const router = require('./routes');
 const db = require ('./../database/connection.js');
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './../client/dist')));
