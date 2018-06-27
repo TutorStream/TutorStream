@@ -1,5 +1,5 @@
 import React from 'react';
-import Sessions from './Sessions'
+import Sessions from './Sessions.jsx'
 
 
 class StudentView extends React.Component {

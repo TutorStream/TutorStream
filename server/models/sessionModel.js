@@ -16,16 +16,30 @@ const bookSessionDB = ({testId, tutorId, userId, date, duration}, callback) => {
 
 const deleteSessionDB = ({sessionId}, callback) => {
     let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`
-    db.squery(queryStr, (err, result) => {
+    db.query(queryStr, (err, result) => {
         if(err) {
             console.log(`Error deleting ${sessionId} from the database`)
         } else {
             callback(result)
-     }
+        }
+    })
+}
+
+const getSessionDB = (id, callback) => {
+    // still need to decide whether to sort 
+    // need name field tutors table
+    let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id ORDER BY date DESC`
+    db.query(queryStr, (err, result) => {
+        if(err) {
+            console.log(`Error retrieving sessions for ${sessionId}`)
+        } else {
+            callback(result)
+        }
     })
 }
 
 module.exports =  {
     bookSessionDB,
-    deleteSessionDB
+    deleteSessionDB,
+    getSessionDB
 }
