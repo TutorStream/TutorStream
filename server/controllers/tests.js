@@ -1,16 +1,26 @@
-// import Test model
-// const Test = require('./../../database/Test') // INSERT ACTUAL FILE NAME
+const Test = require('./../models/testModel')
+// const Tutor = require('./../models/tutorModel')
 
 exports.getAllTests = (req, res) => {
-  // get all tests, nothing in req body, just run get all tests from DB helpers
+  Test.getTests((err, tests) => {
+    if(err) {
+      res.sendStatus(400);
+    } else {
+      res.send(tests);
+    }
+  })
 };
 
 exports.testSearch = (req, res) => {
-  // testId (/ name??) will be part of query property of the axios.get request
-  // in params 
   const testName = req.query.testId;
-  // use test model to search for tests
-  // send back specified list of tests  (array) to client
+  console.log('testName = req.query.testId ', testName);
+  Test.selectTest(testName, (err, test) => {
+    if(err) {
+      res.sendStatus(400);
+    } else {
+      res.send(test); // OR get all tutors for that test?
+    }
+  })
 };
 
 
