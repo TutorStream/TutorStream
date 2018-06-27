@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-import { BrowserRouter, Route, Router, Link, Switch, Redirect} from 'react-router-dom';
+import Home from './Home.jsx';
+import $ from 'jquery';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -11,52 +12,108 @@ class SignUp extends React.Component {
       email: '',
       tests: [],
       isTutor: false,
-      bio: ''
+      bio: '',
+      availableTests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A']
     }
-    // bind funcs here, OR just use arrow funcs?
-    // this.returnToHomepage = this.returnToHomepage.bind(this);
     this.inputHandler = this.inputHandler.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.clearInputs = this.clearInputs.bind(this);
+    this.handleIsTutorChange = this.handleIsTutorChange.bind(this);
+    this.handleTestsChange = this.handleTestsChange.bind(this);
   }
+
   inputHandler (e) {
     this.setState({
-      [e.event.name] : e.target.value
+      [e.target.name] : e.target.value
     })
   }
+
+  handleIsTutorChange (e) {
+    this.setState({
+      isTutor : e.target.value
+    })
+  }
+
+  handleTestsChange (e) {
+    var options = e.target.options;
+    // console.log('options', options)
+    var selectedTests = [];
+    for(var i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedTests.push(options[i].value);
+      }
+    }
+    this.setState({
+      tests : selectedTests
+    }, () => {
+      console.log('selected tests', selectedTests);
+    });
+  }
+
+  handleSignup (e) {
+    console.log('sending axios to add new user');
+    e.preventDefault();
+    axios.post('/users/signup', {
+      username : this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      tests: this.state.tests,
+      isTutor: false,
+      bio: ''
+    })
+    .then(({data}) => {
+      // no need to set state, just redirect to login page (auto login?)
+      // auto login
+      this.clearInputs(); // just clears input
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
+  clearInputs () {
+    $('.signup-input').val('');
+  }
+
   render () {
-    const returnToHomepage = () => {
-      return (
-        <div>
-          <Link to="/">Home</Link>
-        </div>
-      )
-    };
     return (
       <div>
         <div className="homepage-btn">
-          <button onClick={() => {returnToHomepage()}}>Home</button>
-          {/*return to homepage button*/}
+          <button onClick={() => {this.props.returnToHomepage()}}>Home</button>
         </div>
+        <br></br>
         <div>
           <span>Welcome! Please input your information below</span>
         </div>
         <br></br>
-        <form className="">
-          <label>Username</label>
-          <input name="username" onChange={() => {this.inputHandler()}}></input>
+        <form className="" onSubmit={(e) => {this.handleSignup(e)}}>
+          <label>Username: </label>
+          <input className="signup-input" name="username" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
-          <label>Password</label>
-          <input name="password" onChange={() => {this.inputHandler()}}></input>
+          <label>Password: </label>
+          <input className="signup-input" name="password" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
-          <label>Email</label>
-          <input></input>
+          <label>Email: </label>
+          <input className="signup-input" name="email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
-          <label>Tests (separate by space)</label> {/*can this be an autocomplete drop down box?*/}
-          <input name="tests" onChange={() => {this.inputHandler()}}></input>
+          <label>Tests (separate by space): </label>
+          {/*can create a separate box where all selected tests are added to*/}
+          <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
+            {this.state.availableTests.map((test, i) => {
+              return <option key={i} value={test}>{test}</option>
+            })}
+          </select>
           <br></br>
-          <label>Tutor Profile</label> {/*should be a boolean? how to address this*/}
-          <input></input>
+          <label>Tutor Profile: </label>
+          <select value={this.state.isTutor} onChange={(e) => {this.isTutorChange(e)}}>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
           <br></br>
-          <button type="submit" value="Submit"></button>
+          <label>Bio: </label>
+          <input className="signup-input" name="bio" onChange={(e) => {this.inputHandler(e)}}></input>
+          <br></br>
+          <button type="submit" value="Submit">Create New Profile</button>
         </form>
       </div>
     )

@@ -8,17 +8,20 @@ class Login extends React.Component {
       loginUsername: '',
       loginPassword: ''
     }
-    // bind methods OR just arrow funcs?
     this.inputHandler = this.inputHandler.bind(this);
     this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
   }
+
   inputHandler (e) {
     this.setState({
       [e.target.name] : e.target.value
     })
   }
-  handeLoginSubmit () {
-    axios.gets('/users/login', {
+
+  handeLoginSubmit (e) {
+    console.log('sending login request to server');
+    e.preventDefault();
+    axios.get('/users/login', {
       params : {
         username : this.state.loginUsername,
         password: this.state.loginPassword
@@ -34,15 +37,22 @@ class Login extends React.Component {
       console.error(err);
     })
   }
+
   render () {
     return (
       <div>
-        <form onSubmit={() => {this.handeLoginSubmit()}}>
+        <div className="homepage-btn">
+          <button onClick={() => {this.props.returnToHomepage()}}>Home</button>
+        </div>
+        <br></br>
+        <form onSubmit={(e) => {this.handeLoginSubmit(e)}}>
           <label>Username</label>
           <input value={this.state.loginUsername} name="loginUsername" onChange={(e) => {this.inputHandler(e)}}></input>
+          <br></br>
           <label>Password</label>
           <input value={this.state.loginPassword} name="loginPassword" onChange={(e) => {this.inputHandler(e)}}></input>
-          <button type="submit" value="Submit"></button>
+          <br></br>
+          <button type="submit" value="Submit">Login</button>
         </form>
       </div>
     )

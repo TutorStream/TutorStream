@@ -10,43 +10,68 @@ class Home extends React.Component {
       showSignup : false,
       showLogin: false
     }
-    this.buttonHandler = this.buttonHandler.bind(this);
+    this.flipLoginHandler = this.flipLoginHandler.bind(this);
+    this.flipSignupHandler = this.flipSignupHandler.bind(this);
+    this.returnToHomepage = this.returnToHomepage.bind(this);
   }
 
-  buttonHandler (e) {
+  flipLoginHandler (e) {
     this.setState({
-      [e.target.name] : !this.state[e.target.name]
+      // [e.target.name] : !this.state[e.target.name]
+      showLogin : !this.state.showLogin,
+      // showSignup : !this.state.showSignup
+    })
+  }
+  flipSignupHandler (e) {
+    this.setState({
+      // [e.target.name] : !this.state[e.target.name]
+      showSignup : !this.state.showSignup,
+      // showLogin : !this.state.showLogin
+    })
+  }
+
+  returnToHomepage () {
+    this.setState({
+      showSignup: false,
+      showLogin : false
     })
   }
 
   render () {
+    // HANY'S STUFF
+    // <div>
+    //   <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
+    //   <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+    //   <h1>Home Page</h1>
+    // </div>
     return (
       <div>
         {this.state.showSignup
         ? 
         <div>
           Create Profile:
-          <SignUp />
+          <SignUp returnToHomepage={this.returnToHomepage}/>
         </div>
         :
         this.state.showLogin
         ?
         <div>
-          Login Here:
-          <Login />
+          Access Account
+          <Login returnToHomepage={this.returnToHomepage}/>
         </div>
         :
         <div>
           <div>Home Page</div>
           <div>
-            <label>Login</label>
+            <label>Access Account</label>
             <br></br>
-            <button name="showLogin" onClick={(e) => {this.buttonHandler(e)}}>login</button>
+            <button name="showLogin" onClick={(e) => {this.flipLoginHandler(e)}}>login</button>
           </div>
+          <br></br>
           <div>
             <label>Create Profile</label>
             <br></br>
-            <button name="showSignup" onClick={(e) => {this.buttonHandler(e)}}>create profile!</button>
+            <button name="showSignup" onClick={(e) => {this.flipSignupHandler(e)}}>create profile!</button>
           </div>
         </div>
         }
