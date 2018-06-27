@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
 const app = express();
 const router = require('./routes');
-const db = require ('./../database/connection.js');
+const db = require ('./../database');
 
 const port = process.env.PORT || 3000;
 
