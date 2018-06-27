@@ -24,11 +24,11 @@ router.get('/tests/:testId', testsControllers.testSearch);
 
 router.post('/sessions', sessionControllers.bookSession);
 
-router.delete('/sessions', sessionControllers.deleteSession);
+router.delete('/sessions/:id', sessionControllers.deleteSession);
 
 router.put('/sessions', sessionControllers.deleteSession);
 
-router.get('/sessions', sessionControllers.getSession)
+router.get('/sessions/:id', sessionControllers.getSession)
 
 // VIDEOCHAT
 
