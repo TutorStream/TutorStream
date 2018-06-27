@@ -2,8 +2,6 @@ const User = require('./../models/userModel');
 const Tutor = require('./../models/tutorModel');
 
 exports.addNewUser = (req, res) => {
-  // get new user firts
-  // THEN add to user_tests
   console.log('req.body', req.body);
   User.addNewUser(req.body, (err, addedUserResults) => {
     if(err) {
@@ -26,7 +24,6 @@ exports.addNewUser = (req, res) => {
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
-  console.log('should be username and password on this obj, ', req.body)
   User.loginUser(req.body, (err, results) => {
     if(err) {
       res.sendStatus(400);
@@ -38,7 +35,6 @@ exports.loginUserCheck = (req, res) => {
 }; 
 
 exports.getAllTutors = (req, res) => {
-  // use testid to get all Tutors for a given test
   var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {

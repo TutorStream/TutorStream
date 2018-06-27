@@ -48,7 +48,7 @@ class Login extends React.Component {
           <input value={this.state.Email} name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Password</label>
-          <input value={this.state.loginPassword} name="Password" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input type="password" value={this.state.loginPassword} name="Password" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <button type="submit" value="Submit">Login</button>
         </form>
