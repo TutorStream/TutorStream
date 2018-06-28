@@ -28,7 +28,9 @@ class Login extends React.Component {
     })
     .then(({data}) => {
       console.log('data ', data);
-      this.props.history.push('/student')
+      if (data.length) {
+        this.props.history.push('/student');
+      }
       // no need to set state, simply re-direct to approved login page 
         // OR if not authetnicated, sned back "error, not authenticated user"
       // re-direct view to user homepage? or tutor homepage
@@ -36,7 +38,7 @@ class Login extends React.Component {
     })
     .catch((err) => {
       console.error(err);
-    })
+    });
   }
 
   render () {
