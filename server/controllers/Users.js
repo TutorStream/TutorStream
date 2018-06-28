@@ -32,7 +32,7 @@ exports.loginUserCheck = (req, res) => {
       var ID = user[0].ID;
       res.send({ID});
     }
-  })
+  });
 }; 
 
 exports.getAllTutors = (req, res) => {
