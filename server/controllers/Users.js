@@ -28,7 +28,6 @@ exports.loginUserCheck = (req, res) => {
     if(err) {
       res.sendStatus(400);
     } else {
-      console.log('user[0].ID', user[0].ID)
       var ID = user[0].ID;
       res.send({ID});
     }
