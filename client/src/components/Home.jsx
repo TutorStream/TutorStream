@@ -51,8 +51,14 @@ class Home extends React.Component {
           {this.state.showSignup
           ? 
           <div>
+<<<<<<< HEAD
             Create Profile:
             <SignUp returnToHomepage={this.returnToHomepage}/>
+=======
+            <button onClick={this.props.handleSwitchView} name= 'student'>Student View</button>
+            <button onClick={this.props.handleSwitchView} name= 'tutorHome'>Tutor Home</button>
+            <h1>Home Page</h1>
+>>>>>>> 8550a75d611d560651b0eb0989986cd095098d37
           </div>
           :
           this.state.showLogin

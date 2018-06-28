@@ -11,6 +11,7 @@ class StudentView extends React.Component {
                 {name :'Sessions', func : 'tutor'},
                 {name :'Inbox', func : 'tutor'},
                 {name :'Classroom', func : 'tutor'},
+<<<<<<< HEAD
                 {name :'Become a Tutor', func : 'tutor'}
             ],
             Tests : [
@@ -22,29 +23,15 @@ class StudentView extends React.Component {
               {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
             ],
             
+=======
+                {name :'Become a Tutor', func : 'tutor'},
+                {name :'Settings', func : 'settings'}
+            ]
+>>>>>>> 8550a75d611d560651b0eb0989986cd095098d37
         }
-        this.sessions = this.sessions.bind(this)
-        this.inbox = this.inbox.bind(this)
-        this.tutor = this.tutor.bind(this)
-        this.classroom = this.classroom.bind(this)
     }
 
 
-    sessions(){
-        console.log('Sessions')
-    }
-
-    inbox(){
-        console.log('Inbox')
-    }
-
-    tutor(){
-        console.log('Become Tutor')
-    }
-
-    classroom(){
-        console.log('classroom')
-    }
 
     render() {
         return (
