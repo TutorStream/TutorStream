@@ -1,6 +1,4 @@
-// import Session model
-// const Session = require('./../../database/Session') // INSERT ACTUAL FILE NAME
-const Session = require('../models/sessionModel')
+const Session = require('./../models/sessionModel')
 
 exports.bookSession = (req, res) => {
   Session.bookSessionDB(req.body, (err, result) => {

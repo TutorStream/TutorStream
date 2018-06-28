@@ -7,7 +7,7 @@ CREATE TABLE users (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Name varchar(255) NOT NULL,
   Password varchar(255) NOT NULL,
-  Email varchar(255) NOT NULL,
+  Email varchar(255) NOT NULL UNIQUE,
   Tutor int NOT NULL,
   Bio varchar(255)
 );
@@ -22,7 +22,7 @@ CREATE TABLE tutors (
 
 CREATE TABLE tests (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  Name varchar(255) NOT NULL,
+  Name varchar(255) NOT NULL UNIQUE,
   Description varchar(255) NOT NULL
 );
 
