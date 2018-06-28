@@ -1,32 +1,46 @@
-
+const User = require('./../models/userModel');
+const Tutor = require('./../models/tutorModel');
 
 exports.addNewUser = (req, res) => {
-  // create new User
-  const username = req.body.username;
-  const password = req.body.password;
-  const email = req.body.email;
-  const tests = req.body.tests // ARRAY
-  // user User model to add new test
-  // send back new User info, and all relevant tests
+  console.log('req.body', req.body);
+  User.addNewUser(req.body, (err, addedUserResults) => {
+    if(err) {
+      res.send(400);
+    } else {
+      console.log('req.body.Tests', req.body.Tests);
+      console.log('what is coming back from DB', addedUserResults);
+      req.body.Tests.map((testId) => {
+        User.addNewUserTests(addedUserResults.insertId, testId, (err, result) => {
+          if(err) {
+            console.error(err);
+          }
+          console.log('result', result);
+        });
+      })
+      res.sendStatus(201);
+    }
+  });
 };
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
-  var username = req.body.username;
-  var password = req.body.password;
-  // user User model DB helper to check for user
-  // send back new user object
-  // send back all relevnat tests for user dash rendering
-  // KEY DISTINCTION --> User or Tutor
+  User.loginUser(req.body, (err, results) => {
+    if(err) {
+      res.sendStatus(400);
+    } else {
+      console.log('authenticated');
+      res.sendStatus(200) // just send back authentication? eventually, will send back token?
+    }
+  })
 }; 
 
 exports.getAllTutors = (req, res) => {
-  // use testid to get all Tutors for a given test
   var testId = req.body.testId;
-  var isTutor = true;  // automatically passed in ? just hard-code
-  // use testId to query DB for all tutors of a particular test
-  // send back ALL tutors for a given test for rendering by client
+  Tutor.getTopTutors((err, topTutors) => {
+    if(err) {
+      res.sendStatus(400);
+    } else {
+      res.send(topTutors);
+    }
+  }, testId);
 ;}
-
-
-// already exporting each method, no need to export entire file

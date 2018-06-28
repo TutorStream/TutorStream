@@ -18,9 +18,9 @@ exports.deleteSession = ({sessionId}, callback) => {
         if(err) {
             console.log(`Error deleting ${sessionId} from the database`);
         } else {
-            callback(result)
+            callback(result);
         }
-    })
+    });
 };
 
 exports.updateSession = () => {
