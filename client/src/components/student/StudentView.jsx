@@ -11,7 +11,8 @@ class StudentView extends React.Component {
             options : [
                 {name :'student/sessions'},
                 {name :'student/classroom'},
-                {name :'student/becomeTutor'}
+                {name :'student/becomeTutor'},
+                {name :'student/setting'},
             ]
         }
     }
