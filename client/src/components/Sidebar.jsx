@@ -6,10 +6,8 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div>
-                
                 <h1>Sidebar</h1>
                 <br/>
-
                 <div className='student-options'>
                         {this.props.options.map((option,i)=>{
                             return(
@@ -25,5 +23,3 @@ class Sidebar extends React.Component {
 
 
 export default Sidebar;
-
-//                        <button onClick={this.props.handleSwitchView} className='student-option' name='becomeTutor'>Become A Tutor</button>
