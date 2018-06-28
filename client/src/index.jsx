@@ -9,6 +9,8 @@ import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import Sessions from './components/student/Sessions.jsx'
+import Settings from './components/Settings.jsx'
+
 
 class App extends React.Component {
     render() {
@@ -28,6 +30,7 @@ class App extends React.Component {
               <Route exact path = "/student/sessions" component={Sessions}></Route>
               <Route exact path = "/student/classroom" component={StudentView}></Route>
               <Route exact path = "/student/becomeTutor" component={TutorRegistration}></Route>
+              <Route exact path = "/student/setting" component={Settings}></Route>
 
             </Switch>
         </BrowserRouter>
