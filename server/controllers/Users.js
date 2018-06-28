@@ -29,15 +29,12 @@ exports.loginUserCheck = (req, res) => {
       res.sendStatus(400);
     } else {
       console.log('user ID', user.ID)
-      res.send(user);
-      // console.log('authenticated');
-      // res.sendStatus(200) // just send back authentication? eventually, will send back token?
+      res.status(200).send(user.ID);
     }
   })
 }; 
 
 exports.getAllTutors = (req, res) => {
-  // var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
       res.sendStatus(400);

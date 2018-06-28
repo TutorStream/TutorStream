@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import Home from './Home.jsx';
+
 import $ from 'jquery';
 
 class SignUp extends React.Component {
@@ -71,6 +71,7 @@ class SignUp extends React.Component {
       // no need to set state, just redirect to login page (auto login?)
       // auto login
       this.clearInputs(); // just clears input
+      this.props.history.push('/student')
       console.log(this.props)
     })
     .catch((err) => {

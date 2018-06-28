@@ -19,7 +19,6 @@ class Login extends React.Component {
   }
 
   handeLoginSubmit (e) {
-    this.props.history.push('/student')
     e.preventDefault();
     axios.post('/users/login', {
       Email : this.state.Email,
@@ -29,6 +28,15 @@ class Login extends React.Component {
       var id = data[0].ID
       console.log(id, 'id');
       this.props.getID(id);
+      console.log('data ', data);
+      if(data.length) {
+        this.props.history.push('/student');
+      }
+      
+      // no need to set state, simply re-direct to approved login page 
+        // OR if not authetnicated, sned back "error, not authenticated user"
+      // re-direct view to user homepage? or tutor homepage
+
     })
     .catch((err) => {
       console.error(err);
