@@ -1,17 +1,24 @@
-// import Test model
-// const Test = require('./../../database/Test') // INSERT ACTUAL FILE NAME
+const testModel = require('./../models/testModel');
 
 exports.getAllTests = (req, res) => {
   // get all tests, nothing in req body, just run get all tests from DB helpers
+  testModel.getTests((err, results) => {
+    if (err) {
+      console.error('There was an error getting all tests from the database: ', err);
+    } else {
+      res.send(results);
+    }
+  });
 };
 
+//expecting to receive test id as req.query.testid
 exports.testSearch = (req, res) => {
-  // testId (/ name??) will be part of query property of the axios.get request
-  // in params 
-  const testName = req.query.testId;
-  // use test model to search for tests
-  // send back specified list of tests  (array) to client
+  let testID = req.params.testId;
+  testModel.selectTest(testID, (err, results) => {
+    if (err) {
+      console.error('There was an error selecting your specific test: ', err);
+    } else {
+      res.send(results);
+    }
+  });
 };
-
-
-// already exporting each method, no need to export entire file

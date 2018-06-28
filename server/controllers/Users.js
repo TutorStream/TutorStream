@@ -1,5 +1,4 @@
-// import User model
-// const User = require('./../../database/User') // INSERT ACTUAL FILE NAME
+
 
 exports.addNewUser = (req, res) => {
   // create new User

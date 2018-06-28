@@ -1,15 +1,7 @@
-// import Session model
-// const Session = require('./../../database/Session') // INSERT ACTUAL FILE NAME
-const Session = require('../models/sessionModel')
+const sessionModel = require('./../models/sessionModel');
 
 exports.bookSession = (req, res) => {
-  Session.bookSessionDB(req.body, (err, result) => {
-    if(err) {
-      console.log(err)
-    } else {
-      res.status(201).end()
-    }
-  })
+  sessionModel.addSession()
   // use Session model to add a new session with tutor 
   // send back all requisite session info (id, test id, tutor id, userId, date, duration) to client
 };
@@ -17,7 +9,7 @@ exports.bookSession = (req, res) => {
 exports.deleteSession = (req, res) => {
   // use session model to delete session
   // send back 201 to client
-  Session.deleteSessionDB(req.body, (err, result) => {
+  sessionModel.deleteSession(req.body, (err, result) => {
     if (err)  {
       console.log(err)
     } else {
@@ -26,15 +18,20 @@ exports.deleteSession = (req, res) => {
   })
 };
 
-exports.changeSession = (req, res) => {
+exports.updateSession = (req, res) => {
   var sessionId = req.body
   // use session model to update a session
   // send back 201 to  client
-}
+};
 
 exports.getSession = (req, res) => {
-  const sessionId = req.params.id 
+  let id = req.params.id;
+  sessionModel.getSession(id, (err, result) => {
+    if (err) {
+      console.error('There was an error getting the session info: ', err);
+    } else {
+      res.send(result);
+    }
+  });
 
-}
-
-// already exporting each method, no need to export entire file
+};
