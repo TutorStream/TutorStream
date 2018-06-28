@@ -13,29 +13,29 @@ import Settings from './components/Settings.jsx'
 
 
 class App extends React.Component {
-    render() {
-        return (
-        <BrowserRouter> 
+  render() {
+      return (
+      <BrowserRouter> 
 
-            <Switch>
-              <Route exact path = "/" render={(props) => {
-                  return (<div>
-                      <Login {...props}/>
-                      <Signup {...props}/>
-                  </div>);
-              }}
-              >
-              </Route>
-              <Route exact path = "/student" component={StudentView}></Route>
-              <Route exact path = "/student/sessions" component={Sessions}></Route>
-              <Route exact path = "/student/classroom" component={StudentView}></Route>
-              <Route exact path = "/student/becomeTutor" component={TutorRegistration}></Route>
-              <Route exact path = "/student/setting" component={Settings}></Route>
+          <Switch>
+            <Route exact path = "/" render={(props) => {
+                return (<div>
+                    <Login {...props}/>
+                    <Signup {...props}/>
+                </div>);
+            }}
+            >
+            </Route>
+            <Route exact path = "/student" component={StudentView}></Route>
+            <Route exact path = "/student/sessions" component={Sessions}></Route>
+            <Route exact path = "/student/classroom" component={StudentView}></Route>
+            <Route exact path = "/student/becomeTutor" component={TutorRegistration}></Route>
+            <Route exact path = "/student/setting" component={Settings}></Route>
 
-            </Switch>
-        </BrowserRouter>
-        )
-    }
+          </Switch>
+      </BrowserRouter>
+      )
+  }
 }
 
 
