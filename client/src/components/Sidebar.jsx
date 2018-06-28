@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 class Sidebar extends React.Component {
     render() {
+        const { match } = this.props
         return (
             <div>
                 <h1>Sidebar</h1>
@@ -11,7 +12,7 @@ class Sidebar extends React.Component {
                 <div className='student-options'>
                         {this.props.options.map((option,i)=>{
                             return(
-                                <Link key={i} to={`${option.name}`} className='student-option'>{option.name}</Link>
+                                <Link key={i} to={`${match.url}/${option.name}`} className='student-option'>{option.name}</Link>
                             )
                         })}
                 </div>
