@@ -24,13 +24,12 @@ exports.addNewUser = (req, res) => {
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
-  console.log('I got here in users controller')
   User.loginUser(req.body, (err, results) => {
     if(err) {
       res.sendStatus(400);
     } else {
       console.log('authenticated');
-      res.sendStatus(200) // just send back authentication? eventually, will send back token?
+      res.status(200).send(results) // just send back authentication? eventually, will send back token?
     }
   })
 }; 
