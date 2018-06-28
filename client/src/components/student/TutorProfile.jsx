@@ -62,7 +62,7 @@ class TutorProfile extends Component {
             </ul>
         </div>
         <div>
-          <button onClick={ /* handle opening component to book tutor session */ }>Book Session</button>
+          <button>Book Session</button>
         </div>
       </div>
     )
