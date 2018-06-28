@@ -24,6 +24,7 @@ exports.addNewUser = (req, res) => {
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
+  console.log('I got here in users controller')
   User.loginUser(req.body, (err, results) => {
     if(err) {
       res.sendStatus(400);
@@ -35,6 +36,8 @@ exports.loginUserCheck = (req, res) => {
 }; 
 
 exports.getAllTutors = (req, res) => {
+
+
   var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
