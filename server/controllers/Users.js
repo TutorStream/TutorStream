@@ -34,6 +34,8 @@ exports.loginUserCheck = (req, res) => {
 }; 
 
 exports.getAllTutors = (req, res) => {
+
+
   var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
