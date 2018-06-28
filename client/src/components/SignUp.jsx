@@ -85,7 +85,7 @@ class SignUp extends React.Component {
           <input className="signup-input" name="Name" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Password: </label>
-          <input className="signup-input" name="Password" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input className="signup-input" name="Password" type="password" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Email: </label>
           <input className="signup-input" name="Email" onChange={(e) => {this.inputHandler(e)}}></input>

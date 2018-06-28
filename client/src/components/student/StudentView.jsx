@@ -6,6 +6,7 @@ import Classroom from '../communication/Classroom.jsx';
 import Settings from '../Settings.jsx';
 import TutorRegistration from './TutorRegistration.jsx';
 import TestList from './TestList.jsx';
+import TutorProfile from './TutorProfile.jsx'
 
 class StudentView extends React.Component {
   constructor(props){
@@ -67,32 +68,42 @@ class StudentView extends React.Component {
     console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
     console.log('this.state.Tutors', this.state.Tutors);
     return (
-      <Router>
-      <div> 
-          <ul>
-            <li>
-              <Link to="/sessions">Sessions</Link>
-            </li>
-            <li>
-              <Link to="/classroom">Classroom</Link>
-            </li>
-            <li>
-              <Link to="/settings">Settings</Link>
-            </li>
-            <li>
-              <Link to="/becometutor">Become a Tutor</Link>
-            </li>
-          </ul>
-          {this.state.routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              render={() => <route.main setTestID={this.setTestID}/> }
-            />
-          ))}
-      </div>
-    </Router>
+      <div>
+        <Router>
+          <div> 
+              <ul>
+                <li>
+                  <Link to="/sessions">Sessions</Link>
+                </li>
+                <li>
+                  <Link to="/classroom">Classroom</Link>
+                </li>
+                <li>
+                  <Link to="/settings">Settings</Link>
+                </li>
+                <li>
+                  <Link to="/becometutor">Become a Tutor</Link>
+                </li>
+              </ul>
+              {this.state.routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  render={() => <route.main setTestID={this.setTestID}/> }
+                />
+              ))}
+              <div className="tutors">
+                <ul>
+                {this.state.Tutors.map((tutor, i) => {
+                  return <li key={i}><Link to='/tutor'>{tutor.Name}</Link></li>
+                })}
+                </ul>
+                <Route path ='/tutor' component = {TutorProfile} />
+           </div>
+          </div>
+        </Router>
+     </div>
     )
   }
 }
