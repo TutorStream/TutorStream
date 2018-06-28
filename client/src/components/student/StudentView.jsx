@@ -34,9 +34,11 @@ class StudentView extends React.Component {
               }
       ],
       user_id : null,
+      test_ID : null,
       Tutors: []
   }
   this.getTutors = this.getTutors.bind(this);
+  this.setTestID = this.setTestID.bind(this);
 }
 
   getTutors () {
@@ -51,6 +53,12 @@ class StudentView extends React.Component {
     })
     .catch((err) => {
       console.error(err);
+    })
+  }
+
+  setTestID (ID) {
+    this.setState({
+      test_ID : ID
     })
   }
 
@@ -82,7 +90,7 @@ class StudentView extends React.Component {
               key={index}
               path={route.path}
               exact={route.exact}
-              component={route.main}
+              render={() => <route.main setTestID={this.setTestID}/> }
             />
           ))}
       </div>

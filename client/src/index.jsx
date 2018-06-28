@@ -66,7 +66,7 @@ class App extends React.Component {
         }}
         >
         </Route>
-        <Route exact path = "/student/classroom" component={StudentView}></Route>
+        <Route exact path = "/student" component={StudentView}></Route>
       </Switch>
     </BrowserRouter>
     )
