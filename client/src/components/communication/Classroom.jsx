@@ -1,33 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-
-class TutorRegistration extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-
-            }
-        
-       
-      }
-    
-    
-
-
-
+class Classroom extends Component {
     render() {
         return (
-            <div>
-               <h1>Welcome to your classroom</h1>
-                <form action="https://appear.in/hufflepuffhackreactor">
-                    <input type="submit" value="Go to Class" />
-                </form>
-            </div>
-            
-            
+            <h1>Classroom</h1>
         )
     }
 }
 
-
-export default TutorRegistration;
+export default Classroom

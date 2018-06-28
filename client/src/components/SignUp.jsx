@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import Home from './Home.jsx';
+
 import $ from 'jquery';
 
 class SignUp extends React.Component {

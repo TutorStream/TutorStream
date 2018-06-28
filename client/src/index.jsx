@@ -5,8 +5,6 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 
-
-
 class App extends React.Component {
     constructor(props){
         super(props)
