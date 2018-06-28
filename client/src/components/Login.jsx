@@ -20,6 +20,7 @@ class Login extends React.Component {
 
   handeLoginSubmit (e) {
     console.log('sending login request to server');
+    this.props.history.push('/student')
     e.preventDefault();
     axios.get('/users/login', {
       params : {
@@ -32,6 +33,7 @@ class Login extends React.Component {
       // no need to set state, simply re-direct to approved login page 
         // OR if not authetnicated, sned back "error, not authenticated user"
       // re-direct view to user homepage? or tutor homepage
+
     })
     .catch((err) => {
       console.error(err);
@@ -41,10 +43,6 @@ class Login extends React.Component {
   render () {
     return (
       <div>
-        <div className="homepage-btn">
-          <button onClick={() => {this.props.returnToHomepage()}}>Home</button>
-        </div>
-        <br></br>
         <form onSubmit={(e) => {this.handeLoginSubmit(e)}}>
           <label>Username</label>
           <input value={this.state.loginUsername} name="loginUsername" onChange={(e) => {this.inputHandler(e)}}></input>

@@ -1,12 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 
 class Sidebar extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-        }
-    }
     render() {
         return (
             <div>
@@ -17,7 +13,7 @@ class Sidebar extends React.Component {
                 <div className='student-options'>
                         {this.props.options.map((option,i)=>{
                             return(
-                                <button key={i} onClick={this.props.handleSwitchView} name={option.func} className='student-option'>{option.name}</button>
+                                <Link key={i} to={`${option.name}`} className='student-option'>{option.name}</Link>
                             )
                         })}
                 </div>

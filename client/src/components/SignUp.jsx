@@ -52,6 +52,7 @@ class SignUp extends React.Component {
 
   handleSignup (e) {
     console.log('sending axios to add new user');
+    this.props.history.push('/student')
     e.preventDefault();
     axios.post('/users/signup', {
       username : this.state.username,
@@ -65,6 +66,7 @@ class SignUp extends React.Component {
       // no need to set state, just redirect to login page (auto login?)
       // auto login
       this.clearInputs(); // just clears input
+      console.log(this.props)
     })
     .catch((err) => {
       console.error(err);
@@ -78,10 +80,6 @@ class SignUp extends React.Component {
   render () {
     return (
       <div>
-        <div className="homepage-btn">
-          <button onClick={() => {this.props.returnToHomepage()}}>Home</button>
-        </div>
-        <br></br>
         <div>
           <span>Welcome! Please input your information below</span>
         </div>
