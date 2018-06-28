@@ -1,7 +1,8 @@
 import React from 'react';
-import Sidebar from '../Sidebar.jsx'
-import Sessions from './Sessions.jsx'
-import {BrowserRouter} from 'react-router-dom'
+import Sidebar from '../Sidebar.jsx';
+import Sessions from './Sessions.jsx';
+import {BrowserRouter} from 'react-router-dom';
+import TestList from './TestList.jsx';
 
 
 class StudentView extends React.Component {
@@ -24,8 +25,7 @@ class StudentView extends React.Component {
                 <div>
                 <h1>Student View</h1>
                 <br/><br/>
-          
-                                   
+                <TestList />
                     <div className='student-view'>
                         <h2>Main Page</h2>
                     </div>
@@ -33,7 +33,6 @@ class StudentView extends React.Component {
                 <hr/>
                 </div>
             </div>
-       
         )
     }
 }
