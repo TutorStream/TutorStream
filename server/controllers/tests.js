@@ -1,27 +1,24 @@
-const Test = require('./../models/testModel')
-// const Tutor = require('./../models/tutorModel')
+const testModel = require('./../models/testModel');
 
 exports.getAllTests = (req, res) => {
-  Test.getTests((err, tests) => {
-    if(err) {
-      res.sendStatus(400);
+  // get all tests, nothing in req body, just run get all tests from DB helpers
+  testModel.getTests((err, results) => {
+    if (err) {
+      console.error('There was an error getting all tests from the database: ', err);
     } else {
-      res.send(tests);
+      res.send(results);
     }
-  })
+  });
 };
 
+//expecting to receive test id as req.query.testid
 exports.testSearch = (req, res) => {
-  const testName = req.query.testId;
-  console.log('testName = req.query.testId ', testName);
-  Test.selectTest(testName, (err, test) => {
-    if(err) {
-      res.sendStatus(400);
+  let testID = req.params.testId;
+  testModel.selectTest(testID, (err, results) => {
+    if (err) {
+      console.error('There was an error selecting your specific test: ', err);
     } else {
-      res.send(test); // OR get all tutors for that test?
+      res.send(results);
     }
-  })
+  });
 };
-
-
-// already exporting each method, no need to export entire file
