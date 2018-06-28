@@ -6,11 +6,20 @@ import Settings from '../Settings.jsx'
 import TutorRegistration from './TutorRegistration.jsx'
 
 
+const TestList = () => {
+  return (
+    <h1>Test List</h1>
+  )
+}
 class StudentView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
           routes:[
+                {
+                  path: "/student",
+                  main: TestList
+                },
                 {
                   path: "/sessions",
                   main: Sessions
@@ -20,12 +29,12 @@ class StudentView extends React.Component {
                   main: Classroom
                 },
                 {
-                  path: "/settings",
-                  main: Settings
-                },
-                {
                   path: "/becometutor",
                   main: TutorRegistration
+                },
+                {
+                  path: "/settings",
+                  main: Settings
                 }
             ]};
       }

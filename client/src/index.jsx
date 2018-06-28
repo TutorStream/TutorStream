@@ -5,12 +5,6 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 
-import Side from './components/Side.jsx'
-// import Sessions from './components/student/Sessions.jsx'
-// import Classroom from './components/communication/Classroom.jsx'
-// import TutorRegistration from './components/student/TutorRegistration.jsx'
-// import Settings from './components/Settings.jsx'
-
 class App extends React.Component {
     render() {
         return (
