@@ -5,8 +5,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginUsername: '',
-      loginPassword: ''
+      Email: '',
+      Password: ''
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
@@ -22,11 +22,9 @@ class Login extends React.Component {
     console.log('sending login request to server');
     this.props.history.push('/student')
     e.preventDefault();
-    axios.get('/users/login', {
-      params : {
-        username : this.state.loginUsername,
-        password: this.state.loginPassword
-      }
+    axios.post('/users/login', {
+      Email : this.state.Email,
+      Password: this.state.Password
     })
     .then(({data}) => {
       console.log('data ', data);
@@ -44,11 +42,11 @@ class Login extends React.Component {
     return (
       <div>
         <form onSubmit={(e) => {this.handeLoginSubmit(e)}}>
-          <label>Username</label>
-          <input value={this.state.loginUsername} name="loginUsername" onChange={(e) => {this.inputHandler(e)}}></input>
+          <label>Email</label>
+          <input value={this.state.Email} name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Password</label>
-          <input type = "password" value={this.state.loginPassword} name="loginPassword" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input type="password" value={this.state.loginPassword} name="Password" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <button type="submit" value="Submit">Login</button>
         </form>

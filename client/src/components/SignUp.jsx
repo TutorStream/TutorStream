@@ -7,13 +7,20 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : '',
-      password: '',
-      email: '',
-      tests: [],
-      isTutor: false,
-      bio: '',
-      availableTests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A']
+      Name : '',
+      Password: '',
+      Email: '',
+      Tests: [],
+      Tutor: 0,
+      Bio: '',
+      AvailableTests: [
+        {ID: 1, Name: 'DAT', Description: 'dental school test'},
+        {ID: 2, Name: 'LSAT', Description: 'law school test'},
+        {ID: 3, Name: 'SAT', Description: 'high school test'},
+        {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
+        {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
+        {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
+      ]
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
@@ -30,23 +37,20 @@ class SignUp extends React.Component {
 
   handleIsTutorChange (e) {
     this.setState({
-      isTutor : e.target.value
+      Tutor : e.target.value
     })
   }
 
   handleTestsChange (e) {
     var options = e.target.options;
-    // console.log('options', options)
     var selectedTests = [];
     for(var i = 0; i < options.length; i++) {
       if (options[i].selected) {
-        selectedTests.push(options[i].value);
+        selectedTests.push(Number(options[i].value));
       }
     }
     this.setState({
-      tests : selectedTests
-    }, () => {
-      console.log('selected tests', selectedTests);
+      Tests : selectedTests
     });
   }
 
@@ -54,13 +58,14 @@ class SignUp extends React.Component {
     console.log('sending axios to add new user');
     this.props.history.push('/student')
     e.preventDefault();
+    console.log('sending axios to add new user');
     axios.post('/users/signup', {
-      username : this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      tests: this.state.tests,
-      isTutor: false,
-      bio: ''
+      Name : this.state.Name,
+      Password: this.state.Password,
+      Email: this.state.Email,
+      Tests: this.state.Tests,
+      Tutor: this.state.Tutor,
+      Bio: this.state.Bio
     })
     .then(({data}) => {
       // no need to set state, just redirect to login page (auto login?)
@@ -85,31 +90,31 @@ class SignUp extends React.Component {
         </div>
         <br></br>
         <form className="" onSubmit={(e) => {this.handleSignup(e)}}>
-          <label>Username: </label>
-          <input className="signup-input" name="username" onChange={(e) => {this.inputHandler(e)}}></input>
+          <label>Name: </label>
+          <input className="signup-input" name="Name" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Password: </label>
-          <input className="signup-input" name="password" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input className="signup-input" name="Password" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Email: </label>
-          <input className="signup-input" name="email" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input className="signup-input" name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <label>Tests (separate by space): </label>
           {/*can create a separate box where all selected tests are added to*/}
           <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
-            {this.state.availableTests.map((test, i) => {
-              return <option key={i} value={test}>{test}</option>
+            {this.state.AvailableTests.map((test, i) => {
+              return <option key={i} value={test.ID}>{test.Name}</option>
             })}
           </select>
           <br></br>
           <label>Tutor Profile: </label>
-          <select value={this.state.isTutor} onChange={(e) => {this.handleIsTutorChange(e)}}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+          <select value={this.state.Tutor} onChange={(e) => {this.handleIsTutorChange(e)}}>
+            <option value={1}>Yes</option>
+            <option value={0}>No</option>
           </select>
           <br></br>
           <label>Bio: </label>
-          <input className="signup-input" name="bio" onChange={(e) => {this.inputHandler(e)}}></input>
+          <input className="signup-input" name="Bio" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
           <button type="submit" value="Submit">Create New Profile</button>
         </form>
