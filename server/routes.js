@@ -14,10 +14,14 @@ router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
 
+// TUTORS
+
+router.get('/tutors')
+
 // TESTS
-
+//ok
 router.get('/tests', testsControllers.getAllTests);
-
+//ok
 router.get('/tests/:testId', testsControllers.testSearch);
 
 // SESSIONS
@@ -26,9 +30,9 @@ router.post('/sessions', sessionControllers.bookSession);
 
 router.delete('/sessions/:id', sessionControllers.deleteSession);
 
-router.put('/sessions', sessionControllers.deleteSession);
-
-router.get('/sessions/:id', sessionControllers.getSession)
+router.put('/sessions', sessionControllers.updateSession);
+//
+router.get('/sessions/:id', sessionControllers.getSession);
 
 // VIDEOCHAT
 
