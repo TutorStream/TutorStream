@@ -4,16 +4,17 @@ CREATE DATABASE TutorStream;
 USE TutorStream;
 
 CREATE TABLE users (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   Name varchar(255) NOT NULL,
   Password varchar(255) NOT NULL,
-  Email varchar(255) NOT NULL UNIQUE,
+  Email varchar(255) NOT NULL UNIQUE UNIQUE,
   Tutor int NOT NULL,
   Bio varchar(255)
 );
 
 CREATE TABLE tutors (
   ID int,
+  Name varchar(255) NOT NULL,
   Bio varchar(255) NOT NULL,
   Price int NOT NULL,
   Rating int NOT NULL,
@@ -21,7 +22,7 @@ CREATE TABLE tutors (
 );
 
 CREATE TABLE tests (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   Name varchar(255) NOT NULL UNIQUE,
   Description varchar(255) NOT NULL
 );
@@ -41,7 +42,7 @@ CREATE TABLE tutor_tests (
 );
 
 CREATE TABLE sessions (
-  id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   test_id int,
   tutor_id int,
   student_id int,
@@ -53,7 +54,7 @@ CREATE TABLE sessions (
 );
 
 CREATE TABLE feedback (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   user_id int,
   tutor_id int,
   rating int,
