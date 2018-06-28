@@ -17,10 +17,6 @@ class StudentView extends React.Component {
         this.state = {
           routes:[
                 {
-                  path: "/student",
-                  main: TestList
-                },
-                {
                   path: "/sessions",
                   main: Sessions
                 },

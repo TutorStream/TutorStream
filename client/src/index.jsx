@@ -16,14 +16,15 @@ class App extends React.Component {
                       <Login {...props}/>
                       <Signup {...props}/>
                   </div>);
-              }}>
+              }}
+              >
               </Route>
               <Route exact path = "/student" component={StudentView}></Route>
-              {/* <Route exact path = "/tutor" component={TutorView}></Route> */}
             </Switch>
         </BrowserRouter>
         )
     }
 }
+
 
 ReactDOM.render(<App/>, document.getElementById('app'))
