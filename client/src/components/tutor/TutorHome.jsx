@@ -21,7 +21,7 @@ class TutorHome extends React.Component {
         return (
             <div>
                 <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student</button>
+                <button onClick={this.props.handleSwitchView} name= 'student'>Student</button>
                 <h1>Tutor Home</h1>
                 <Sidebar  options = {this.state.options} handleSwitchView={this.props.handleSwitchView}/>
             </div>

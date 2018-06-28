@@ -11,31 +11,13 @@ class StudentView extends React.Component {
                 {name :'Sessions', func : 'tutor'},
                 {name :'Inbox', func : 'tutor'},
                 {name :'Classroom', func : 'tutor'},
-                {name :'Become a Tutor', func : 'tutor'}
+                {name :'Become a Tutor', func : 'tutor'},
+                {name :'Settings', func : 'settings'}
             ]
         }
-        this.sessions = this.sessions.bind(this)
-        this.inbox = this.inbox.bind(this)
-        this.tutor = this.tutor.bind(this)
-        this.classroom = this.classroom.bind(this)
     }
 
 
-    sessions(){
-        console.log('Sessions')
-    }
-
-    inbox(){
-        console.log('Inbox')
-    }
-
-    tutor(){
-        console.log('Become Tutor')
-    }
-
-    classroom(){
-        console.log('classroom')
-    }
 
     render() {
         return (
