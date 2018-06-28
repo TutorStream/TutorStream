@@ -11,8 +11,8 @@ class StudentView extends React.Component {
                 {name :'Sessions', func : 'tutor'},
                 {name :'Inbox', func : 'tutor'},
                 {name :'Classroom', func : 'tutor'},
-<<<<<<< HEAD
-                {name :'Become a Tutor', func : 'tutor'}
+                {name :'Become a Tutor', func : 'tutor'},                   
+                {name :'Settings', func : 'settings'}
             ],
             Tests : [
               {ID: 1, Name: 'DAT', Description: 'dental school test'},
@@ -22,12 +22,6 @@ class StudentView extends React.Component {
               {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
               {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
             ],
-            
-=======
-                {name :'Become a Tutor', func : 'tutor'},
-                {name :'Settings', func : 'settings'}
-            ]
->>>>>>> 8550a75d611d560651b0eb0989986cd095098d37
         }
     }
 
