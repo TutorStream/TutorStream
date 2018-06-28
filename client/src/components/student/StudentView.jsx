@@ -1,25 +1,46 @@
+<<<<<<< HEAD
 import React from 'react';
 import Sidebar from '../Sidebar.jsx';
 import Sessions from './Sessions.jsx';
 import {BrowserRouter} from 'react-router-dom';
 import TestList from './TestList.jsx';
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Sessions from './Sessions.jsx'
+import Classroom from '../communication/Classroom.jsx'
+import Settings from '../Settings.jsx'
+import TutorRegistration from './TutorRegistration.jsx'
+>>>>>>> 29c1672d04716227ce15f50e21f94daa3029b229
 
 
 class StudentView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            options : [
-                {name :'student/sessions'},
-                {name :'student/classroom'},
-                {name :'student/becomeTutor'},
-                {name :'student/setting'},
-            ]
-        }
-    }
-
+          routes:[
+                {
+                  path: "/sessions",
+                  main: Sessions
+                },
+                {
+                  path: "/classroom",
+                  main: Classroom
+                },
+                {
+                  path: "/settings",
+                  main: Settings
+                },
+                {
+                  path: "/becometutor",
+                  main: TutorRegistration
+                }
+            ]};
+      }
     render() {
+      
         return (
+<<<<<<< HEAD
             <div className='student-main'>
                 <Sidebar options = {this.state.options} /> 
                 <div>
@@ -33,6 +54,34 @@ class StudentView extends React.Component {
                 <hr/>
                 </div>
             </div>
+=======
+          <Router>
+          <div> 
+              <ul>
+                <li>
+                  <Link to="/sessions">Sessions</Link>
+                </li>
+                <li>
+                  <Link to="/classroom">Classroom</Link>
+                </li>
+                <li>
+                  <Link to="/settings">Settings</Link>
+                </li>
+                <li>
+                  <Link to="/becometutor">Become a Tutor</Link>
+                </li>
+              </ul>
+              {this.state.routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.main}
+                />
+              ))}
+          </div>
+        </Router>
+>>>>>>> 29c1672d04716227ce15f50e21f94daa3029b229
         )
     }
 }
