@@ -24,7 +24,7 @@ const routes = [
   }
 ];
 
-const SidebarExample = () => (
+export default () => (
   <Router>
     <div style={{ display: "flex" }}>
       <div

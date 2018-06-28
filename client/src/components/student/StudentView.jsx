@@ -1,50 +1,63 @@
-import React from 'react';
-import Sidebar from '../Sidebar.jsx'
-import { Route } from 'react-router-dom'
-
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Sessions from './Sessions.jsx'
 import Classroom from '../communication/Classroom.jsx'
-import TutorRegistration from './TutorRegistration.jsx'
 import Settings from '../Settings.jsx'
+import TutorRegistration from './TutorRegistration.jsx'
 
-const Session = (props) => {
-    return (
-        <h1>Something</h1>
-    )
-}
 
 class StudentView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            options : [
-                {name :'sessions'},
-                {name :'classroom'},
-                {name :'becomeTutor'},
-                {name :'setting'},
-            ]
-        }
-    }
-
+          routes:[
+                {
+                  path: "/sessions",
+                  main: Sessions
+                },
+                {
+                  path: "/classroom",
+                  main: Classroom
+                },
+                {
+                  path: "/settings",
+                  main: Settings
+                },
+                {
+                  path: "/becometutor",
+                  main: TutorRegistration
+                }
+            ]};
+      }
     render() {
-        const {match} = this.props
+      
         return (
-            <div className='student-main'>  
-                <div>
-                    <Sidebar options = {this.state.options} {...this.props}/> 
-                    <h1>Student View</h1>
-                    <br/><br/>         
-                        <div className='student-view'>
-                            <h2>Main Page</h2>
-                        </div>
-                    <hr/>
-                    <Route path = {`student/sessions`} component={Session}></Route>
-                    <Route path = {`${match.path}/classroom`} component={Classroom}></Route>
-                    <Route path = {`${match.path}/becomeTutor`} component={TutorRegistration}></Route>
-                    <Route path = {`${match.path}/setting`}component={Settings}></Route>
-                </div>
-            </div>
-       
+          <Router>
+          <div> 
+              <ul>
+                <li>
+                  <Link to="/sessions">Sessions</Link>
+                </li>
+                <li>
+                  <Link to="/classroom">Classroom</Link>
+                </li>
+                <li>
+                  <Link to="/settings">Settings</Link>
+                </li>
+                <li>
+                  <Link to="/becometutor">Become a Tutor</Link>
+                </li>
+              </ul>
+              {this.state.routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.main}
+                />
+              ))}
+          </div>
+        </Router>
         )
     }
 }
