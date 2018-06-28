@@ -12,7 +12,16 @@ class StudentView extends React.Component {
                 {name :'Inbox', func : 'tutor'},
                 {name :'Classroom', func : 'tutor'},
                 {name :'Become a Tutor', func : 'tutor'}
-            ]
+            ],
+            Tests : [
+              {ID: 1, Name: 'DAT', Description: 'dental school test'},
+              {ID: 2, Name: 'LSAT', Description: 'law school test'},
+              {ID: 3, Name: 'SAT', Description: 'high school test'},
+              {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
+              {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
+              {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
+            ],
+            
         }
         this.sessions = this.sessions.bind(this)
         this.inbox = this.inbox.bind(this)
