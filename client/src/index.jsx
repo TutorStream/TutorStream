@@ -10,7 +10,7 @@ import Signup from './components/Signup.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import Sessions from './components/student/Sessions.jsx'
 import Settings from './components/Settings.jsx'
-
+import Classroom from './components/communication/Classroom.jsx'
 
 class App extends React.Component {
     render() {
@@ -28,7 +28,7 @@ class App extends React.Component {
               </Route>
               <Route exact path = "/student" component={StudentView}></Route>
               <Route exact path = "/student/sessions" component={Sessions}></Route>
-              <Route exact path = "/student/classroom" component={StudentView}></Route>
+              <Route exact path = "/student/classroom" component={Classroom}></Route>
               <Route exact path = "/student/becomeTutor" component={TutorRegistration}></Route>
               <Route exact path = "/student/setting" component={Settings}></Route>
 
