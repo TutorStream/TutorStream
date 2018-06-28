@@ -43,7 +43,7 @@ class TutorProfile extends Component {
       <div>
         <h3>Koichi Smith's Profile</h3>
         <div>
-          <h1>Rating: { /* this.state.rating */}</h3>
+          <h1>Rating: { /* this.state.rating */}</h1>
         </div>
         <div>
           <h1>Bio:</h1>
