@@ -1,21 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Sessions from './Sessions.jsx'
-import Classroom from '../communication/Classroom.jsx'
-import Settings from '../Settings.jsx'
-import TutorRegistration from './TutorRegistration.jsx'
+import Sessions from './Sessions.jsx';
+import Classroom from '../communication/Classroom.jsx';
+import Settings from '../Settings.jsx';
+import TutorRegistration from './TutorRegistration.jsx';
+import TestList from './TestList.jsx';
 
-
-const TestList = () => {
-  return (
-    <h1>Test List</h1>
-  )
-}
 class StudentView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
           routes:[
+                {
+                    path: "/student",
+                    main: TestList
+                },
                 {
                   path: "/sessions",
                   main: Sessions
