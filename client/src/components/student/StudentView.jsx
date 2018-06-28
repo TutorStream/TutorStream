@@ -4,60 +4,56 @@ import Sessions from './Sessions.jsx'
 
 
 class StudentView extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            options : [
-                {name :'Sessions', func : 'tutor'},
-                {name :'Inbox', func : 'tutor'},
-                {name :'Classroom', func : 'tutor'},
-                {name :'Become a Tutor', func : 'tutor'}
-            ]
-        }
-        this.sessions = this.sessions.bind(this)
-        this.inbox = this.inbox.bind(this)
-        this.tutor = this.tutor.bind(this)
-        this.classroom = this.classroom.bind(this)
+  constructor(props){
+    super(props);
+    this.state = {
+      options : [
+          {name :'All Sessions', func : 'tutor'},
+          {name :'Inbox', func : 'tutor'},
+          {name :'Classroom', func : 'tutor'},
+          {name :'Become a Tutor', func : 'tutor'}
+      ]
     }
+      this.sessions = this.sessions.bind(this)
+      this.inbox = this.inbox.bind(this)
+      this.tutor = this.tutor.bind(this)
+      this.classroom = this.classroom.bind(this)
+  }
+  sessions(){
+      console.log('Sessions')
+  }
 
+  inbox(){
+      console.log('Inbox')
+  }
 
-    sessions(){
-        console.log('Sessions')
-    }
+  tutor(){
+      console.log('Become Tutor')
+  }
 
-    inbox(){
-        console.log('Inbox')
-    }
+  classroom(){
+      console.log('classroom')
+  }
 
-    tutor(){
-        console.log('Become Tutor')
-    }
-
-    classroom(){
-        console.log('classroom')
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
-                <h1>Student View</h1>
-                <br/><br/>
-                <div className='student-main'>
-                    <Sidebar options = {this.state.options} handleSwitchView={this.props.handleSwitchView}/>                
-                    <div className='student-view'>
-                        <h2>Main Page</h2>
-                    </div>
-
-                </div>
-                <hr/>
-                <Sessions />
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
+        <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
+        <h1>Student View</h1>
+        <br/><br/>
+        <div className='student-main'>
+            <Sidebar options = {this.state.options} handleSwitchView={this.props.handleSwitchView} bookSession={bookSession}/>                
+            <div className='student-view'>
+                <h2>Main Page</h2>
             </div>
-            
-            
-        )
-    }
+
+        </div>
+        <hr/>
+        <Sessions />
+      </div>
+    )
+  }
 }
 
 
