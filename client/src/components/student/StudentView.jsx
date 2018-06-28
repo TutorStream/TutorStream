@@ -33,7 +33,7 @@ class StudentView extends React.Component {
                 main: Settings
               }
       ],
-      user_id : null,
+      user_id : this.props.ID,
       test_ID : null,
       Tutors: []
   }
@@ -42,13 +42,10 @@ class StudentView extends React.Component {
 }
 
   getTutors () {
-    axios.get('/tutors')
+    axios.get('/users/tutors')
     .then(({data}) => {
-      console.log('what data returns herre ', data);
       this.setState({
         Tutors : data
-      }, () => {
-        console.log('tutor data within student view ', this.state.Tutors);
       })
     })
     .catch((err) => {
@@ -67,7 +64,8 @@ class StudentView extends React.Component {
   }
 
   render() {
-  
+    console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
+    console.log('this.state.Tutors', this.state.Tutors);
     return (
       <Router>
       <div> 

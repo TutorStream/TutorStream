@@ -26,7 +26,6 @@ class Login extends React.Component {
     })
     .then(({data}) => {
       var ID = data.ID
-      console.log(ID, 'id');
       this.props.getID(ID);
       this.props.history.push('/student');
       // no need to set state, simply re-direct to approved login page 

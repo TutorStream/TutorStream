@@ -14,7 +14,6 @@ class TestList extends Component {
   componentDidMount() {
     axios.get('/tests')
       .then((response) => {
-        console.log('what is the response from querying db for tests: ', response);
         this.setState({
           Tests : response.data
         });
@@ -25,13 +24,10 @@ class TestList extends Component {
   }
 
   handleTestSelect(e) {
-    console.log('e.target.eventKey', e);
-    console.log('this .props', this.props)
     this.props.setTestID(e);
   }
 
   render() {
-    console.log(this.state.Tests, 'this.state.TEsts');
     return (
       <div>
         <div>

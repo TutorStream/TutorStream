@@ -20,8 +20,6 @@ class App extends React.Component {
   getID (ID) {
     this.setState({
       ID : ID
-    }, () => {
-      console.log('index state updated ', this.state.ID);
     })
   }
 
@@ -32,12 +30,9 @@ class App extends React.Component {
       }
     })
     .then(({data}) => {
-      console.log('should be tests', data);
       this.setState({
         Tests : data
       })
-    }, () => {
-      console.log('selected tests', this.state.userTests);
     })
     .catch((err) => {
       console.error(err);
@@ -66,7 +61,7 @@ class App extends React.Component {
         }}
         >
         </Route>
-        <Route exact path = "/student" component={StudentView}></Route>
+        <Route exact path = "/student" render={studentView}></Route>
       </Switch>
     </BrowserRouter>
     )
