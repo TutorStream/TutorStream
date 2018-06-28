@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import Home from './Home.jsx';
+
 import $ from 'jquery';
 
 class SignUp extends React.Component {
@@ -55,6 +55,8 @@ class SignUp extends React.Component {
   }
 
   handleSignup (e) {
+    console.log('sending axios to add new user');
+    this.props.history.push('/student')
     e.preventDefault();
     console.log('sending axios to add new user');
     axios.post('/users/signup', {
@@ -69,6 +71,7 @@ class SignUp extends React.Component {
       // no need to set state, just redirect to login page (auto login?)
       // auto login
       this.clearInputs(); // just clears input
+      console.log(this.props)
     })
     .catch((err) => {
       console.error(err);
@@ -82,10 +85,6 @@ class SignUp extends React.Component {
   render () {
     return (
       <div>
-        <div className="homepage-btn">
-          <button onClick={() => {this.props.returnToHomepage()}}>Home</button>
-        </div>
-        <br></br>
         <div>
           <span>Welcome! Please input your information below</span>
         </div>

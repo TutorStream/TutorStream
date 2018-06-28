@@ -12,10 +12,9 @@ exports.addNewUserTests = (userId, testId, callback) => {
 };
 
 exports.loginUser = (userCreds, callback) => {
-  console.log('usercreds ', userCreds);
   let queryStr = 'SELECT * FROM users WHERE Email = ? AND Password = ?;'
   var params = [userCreds.Email, userCreds.Password];
-  db.query(queryStr, params, callback);
-;}
+  db.query(queryStr, params, callback)
+}
 
 
