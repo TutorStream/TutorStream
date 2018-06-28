@@ -100,7 +100,7 @@ class StudentView extends React.Component {
                 })}
                 </ul>
                 <Route path ='/tutor' component = {TutorProfile} />
-              </div>
+           </div>
           </div>
         </Router>
      </div>
