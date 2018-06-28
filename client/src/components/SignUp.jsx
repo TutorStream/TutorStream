@@ -29,7 +29,7 @@ class SignUp extends React.Component {
     this.handleTestsChange = this.handleTestsChange.bind(this);
   }
 
-  inputHandler (e) {
+  inputHandler (e){
     this.setState({
       [e.target.name] : e.target.value
     })
@@ -70,9 +70,10 @@ class SignUp extends React.Component {
     .then(({data}) => {
       // no need to set state, just redirect to login page (auto login?)
       // auto login
+      console.log(data2)
       this.clearInputs(); // just clears input
-      this.props.history.push('/student')
-      console.log(this.props)
+      
+      // this.props.history.push('/student')
     })
     .catch((err) => {
       console.error(err);

@@ -45,6 +45,7 @@
     "path": "^0.12.7",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
+    "react-day-picker": "^7.1.9",
     "react-dom": "^16.4.1",
     "react-edit-inline": "^1.0.8",
     "react-inline-editing": "^1.0.10",
