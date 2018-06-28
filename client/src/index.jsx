@@ -4,30 +4,32 @@ import Home from './components/Home.jsx'
 import TutorHome from './components/tutor/TutorHome.jsx'
 import StudentView from './components/student/StudentView.jsx'
 import TutorRegistration from './components/student/TutorRegistration.jsx'
+import Settings from './components/Settings.jsx'
+
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             homepage: true,
-            isStudentLoggedIn: false,
+            student: false,
             tutorHome: false,
             tutor: false ,
             settings: false
         }
-        
+
         this.goToHome = this.goToHome.bind(this)
         this.tutorHome = this.tutorHome.bind(this)
-        this.goToStudent = this.goToStudent.bind(this)
+        this.student = this.student.bind(this)
         this.handleSwitchView = this.handleSwitchView.bind(this)
         this.tutor = this.tutor.bind(this)
         this.settings = this.settings.bind(this)
     }
 
-    goToStudent(){
+    student(){
         this.setState({
             homepage : false,
-            isStudentLoggedIn : true,
+            student : true,
             tutorHome : false,
             tuturRegistration: false 
         })
@@ -36,7 +38,7 @@ class App extends React.Component {
     tutorHome(){
         this.setState({
             homepage : false,
-            isStudentLoggedIn : false,
+            student : false,
             tutorHome : true,
             tuturRegistration: false 
         })
@@ -45,7 +47,7 @@ class App extends React.Component {
     goToHome(){
         this.setState({
             homepage : true,
-            isStudentLoggedIn : false,
+            student : false,
             tutorHome : false,
             tuturRegistration: false 
         })
@@ -54,7 +56,7 @@ class App extends React.Component {
     settings(){
         this.setState({
             homepage: false,
-            isStudentLoggedIn: false,
+            student: false,
             tutorHome: false,
             tutor: false ,
             settings: true
@@ -70,7 +72,7 @@ class App extends React.Component {
     tutor(){
         this.setState({
             homepage : false,
-            isStudentLoggedIn : false,
+            student : false,
             tutorHome : false,
             tutor: true
         })
@@ -79,7 +81,7 @@ class App extends React.Component {
     render() {
         if(this.state.homepage){
             return <Home handleSwitchView={this.handleSwitchView}/>  
-        } else if(this.state.isStudentLoggedIn){
+        } else if(this.state.student){
             return <StudentView handleSwitchView={this.handleSwitchView}/>
         }else if(this.state.tutorHome){
             return <TutorHome handleSwitchView={this.handleSwitchView}/>
