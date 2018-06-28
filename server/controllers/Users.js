@@ -28,8 +28,10 @@ exports.loginUserCheck = (req, res) => {
     if(err) {
       res.sendStatus(400);
     } else {
-      console.log('authenticated');
-      res.sendStatus(200) // just send back authentication? eventually, will send back token?
+      console.log('what are the results, all the user info?', results)
+      res.send(results);
+      // console.log('authenticated');
+      // res.sendStatus(200) // just send back authentication? eventually, will send back token?
     }
   })
 }; 
@@ -43,4 +45,8 @@ exports.getAllTutors = (req, res) => {
       res.send(topTutors);
     }
   }, testId);
-;}
+};
+
+exports.getuserTutors = (req, res) => {
+  var req
+};

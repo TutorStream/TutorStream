@@ -14,6 +14,8 @@ router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
 
+router.get('/users/tests', usersControllers.getUserTests);
+
 // TESTS
 
 router.get('/tests', testsControllers.getAllTests);

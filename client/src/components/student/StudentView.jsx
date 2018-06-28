@@ -11,28 +11,56 @@ class StudentView extends React.Component {
           {name :'All Sessions', func : 'tutor'},
           {name :'Inbox', func : 'tutor'},
           {name :'Classroom', func : 'tutor'},
-          {name :'Become a Tutor', func : 'tutor'}
-      ]
+          {name :'Become a Tutor', func : 'tutor'},
+      ],
+      user_id : null,
+      selectedTests: [],
+      selectedTutors: []
     }
-      this.sessions = this.sessions.bind(this)
-      this.inbox = this.inbox.bind(this)
-      this.tutor = this.tutor.bind(this)
-      this.classroom = this.classroom.bind(this)
-  }
-  sessions(){
-      console.log('Sessions')
-  }
-
-  inbox(){
-      console.log('Inbox')
+    this.sessions = this.sessions.bind(this);
+    this.inbox = this.inbox.bind(this);
+    this.tutor = this.tutor.bind(this);
+    this.classroom = this.classroom.bind(this);
+    this.getUserTests = this.getUserTests.bind(this);
+    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
-  tutor(){
-      console.log('Become Tutor')
+  sessions() {
+    console.log('Sessions');
   }
 
-  classroom(){
-      console.log('classroom')
+  inbox() {
+    console.log('Inbox');
+  }
+
+  tutor() {
+    console.log('Become Tutor');
+  }
+
+  classroom() {
+    console.log('classroom');
+  }
+
+  getUserTests () {
+    axios.get('/users/tests', {
+      params : {
+        user_id : this.state.
+      }
+    })
+  }
+
+  getSelectTutors () {
+
+  }
+
+  componentDidMount() {
+    // need to get ALL tests AND ALL tutors here
+    // OR --> only get all tutors for whatever tests
+    // then filter accordingly based on whatever tests the user has set
+    // view needs to be sidebar, all best tutors of the seleected tests, then a drop-down
+    // to filter tests 
+    this.getTests();
+    this.getTutors();
   }
 
   render() {
