@@ -27,7 +27,10 @@ class Login extends React.Component {
     .then(({data}) => {
       var ID = data.ID
       this.props.getID(ID);
-      this.props.history.push('/student');
+    
+      if(!!data.ID) {
+        this.props.history.push('/student');
+      }
       // no need to set state, simply re-direct to approved login page 
       // OR if not authetnicated, send back "error, not authenticated user"
     })
