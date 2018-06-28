@@ -20,7 +20,7 @@ class Login extends React.Component {
 
   handeLoginSubmit (e) {
     console.log('sending login request to server');
-    this.props.history.push('/student')
+    
     e.preventDefault();
     axios.post('/users/login', {
       Email : this.state.Email,
@@ -28,6 +28,7 @@ class Login extends React.Component {
     })
     .then(({data}) => {
       console.log('data ', data);
+      this.props.history.push('/student')
       // no need to set state, simply re-direct to approved login page 
         // OR if not authetnicated, sned back "error, not authenticated user"
       // re-direct view to user homepage? or tutor homepage
