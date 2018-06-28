@@ -1,10 +1,10 @@
 const router = require('express').Router();
 // all controller files
-const usersControllers = require('./controllers/users');
-const testsControllers = require('./controllers/tests');
-const sessionControllers = require('./controllers/sessions');
-const videoChatControllers = require('./controllers/videoChat');
-const feedbackControllers = require('./controllers/feedback');
+const usersControllers = require('./controllers/Users');
+const testsControllers = require('./controllers/Tests');
+const sessionControllers = require('./controllers/Sessions');
+const videoChatControllers = require('./controllers/VideoChat');
+const feedbackControllers = require('./controllers/Feedback');
 
 // USERS
 
@@ -13,8 +13,6 @@ router.post('/users/signup', usersControllers.addNewUser);
 router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
-
-router.get('/users/tests', usersControllers.getUserTests);
 
 // TESTS
 //ok

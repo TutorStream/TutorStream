@@ -24,12 +24,12 @@ exports.addNewUser = (req, res) => {
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
-  User.loginUser(req.body, (err, results) => {
+  User.loginUser(req.body, (err, user) => {
     if(err) {
       res.sendStatus(400);
     } else {
-      console.log('what are the results, all the user info?', results)
-      res.send(results);
+      console.log('user ID', user.ID)
+      res.send(user);
       // console.log('authenticated');
       // res.sendStatus(200) // just send back authentication? eventually, will send back token?
     }
@@ -47,6 +47,3 @@ exports.getAllTutors = (req, res) => {
   }, testId);
 };
 
-exports.getuserTutors = (req, res) => {
-  var req
-};

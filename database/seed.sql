@@ -16,8 +16,8 @@ INSERT INTO tutors (id, bio, price, rating) VALUES (5, 'Your #1 stop for the GRE
 INSERT INTO tutors (id, bio, price, rating) VALUES (8, 'Part-time rapper, full-time tutor', 70, 4);
 
 -- Tests Tutors can Tutor
-INSERT INTO tutor_tests(tutor_id, test_id) VALUES (5, 4);
-INSERT INTO tutor_tests(tutor_id, test_id) VALUES (8, 1);
+
+
 
 -- Tests Users are interested in
 INSERT INTO user_tests (user_id, test_id) VALUES (1, 1);

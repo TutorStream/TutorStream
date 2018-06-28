@@ -12,15 +12,15 @@ class SignUp extends React.Component {
       Email: '',
       Tests: [],
       Tutor: 0,
-      Bio: '',
-      AvailableTests: [
-        {ID: 1, Name: 'DAT', Description: 'dental school test'},
-        {ID: 2, Name: 'LSAT', Description: 'law school test'},
-        {ID: 3, Name: 'SAT', Description: 'high school test'},
-        {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
-        {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
-        {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
-      ]
+      Bio: ''
+      // AvailableTests: [
+      //   {ID: 1, Name: 'DAT', Description: 'dental school test'},
+      //   {ID: 2, Name: 'LSAT', Description: 'law school test'},
+      //   {ID: 3, Name: 'SAT', Description: 'high school test'},
+      //   {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
+      //   {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
+      //   {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
+      // ]
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
@@ -102,7 +102,7 @@ class SignUp extends React.Component {
           <label>Tests (separate by space): </label>
           {/*can create a separate box where all selected tests are added to*/}
           <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
-            {this.state.AvailableTests.map((test, i) => {
+            {this.props.Tests.map((test, i) => {
               return <option key={i} value={test.ID}>{test.Name}</option>
             })}
           </select>

@@ -13,7 +13,7 @@ exports.addNewUserTests = (userId, testId, callback) => {
 
 exports.loginUser = (userCreds, callback) => {
   console.log('usercreds ', userCreds);
-  let queryStr = 'SELECT * FROM users WHERE Email = ? AND Password = ?;'
+  let queryStr = 'SELECT * FROM users WHERE Email = ? AND Password = ?;' // just send back ID
   // create a query that only gets all the test ids for a particular Name (use LEFT INNER jOIN?)
   // would then need to somehow get all tutors (user with tutor = 1) that also teach this test?
   // crate nested query?
