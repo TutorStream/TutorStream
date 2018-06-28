@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar.jsx'
 import Sessions from './Sessions.jsx'
-import {BrowserRouter} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 
 class StudentView extends React.Component {
@@ -21,17 +21,17 @@ class StudentView extends React.Component {
         return (
             <div className='student-main'>
                 <Sidebar options = {this.state.options} /> 
-                <div>
+                
                 <h1>Student View</h1>
-                <br/><br/>
-          
-                                   
+                <br/><br/>              
                     <div className='student-view'>
                         <h2>Main Page</h2>
                     </div>
-                
                 <hr/>
-                </div>
+                <Route exact path = "/student/sessions" component={Sessions}></Route>
+              <Route exact path = "/student/classroom" component={StudentView}></Route>
+              <Route exact path = "/student/becomeTutor" component={TutorRegistration}></Route>
+              <Route exact path = "/student/setting" component={Settings}></Route>
             </div>
        
         )
