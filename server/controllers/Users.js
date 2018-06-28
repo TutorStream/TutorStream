@@ -26,16 +26,15 @@ exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
   User.loginUser(req.body, (err, result) => {
     if(err){
-      console.log('User not in database:',err)
+      console.log('User not in database:',err);
     } else {
-      console.log('Authenticated:',result)
+      console.log('Authenticated:',result);
+      res.send(result);
     }
-  })
+  });
 }; 
 
 exports.getAllTutors = (req, res) => {
-
-
   var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
@@ -44,4 +43,4 @@ exports.getAllTutors = (req, res) => {
       res.send(topTutors);
     }
   }, testId);
-;}
+};
