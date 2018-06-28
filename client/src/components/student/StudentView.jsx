@@ -1,64 +1,49 @@
 import React from 'react';
 import Sidebar from '../Sidebar.jsx'
 import Sessions from './Sessions.jsx'
+import {BrowserRouter} from 'react-router-dom'
 
 
 class StudentView extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            options : [
-                {name :'Sessions', func : 'tutor'},
-                {name :'Inbox', func : 'tutor'},
-                {name :'Classroom', func : 'tutor'},
-                {name :'Become a Tutor', func : 'tutor'},                   
-                {name :'Settings', func : 'settings'}
-            ],
-            Tests : [
-              {ID: 1, Name: 'DAT', Description: 'dental school test'},
-              {ID: 2, Name: 'LSAT', Description: 'law school test'},
-              {ID: 3, Name: 'SAT', Description: 'high school test'},
-              {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
-              {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
-              {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
-            ],
-        }
+  constructor(props){
+    super(props);
+    this.state = {
+      options : [
+        {name :'student/sessions'},
+        {name :'student/classroom'},
+        {name :'student/becomeTutor'},
+        {name :'student/setting'},
+      ],
+      Tests : [
+        {ID: 1, Name: 'DAT', Description: 'dental school test'},
+        {ID: 2, Name: 'LSAT', Description: 'law school test'},
+        {ID: 3, Name: 'SAT', Description: 'high school test'},
+        {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
+        {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
+        {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
+      ],
     }
+  }
 
-
-
-    render() {
-        return (
+  render() {
+      return (
+        <div className='student-main'>
+            <Sidebar options = {this.state.options} /> 
             <div>
-                <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
-                <h1>Student View</h1>
-                <br/><br/>
-                <div className='student-main'>
-                    <Sidebar options = {this.state.options} handleSwitchView={this.props.handleSwitchView}/>                
-                    <div className='student-view'>
-                        <h2>Main Page</h2>
-                    </div>
-
+            <h1>Student View</h1>
+            <br/><br/>
+      
+                                
+                <div className='student-view'>
+                    <h2>Main Page</h2>
                 </div>
-                <hr/>
-                <Sessions />
+            
+            <hr/>
             </div>
-            
-            
-        )
-    }
+        </div>
+      )
+  }
 }
 
 
 export default StudentView;
-
-
-// <div className='student-options'>
-//                         <h2>Sidebar/Menu</h2>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button onClick={this.props.handleSwitchView} className='student-option' name='becomeTutor'>Become A Tutor</button>
-//                     </div>
