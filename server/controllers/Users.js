@@ -24,23 +24,24 @@ exports.addNewUser = (req, res) => {
 
 exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
-  User.loginUser(req.body, (err, result) => {
-    if(err){
-      console.log('User not in database:',err);
+  User.loginUser(req.body, (err, user) => {
+    if(err) {
+      res.sendStatus(400);
     } else {
-      console.log('Authenticated:',result);
-      res.send(result);
+      console.log('user[0].ID', user[0].ID)
+      var ID = user[0].ID;
+      res.send({ID});
     }
   });
 }; 
 
 exports.getAllTutors = (req, res) => {
-  var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
       res.sendStatus(400);
     } else {
       res.send(topTutors);
     }
-  }, testId);
+  });
 };
+

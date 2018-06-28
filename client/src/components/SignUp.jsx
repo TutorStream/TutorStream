@@ -10,17 +10,9 @@ class SignUp extends React.Component {
       Name : '',
       Password: '',
       Email: '',
-      Tests: [],
+      userTests: [],
       Tutor: 0,
-      Bio: '',
-      AvailableTests: [
-        {ID: 1, Name: 'DAT', Description: 'dental school test'},
-        {ID: 2, Name: 'LSAT', Description: 'law school test'},
-        {ID: 3, Name: 'SAT', Description: 'high school test'},
-        {ID: 4, Name: 'GRE', Description: 'grad school regular test'},
-        {ID: 5, Name: 'GMAT', Description: 'grad school business test'},
-        {ID: 6, Name: 'Hack Reactor T A', Description: 'smartest ppl alive test'}
-      ]
+      Bio: ''
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
@@ -50,20 +42,18 @@ class SignUp extends React.Component {
       }
     }
     this.setState({
-      Tests : selectedTests
+      userTests : selectedTests
     });
   }
 
   handleSignup (e) {
-    console.log('sending axios to add new user');
     this.props.history.push('/student')
     e.preventDefault();
-    console.log('sending axios to add new user');
     axios.post('/users/signup', {
       Name : this.state.Name,
       Password: this.state.Password,
       Email: this.state.Email,
-      Tests: this.state.Tests,
+      Tests: this.state.userTests,
       Tutor: this.state.Tutor,
       Bio: this.state.Bio
     })
@@ -72,7 +62,6 @@ class SignUp extends React.Component {
       // auto login
       this.clearInputs(); // just clears input
       this.props.history.push('/student')
-      console.log(this.props)
     })
     .catch((err) => {
       console.error(err);
@@ -103,7 +92,7 @@ class SignUp extends React.Component {
           <label>Tests (separate by space): </label>
           {/*can create a separate box where all selected tests are added to*/}
           <select onChange={(e) => {this.handleTestsChange(e)}} multiple>
-            {this.state.AvailableTests.map((test, i) => {
+            {this.props.Tests.map((test, i) => {
               return <option key={i} value={test.ID}>{test.Name}</option>
             })}
           </select>
