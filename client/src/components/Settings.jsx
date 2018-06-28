@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './Sidebar.jsx';
+
 
 import EditableLabel from "react-inline-editing";
 
@@ -11,12 +11,6 @@ class Settings extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            options : [
-                {name :'Sessions', func : 'tutor'},
-                {name :'Inbox', func : 'tutor'},
-                {name :'Classroom', func : 'tutor'},
-                {name :'Become a Tutor', func : 'tutor'}
-            ],
             name: 'Koichi Smith',
             bio: 'Born in Tokyo, Japan but spent most of my life in Westchester, NY. ',
             editing: '',
@@ -60,7 +54,7 @@ class Settings extends React.Component {
                 <br/>
 
                 <div className = 'flex-parent'>
-                <Sidebar  options = {this.state.options} handleSwitchView={this.props.handleSwitchView}/>
+        
                 </div>
 
                 <h2>User settings </h2>
