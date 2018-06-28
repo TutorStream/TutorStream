@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Sidebar from '../Sidebar.jsx'
 import Sessions from './Sessions.jsx'
 import {BrowserRouter} from 'react-router-dom'
@@ -17,19 +18,17 @@ class StudentView extends React.Component {
       user_id : null,
       Tutors: []
     }
-    this.getSelectTutors = this.getSelectTutors.bind(this);
+    this.getTutors = this.getTutors.bind(this);
   }
 
-  getSelectTutors () {
-    // only return users that have tutor boolean as 1
-    axios.get('/tutors', {
-      params : {
-
-      }
-    })
+  getTutors () {
+    axios.get('/tutors')
     .then(({data}) => {
+      console.log('what data returns herre ', data);
       this.setState({
-
+        Tutors : data
+      }, () => {
+        console.log('tutor data within student view ', this.state.Tutors);
       })
     })
     .catch((err) => {
@@ -38,11 +37,10 @@ class StudentView extends React.Component {
   }
 
   componentDidMount() {
-    // this.getSelectTutors();
+    this.getTutors();
   }
 
   render() {
-    console.log(this.props.Tests, 'passed down tests to student view')
       return (
         <div className='student-main'>
           <Sidebar options = {this.state.options} /> 

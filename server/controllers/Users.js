@@ -37,13 +37,13 @@ exports.loginUserCheck = (req, res) => {
 }; 
 
 exports.getAllTutors = (req, res) => {
-  var testId = req.body.testId;
+  // var testId = req.body.testId;
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
       res.sendStatus(400);
     } else {
       res.send(topTutors);
     }
-  }, testId);
+  });
 };
 
