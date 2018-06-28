@@ -45,9 +45,6 @@ class TutorRegistration extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'tutorHome'>Tutor Home</button>
-                <button onClick={this.props.handleSwitchView} name= 'goToStudent'>Student View</button>
                 <h1>Tutor Registration</h1>
                 <br/><br/>
                 <div className='student-main'>

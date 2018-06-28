@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar.jsx'
 import Sessions from './Sessions.jsx'
+import {BrowserRouter} from 'react-router-dom'
 
 
 class StudentView extends React.Component {
@@ -25,26 +26,10 @@ class StudentView extends React.Component {
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
-  sessions() {
-    console.log('Sessions');
-  }
-
-  inbox() {
-    console.log('Inbox');
-  }
-
-  tutor() {
-    console.log('Become Tutor');
-  }
-
-  classroom() {
-    console.log('classroom');
-  }
-
   getUserTests () {
     axios.get('/users/tests', {
       params : {
-        user_id : this.state.
+        user_id : this.state.user_id
       }
     })
   }
@@ -63,36 +48,27 @@ class StudentView extends React.Component {
     this.getTutors();
   }
 
-  render() {
-    return (
-      <div>
-        <button onClick={this.props.handleSwitchView} name= 'goToHome'>Home</button>
-        <button onClick={this.props.handleSwitchView} name= 'goToTutor'>Tutor Home</button>
-        <h1>Student View</h1>
-        <br/><br/>
-        <div className='student-main'>
-            <Sidebar options = {this.state.options} handleSwitchView={this.props.handleSwitchView} bookSession={bookSession}/>                
-            <div className='student-view'>
-                <h2>Main Page</h2>
-            </div>
 
-        </div>
-        <hr/>
-        <Sessions />
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className='student-main'>
+                <Sidebar options = {this.state.options} /> 
+                <div>
+                <h1>Student View</h1>
+                <br/><br/>
+          
+                                   
+                    <div className='student-view'>
+                        <h2>Main Page</h2>
+                    </div>
+                
+                <hr/>
+                </div>
+            </div>
+       
+        )
+    }
 }
 
 
 export default StudentView;
-
-
-// <div className='student-options'>
-//                         <h2>Sidebar/Menu</h2>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button className='student-option'>option</button>
-//                         <button onClick={this.props.handleSwitchView} className='student-option' name='becomeTutor'>Become A Tutor</button>
-//                     </div>
