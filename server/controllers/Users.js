@@ -26,9 +26,9 @@ exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
   User.loginUser(req.body, (err, user) => {
     if(err) {
-      res.sendStatus(400);
+      console.log(err)
     } else {
-      var ID = user[0].ID;
+      var ID = user[0] === undefined ? 0 : user[0].ID 
       res.send({ID});
     }
   });
