@@ -10,18 +10,18 @@ class TestList extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios.get('/tests')
-  //     .then((response) => {
-  //       console.log('what is the response from querying db for tests: ', response);
-  //       this.setState({
-  //         tests: response.data
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.error('There was an error getting the list of tests: ', err);
-  //     });
-  // }
+  componentDidMount() {
+    axios.get('/tests')
+      .then((response) => {
+        console.log('what is the response from querying db for tests: ', response);
+        this.setState({
+          tests: response.data
+        });
+      })
+      .catch((err) => {
+        console.error('There was an error getting the list of tests: ', err);
+      });
+  }
 
   // handleTestSelect(e) {
   //   axios.get(`/tests/${e}`)
@@ -42,7 +42,7 @@ class TestList extends Component {
           title='Tests'
           key='0'
           id={`dropdown-basic-0`}>
-          { this.state.tests.map((test) => <MenuItem eventKey={test.id} key={test.id} onSelect={/*(e) => this.handleTestSelect(e)*/}>{test.name}</MenuItem>) }
+          { this.state.tests.map((test) => <MenuItem eventKey={test.id} key={test.id} onSelect={(e) => this.handleTestSelect(e)}>{test.name}</MenuItem>) }
         </DropdownButton>
         </div>
       </div>
