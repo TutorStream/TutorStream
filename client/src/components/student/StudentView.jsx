@@ -21,7 +21,7 @@ class StudentView extends React.Component {
                   main: TestList
               },
               {
-                path: "/sessions",
+                path: "/sessions/:id",
                 exact: true,
                 main: Sessions
               },
@@ -54,7 +54,6 @@ class StudentView extends React.Component {
     this.getTutors = this.getTutors.bind(this);
     this.setTestID = this.setTestID.bind(this);
     this.grabTutorId = this.grabTutorId.bind(this);
-    this.addSession = this.addSession.bind(this);
   }
 
   getTutors () {
@@ -81,14 +80,6 @@ class StudentView extends React.Component {
     })
   }
 
-  addSession (newSession) {
-    this.setState({
-      sessions : this.state.sessions.push(newSession)
-    }, () => {
-      console.log('sessions arr ', this.state.sessions);
-    })
-  }
-
   componentDidMount() {
     this.getTutors();
   }
@@ -103,10 +94,7 @@ class StudentView extends React.Component {
               <ul>
                 <Navbar style={{ fontSize: `130%` }}>
                   <Nav>
-                  <LinkContainer to="/student">
-                    <NavItem>Home</NavItem>
-                  </LinkContainer>
-                  <LinkContainer to="/sessions">
+                  <LinkContainer to={`/sessions/${this.state.user_id}`}>
                     <NavItem>Sessions</NavItem>
                   </LinkContainer>
                   <LinkContainer to="/classroom">
@@ -130,6 +118,7 @@ class StudentView extends React.Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
+                  // render={(props) => <route.main setTestID={this.setTestID} {...props}/> }
                   render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
                 />
               ))}
@@ -141,13 +130,12 @@ class StudentView extends React.Component {
                 </ul>
               <Route path ='/tutor/:ID' render = {(routerProps)=> {
                 return (
-                  <TutorProfile 
-                  tutor_id={this.state.tutorId} 
-                  user_id={this.state.user_id} 
-                  test_ID={this.state.test_ID} 
-                  {...routerProps}
-                  addSession={this.addSession}
-                  />
+                   <TutorProfile 
+                   tutor_id={this.state.tutorId} 
+                   user_id={this.state.user_id} 
+                   test_ID={this.state.test_ID} 
+                   {...routerProps}
+                   />
                 ) }} />
           </div> 
           </div>

@@ -64,8 +64,6 @@ class TutorProfile extends Component {
   }
   
   bookTutor(){
-    console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id );
-    console.log('date', this.state.date, 'time', this.state.time);
     axios.post('/sessions', {
       test_id : this.props.test_ID,
       tutor_id : this.props.tutor_id,
@@ -74,13 +72,12 @@ class TutorProfile extends Component {
       time : this.state.time
     })
     .then(({data}) =>  {
-      console.log('saved and back to front', data);
+      console.log('saved and back to client', data);
     })
     .catch((err)=>console.error(err))
   }
         
   componentDidMount() {
-    console.log(this.props)
     this.getTutorInfo()
   }
 
