@@ -6,7 +6,8 @@ import Classroom from '../communication/Classroom.jsx';
 import Settings from '../Settings.jsx';
 import TutorRegistration from './TutorRegistration.jsx';
 import TestList from './TestList.jsx';
-import TutorProfile from './TutorProfile.jsx'
+import TutorProfile from './TutorProfile.jsx';
+import BookSession from "./BookSession.jsx";
 
 class StudentView extends React.Component {
   constructor(props){
@@ -32,6 +33,10 @@ class StudentView extends React.Component {
               {
                 path: "/settings",
                 main: Settings
+              },
+              {
+                path: "/booksession",
+                main: BookSession
               }
       ],
       user_id : this.props.ID,
@@ -83,6 +88,9 @@ class StudentView extends React.Component {
                 </li>
                 <li>
                   <Link to="/becometutor">Become a Tutor</Link>
+                </li>
+                <li>
+                  <Link to="/booksession">Book a Session</Link>
                 </li>
               </ul>
               {this.state.routes.map((route, index) => (
