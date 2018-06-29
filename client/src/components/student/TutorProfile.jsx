@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import  DateTime  from 'react-datetime';
 
 //tutor profile component that renders on tutor profile click
@@ -61,16 +60,10 @@ class TutorProfile extends Component {
     time = time + ':00'
     mm = months[mm]
     let date = `${yyyy}-${mm}-${dd}`
-    console.log(date)
-    this.setState({
-        date,
-        time
-      })
+    this.setState({date,time})
   }
   
   bookTutor(){
-    console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id );
-    console.log('date', this.state.date, 'time', this.state.time);
     axios.post('/sessions', {
       test_id : this.props.test_ID,
       tutor_id : this.props.tutor_id,

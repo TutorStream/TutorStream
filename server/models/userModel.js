@@ -18,4 +18,9 @@ exports.loginUser = (userCreds, callback) => {
   db.query(queryStr, params, callback);
 };
 
+exports.getUserInfoDB = (userId, callback) => {
+  let queryStr = `SELECT * FROM users where ID = ${userId}`
+  db.query(queryStr, callback);
+};
+
 

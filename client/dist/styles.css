@@ -2,6 +2,17 @@ body{
     color: maroon;
 }
 
+html{
+    background-color: #0081BF !important;
+}
+
+.title{
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    background-color: #0081BF;
+}
+
 .student-view{
     border:1px solid blue;
 }
@@ -26,6 +37,7 @@ body{
 
 .rdt {
     position: relative;
+    color: teal !important;
   }
   .rdtPicker {
     display: none;
@@ -238,3 +250,66 @@ body{
   .rdtTime td {
     cursor: default;
   }
+
+  #app{
+    background-color: #0081BF;
+    color:white;
+    padding: 2em
+  }
+  
+  a, li{
+    color:white;
+  }
+
+  .tutors{
+    margin: 2em 0em;
+    width: 100%;
+    background-color: white;
+  }
+
+  input.signup-input{
+    color: #18A361;
+    border-radius: 8px;
+
+  }
+
+  input #button{
+    background-color: #18A361;
+    border-radius: 8px;
+
+  }
+
+  button{
+    margin: 2em 0em;
+    padding: 1em;
+    background-color: #18A361;
+    border-radius: 8px;
+
+  }
+
+  option{
+ background-color: #18A361;
+}
+
+select{
+  background-color: #18A361;
+}
+
+div.tutors{
+  background-color: #0081BF;
+}
+
+.tutors ul{
+  background-color: white;
+}
+
+.login input{
+  color: #18A361;
+}
+
+.settings input{
+    background-color: #0081BF;
+}
+.tutor-registration input{
+  color: teal
+}

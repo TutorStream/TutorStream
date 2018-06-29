@@ -56,11 +56,17 @@ class App extends React.Component {
       <Switch location={location}>
         <Route exact path = "/" render={(props) => {
             return (<div>
+                <Login className='login' {...props} ID={this.state.ID} getID={this.getID}/>
+                <Signup {...props} Tests={this.state.Tests}/>
+            </div>);
+        }}>
+        </Route>
+        <Route exact path = "/logout" render={(props) => {
+            return (<div>
                 <Login {...props} ID={this.state.ID} getID={this.getID}/>
                 <Signup {...props} Tests={this.state.Tests}/>
             </div>);
-        }}
-        >
+        }}>
         </Route>
         <Route exact path = "/student" render={studentView}></Route>
       </Switch>
@@ -69,4 +75,6 @@ class App extends React.Component {
   }
 }
 
+
 ReactDOM.render(<App/>, document.getElementById('app'))
+export default App;

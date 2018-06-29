@@ -34,6 +34,17 @@ exports.loginUserCheck = (req, res) => {
   });
 }; 
 
+exports.getUserInfo = (req, res) => {
+  console.log(req.params.id)
+  User.getUserInfoDB(req.params.id, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).send(user)
+    }
+  })
+}
+
 exports.getAllTutors = (req, res) => {
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
