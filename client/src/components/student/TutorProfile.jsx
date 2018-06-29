@@ -47,11 +47,6 @@ getTutorInfo(){
       });
 }
 
-
-
-
-
-
   handleChange(date) {
     var sliced = String(date).slice(4,21)
     var newTime = sliced.slice(12) + ':00'
@@ -89,7 +84,6 @@ getTutorInfo(){
       console.log('New date: ',newDate)
       console.log('New Time : ',newTime)
 
-      
           this.setState({
             date: newDate,
             time: newTime
@@ -97,7 +91,7 @@ getTutorInfo(){
         }
   
       bookTutor(){
-        
+      
         console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id )
         axios.post('/sessions', {
           userId : this.props.user_id,

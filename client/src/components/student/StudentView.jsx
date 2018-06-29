@@ -84,8 +84,9 @@ class StudentView extends React.Component {
   }
 
   render() {
-    console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
-    console.log('this.state.Tutors', this.state.Tutors);
+    // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
+    // console.log('this.state.Tutors', this.state.Tutors);
+    console.log(this.props)
     return (
       <div>
         <Router>
@@ -126,7 +127,7 @@ class StudentView extends React.Component {
                   return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-              <Route path ='/tutor' render = {()=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID}/>}} />
+              <Route path ='/tutor/:id' render = {()=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID}/>}} />
            </div>
                
           </div>
