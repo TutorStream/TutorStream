@@ -55,7 +55,7 @@ class App extends React.Component {
       <Switch location={location}>
         <Route exact path = "/" render={(props) => {
             return (<div>
-                <Login {...props} ID={this.state.ID} getID={this.getID}/>
+                <Login className='login' {...props} ID={this.state.ID} getID={this.getID}/>
                 <Signup {...props} Tests={this.state.Tests}/>
             </div>);
         }}

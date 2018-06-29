@@ -92,7 +92,7 @@ class StudentView extends React.Component {
         <Router>
           <div> 
               <ul>
-                <Navbar>
+                <Navbar style={{ fontSize: `130%` }}>
                   <Nav>
                   <LinkContainer to="/sessions">
                     <NavItem>Sessions</NavItem>

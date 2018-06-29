@@ -7,7 +7,7 @@ class Classroom extends Component {
             <h1>Classroom</h1>
 
             <form action="https://appear.in/hufflepuffhackreactor">
-            <input type="submit" value="Go to Class" />
+            <input id={button} type="submit" value="Go to Class" />
             </form>
             </div>
         )
