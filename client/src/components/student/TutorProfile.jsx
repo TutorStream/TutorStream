@@ -111,6 +111,7 @@ getTutorInfo(){
         
 
   componentDidMount() {
+    console.log(this.props)
     this.getTutorInfo()
   }
   componentDidUpdate(prevProps, prevState) {
