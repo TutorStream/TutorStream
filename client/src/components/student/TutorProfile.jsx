@@ -28,9 +28,7 @@ class TutorProfile extends Component {
   };
 
 getTutorInfo(){
-  console.log('in here')
-  const { id } = this.props.match.params
-  console.log(id)
+  const id  = this.props.tutor_id
   // axios get request to get relevant tutor profile information and set to state
     axios.get(`/tutors/${id}`)
       .then(({data}) => {
@@ -108,8 +106,7 @@ getTutorInfo(){
     this.getTutorInfo()
   }
   componentDidUpdate(prevProps, prevState) {
-      const { id } = this.props.match.params
-      if(id !== this.state.id) {
+      if(prevProps.tutor_id !== this.props.tutor_id) {
         this.getTutorInfo()
       }      
   }
