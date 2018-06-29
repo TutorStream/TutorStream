@@ -12,6 +12,8 @@ router.post('/users/signup', usersControllers.addNewUser);
 
 router.post('/users/login', usersControllers.loginUserCheck);
 
+router.get('/users/info/:id', usersControllers.getUserInfo)
+
 router.get('/users/tutors', usersControllers.getAllTutors);
 
 // TUTORS

@@ -93,7 +93,8 @@ class StudentView extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
+    // console.log('this.state.Tutors', this.state.Tutors);
     return (
       <div>
         <Router>
@@ -125,7 +126,7 @@ class StudentView extends React.Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  render={() => <route.main setTestID={this.setTestID}/> }
+                  render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id}/> }
                 />
               ))}
               <div className="tutors">
@@ -134,13 +135,13 @@ class StudentView extends React.Component {
                   return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-              <Route path ='/tutor/:ID' render = {(props)=> {
+              <Route path ='/tutor/:ID' render = {(routerProps)=> {
                 return (
                    <TutorProfile 
                    tutor_id={this.state.tutorId} 
                    user_id={this.state.user_id} 
                    test_ID={this.state.test_ID} 
-                   {...props}
+                   {...routerProps}
                    addSession={this.addSession}
                    />
                 ) }} />
