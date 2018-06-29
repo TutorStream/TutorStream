@@ -44,7 +44,7 @@ class TutorRegistration extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='tutor-registration'>
                 <h1>Tutor Registration</h1>
                 <br/><br/>
                 <div className='student-main'>
