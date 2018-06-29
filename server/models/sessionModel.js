@@ -1,7 +1,7 @@
 const db = require('./../../database');
 
 exports.addSession = ({test_id, tutor_id, user_id, date, time}, callback) => {
-    let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date, time) VALUES (${test_id}, ${tutor_id}, ${user_id}, ${date}, '${time}');`;
+    let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date, time) VALUES (${test_id}, ${tutor_id}, ${user_id}, '${date}', '${time}');`;
     db.query(queryStr, callback);
 };
 

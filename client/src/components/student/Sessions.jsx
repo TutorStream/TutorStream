@@ -21,9 +21,11 @@ class Sessions extends Component {
     console.log('what is id', id);
     axios.get(`/sessions/${id}`)
     .then(({data}) => {
+      data[0].time = data[0].time.slice(0, 5);
+      data[0].date = data[0].date.slice(0, 10);
       this.setState({
           sessions: data
-      })
+      });
     })
   }
 
