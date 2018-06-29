@@ -44,3 +44,13 @@ exports.getAllTutors = (req, res) => {
   });
 };
 
+exports.getTutorProfile = (req, res) => {
+  Tutor.getTutorInfo(req.params.id,(err, results) => {
+    if(err) {
+      res.sendStatus(400);
+    } else {
+      res.send(results);
+    }
+  });
+};
+

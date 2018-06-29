@@ -12,8 +12,8 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('2gangsta', 'passw
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Albert', 'password', 'falbert@gmail.com', 1, 'Aok Aok Aok');
 
 -- Users who are tutors
-INSERT INTO tutors (id, bio, price, rating) VALUES (2, 'Your #1 stop for the GRE', 80, 5);
-INSERT INTO tutors (id, bio, price, rating) VALUES (3, 'Part-time rapper, full-time tutor', 70, 4);
+INSERT INTO tutors (id, bio, price) VALUES (2, 'Your #1 stop for the GRE', 80);
+INSERT INTO tutors (id, bio, price) VALUES (3, 'Part-time rapper, full-time tutor', 70);
 
 -- Tests Tutors can Tutor
 
