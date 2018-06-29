@@ -42,68 +42,41 @@ getTutorInfo(){
       }).catch((err) => {
         console.error('There was an error retrieving the tutor profile: ', err);
       });
-  }
+}
 
-  handleChange(date) {
-    var sliced = String(date).slice(4,21)
-    var newTime = sliced.slice(12) + ':00'
-    var mm;
-    
-    if(sliced.slice(0,3) === 'Jan'){
-      mm ='01'
-    }else if(sliced.slice(0,3) === 'Feb'){
-      mm = '02'
-    }else if(sliced.slice(0,3) === 'Mar'){
-      mm = '03'
-    }else if(sliced.slice(0,3) === 'Apr'){
-      mm = '04'
-    }else if(sliced.slice(0,3) === 'May'){
-      mm = '05'
-    }else if(sliced.slice(0,3) === 'Jun'){
-      mm = '06'
-    }else if(sliced.slice(0,3) === 'Jul'){
-      mm = '07'
-    }else if(sliced.slice(0,3) === 'Aug'){
-      mm = '08'
-    }else if(sliced.slice(0,3) === 'Sep'){
-      mm = '09'
-    }else if(sliced.slice(0,3) === 'Oct'){
-      mm = '10'
-    }else if(sliced.slice(0,3) === 'Nov'){
-      mm = '11'
-    }else if(sliced.slice(0,3) === 'Dec'){
-      mm = '12'
+  handleChange(inputDate) {
+    let months = {
+      'Jan': '01',
+      'Feb':'02',
+      'Mar':'03',
+      'Apr':'04',
+      'May':'05',
+      'Jun':'06',
+      'Jul':'07',
+      'Aug':'08',
+      'Sep':'09',
+      'Oct':'10',
+      'Nov':'11',
+      'Dec':'12'
     }
-
-      var dd = sliced.slice(4,6);
-      var yyyy = sliced.slice(7,11)
-      var newDate = yyyy + '-' + mm + '-' + dd
-    
-          this.setState({
-            date: newDate,
-            time: newTime
-          })
-        }
-  
-      bookTutor(){
-          axios.post('/sessions', {
-          userId : this.props.user_id,
-          testId : this.props.test_ID,
-          tutorId : this.props.tutor_id,
-          date : this.state.date
-        })
+    let [mm,dd,yyyy,time] = String(inputDate).slice(4, 21).split(' ')
+    time = time + ':00'
+    mm = months[mm]
+    let date = `${yyyy}-${mm}-${dd}`
+    console.log(date)
+    this.setState({
+        date,
+        time
+      })
   }
   
   bookTutor(){
-  
-    console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id );
-    console.log('date', this.state.date, 'time', this.state.time);
-    axios.post('/sessions', {
-      userId : this.props.user_id,
-      testId : this.props.test_ID,
-      tutorId : this.props.tutor_id,
-      date : this.state.date,
-      // time : this.state.time
+    const {user_id: userId, test_ID:testId, tutor_id:tutorId} = this.props
+      axios.post('/sessions', {
+      userId,
+      testId,
+      tutorId,
+      date : this.state.date
     })
     .then(()=>console.log('saved and back to front'))
     .catch((err)=>console.error(err))
