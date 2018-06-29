@@ -60,7 +60,6 @@ class SignUp extends React.Component {
     .then(({data}) => {
       // no need to set state, just redirect to login page (auto login?)
       // auto login
-      console.log(data2)
       this.clearInputs(); // just clears input
       this.props.history.push('/student')
     })

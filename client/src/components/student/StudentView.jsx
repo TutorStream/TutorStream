@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import Sessions from './Sessions.jsx';
 import Classroom from '../communication/Classroom.jsx';
@@ -7,7 +7,7 @@ import Settings from '../Settings.jsx';
 import TutorRegistration from './TutorRegistration.jsx';
 import TestList from './TestList.jsx';
 import TutorProfile from './TutorProfile.jsx';
-import BookSession from "./BookSession.jsx";
+import Main from './../../index.jsx';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -41,8 +41,9 @@ class StudentView extends React.Component {
                 main: Settings
               },
               {
-                path: "/booksession",
-                main: BookSession
+                path: "/logout",
+                exact: true,
+                main: Main
               }
       ],
       user_id : this.props.ID,
@@ -93,39 +94,43 @@ class StudentView extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
+    // console.log('this.state.Tutors', this.state.Tutors);
     return (
       <div>
         <Router>
           <div> 
               <ul>
-                <Navbar>
+                <Navbar style={{ fontSize: `130%` }}>
                   <Nav>
+                  <LinkContainer to="/student">
+                    <NavItem>Home</NavItem>
+                  </LinkContainer>
                   <LinkContainer to="/sessions">
                     <NavItem>Sessions</NavItem>
                   </LinkContainer>
                   <LinkContainer to="/classroom">
                     <NavItem>ClassRoom</NavItem>
                   </LinkContainer>
-                  <LinkContainer to="/settings">
-                    <NavItem>Settings</NavItem>
-                  </LinkContainer>
-                
                   <LinkContainer to="/becometutor">
                     <NavItem>Become a Tutor</NavItem>
                   </LinkContainer>
-                  <LinkContainer to="/booksession">
-                    <NavItem>Book a Session</NavItem>
+                  <LinkContainer to="/settings">
+                    <NavItem>Settings</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/logout">
+                    <NavItem>Logout</NavItem>
                   </LinkContainer>
                   </Nav>
                 </Navbar>
               </ul>
               {this.state.routes.map((route, index) => (
+                
                 <Route
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  render={() => <route.main setTestID={this.setTestID}/> }
+                  render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
                 />
               ))}
               <div className="tutors">
@@ -134,22 +139,20 @@ class StudentView extends React.Component {
                   return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-              <Route path ='/tutor/:ID' render = {(props)=> {
+              <Route path ='/tutor/:ID' render = {(routerProps)=> {
                 return (
-                   <TutorProfile 
-                   tutor_id={this.state.tutorId} 
-                   user_id={this.state.user_id} 
-                   test_ID={this.state.test_ID} 
-                   {...props}
-                   addSession={this.addSession}
-                   />
+                  <TutorProfile 
+                  tutor_id={this.state.tutorId} 
+                  user_id={this.state.user_id} 
+                  test_ID={this.state.test_ID} 
+                  {...routerProps}
+                  addSession={this.addSession}
+                  />
                 ) }} />
-           </div>
-               
+          </div> 
           </div>
-          
         </Router>
-     </div>
+      </div>
     )
   }
 }
