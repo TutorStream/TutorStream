@@ -79,13 +79,12 @@ class TutorProfile extends Component {
       time : this.state.time
     })
     .then(({data}) =>  {
-      console.log('saved and back to front', data);
+      console.log('saved and back to client', data);
     })
     .catch((err)=>console.error(err))
   }
         
   componentDidMount() {
-    // console.log(this.props)
     this.getTutorInfo()
   }
 
