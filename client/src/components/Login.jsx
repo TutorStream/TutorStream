@@ -42,7 +42,7 @@ class Login extends React.Component {
   render () {
     return (
       <div>
-        <form onSubmit={(e) => {this.handeLoginSubmit(e)}}>
+        <form className='login' onSubmit={(e) => {this.handeLoginSubmit(e)}}>
           <label>Email</label>
           <input value={this.state.Email} name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>

@@ -50,7 +50,11 @@ class Settings extends React.Component {
       }
     render() {
         return (
+<<<<<<< HEAD
+            <div className= 'settings' >
+=======
             <div>
+>>>>>>> dev
                 
                 <h1>Settings</h1>
                 <br/>
