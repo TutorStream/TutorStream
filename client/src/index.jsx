@@ -58,8 +58,14 @@ class App extends React.Component {
                 <Login {...props} ID={this.state.ID} getID={this.getID}/>
                 <Signup {...props} Tests={this.state.Tests}/>
             </div>);
-        }}
-        >
+        }}>
+        </Route>
+        <Route exact path = "/logout" render={(props) => {
+            return (<div>
+                <Login {...props} ID={this.state.ID} getID={this.getID}/>
+                <Signup {...props} Tests={this.state.Tests}/>
+            </div>);
+        }}>
         </Route>
         <Route exact path = "/student" render={studentView}></Route>
       </Switch>
@@ -68,4 +74,6 @@ class App extends React.Component {
   }
 }
 
+
 ReactDOM.render(<App/>, document.getElementById('app'))
+export default App;
