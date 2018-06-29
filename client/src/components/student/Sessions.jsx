@@ -45,16 +45,17 @@ class Sessions extends Component {
             {/* {this.state.sessions.map((info, index) => {
                 return (<li key={index} >{info.date}</li>)
             })} */}
-            {this.state.sessions.map((session, i) => {
+            {this.state.sessions.map((sessionTutor, i) => {
+              console.log(sessionTutor.Name);
               return (
                 <div className="indv-session" key={i}>
-                  <span>Date: {session.date}</span>
+                  <span>Date: {sessionTutor.date.slice(0, 10)}</span>
                   <br>
                   </br>
-                  <span>Time : {session.time}</span>
+                  <span>Time : {sessionTutor.time}</span>
                   <br>
                   </br>
-                  <span>Tutor :</span>
+                  <span>Tutor : <strong>{sessionTutor.Name}</strong></span>
                 </div>
               )
             })}
