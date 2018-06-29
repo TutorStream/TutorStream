@@ -94,6 +94,9 @@ class StudentView extends React.Component {
               <ul>
                 <Navbar style={{ fontSize: `130%` }}>
                   <Nav>
+                  <LinkContainer to={"/student"}>
+                    <NavItem>Home</NavItem>
+                  </LinkContainer>
                   <LinkContainer to={`/sessions/${this.state.user_id}`}>
                     <NavItem>Sessions</NavItem>
                   </LinkContainer>
