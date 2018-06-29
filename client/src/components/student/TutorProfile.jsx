@@ -85,7 +85,7 @@ class TutorProfile extends Component {
   }
         
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
     this.getTutorInfo()
   }
 

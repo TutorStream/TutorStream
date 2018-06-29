@@ -21,7 +21,7 @@ class StudentView extends React.Component {
                   main: TestList
               },
               {
-                path: "/sessions",
+                path: "/sessions/:id",
                 exact: true,
                 main: Sessions
               },
@@ -101,7 +101,7 @@ class StudentView extends React.Component {
               <ul>
                 <Navbar>
                   <Nav>
-                  <LinkContainer to="/sessions">
+                  <LinkContainer to={`/sessions/${this.state.user_id}`}>
                     <NavItem>Sessions</NavItem>
                   </LinkContainer>
                   <LinkContainer to="/classroom">
@@ -125,7 +125,7 @@ class StudentView extends React.Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  render={() => <route.main setTestID={this.setTestID}/> }
+                  render={(props) => <route.main setTestID={this.setTestID} {...props}/> }
                 />
               ))}
               <div className="tutors">

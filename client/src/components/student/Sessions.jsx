@@ -16,9 +16,8 @@ class Sessions extends Component {
   }
 
   getUpcomingSessions() {
-    // id will come from state or this.props.match.params
-    console.log(`Axios request to get upcoming sessions`)
-    // const {id} = this.props.match.params
+    const {id} = this.props.match.params
+    console.log('waht is id', id);
     // axios.get(`/sessions/${id}`)
     // .then((resp) => {
     //     this.setState({
