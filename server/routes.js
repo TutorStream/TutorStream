@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const usersControllers = require('./controllers/users');
+const usersControllers = require('./controllers/users.js');
 const testsControllers = require('./controllers/tests');
 const sessionControllers = require('./controllers/sessions');
 const videoChatControllers = require('./controllers/videochat');
