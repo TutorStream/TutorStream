@@ -6,11 +6,13 @@ const sessionControllers = require('./controllers/Sessions');
 const videoChatControllers = require('./controllers/VideoChat');
 const feedbackControllers = require('./controllers/Feedback');
 
-// USERS
+// USERS && TUTORS
 
 router.post('/users/signup', usersControllers.addNewUser);
 
 router.post('/users/login', usersControllers.loginUserCheck);
+
+router.get('/users/info/:id', usersControllers.getUserInfo)
 
 router.get('/users/tutors', usersControllers.getAllTutors);
 
