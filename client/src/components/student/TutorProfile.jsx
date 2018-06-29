@@ -46,7 +46,7 @@ getTutorInfo(){
 
   handleChange(date) {
     var sliced = String(date).slice(4,21)
-    var newTime = sliced.slice(12) + ':00'
+    var newTime = sliced.slice(12) + ':00';
     var mm;
     
     if(sliced.slice(0,3) === 'Jan'){
@@ -83,29 +83,22 @@ getTutorInfo(){
             date: newDate,
             time: newTime
           })
-        }
-  
-      bookTutor(){
-          axios.post('/sessions', {
-          userId : this.props.user_id,
-          testId : this.props.test_ID,
-          tutorId : this.props.tutor_id,
-          date : this.state.date
-        })
   }
   
   bookTutor(){
-  
     console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id );
     console.log('date', this.state.date, 'time', this.state.time);
     axios.post('/sessions', {
-      userId : this.props.user_id,
-      testId : this.props.test_ID,
-      tutorId : this.props.tutor_id,
+      test_id : this.props.test_ID,
+      tutor_id : this.props.tutor_id,
+      user_id : this.props.user_id,
       date : this.state.date,
-      // time : this.state.time
+      time : this.state.time
     })
-    .then(()=>console.log('saved and back to front'))
+    .then((newSession) =>  {
+      console.log('saved and back to front');
+      // this.props.addSession(newSession);
+    })
     .catch((err)=>console.error(err))
   }
         
@@ -113,6 +106,7 @@ getTutorInfo(){
   componentDidMount() {
     this.getTutorInfo()
   }
+
   componentDidUpdate(prevProps, prevState) {
     const { ID } = this.props.match.params 
       if(ID !== prevState.ID) {

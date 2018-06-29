@@ -1,31 +1,18 @@
 const db = require('./../../database');
 
-exports.addSession = ({testId, tutorId, userId, date, time}, callback) => {
-    let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date, time) values (${testId}, ${tutorId}, ${userId}, ${date}, ${time})`
-
-    db.query(queryStr, (err, result) => {
-        if(err) {
-            console.log('Error initializin session');
-        } else {
-            callback(result);
-        }
-    });
+exports.addSession = ({test_id, tutor_id, user_id, date, time}, callback) => {
+    let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date, time) VALUES (${test_id}, ${tutor_id}, ${user_id}, ${date}, '${time}');`;
+    db.query(queryStr, callback);
 };
 
 exports.deleteSession = ({sessionId}, callback) => {
     let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`;
-    db.query(queryStr, (err, result) => {
-        if(err) {
-            console.log(`Error deleting ${sessionId} from the database`);
-        } else {
-            callback(result);
-        }
-    });
+    db.query(queryStr, callback);
 };
 
-exports.updateSession = () => {
+// exports.updateSession = () => {
 
-};
+// };
 
 exports.getSession = (id, callback) => {
     // still need to decide whether to sort 
