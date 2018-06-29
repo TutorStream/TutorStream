@@ -2,7 +2,7 @@
   "name": "TutorStream",
   "version": "1.0.0",
   "description": "Platform to find a mentor",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "start": "npm install -g && webpack && node server/index.js",
     "react-dev": "webpack -d --watch",
