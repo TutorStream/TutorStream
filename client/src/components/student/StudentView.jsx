@@ -20,18 +20,22 @@ class StudentView extends React.Component {
               },
               {
                 path: "/sessions",
+                exact: true,
                 main: Sessions
               },
               {
                 path: "/classroom",
+                exact: true,
                 main: Classroom
               },
               {
                 path: "/becometutor",
+                exact: true,
                 main: TutorRegistration
               },
               {
                 path: "/settings",
+                exact: true,
                 main: Settings
               },
               {
@@ -104,12 +108,13 @@ class StudentView extends React.Component {
               <div className="tutors">
                 <ul>
                 {this.state.Tutors.map((tutor, i) => {
-                  return <li key={i}><Link to='/tutor'>{tutor.Name}</Link></li>
+                  return <li key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-                <Route path ='/tutor' component = {TutorProfile} />
-           </div>
+                <Route exact path ='/tutor/:id' component = {TutorProfile} />
           </div>
+          </div>
+          
         </Router>
      </div>
     )

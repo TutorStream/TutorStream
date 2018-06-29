@@ -10,56 +10,53 @@ class TutorProfile extends Component {
       name: '',
       rating: null,
       bio: '',
-      tests: [],
-      feedback: [],
-      availability: null
+      price: null,
+      id: null
     };
+    this.getTutorInfo = this.getTutorInfo.bind(this)
   }
-
-  componentDidMount() {
+  getTutorInfo(){
+    console.log('in here')
+    const { id } = this.props.match.params
+    console.log(id)
     // axios get request to get relevant tutor profile information and set to state
-    /*
-    
-      axios.get(`/tutors/${this.props.tutor_id}`)
-        .then((result) => {
+      axios.get(`/tutors/${id}`)
+        .then(({data}) => {
+          let tutor = data[0]
           this.setState({
-            name: result.data.name,
-            rating: result.data.rating,
-            bio: result.data.bio,
-            tests: result.data.tests,
-            feedback: result.data.feedback,
-            availability: result.data.availability
+            name: tutor.Name,
+            rating: tutor.Rating,
+            bio: tutor.Bio,
+            price: tutor.Price,
+            id: id
           });
         })
         .catch((err) => {
           console.error('There was an error retrieving the tutor profile: ', err);
         });
+  }
 
-    */
+  componentDidMount() {
+    this.getTutorInfo()
+  }
+  componentDidUpdate(prevProps, prevState) {
+      const { id } = this.props.match.params
+      if(id !== this.state.id) {
+        this.getTutorInfo()
+      }      
   }
 
   render() {
+    
     return (
       <div>
-        <h3>Koichi Smith's Profile</h3>
+        <h3>{this.state.name}'s Profile</h3>
         <div>
-          <h1>Rating: { /* this.state.rating */}</h1>
+          <h1>Rating: { this.state.rating}</h1>
         </div>
         <div>
           <h1>Bio:</h1>
-            <p>{ /* this.state.bio */ }</p>
-        </div>
-        <div>
-          <h1>Tests:</h1>
-            <ul>
-            { /* this.state.tests.map((test) => { <li key={test.id}>{test.name}</li> }) */}
-            </ul>
-        </div>
-        <div>
-          <h1>Feedback:</h1>
-            <ul>
-              { /* this.state.feedback.map((review) => { <li key={review.id}>{ review.content }</li> }) */}
-            </ul>
+            <p>{ this.state.bio }</p>
         </div>
         <div>
           <button>Book Session</button>
