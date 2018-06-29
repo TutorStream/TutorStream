@@ -8,7 +8,6 @@ const db = require ('./../database');
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-console.log('right before serving static, i show up');
 app.use(express.static(path.join(__dirname, './../client/dist')));
 
 // mount router, just use homepage
