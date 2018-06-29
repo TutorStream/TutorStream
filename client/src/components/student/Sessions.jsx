@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import axios from 'axios';
 
 
 class Sessions extends Component {
@@ -16,13 +17,13 @@ class Sessions extends Component {
   }
 
   getUpcomingSessions() {
-    const {id} = this.props.match.params
-    console.log('waht is id', id);
+    const { id } = this.props.match.params
+    console.log('what is id', id);
     axios.get(`/sessions/${id}`)
-    .then((resp) => {
-        this.setState({
-            sessions: resp.data
-        })
+    .then(({data}) => {
+      this.setState({
+          sessions: data
+      })
     })
   }
 
@@ -40,10 +41,23 @@ class Sessions extends Component {
     return (
         <div>
             <h1>Session Component!</h1> 
-            <ul>
+            <ul className="all-sessions">
             {/* {this.state.sessions.map((info, index) => {
                 return (<li key={index} >{info.date}</li>)
             })} */}
+            {this.state.sessions.map((session, i) => {
+              return (
+                <div className="indv-session" key={i}>
+                  <span>Date: {session.date}</span>
+                  <br>
+                  </br>
+                  <span>Time : {session.time}</span>
+                  <br>
+                  </br>
+                  <span>Tutor :</span>
+                </div>
+              )
+            })}
             </ul>
         </div>
     )
