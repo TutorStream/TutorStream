@@ -5,8 +5,7 @@ const connection = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || '',
-  database: 'TutorStream',
-  port: 3306
+  database: 'TutorStream'
 });
 
 connection.connect((err) => {

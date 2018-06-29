@@ -12,12 +12,12 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('2gangsta', 'passw
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Albert', 'password', 'falbert@gmail.com', 1, 'Aok Aok Aok');
 
 -- Users who are tutors
-INSERT INTO tutors (id, bio, price, rating) VALUES (5, 'Your #1 stop for the GRE', 80, 5);
-INSERT INTO tutors (id, bio, price, rating) VALUES (8, 'Part-time rapper, full-time tutor', 70, 4);
+INSERT INTO tutors (id, bio, price) VALUES (2, 'Your #1 stop for the GRE', 80);
+INSERT INTO tutors (id, bio, price) VALUES (3, 'Part-time rapper, full-time tutor', 70);
 
 -- Tests Tutors can Tutor
-INSERT INTO tutor_tests(tutor_id, test_id) VALUES (5, 4);
-INSERT INTO tutor_tests(tutor_id, test_id) VALUES (8, 1);
+
+
 
 -- Tests Users are interested in
 INSERT INTO user_tests (user_id, test_id) VALUES (1, 1);
