@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const usersControllers = require('./controllers/Users');
-const testsControllers = require('./controllers/Tests');
-const sessionControllers = require('./controllers/Sessions');
-const videoChatControllers = require('./controllers/VideoChat');
-const feedbackControllers = require('./controllers/Feedback');
+const usersControllers = require('./controllers/users');
+const testsControllers = require('./controllers/tests');
+const sessionControllers = require('./controllers/sessions');
+const videoChatControllers = require('./controllers/videochat');
+const feedbackControllers = require('./controllers/feedback');
 
 // USERS && TUTORS
 
