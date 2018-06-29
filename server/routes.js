@@ -6,7 +6,7 @@ const sessionControllers = require('./controllers/Sessions');
 const videoChatControllers = require('./controllers/VideoChat');
 const feedbackControllers = require('./controllers/Feedback');
 
-// USERS
+// USERS && TUTORS
 
 router.post('/users/signup', usersControllers.addNewUser);
 

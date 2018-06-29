@@ -27,22 +27,22 @@ class TutorProfile extends Component {
     
   };
 
-getTutorInfo(){
-  const { ID } = this.props.match.params 
-    axios.get(`/tutors/${ID}`)
-      .then(({data}) => {
-        let tutor = data[0]
-        this.setState({
-          name: tutor.Name,
-          rating: tutor.Rating,
-          bio: tutor.Bio,
-          price: tutor.Price,
-          ID: ID
+  getTutorInfo(){
+    const { ID } = this.props.match.params 
+      axios.get(`/tutors/${ID}`)
+        .then(({data}) => {
+          let tutor = data[0]
+          this.setState({
+            name: tutor.Name,
+            rating: tutor.Rating,
+            bio: tutor.Bio,
+            price: tutor.Price,
+            ID: ID
+          });
+        }).catch((err) => {
+          console.error('There was an error retrieving the tutor profile: ', err);
         });
-      }).catch((err) => {
-        console.error('There was an error retrieving the tutor profile: ', err);
-      });
-}
+  }
 
   handleChange(inputDate) {
     let months = {
@@ -71,22 +71,26 @@ getTutorInfo(){
   }
   
   bookTutor(){
-    const {user_id: userId, test_ID:testId, tutor_id:tutorId} = this.props
-      axios.post('/sessions', {
-      userId,
-      testId,
-      tutorId,
-      date : this.state.date
+    console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id );
+    console.log('date', this.state.date, 'time', this.state.time);
+    axios.post('/sessions', {
+      test_id : this.props.test_ID,
+      tutor_id : this.props.tutor_id,
+      user_id : this.props.user_id,
+      date : this.state.date,
+      time : this.state.time
     })
-    .then(()=>console.log('saved and back to front'))
+    .then(({data}) =>  {
+      console.log('saved and back to front', data);
+    })
     .catch((err)=>console.error(err))
   }
         
-
   componentDidMount() {
     console.log(this.props)
     this.getTutorInfo()
   }
+
   componentDidUpdate(prevProps, prevState) {
     const { ID } = this.props.match.params 
       if(ID !== prevState.ID) {
