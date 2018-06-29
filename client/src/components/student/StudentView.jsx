@@ -8,6 +8,8 @@ import TutorRegistration from './TutorRegistration.jsx';
 import TestList from './TestList.jsx';
 import TutorProfile from './TutorProfile.jsx';
 import BookSession from "./BookSession.jsx";
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class StudentView extends React.Component {
   constructor(props){
@@ -20,18 +22,22 @@ class StudentView extends React.Component {
               },
               {
                 path: "/sessions",
+                exact: true,
                 main: Sessions
               },
               {
                 path: "/classroom",
+                exact: true,
                 main: Classroom
               },
               {
                 path: "/becometutor",
+                exact: true,
                 main: TutorRegistration
               },
               {
                 path: "/settings",
+                exact: true,
                 main: Settings
               },
               {
@@ -40,11 +46,13 @@ class StudentView extends React.Component {
               }
       ],
       user_id : this.props.ID,
-      test_ID : null,
-      Tutors: []
+      test_ID : 88,
+      Tutors: [],
+      tutorId : null
   }
   this.getTutors = this.getTutors.bind(this);
   this.setTestID = this.setTestID.bind(this);
+  this.grabTutorId = this.grabTutorId.bind(this);
 }
 
   getTutors () {
@@ -65,6 +73,12 @@ class StudentView extends React.Component {
     })
   }
 
+  grabTutorId(ID){
+    this.setState({
+      tutorId : ID
+    })
+  }
+
   componentDidMount() {
     this.getTutors();
   }
@@ -77,21 +91,26 @@ class StudentView extends React.Component {
         <Router>
           <div> 
               <ul>
-                <li>
-                  <Link to="/sessions">Sessions</Link>
-                </li>
-                <li>
-                  <Link to="/classroom">Classroom</Link>
-                </li>
-                <li>
-                  <Link to="/settings">Settings</Link>
-                </li>
-                <li>
-                  <Link to="/becometutor">Become a Tutor</Link>
-                </li>
-                <li>
-                  <Link to="/booksession">Book a Session</Link>
-                </li>
+                <Navbar>
+                  <Nav>
+                  <LinkContainer to="/sessions">
+                    <NavItem>Sessions</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/classroom">
+                    <NavItem>ClassRoom</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/settings">
+                    <NavItem>Settings</NavItem>
+                  </LinkContainer>
+                
+                  <LinkContainer to="/becometutor">
+                    <NavItem>Become a Tutor</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/booksession">
+                    <NavItem>Book a Session</NavItem>
+                  </LinkContainer>
+                  </Nav>
+                </Navbar>
               </ul>
               {this.state.routes.map((route, index) => (
                 <Route
@@ -104,12 +123,14 @@ class StudentView extends React.Component {
               <div className="tutors">
                 <ul>
                 {this.state.Tutors.map((tutor, i) => {
-                  return <li key={i}><Link to='/tutor'>{tutor.Name}</Link></li>
+                  return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-                <Route path ='/tutor' component = {TutorProfile} />
+              <Route path ='/tutor' render = {()=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID}/>}} />
            </div>
+               
           </div>
+          
         </Router>
      </div>
     )

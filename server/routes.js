@@ -16,7 +16,7 @@ router.get('/users/tutors', usersControllers.getAllTutors);
 
 // TUTORS
 
-router.get('/tutors')
+router.get('/tutors/:id', usersControllers.getTutorProfile);
 
 // TESTS
 //ok
