@@ -52,7 +52,6 @@ getTutorInfo(){
 
 
 
-
   handleChange(date) {
     var sliced = String(date).slice(4,21)
     var newTime = sliced.slice(12) + ':00'
