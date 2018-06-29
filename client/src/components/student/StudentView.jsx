@@ -134,7 +134,7 @@ class StudentView extends React.Component {
                    tutor_id={this.state.tutorId} 
                    user_id={this.state.user_id} 
                    test_ID={this.state.test_ID} 
-                   {...props}
+                   {...routerProps}
                    />
                 ) }} />
           </div> 
