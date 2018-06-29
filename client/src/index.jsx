@@ -52,7 +52,7 @@ class App extends React.Component {
     
     return (
     <BrowserRouter> 
-      <Switch>
+      <Switch location={location}>
         <Route exact path = "/" render={(props) => {
             return (<div>
                 <Login {...props} ID={this.state.ID} getID={this.getID}/>

@@ -8,6 +8,8 @@ import TutorRegistration from './TutorRegistration.jsx';
 import TestList from './TestList.jsx';
 import TutorProfile from './TutorProfile.jsx';
 import BookSession from "./BookSession.jsx";
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class StudentView extends React.Component {
   constructor(props){
@@ -81,21 +83,26 @@ class StudentView extends React.Component {
         <Router>
           <div> 
               <ul>
-                <li>
-                  <Link to="/sessions">Sessions</Link>
-                </li>
-                <li>
-                  <Link to="/classroom">Classroom</Link>
-                </li>
-                <li>
-                  <Link to="/settings">Settings</Link>
-                </li>
-                <li>
-                  <Link to="/becometutor">Become a Tutor</Link>
-                </li>
-                <li>
-                  <Link to="/booksession">Book a Session</Link>
-                </li>
+                <Navbar>
+                  <Nav>
+                  <LinkContainer to="/sessions">
+                    <NavItem>Sessions</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/classroom">
+                    <NavItem>ClassRoom</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/settings">
+                    <NavItem>Settings</NavItem>
+                  </LinkContainer>
+                
+                  <LinkContainer to="/becometutor">
+                    <NavItem>Become a Tutor</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/booksession">
+                    <NavItem>Book a Session</NavItem>
+                  </LinkContainer>
+                  </Nav>
+                </Navbar>
               </ul>
               {this.state.routes.map((route, index) => (
                 <Route
