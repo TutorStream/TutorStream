@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// all controller files
+
 const usersControllers = require('./controllers/Users');
 const testsControllers = require('./controllers/Tests');
 const sessionControllers = require('./controllers/Sessions');
