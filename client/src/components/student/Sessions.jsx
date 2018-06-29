@@ -23,7 +23,7 @@ class Sessions extends Component {
     .then(({data}) => {
       this.setState({
           sessions: data
-      })
+      });
     })
   }
 
@@ -49,13 +49,13 @@ class Sessions extends Component {
               console.log(sessionTutor.Name);
               return (
                 <div className="indv-session" key={i}>
-                  <span>Date: {sessionTutor.date.slice(0, 10)}</span>
+                  <span>Date: {session.date.slice(0,10)}</span>
                   <br>
                   </br>
-                  <span>Time : {sessionTutor.time}</span>
+                  <span>Time : {session.time.slice(0,5)}</span>
                   <br>
                   </br>
-                  <span>Tutor : <strong>{sessionTutor.Name}</strong></span>
+                  <span>Tutor : {session.Name}</span>
                 </div>
               )
             })}
