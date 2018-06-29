@@ -46,14 +46,15 @@ class StudentView extends React.Component {
               }
       ],
       user_id : this.props.ID,
-      test_ID : 88,
-      Tutors: [],
-      tutorId : null
+      test_ID : 1,
+      tutorId : null,
+      Tutors: []
+    }
+    this.getTutors = this.getTutors.bind(this);
+    this.setTestID = this.setTestID.bind(this);
+    this.grabTutorId = this.grabTutorId.bind(this);
+    this.addSession = this.addSession.bind(this);
   }
-  this.getTutors = this.getTutors.bind(this);
-  this.setTestID = this.setTestID.bind(this);
-  this.grabTutorId = this.grabTutorId.bind(this);
-}
 
   getTutors () {
     axios.get('/users/tutors')
@@ -79,6 +80,14 @@ class StudentView extends React.Component {
     })
   }
 
+  addSession (newSession) {
+    this.setState({
+      sessions : this.state.sessions.push(newSession)
+    }, () => {
+      console.log('sessions arr ', this.state.sessions);
+    })
+  }
+
   componentDidMount() {
     this.getTutors();
   }
@@ -86,7 +95,6 @@ class StudentView extends React.Component {
   render() {
     // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
     // console.log('this.state.Tutors', this.state.Tutors);
-    console.log(this.props)
     return (
       <div>
         <Router>
@@ -118,7 +126,7 @@ class StudentView extends React.Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  render={() => <route.main setTestID={this.setTestID}/> }
+                  render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id}/> }
                 />
               ))}
               <div className="tutors">
@@ -127,7 +135,16 @@ class StudentView extends React.Component {
                   return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-              <Route path ='/tutor/:ID' render = {(props)=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID} {...props}/>}} />
+              <Route path ='/tutor/:ID' render = {(routerProps)=> {
+                return (
+                   <TutorProfile 
+                   tutor_id={this.state.tutorId} 
+                   user_id={this.state.user_id} 
+                   test_ID={this.state.test_ID} 
+                   {...routerProps}
+                   addSession={this.addSession}
+                   />
+                ) }} />
            </div>
                
           </div>

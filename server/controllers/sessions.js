@@ -1,11 +1,22 @@
 const sessionModel = require('./../models/sessionModel');
 
 exports.bookSession = (req, res) => {
+<<<<<<< HEAD
   console.log('req in server js : ', req)
   // sessionModel.addSession()
   res.send('I am in server but going to front now')
   // use Session model to add a new session with tutor 
   // send back all requisite session info (id, test id, tutor id, userId, date, duration) to client
+=======
+  sessionModel.addSession(req.body, (err, newSession) => {
+    if(err) {
+      console.error(err);
+    } else {
+      console.log('whats returning from DB : newSession?', newSession);
+      res.sendStatus(201);
+    }
+  });
+>>>>>>> dev
 };
 
 exports.deleteSession = (req, res) => {

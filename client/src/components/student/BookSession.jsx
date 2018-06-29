@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import  DateTime  from 'react-datetime';
+import DateTime from 'react-datetime';
+// import * as Datetime from 'react-datetime';
 
 // import 'react-datepicker/dist/react-datepicker.css';
 // import 'react-daypicker/lib/style.css'
