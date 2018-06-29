@@ -46,11 +46,13 @@ class StudentView extends React.Component {
               }
       ],
       user_id : this.props.ID,
-      test_ID : null,
-      Tutors: []
+      test_ID : 88,
+      Tutors: [],
+      tutorId : null
   }
   this.getTutors = this.getTutors.bind(this);
   this.setTestID = this.setTestID.bind(this);
+  this.grabTutorId = this.grabTutorId.bind(this);
 }
 
   getTutors () {
@@ -68,6 +70,12 @@ class StudentView extends React.Component {
   setTestID (ID) {
     this.setState({
       test_ID : ID
+    })
+  }
+
+  grabTutorId(ID){
+    this.setState({
+      tutorId : ID
     })
   }
 
@@ -115,11 +123,12 @@ class StudentView extends React.Component {
               <div className="tutors">
                 <ul>
                 {this.state.Tutors.map((tutor, i) => {
-                  return <li key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
+                  return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-                <Route exact path ='/tutor/:id' component = {TutorProfile} />
-          </div>
+              <Route path ='/tutor' render = {()=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID}/>}} />
+           </div>
+               
           </div>
           
         </Router>
