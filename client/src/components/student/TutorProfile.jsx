@@ -95,9 +95,8 @@ getTutorInfo(){
       date : this.state.date,
       time : this.state.time
     })
-    .then((newSession) =>  {
-      console.log('saved and back to front');
-      // this.props.addSession(newSession);
+    .then(({data}) =>  {
+      console.log('saved and back to front', data);
     })
     .catch((err)=>console.error(err))
   }

@@ -48,8 +48,7 @@ class StudentView extends React.Component {
       user_id : this.props.ID,
       test_ID : 1,
       tutorId : null,
-      Tutors: [],
-      sessions : []
+      Tutors: []
     }
     this.getTutors = this.getTutors.bind(this);
     this.setTestID = this.setTestID.bind(this);
@@ -84,6 +83,8 @@ class StudentView extends React.Component {
   addSession (newSession) {
     this.setState({
       sessions : this.state.sessions.push(newSession)
+    }, () => {
+      console.log('sessions arr ', this.state.sessions);
     })
   }
 

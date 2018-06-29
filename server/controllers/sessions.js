@@ -6,7 +6,7 @@ exports.bookSession = (req, res) => {
       console.error(err);
     } else {
       console.log('whats returning from DB : newSession?', newSession);
-      res.send(newSession);
+      res.sendStatus(201);
     }
   });
 };
