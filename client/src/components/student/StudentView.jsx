@@ -127,7 +127,7 @@ class StudentView extends React.Component {
                   return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
                 })}
                 </ul>
-              <Route path ='/tutor/:ID' render = {()=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID}/>}} />
+              <Route path ='/tutor/:ID' render = {(props)=>{return <TutorProfile tutor_id={this.state.tutorId} user_id = {this.state.user_id} test_ID={this.state.test_ID} {...props}/>}} />
            </div>
                
           </div>
@@ -137,12 +137,5 @@ class StudentView extends React.Component {
     )
   }
 }
-
-
-                // {this.state.Tutors.map((tutor, i) => {
-                //   return <li key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
-                // })}
-                // </ul>
-                // <Route exact path ='/tutor/:id' component = {TutorProfile} />
 
 export default StudentView;

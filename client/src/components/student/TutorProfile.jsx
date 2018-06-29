@@ -19,7 +19,7 @@ class TutorProfile extends Component {
       date: '',
       time: '',
       price: null,
-      id: null
+      ID: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.bookTutor = this.bookTutor.bind(this);
@@ -28,9 +28,8 @@ class TutorProfile extends Component {
   };
 
 getTutorInfo(){
-  const id  = this.props.tutor_id
-  // axios get request to get relevant tutor profile information and set to state
-    axios.get(`/tutors/${id}`)
+  const { ID } = this.props.match.params 
+    axios.get(`/tutors/${ID}`)
       .then(({data}) => {
         let tutor = data[0]
         this.setState({
@@ -38,7 +37,7 @@ getTutorInfo(){
           rating: tutor.Rating,
           bio: tutor.Bio,
           price: tutor.Price,
-          id: id
+          ID: ID
         });
       }).catch((err) => {
         console.error('There was an error retrieving the tutor profile: ', err);
@@ -79,9 +78,7 @@ getTutorInfo(){
       var dd = sliced.slice(4,6);
       var yyyy = sliced.slice(7,11)
       var newDate = yyyy + '-' + mm + '-' + dd
-      console.log('New date: ',newDate)
-      console.log('New Time : ',newTime)
-
+    
           this.setState({
             date: newDate,
             time: newTime
@@ -89,9 +86,7 @@ getTutorInfo(){
         }
   
       bookTutor(){
-      
-        console.log('user id:', this.props.user_id,'test id: ',this.props.test_ID, 'tutorID: ',this.props.tutor_id )
-        axios.post('/sessions', {
+          axios.post('/sessions', {
           userId : this.props.user_id,
           testId : this.props.test_ID,
           tutorId : this.props.tutor_id,
@@ -106,7 +101,8 @@ getTutorInfo(){
     this.getTutorInfo()
   }
   componentDidUpdate(prevProps, prevState) {
-      if(prevProps.tutor_id !== this.props.tutor_id) {
+    const { ID } = this.props.match.params 
+      if(ID !== prevState.ID) {
         this.getTutorInfo()
       }      
   }
