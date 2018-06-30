@@ -16,36 +16,36 @@ class StudentView extends React.Component {
     super(props);
     this.state = {
       routes:[
-              {
-                  path: "/student",
-                  exact: true,
-                  main: TestList
-              },
-              {
-                path: "/sessions/:id",
-                exact: true,
-                main: Sessions
-              },
-              {
-                path: "/classroom",
-                exact: true,
-                main: Classroom
-              },
-              {
-                path: "/becometutor",
-                exact: true,
-                main: TutorRegistration
-              },
-              {
-                path: "/settings",
-                exact: true,
-                main: Settings
-              },
-              {
-                path: "/logout",
-                exact: true,
-                main: Main
-              }
+        {
+            path: "/student",
+            exact: true,
+            main: TestList
+        },
+        {
+          path: "/sessions/:id",
+          exact: true,
+          main: Sessions
+        },
+        {
+          path: "/classroom",
+          exact: true,
+          main: Classroom
+        },
+        {
+          path: "/becometutor",
+          exact: true,
+          main: TutorRegistration
+        },
+        {
+          path: "/settings",
+          exact: true,
+          main: Settings
+        },
+        {
+          path: "/logout",
+          exact: true,
+          main: Main
+        }
       ],
       user_id : this.props.ID,
       test_ID : 1,
@@ -55,6 +55,7 @@ class StudentView extends React.Component {
     this.getTutors = this.getTutors.bind(this);
     this.setTestID = this.setTestID.bind(this);
     this.grabTutorId = this.grabTutorId.bind(this);
+    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
   getTutors () {
@@ -69,9 +70,28 @@ class StudentView extends React.Component {
     })
   }
 
+  getSelectTutors() {
+    axios.get('/users/selectTutors',{
+      params : {
+        test_id : this.state.test_ID
+      }
+    })
+    .then(({data}) => {
+      console.log('waht is this data', data);
+      this.setState({
+        Tutors : data
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
   setTestID (ID) {
     this.setState({
       test_ID : ID
+    }, () => {
+      this.getSelectTutors();
     })
   }
 
@@ -130,21 +150,24 @@ class StudentView extends React.Component {
             ))}
             <div className="tutors-container">
               <div className="all-tutors">
-                <ul>
                 {this.state.Tutors.map((tutor, i) => {
                   return (
                     <div className="indv-tutor" onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}>
                       <Link to={`/tutor/${tutor.ID}`}>
-                      {tutor.Name}
+                      <span className="tutor-name">{tutor.Name}</span>
                       </Link>
-                      {/*other tutor data to render */}
                       <br></br>
-                        <div>{tutor.Bio}</div>
+                        <div>Bio: {tutor.Bio}</div>
+                      <br></br>
+                      <br></br>
+                        <div>Rating: {tutor.Rating}</div>
+                      <br></br>
+                      <br></br>
+                        <div>Price: {tutor.Price}</div>
                       <br></br>
                     </div>
                   )
                 })}
-                </ul>
               </div> 
             </div>
             <Route exact path ='/tutor/:ID' render = {(routerProps)=> {

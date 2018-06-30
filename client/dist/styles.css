@@ -318,13 +318,13 @@ div.tutors{
 /* TUTORS */
 
 .tutors-container {
-  padding: 2%;
+  padding-top: 1%;
 }
 
 .all-tutors {
   background-color: lightblue;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: left;
   border-radius: 5%;
   flex-wrap: wrap;
@@ -341,6 +341,14 @@ div.tutors{
   align-content: center;
   align-self: center;
   text-align: center;
+  font-size: 95%;
   padding-right: 5%;
   padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 5%;
+  text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
+}
+
+.tutor-name {
+  font-size: 150%;
 }

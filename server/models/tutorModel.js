@@ -6,7 +6,7 @@ exports.getTopTutors = (callback, test_id = null) => {
   if (test_id === null) {
     queryStr = 'SELECT * FROM tutors ORDER BY Rating DESC';
   } else {
-    queryStr = `SELECT * FROM tutors WHERE ID in (SELECT tutor_id FROM tutor_tests WHERE test_id = ${testID}) ORDER BY Rating DESC`;
+    queryStr = `SELECT * FROM tutors WHERE ID IN (SELECT tutor_id FROM tutor_tests WHERE test_id = ${test_id}) ORDER BY Rating DESC`;
   }
   db.query(queryStr, callback);
 };
