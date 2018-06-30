@@ -4,14 +4,12 @@ import AuthService from './AuthService'
 
 const AuthStatus = withRouter(({ history }) => (
     AuthService.isAuthenticated ? (
-      <p>
-        Welcome! <button onClick={() => {
+      <button onClick={() => {
           AuthService.logout(() => history.push('/'))
         }}>Sign out</button>
-      </p>
     ) : (
-      <p>You are not logged in.</p>
+      <span>Log in</span>
     )
-));
+))
 
 export default AuthStatus

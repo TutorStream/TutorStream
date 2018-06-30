@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AuthService from '../Auth/AuthService'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Email: '',
-      Password: ''
+      Password: '',
+      redirectToPreviousRoute: false
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
@@ -30,9 +32,10 @@ class Login extends Component {
       this.props.getID(ID);
       if(!!data.ID) {
         AuthService.authenticate()
+        this.setState({
+          redirectToPreviousRoute: true
+        })
       }
-      // no need to set state, simply re-direct to approved login page 
-      // OR if not authetnicated, send back "error, not authenticated user"
     })
     .catch((err) => {
       console.error(err);

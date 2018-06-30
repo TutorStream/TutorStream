@@ -65,6 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        
         <Navbar style={{ fontSize: `130%` }}>
           <Nav>
             <LinkContainer to={"/home"}>
@@ -82,11 +83,9 @@ class App extends Component {
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
-            <LinkContainer to="/logout">
-              <NavItem>Logout</NavItem>
-            </LinkContainer>
           </Nav>
         </Navbar>
+        <AuthStatus />
 
         <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
@@ -94,7 +93,6 @@ class App extends Component {
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id}/>)}></SecretRoute>
         <SecretRoute path='/tutor' render={(routerProps) => (<TutorRegistration {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id}/>)}></SecretRoute>
         <SecretRoute path='/settings' render={(routerProps) => (<Settings {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id}/>)}></SecretRoute>
-
       </div>
     )
   }
