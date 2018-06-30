@@ -44,14 +44,14 @@ exports.getUserInfo = (req, res) => {
   })
 }
 
-exports.getAllTutors = (req, res) => {
+exports.getTutors = (req, res) => {
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
       res.status(400).send(err);
     } else {
       res.send(topTutors);
     }
-  });
+  }, req.query.test_id);
 };
 
 exports.getTutorProfile = (req, res) => {
