@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import TutorProfile from '../student/TutorProfile.jsx'
 
 class Classroom extends Component {
     render() {
@@ -10,6 +11,7 @@ class Classroom extends Component {
             <form action="https://appear.in/hufflepuffhackreactor">
             <Button type="submit" value="Go to Class" >Go to Class</Button>
             </form>
+        
             </div>
         )
     }

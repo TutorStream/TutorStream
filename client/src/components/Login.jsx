@@ -27,7 +27,6 @@ class Login extends React.Component {
     .then(({data}) => {
       var ID = data.ID
       this.props.getID(ID);
-    
       if(!!data.ID) {
         this.props.history.push('/student');
       }
