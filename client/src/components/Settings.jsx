@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import EditableLabel from "react-inline-editing";
 import axios from 'axios'
 
@@ -6,7 +6,7 @@ var bordered = {
     border : '1px dotted black'
 }
 
-class Settings extends React.Component {
+class Settings extends Component {
     constructor(props){
         super(props);
         this.state = {
