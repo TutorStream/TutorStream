@@ -73,15 +73,21 @@ exports.addOrUpdateTutor = (req, res) => {
     if (err) {
       console.log('oh shit',err)
     } else {
-      console.log('please something here',user) 
+      name = user[0].Name 
+      var newForm = Object.assign({name}, req.body);
+      console.log('About to update this>>>', newForm) 
+      Tutor.addOrUpdateTutor(newForm,(err, results) => {
+        if(err) {
+          res.sendStatus(400);
+        } else {
+          console.log('updated!!!!!!')
+          res.send(results);
+        }
+      });
     }
   })
-  // Tutor.addOrUpdateTutor(req.params,(err, results) => {
-  //   if(err) {
-  //     res.sendStatus(400);
-  //   } else {
-  //     res.send(results);
-  //   }
-  // });
+
+
+  
 };
 
