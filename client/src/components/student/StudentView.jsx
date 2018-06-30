@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 import axios from 'axios';
 import Sessions from './Sessions.jsx';
 import Classroom from '../communication/Classroom.jsx';
@@ -18,6 +18,7 @@ class StudentView extends React.Component {
       routes:[
               {
                   path: "/student",
+                  exact: true,
                   main: TestList
               },
               {
@@ -83,10 +84,14 @@ class StudentView extends React.Component {
   componentDidMount() {
     this.getTutors();
   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('updating')
+  }
 
   render() {
     // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
     // console.log('this.state.Tutors', this.state.Tutors);
+    console.log(this.props)
     return (
       <div>
         <Router>
@@ -115,8 +120,16 @@ class StudentView extends React.Component {
                   </Nav>
                 </Navbar>
               </ul>
+
+              <div className="tutors">
+                <ul>
+                {this.state.Tutors.map((tutor, i) => {
+                  return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
+                })}
+                </ul>
+              </div> 
+              <Switch>
               {this.state.routes.map((route, index) => (
-                
                 <Route
                   key={index}
                   path={route.path}
@@ -125,13 +138,7 @@ class StudentView extends React.Component {
                   render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
                 />
               ))}
-              <div className="tutors">
-                <ul>
-                {this.state.Tutors.map((tutor, i) => {
-                  return <li onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}><Link to={`/tutor/${tutor.ID}`}>{tutor.Name}</Link></li>
-                })}
-                </ul>
-              <Route path ='/tutor/:ID' render = {(routerProps)=> {
+              <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
                 return (
                    <TutorProfile 
                    tutor_id={this.state.tutorId} 
@@ -139,8 +146,9 @@ class StudentView extends React.Component {
                    test_ID={this.state.test_ID} 
                    {...routerProps}
                    />
-                ) }} />
-          </div> 
+                )}}/>
+              </Switch>
+          
           </div>
         </Router>
       </div>
