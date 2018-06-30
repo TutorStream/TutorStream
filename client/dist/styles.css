@@ -313,3 +313,34 @@ div.tutors{
 .tutor-registration input{
   color: teal
 }
+
+
+/* TUTORS */
+
+.tutors-container {
+  padding: 2%;
+}
+
+.all-tutors {
+  background-color: lightblue;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: left;
+  border-radius: 5%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 7px 4px 15px 5px #333333;
+}
+
+.indv-tutor {
+  background-color: #18A361;
+  border-style: solid; 
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  padding-right: 5%;
+  padding-top: 2%;
+}
