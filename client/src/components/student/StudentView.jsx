@@ -120,7 +120,14 @@ class StudentView extends React.Component {
                   </Nav>
                 </Navbar>
               </ul>
-
+              {this.state.routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
+                />
+              ))}
               <div className="tutors">
                 <ul>
                 {this.state.Tutors.map((tutor, i) => {
@@ -128,16 +135,6 @@ class StudentView extends React.Component {
                 })}
                 </ul>
               </div> 
-              <Switch>
-              {this.state.routes.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  // render={(props) => <route.main setTestID={this.setTestID} {...props}/> }
-                  render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
-                />
-              ))}
               <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
                 return (
                    <TutorProfile 
@@ -147,8 +144,6 @@ class StudentView extends React.Component {
                    {...routerProps}
                    />
                 )}}/>
-              </Switch>
-          
           </div>
         </Router>
       </div>
