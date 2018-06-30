@@ -1,18 +1,17 @@
 const router = require('express').Router();
-// all controller files
-const usersControllers = require('./controllers/Users');
-const testsControllers = require('./controllers/Tests');
-const sessionControllers = require('./controllers/Sessions');
-const videoChatControllers = require('./controllers/VideoChat');
-const feedbackControllers = require('./controllers/Feedback');
 
-// USERS && TUTORS
+const usersControllers = require('./controllers/users.js');
+const testsControllers = require('./controllers/tests');
+const sessionControllers = require('./controllers/sessions');
+const videoChatControllers = require('./controllers/videochat');
+const feedbackControllers = require('./controllers/feedback');
+
 
 router.post('/users/signup', usersControllers.addNewUser);
 
 router.post('/users/login', usersControllers.loginUserCheck);
 
-router.get('/users/info/:id', usersControllers.getUserInfo)
+router.get('/users/info/:id', usersControllers.getUserInfo);
 
 router.get('/users/tutors', usersControllers.getAllTutors);
 
