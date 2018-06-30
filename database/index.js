@@ -3,8 +3,8 @@ require('dotenv').config();
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
+  user: process.env.DB_USER || 'student',
+  password: process.env.DB_PASS || 'student',
   database: 'TutorStream',
   port: 3306
 });

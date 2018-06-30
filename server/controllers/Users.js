@@ -65,3 +65,23 @@ exports.getTutorProfile = (req, res) => {
   });
 };
 
+exports.addOrUpdateTutor = (req, res) => {
+  console.log('we got here req.params', req.body)
+
+  var name;
+  User.getUserInfoDB(req.body.user_id, (err, user) => {
+    if (err) {
+      console.log('oh shit',err)
+    } else {
+      console.log('please something here',user) 
+    }
+  })
+  // Tutor.addOrUpdateTutor(req.params,(err, results) => {
+  //   if(err) {
+  //     res.sendStatus(400);
+  //   } else {
+  //     res.send(results);
+  //   }
+  // });
+};
+

@@ -17,7 +17,7 @@ CREATE TABLE tutors (
   Name varchar(255) NOT NULL,
   Bio varchar(255) NOT NULL,
   Price int NOT NULL,
-  Rating int NOT NULL,
+  Rating int DEFAULT 0,
   FOREIGN KEY (ID) references users(id)
 );
 
