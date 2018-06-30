@@ -1,11 +1,19 @@
 import React from 'react';
+import axios from 'axios';
 
 
 class TutorRegistration extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            tests: ['DAT','LSAT','SAT','GRE','GMAT','Hack Reactor T A'],
+            tests: [
+                {test:'DAT', test_id: '1'},
+                {test:'LSAT', test_id: '2'},
+                {test:'SAT', test_id: '3'},
+                {test:'GRE', test_id: '4'},
+                {test:'GMAT', test_id: '5'},
+                {test:'HR TA', test_id: '6'}
+            ],
             test: '',
             bio: '',
             rate: 0,
@@ -27,16 +35,18 @@ class TutorRegistration extends React.Component {
       handleSubmit(event) {
        
         event.preventDefault();
-        this.setState({
-            form: {
+        
+           var form = {
                 test: this.state.test,
                 bio: this.state.bio,
-                rate: Number(this.state.rate)
+                rate: Number(this.state.rate),
+                user_id: this.props.user_id
             }
-        },()=>{
-            console.log('form collected', this.state.form);
-            this.props.tutorHome();
-        })
+            console.log('form', form)
+            axios.post(`/tutors/${this.props.user_id}`,form)
+                 .then(()=>console.log('back to the front'))
+                 .catch((err)=>console.error(err))
+        
       }
     
 
@@ -55,12 +65,12 @@ class TutorRegistration extends React.Component {
                         <input type="text" name='bio' value={this.state.bio} onChange={this.handleChange} placeholder='Bio'/>
                         Rate per hour:
                         <input type="text" name='rate' value={this.state.rate} onChange={this.handleChange} placeholder='$$$'/>
-                        <label>Test : {this.state.test}</label>
+                        <label>Test : {this.state.test.test}</label>
                         <select value={this.state.test} name='test' onChange={this.handleChange}>
                                     <option value=''>Select</option>
                             {this.state.tests.map((test,i)=>{
                                 return(
-                                    <option key={i} value={test}>{test}</option>
+                                    <option key={i} value={test.test_id}>{test.test}</option>
                                 )
                             })}
                         </select>
