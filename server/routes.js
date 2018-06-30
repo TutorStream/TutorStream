@@ -13,7 +13,9 @@ router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/info/:id', usersControllers.getUserInfo);
 
-router.get('/users/tutors', usersControllers.getAllTutors);
+router.get('/users/tutors', usersControllers.getTutors);
+
+router.get('/users/selectTutors', usersControllers.getTutors)
 
 // TUTORS
 
