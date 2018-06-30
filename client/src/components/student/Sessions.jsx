@@ -18,7 +18,6 @@ class Sessions extends Component {
 
   getUpcomingSessions() {
     const { id } = this.props.match.params
-    console.log('what is id', id);
     axios.get(`/sessions/${id}`)
     .then(({data}) => {
       this.setState({
@@ -46,6 +45,7 @@ class Sessions extends Component {
                 return (<li key={index} >{info.date}</li>)
             })} */}
             {this.state.sessions.map((session, i) => {
+              console.log(session.Name);
               return (
                 <div className="indv-session" key={i}>
                   <span>Date: {session.date.slice(0,10)}</span>
