@@ -5,19 +5,18 @@ exports.addNewUser = (req, res) => {
   console.log('req.body', req.body);
   User.addNewUser(req.body, (err, addedUserResults) => {
     if(err) {
-      res.send(400);
+      res.status(400).send(err);
     } else {
-      console.log('req.body.Tests', req.body.Tests);
+      console.log('req.body.Tests', req.body.tests);
       console.log('what is coming back from DB', addedUserResults);
-      req.body.Tests.map((testId) => {
+      req.body.tests.map((testId) => {
         User.addNewUserTests(addedUserResults.insertId, testId, (err, result) => {
           if(err) {
             console.error(err);
           }
-          console.log('result', result);
         });
-      })
-      res.sendStatus(201);
+      });
+      res.status(201).send();
     }
   });
 };
@@ -48,7 +47,7 @@ exports.getUserInfo = (req, res) => {
 exports.getTutors = (req, res) => {
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
-      res.sendStatus(400);
+      res.status(400).send(err);
     } else {
       res.send(topTutors);
     }
@@ -58,7 +57,7 @@ exports.getTutors = (req, res) => {
 exports.getTutorProfile = (req, res) => {
   Tutor.getTutorInfo(req.params.id,(err, results) => {
     if(err) {
-      res.sendStatus(400);
+      res.status(400).send(err);
     } else {
       res.send(results);
     }

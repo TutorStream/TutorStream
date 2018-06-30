@@ -10,28 +10,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID : null,
-      Tests: []
+      id : null,
+      tests: []
     }
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
   }
 
-  getID (ID) {
+  getID (id) {
     this.setState({
-      ID : ID
+      id : id
     })
   }
 
   getAllTests () {
     axios.get('/tests', {
       params : {
-        user_id : this.state.ID
+        user_id : this.state.id
       }
     })
     .then(({data}) => {
       this.setState({
-        Tests : data
+        tests : data
       })
     })
     .catch((err) => {
@@ -47,7 +47,7 @@ class App extends React.Component {
     // pass down user id to student view
     // pass down tutor id
     const studentView = () => {
-      return <StudentView ID={this.state.ID} Tests={this.state.Tests} />
+      return <StudentView ID={this.state.ID} tests={this.state.tests} />
     }
     
     return (
@@ -56,14 +56,14 @@ class App extends React.Component {
         <Route exact path = "/" render={(props) => {
             return (<div>
                 <Login className='login' {...props} ID={this.state.ID} getID={this.getID}/>
-                <Signup {...props} Tests={this.state.Tests}/>
+                <Signup {...props} tests={this.state.tests}/>
             </div>);
         }}>
         </Route>
         <Route exact path = "/logout" render={(props) => {
             return (<div>
                 <Login {...props} ID={this.state.ID} getID={this.getID}/>
-                <Signup {...props} Tests={this.state.Tests}/>
+                <Signup {...props} tests={this.state.tests}/>
             </div>);
         }}>
         </Route>
