@@ -7,6 +7,7 @@ class TestList extends Component {
     super(props);
     this.state = {
       Tests : [],
+      dropDownTitle : 'Tests'
     }
     this.handleTestSelect = this.handleTestSelect.bind(this);
   }
@@ -23,8 +24,11 @@ class TestList extends Component {
       });
   }
 
-  handleTestSelect(e) {
-    this.props.setTestID(e);
+  handleTestSelect(test) {
+    this.setState({
+      dropDownTitle : test.Name
+    })
+    this.props.setTestID(test.ID);
   }
 
   render() {
@@ -33,11 +37,11 @@ class TestList extends Component {
         <div>
         <DropdownButton 
           bsStyle='default'
-          title='Tests'
+          title={this.state.dropDownTitle}
           key='0'
           id={`dropdown-basic-0`}
           onSelect={(e) => {this.handleTestSelect(e)}}>
-          { this.state.Tests.map((test, i) => <MenuItem eventKey={test.ID} key={i}>{test.Name}</MenuItem>) }
+          { this.state.Tests.map((test, i) => <MenuItem eventKey={test} key={i}>{test.Name}</MenuItem>) }
         </DropdownButton>
         </div>
       </div>
