@@ -1,5 +1,5 @@
 const User = require('./../models/userModel');
-const Tutor = require('./../models/tutorModel');
+// const Tutor = require('./../models/tutorModel');
 
 exports.addNewUser = (req, res) => {
   console.log('req.body', req.body);
