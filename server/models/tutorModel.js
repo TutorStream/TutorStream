@@ -81,8 +81,25 @@ exports.addOrUpdateTutor = (params, callback) => {
               if (err) {
                 console.error('There was an error deleting the tests: ', err);
               } else {
-                let testUpdateStr = `INSERT INTO tutor_tests (tutor_id, test_id) VALUES (?,?)`;
-                db.query(testUpdateStr, params.tests, callback);
+
+                var promises = [];
+                params.tests.forEach((test)=>{
+                  let testUpdateStr = `INSERT INTO tutor_tests (tutor_id, test_id) VALUES (?,?)`;
+                  // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
+                  // this is the array of tests the tutor can teach
+                  db.query(testUpdateStr, [test.tutor_id, test.test_id], (err, result) => {
+                    console.log('inserting in tables..')
+                    // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
+                    promises.push(new Promise((resolve,reject)=>{
+                     if(err) reject(err);
+                     resolve(result); 
+                    }))
+                    // THAT RESOLVES WITH THE RESULT
+                  });
+                  // PROMISE.ALL WITH THE ARRAY OF PROMISES             
+                })
+                Promise.all(promises).then(()=>callback()).catch((err)=>callback(err))
+               
               }
             });
           }
