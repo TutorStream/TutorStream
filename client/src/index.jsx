@@ -47,7 +47,7 @@ class App extends React.Component {
     // pass down user id to student view
     // pass down tutor id
     const studentView = () => {
-      return <StudentView ID={this.state.ID} tests={this.state.tests} />
+      return <StudentView ID={this.state.id} tests={this.state.tests} />
     }
     
     return (
