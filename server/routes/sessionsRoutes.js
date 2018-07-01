@@ -1,13 +1,13 @@
-const sessionsRouter = require('express').Router();
-const sessionControllers = require('./controllers/sessions');
+// const sessionsRouter = require('express').Router();
+// const sessionControllers = require('./../controllers/sessions');
 
-router.post('/sessions', sessionControllers.bookSession);
+// sessionsRouter.post('/sessions', sessionControllers.bookSession);
 
-router.delete('/sessions/:id', sessionControllers.deleteSession);
+// sessionsRouter.delete('/sessions/:id', sessionControllers.deleteSession);
 
-router.put('/sessions', sessionControllers.updateSession);
+// sessionsRouter.put('/sessions', sessionControllers.updateSession);
 
-router.get('/sessions/:id', sessionControllers.getSession);
+// sessionsRouter.get('/sessions/:id', sessionControllers.getSession);
 
 
-module.exports = sessionsRouter;
+// module.exports = sessionsRouter;

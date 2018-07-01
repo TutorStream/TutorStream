@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const usersControllers = require('./controllers/users');
-const tutorsControllers = require('./controllers/tutors');
+// const tutorsControllers = require('./controllers/tutors');
 const testsControllers = require('./controllers/tests');
 const sessionControllers = require('./controllers/sessions');
 const feedbackControllers = require('./controllers/feedback');
@@ -13,9 +13,9 @@ router.post('/users/login', usersControllers.loginUserCheck);
 
 router.get('/users/info/:id', usersControllers.getUserInfo);
 
-router.get('/users/tutors', usersControllers.getTutors);
+router.get('/tutors', usersControllers.getTutors);
 
-router.get('/users/selectTutors', usersControllers.getTutors)
+router.get('/tutors/selectTutors', usersControllers.getTutors)
 
 // TUTORS
 
@@ -41,9 +41,9 @@ router.get('/sessions/:id', sessionControllers.getSession);
 
 // FEEDBACK
 
-router.post('/feedback', feedbackControllers.addFeedback);
+// router.post('/feedback', feedbackControllers.addFeedback);
 
-router.put('/updateFeedback', feedbackControllers.updateFeedback);
+// router.put('/feedback/updateFeedback', feedbackControllers.updateFeedback);
 
 // VIDEOCHAT
 
