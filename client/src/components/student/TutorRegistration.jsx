@@ -82,34 +82,7 @@ class TutorRegistration extends React.Component {
             <div className='tutor-registration'>
                 <h1>Tutor Registration</h1>
                 <br/><br/>
-                {/* <div className='student-main'>
-
-                    <form onSubmit={this.handleSubmit}>
-                        
-                        Bio:
-                        <br/>
-                        <textarea type="text" className='tutor-bio' name='bio' value={this.state.bio} onChange={this.handleChange} placeholder='Bio'/>
-                        <br/>
-                        Rate per hour:
-                        <br/>
-                        <input type="text" className='tutor-rate' name='rate' value={this.state.rate} onChange={this.handleChange} placeholder='$$$'/>
-                        <label>Test : {this.state.test.test}</label>
-                        <br/>
-                        <select className='select-test' value={this.state.test} name='test' onChange={this.handleChange}>
-                                    <option value=''>Select</option>
-                            {this.state.tests.map((test,i)=>{
-                                return(
-                                    <option key={i} value={test.test_id}>{test.test}</option>
-                                )
-                            })}
-                        </select>
-                        <br/>     
-                        <input className='submit' type="submit" value="Submit" />
-                        <br/>
-
-                        
-                    </form>
-                </div> */}
+                
 
     <FormGroup controlId="formControlsTextarea">
       <ControlLabel>Bio</ControlLabel>
@@ -135,13 +108,7 @@ class TutorRegistration extends React.Component {
       
     </FormGroup>
     <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
-    {/* // <FormGroup>
-    //   <ControlLabel>Static text</ControlLabel>
-    //   <FormControl.Static>email@example.com</FormControl.Static>
-    // </FormGroup> */}
-     
-
-
+    
 
             </div>
             
