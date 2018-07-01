@@ -64,3 +64,29 @@ exports.getTutorProfile = (req, res) => {
   });
 };
 
+exports.addOrUpdateTutor = (req, res) => {
+  console.log('we got here req.params', req.body)
+
+  var name;
+  User.getUserInfoDB(req.body.user_id, (err, user) => {
+    if (err) {
+      console.log('oh shit',err)
+    } else {
+      name = user[0].Name 
+      var newForm = Object.assign({name}, req.body);
+      console.log('About to update this>>>', newForm) 
+      Tutor.addOrUpdateTutor(newForm,(err, results) => {
+        if(err) {
+          res.sendStatus(400);
+        } else {
+          console.log('updated!!!!!!')
+          res.send(results);
+        }
+      });
+    }
+  })
+
+
+  
+};
+

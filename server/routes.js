@@ -20,7 +20,7 @@ router.get('/users/selectTutors', usersControllers.getTutors)
 // TUTORS
 
 router.get('/tutors/:id', usersControllers.getTutorProfile);
-
+router.post('/tutors/:id', usersControllers.addOrUpdateTutor);
 // TESTS
 //ok
 router.get('/tests', testsControllers.getAllTests);
