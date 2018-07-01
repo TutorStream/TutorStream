@@ -9,7 +9,7 @@ const usersRouter = require('./routes/usersRoutes');
 const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
-const feedbackRouter = require('./routes/feedbackRoutes');
+// const feedbackRouter = require('./routes/feedbackRoutes');
 
 const port = process.env.PORT || 3000;
 
@@ -22,7 +22,7 @@ app.use('/users', usersRouter);
 app.use('/tutors', tutorsRouter);
 app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
-app.use('/feedback', feedbackRouter);
+// app.use('/feedback', feedbackRouter);
 
 
 app.listen(port, () => {
