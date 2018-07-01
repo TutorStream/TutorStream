@@ -59,7 +59,7 @@ class StudentView extends React.Component {
   }
 
   getTutors () {
-    axios.get('/users/tutors')
+    axios.get('/tutors')
     .then(({data}) => {
       this.setState({
         Tutors : data
@@ -71,13 +71,12 @@ class StudentView extends React.Component {
   }
 
   getSelectTutors() {
-    axios.get('/users/selectTutors',{
+    axios.get('/tutors/selectTutors',{
       params : {
         test_id : this.state.test_ID
       }
     })
     .then(({data}) => {
-      console.log('waht is this data', data);
       this.setState({
         Tutors : data
       })
@@ -102,6 +101,7 @@ class StudentView extends React.Component {
   }
 
   componentDidMount() {
+    console.log('user id is in those props: ? ', this.props)
     this.getTutors();
   }
   componentDidUpdate(prevProps, prevState) {
