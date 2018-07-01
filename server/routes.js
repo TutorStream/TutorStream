@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const usersControllers = require('./controllers/users.js');
+const usersControllers = require('./controllers/users');
+// const tutorsControllers = require('./controllers/tutors');
 const testsControllers = require('./controllers/tests');
 const sessionControllers = require('./controllers/sessions');
-const videoChatControllers = require('./controllers/videochat');
 const feedbackControllers = require('./controllers/feedback');
 
 
@@ -20,11 +20,12 @@ router.get('/users/selectTutors', usersControllers.getTutors)
 // TUTORS
 
 router.get('/tutors/:id', usersControllers.getTutorProfile);
+
 router.post('/tutors/:id', usersControllers.addOrUpdateTutor);
 // TESTS
-//ok
+
 router.get('/tests', testsControllers.getAllTests);
-//ok
+
 router.get('/tests/:testId', testsControllers.testSearch);
 
 // SESSIONS
