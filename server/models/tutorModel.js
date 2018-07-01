@@ -46,13 +46,24 @@ exports.addOrUpdateTutor = (params, callback) => {
                 console.error('There was an error updating the user\'s tutor field: ', err);
               } else {
                 // add tutor-able tests to tutor_tests database
+                // MAKE PROMISES ARRAY;
+                var promises = [];
                 params.tests.forEach((test)=>{
                   let queryStr3 = 'INSERT INTO tutor_tests (tutor_id, test_id) VALUES (?,?)';
                   // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
                   // this is the array of tests the tutor can teach
-                  db.query(queryStr3, [test.tutor_id, test.test_id], callback);
-                  
+                  db.query(queryStr3, [test.tutor_id, test.test_id], (err, result) => {
+                    // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
+                    promises.push(new Promise((resolve,reject)=>{
+                     if(err) reject(err);
+                     resolve(result); 
+                    }))
+                    // THAT RESOLVES WITH THE RESULT
+                  });
+                  // PROMISE.ALL WITH THE ARRAY OF PROMISES             
                 })
+                Promise.all(promises).then(()=>callback()).catch((err)=>callback(err))
+               
 
               }
             });

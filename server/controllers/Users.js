@@ -79,8 +79,7 @@ exports.addOrUpdateTutor = (req, res) => {
         if(err) {
           res.sendStatus(400);
         } else {
-          console.log('updated!!!!!!')
-          res.send(results);
+          res.status(201).send('updated');
         }
       });
     }

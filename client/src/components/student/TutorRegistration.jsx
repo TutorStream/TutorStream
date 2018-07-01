@@ -28,7 +28,7 @@ class TutorRegistration extends React.Component {
       }
 
       handleCheck(e) {
-        console.log("You've checked" , e.target.value);
+        console.log("lets check props : " , this.props);
         var array = this.state.selectedTests.slice()
         if(array.indexOf(e.target.value) === -1){
             this.setState({
@@ -48,26 +48,28 @@ class TutorRegistration extends React.Component {
       handleChange(event) {
          
         this.setState({ [event.target.name]: event.target.value},()=>{
-            console.log('We just updated : ', this.state.rate)
+            console.log('We just updated : ', this.state.bio,' and ', this.state.rate)
         });
       }
     
       handleSubmit(event) {
        
         event.preventDefault();
-        
+           var testsArray = [];
+           this.state.selectedTests.forEach((test_id)=>{
+                testsArray.push({tutor_id : this.props.user_id,
+                    test_id : test_id})
+           })
+
            var form = {
-                tests: [
-                    {tutor_id : this.props.user_id,
-                     test_id : this.state.test}
-                ],
+                tests: testsArray,
                 bio: this.state.bio,
                 rate: Number(this.state.rate),
                 user_id: this.props.user_id
             }
             console.log('form', form)
             axios.post(`/tutors/${this.props.user_id}`,form)
-                 .then(()=>console.log('back to the front'))
+                 .then(()=>console.log('Updated and registered as tutor!'))
                  .catch((err)=>console.error(err))
         
       }
@@ -117,7 +119,6 @@ class TutorRegistration extends React.Component {
       <ControlLabel>Rate: (hourly)</ControlLabel>
     <FormControl
             type="number"
-            value={this.state.value}
             placeholder="$$$"
             name='rate' value={this.state.rate} onChange={this.handleChange}
           />
@@ -133,7 +134,7 @@ class TutorRegistration extends React.Component {
                             })}
       
     </FormGroup>
-    <Button bsStyle="success" type="submit">Submit</Button>
+    <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
     {/* // <FormGroup>
     //   <ControlLabel>Static text</ControlLabel>
     //   <FormControl.Static>email@example.com</FormControl.Static>

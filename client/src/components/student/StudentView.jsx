@@ -102,6 +102,7 @@ class StudentView extends React.Component {
   }
 
   componentDidMount() {
+    console.log('user id is in those props: ? ', this.props)
     this.getTutors();
   }
   componentDidUpdate(prevProps, prevState) {
