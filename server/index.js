@@ -9,7 +9,7 @@ const usersRouter = require('./routes/usersRoutes');
 const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
-// const feedbackRouter = require('./routes/feedbackRoutes');
+const feedbackRouter = require('./routes/feedbackRoutes');
 
 const port = process.env.PORT || 3000;
 
