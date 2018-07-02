@@ -5,15 +5,16 @@ import axios from 'axios';
 import TutorProfile from './TutorProfile.jsx';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import TestList from './TestList.jsx';
 
 class StudentView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      id : this.props.ID,
-      test_ID : 1,
-      tutorId : null,
-      Tutors: []
+      // id : this.props.userId,
+      test_id : 1,
+      tutor_id : null,
+      tutors: []
     }
     this.getTutors = this.getTutors.bind(this);
     this.setTestID = this.setTestID.bind(this);
@@ -25,7 +26,7 @@ class StudentView extends Component {
     axios.get('/tutors')
     .then(({data}) => {
       this.setState({
-        Tutors : data
+        tutors : data
       })
     })
     .catch((err) => {
@@ -36,12 +37,13 @@ class StudentView extends Component {
   getSelectTutors() {
     axios.get('/tutors/selectTutors',{
       params : {
-        test_id : this.state.test_ID
+        test_id : this.state.test_id
       }
     })
     .then(({data}) => {
+      console.log('waht data is here ', data);
       this.setState({
-        Tutors : data
+        tutors : data
       })
     })
     .catch((err) => {
@@ -49,71 +51,40 @@ class StudentView extends Component {
     })
   }
 
-  setTestID (ID) {
+  setTestID (id) {
     this.setState({
-      test_ID : ID
+      test_id : id
     }, () => {
       this.getSelectTutors();
     })
   }
 
-  grabTutorId(ID){
+  grabTutorId(id){
     this.setState({
-      tutorId : ID
+      tutor_id : id
     })
   }
 
   componentDidMount() {
-    console.log('user id is in those props: ? ', this.props)
     this.getTutors();
   }
+
   componentDidUpdate(prevProps, prevState) {
-    console.log('updating')
+    console.log('updating');
   }
 
   render() {
-    // console.log('state test id and user id', [this.state.id, this.state.test_ID]);
-    // console.log('this.state.Tutors', this.state.Tutors);
-    console.log(this.state.Tutors);
+    console.log(this.props.tutors);
     return (
       <div>
         <Router>
-          <div> 
-            <ul>
-              <Navbar style={{ fontSize: `130%` }}>
-                <Nav>
-                <LinkContainer to={"/student"}>
-                  <NavItem>Home</NavItem>
-                </LinkContainer>
-                <LinkContainer to={`/sessions/${this.state.id}`}>
-                  <NavItem>Sessions</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/classroom">
-                  <NavItem>ClassRoom</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/becometutor">
-                  <NavItem>Become a Tutor</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/settings">
-                  <NavItem>Settings</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/logout">
-                  <NavItem>Logout</NavItem>
-                </LinkContainer>
-                </Nav>
-              </Navbar>
-            </ul>
-            {this.state.routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} id={this.state.id} onClick={() => { this.props.history.push(route.path) }}/> }
-              />
-            ))}
+          <div>
+            <div>
+              <TestList setTestID={this.setTestID}/>
+            </div>
             <div className="tutors-container">
               <div className="all-tutors">
-                {this.state.Tutors.map((tutor, i) => {
+                {this.state.tutors.map((tutor, i) => {
                   return (
                     <div className="indv-tutor" onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}>
                       <Link to={`/tutor/${tutor.ID}`}>
@@ -133,17 +104,20 @@ class StudentView extends Component {
                 })}
               </div> 
             </div>
-            <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
-              return (
-                  <TutorProfile 
-                  tutor_id={this.state.tutorId} 
-                  id={this.state.id} 
-                  test_ID={this.state.test_ID} 
-                  {...routerProps}
-                  />
-              )}}/>
-          </div>
-        </Router>
+              <div>
+                <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
+                  return (
+                      <TutorProfile 
+                      tutor_id={this.state.tutor_id} 
+                      id={this.props.id} 
+                      test_ID={this.state.test_id} 
+                      {...routerProps}
+                      />
+                )}}/>
+              </div>
+
+            </div>
+          </Router>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 const db = require('./../../database');
 
-exports.addFeedback = ({ID, id, tutor_id, rating, content, date, time}, callback) => {
-  let queryStr = 'INSERT INTO feedback (ID, id, tutor_id, rating, content, date, time) VALUES (?, ?, ?, ?, ?, ?, ?);';
+exports.addFeedback = ({id, tutor_id, rating, content, date, time}, callback) => {
+  let queryStr = 'INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES (?, ?, ?, ?, ?, ?, ?);';
   let params = [ID, id, tutor_id, rating, content, date, time];
   db.query(queryStr, params, callback);
 };

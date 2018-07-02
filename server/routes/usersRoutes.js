@@ -7,6 +7,9 @@ usersRouter.post('/signup', usersControllers.addNewUser);
 // usersRouter.post('/users/login', usersControllers.loginUserCheck);
 usersRouter.post('/login', usersControllers.loginUserCheck);
 
+usersRouter.post('/:id', usersControllers.updateUser);
+
+
 // usersRouter.get('/users/info/:id', usersControllers.getUserInfo);
 usersRouter.get('/info/:id', usersControllers.getUserInfo);
 

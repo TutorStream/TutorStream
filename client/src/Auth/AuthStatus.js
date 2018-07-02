@@ -8,7 +8,7 @@ const AuthStatus = withRouter(({ history }) => (
           AuthService.logout(() => history.push('/'))
         }}>Sign out</button>
     ) : (
-      <span>Log in</span>
+      <button onClick={() => history.push('/login')}>Log In Page</button>
     )
 ))
 

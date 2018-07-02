@@ -7,7 +7,7 @@ exports.addNewUser = (newUser, callback) => {
 };
 
 exports.addNewUserTests = (userId, testId, callback) => {
-  let queryStr = `INSERT INTO user_tests (id, test_id) VALUES (${userId}, ${testId})`;
+  let queryStr = `INSERT INTO user_tests (user_id, test_id) VALUES (${userId}, ${testId})`;
   db.query(queryStr, callback);
 };
 
@@ -23,4 +23,10 @@ exports.getUserInfoDB = (userId, callback) => {
   db.query(queryStr, callback);
 };
 
+
+exports.updateUser = (form,callback) => {
+  console.log('Form:', form)
+  let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE ID = ${form.id}`;
+        db.query(updateStr, [ form.userBio, form.name ], callback)
+}
 
