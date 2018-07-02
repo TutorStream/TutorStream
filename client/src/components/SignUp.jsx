@@ -38,14 +38,6 @@ class SignUp extends React.Component {
   }
 
   handleSignup (e) {
-    console.log('new user to be saved: ',{
-      Name : this.state.Name,
-      Password: this.state.Password,
-      Email: this.state.Email,
-      Tests: this.state.userTests,
-      Tutor: this.state.Tutor,
-      Bio: this.state.Bio
-    })
     this.props.history.push('/student')
     e.preventDefault();
     axios.post('/users/signup', {
