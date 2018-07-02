@@ -25,15 +25,17 @@ exports.getTutorTests = (tutor_id, callback) => {
 
 //check if tutor profile exists & add or update accordingly
 exports.addOrUpdateTutor = (params, callback) => {
+  console.log('params', params)
   let initialQuery = `SELECT * FROM tutors WHERE ID = ${params.id}`;
   db.query(initialQuery, (err, result) => {
-    if (err) {
+    if (err) {//probably need to switch logic so if err; means user doesnt exist in tutors table
       console.error('There was an error retrieving the tutor from the database: ', err);
     } else {
       //if tutor profile doesn't exist, add new tutor
+      console.log('Info that got here : ', params)
       if (result.length === 0) {
-        let queryStr = 'INSERT INTO tutors (ID, Bio, Price) VALUES ?';
-        db.query(queryStr, [ params.id, params.bio, params.price ], (err, result) => {
+        let queryStr = 'INSERT INTO tutors (ID, Name, Bio, Price) VALUES (?,?,?,?)';
+        db.query(queryStr, [ params.id, params.name, params.bio, params.rate ], (err, result) => {
           if (err) {
             console.error('There was an error adding a new tutor to the database: ', err);
           } else {
@@ -44,18 +46,33 @@ exports.addOrUpdateTutor = (params, callback) => {
                 console.error('There was an error updating the user\'s tutor field: ', err);
               } else {
                 // add tutor-able tests to tutor_tests database
-                let queryStr3 = 'INSERT INTO tutor_tests (tutor_id, test_id) VALUES ?';
-                // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
-                // this is the array of tests the tutor can teach
-                db.query(queryStr3, params.tests, callback);
+                // MAKE PROMISES ARRAY;
+                var promises = [];
+                params.tests.forEach((test)=>{
+                  let queryStr3 = 'INSERT INTO tutor_tests (tutor_id, test_id) VALUES (?,?)';
+                  // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
+                  // this is the array of tests the tutor can teach
+                  db.query(queryStr3, [test.tutor_id, test.test_id], (err, result) => {
+                    // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
+                    promises.push(new Promise((resolve,reject)=>{
+                     if(err) reject(err);
+                     resolve(result); 
+                    }))
+                    // THAT RESOLVES WITH THE RESULT
+                  });
+                  // PROMISE.ALL WITH THE ARRAY OF PROMISES             
+                })
+                Promise.all(promises).then(()=>callback()).catch((err)=>callback(err))
+               
+
               }
             });
           }
         });
       } else {
       //if the tutor profile exists, update user's tutor profile info
-        let updateStr = `UPDATE tutors SET Bio = ?, Price = ? WHERE ID = ${params.id}`;
-        db.query(updateStr, [ params.bio, params.price ], (err, result) => {
+        let updateStr = `UPDATE tutors SET Bio = ?, Price = ?, Name = ? WHERE ID = ${params.id}`;
+        db.query(updateStr, [ params.bio, params.rate, params.name ], (err, result) => {
           if (err) {
             console.error('There was an error updating the tutor bio: ', err);
           } else {
@@ -64,8 +81,25 @@ exports.addOrUpdateTutor = (params, callback) => {
               if (err) {
                 console.error('There was an error deleting the tests: ', err);
               } else {
-                let testUpdateStr = `INSERT INTO tutor_tests (tutor_id, test_id) VALUES ?`;
-                db.query(testUpdateStr, params.tests, callback);
+
+                var promises = [];
+                params.tests.forEach((test)=>{
+                  let testUpdateStr = `INSERT INTO tutor_tests (tutor_id, test_id) VALUES (?,?)`;
+                  // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
+                  // this is the array of tests the tutor can teach
+                  db.query(testUpdateStr, [test.tutor_id, test.test_id], (err, result) => {
+                    console.log('inserted in tutor table')
+                    // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
+                    promises.push(new Promise((resolve,reject)=>{
+                     if(err) reject(err);
+                     resolve(result); 
+                    }))
+                    // THAT RESOLVES WITH THE RESULT
+                  });
+                  // PROMISE.ALL WITH THE ARRAY OF PROMISES             
+                })
+                Promise.all(promises).then(()=>callback()).catch((err)=>callback(err))
+               
               }
             });
           }
@@ -77,8 +111,8 @@ exports.addOrUpdateTutor = (params, callback) => {
 
 //add rating and feedback 
 exports.addFeedback = (params, callback) => {
-  let queryStr = `INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES ?`;
-  db.query(queryStr, [ params.user_id, params.tutor_id, params.rating, params.content, params.date, params.time ], callback);
+  let queryStr = `INSERT INTO feedback (id, tutor_id, rating, content, date, time) VALUES ?`;
+  db.query(queryStr, [ params.id, params.tutor_id, params.rating, params.content, params.date, params.time ], callback);
 };
 
 exports.getFeedback = (tutor_id, callback) => {

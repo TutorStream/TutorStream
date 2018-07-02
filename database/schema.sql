@@ -17,7 +17,7 @@ CREATE TABLE tutors (
   Name varchar(255) NOT NULL,
   Bio varchar(255) NOT NULL,
   Price int NOT NULL,
-  Rating int NOT NULL,
+  Rating int DEFAULT 0,
   FOREIGN KEY (ID) references users(id)
 );
 
@@ -55,7 +55,8 @@ CREATE TABLE sessions (
 
 CREATE TABLE feedback (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  user_id int,
+  user_id
+   int,
   tutor_id int,
   rating int,
   content varchar(255),

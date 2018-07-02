@@ -20,10 +20,10 @@ INSERT INTO tutors (id, bio, price) VALUES (3, 'Part-time rapper, full-time tuto
 
 
 -- Tests Users are interested in
-INSERT INTO user_tests (user_id, test_id) VALUES (1, 1);
-INSERT INTO user_tests (user_id, test_id) VALUES (2 , 2);
-INSERT INTO user_tests (user_id, test_id) VALUES (3, 4);
-INSERT INTO user_tests (user_id, test_id) VALUES (6, 4);
+INSERT INTO user_tests (id, test_id) VALUES (1, 1);
+INSERT INTO user_tests (id, test_id) VALUES (2 , 2);
+INSERT INTO user_tests (id, test_id) VALUES (3, 4);
+INSERT INTO user_tests (id, test_id) VALUES (6, 4);
 
 -- Sessions 
 insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
