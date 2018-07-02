@@ -77,7 +77,7 @@ class App extends Component {
     })
   }
   getSelectTutors() {
-    axios.get('/users/selectTutors',{
+    axios.get('/tutors/selectTutors',{
       params : {
         test_id : this.state.test_ID
       }
