@@ -71,8 +71,8 @@ exports.addOrUpdateTutor = (params, callback) => {
         });
       } else {
       //if the tutor profile exists, update user's tutor profile info
-        let updateStr = `UPDATE tutors SET Bio = ?, Price = ? WHERE ID = ${params.id}`;
-        db.query(updateStr, [ params.bio, params.rate ], (err, result) => {
+        let updateStr = `UPDATE tutors SET Bio = ?, Price = ?, Name = ? WHERE ID = ${params.id}`;
+        db.query(updateStr, [ params.bio, params.rate, params.name ], (err, result) => {
           if (err) {
             console.error('There was an error updating the tutor bio: ', err);
           } else {
@@ -88,7 +88,7 @@ exports.addOrUpdateTutor = (params, callback) => {
                   // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
                   // this is the array of tests the tutor can teach
                   db.query(testUpdateStr, [test.tutor_id, test.test_id], (err, result) => {
-                    console.log('inserting in tables..')
+                    console.log('inserted in tutor table')
                     // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
                     promises.push(new Promise((resolve,reject)=>{
                      if(err) reject(err);

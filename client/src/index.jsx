@@ -1,30 +1,29 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Components */
 
-import Login from './components/Login.jsx'
-import Signup from './components/Signup.jsx'
-import Classroom from './components/Classroom.jsx'
-import Sessions from './components/Sessions.jsx'
-import Settings from './components/Settings.jsx'
-import TestList from './components/TestList.jsx'
-import TutorProfile from './components/TutorProfile.jsx'
-import TutorRegistration from './components/TutorRegistration.jsx'
-import TutorReview from './components/TutorReview.jsx'
-import StudentView from './components/StudentView.jsx'
-import SecretRoute from './SecretRoute.jsx'
+import Login from './components/Login.jsx';
+import Classroom from './components/Classroom.jsx';
+import Sessions from './components/Sessions.jsx';
+import Settings from './components/Settings.jsx';
+import TestList from './components/TestList.jsx';
+import TutorRegistration from './components/TutorRegistration.jsx';
+import TutorReview from './components/TutorReview.jsx';
+import SecretRoute from './SecretRoute.jsx';
+import Home from './components/Home.jsx';
+import StudentView from './components/StudentView.jsx';
 
 /* Import Services */
 
-import AuthService from './Auth/AuthService.js'
-import AuthStatus from './Auth/AuthStatus.js'
+import AuthService from './Auth/AuthService.js';
+import AuthStatus from './Auth/AuthStatus.js';
 
 class App extends Component {
   constructor(props) {
@@ -51,6 +50,7 @@ class App extends Component {
   } // need this for login, KEEP and send down as props in studentview
 
   getAllTests () {
+    console.log('in here')
     axios.get('/tests', {
       params : {
         id : this.state.id
@@ -71,14 +71,13 @@ class App extends Component {
     .then(({data}) => {
       this.setState({
         tutors : data
-      })
+      });
     })
     .catch((err) => {
       console.error(err);
-    })
-  } // will need for homepage, KEEP
-
-  getSelectTutors(id) {
+    });
+  }
+  getSelectTutors() {
     axios.get('/tutors/selectTutors',{
       params : {
         test_id : id
@@ -119,7 +118,7 @@ class App extends Component {
       <div>
         <Navbar style={{ fontSize: `130%` }}>
           <Nav>
-            <LinkContainer to={"/home"}>
+            <LinkContainer to={"/"}>
               <NavItem>Home</NavItem>
             </LinkContainer>
             <LinkContainer to={"/findTutor"}>
@@ -134,6 +133,7 @@ class App extends Component {
             <LinkContainer to="/tutor">
               <NavItem>Become a Tutor</NavItem>
             </LinkContainer>
+            ()
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
@@ -143,8 +143,8 @@ class App extends Component {
         
         <AuthStatus />
 
-        <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
-        <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
+        <Route path='/' render={(routerProps) => (<Home {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
+        <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
         {/*add secret route here for dashboard*/}
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} id={this.state.id}/>)}></SecretRoute>
@@ -156,5 +156,5 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<Router><App/></Router>, document.getElementById('app'))
+ReactDOM.render(<Router><App location={location}/></Router>, document.getElementById('app'))
 export default App;

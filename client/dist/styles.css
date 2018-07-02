@@ -307,9 +307,7 @@ div.tutors{
   color: #18A361;
 }
 
-.settings input{
-    background-color: #0081BF;
-}
+
 .tutor-registration input{
   color: teal
 }
@@ -392,4 +390,10 @@ div.tutors{
 .sessions-header {
   font-size: 400%;
   color: lightsalmon;
+}
+
+/* TESTS */
+
+.test-info {
+  text-align: center;
 }

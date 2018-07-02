@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AuthService from '../Auth/AuthService'
 import { Redirect } from 'react-router-dom'
+import Signup from './SignUp.jsx'
 
 class Login extends Component {
   constructor(props) {
@@ -61,6 +62,9 @@ class Login extends Component {
           <br></br>
           <button type="submit" value="Submit">Login</button>
         </form>
+
+        <Signup {...this.props}/>
+  
       </div>
     )
   }
