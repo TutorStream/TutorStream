@@ -28,10 +28,13 @@ class Sessions extends Component {
     .then(() => {
         this.getUpcomingSessions()
     })
+    .catch((err) => {
+      console.error(err);
+    })
   }
 
   updateSessionDisplay () {
-    // could put jquery in here to update schema
+    // could put jquery in here to update schema with red coloring?
     return (
       <div>
         PAST SESSION
@@ -44,9 +47,6 @@ class Sessions extends Component {
   }
 
   render() {
-    // import Link from react-router-dom and wrap around info.date or whatever we decide to put in there
-    // also wrap whatever we put in there with a button that also has access to the id of the session 
-    // put onClick => this.deleteSession
     let currentDate = moment();
 
     return (
@@ -55,7 +55,7 @@ class Sessions extends Component {
             <ul className="all-sessions">
             {this.state.sessions.map((session, i) => {
               return (
-                <div className="indv-session" key={i}>
+                <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
                   {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
                   <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                   <br>
