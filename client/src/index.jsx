@@ -31,15 +31,11 @@ class App extends Component {
     this.state = {
       id : null,
       tests: [],
-      // test_ID : 1,
-      // tutorId : null,
       tutors: []
     }
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
     this.getTutors = this.getTutors.bind(this);
-    // this.setTestID = this.setTestID.bind(this);
-    // this.grabTutorId = this.grabTutorId.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
@@ -47,10 +43,9 @@ class App extends Component {
     this.setState({
       id : id
     })
-  } // need this for login, KEEP and send down as props in studentview
+  }
 
   getAllTests () {
-    console.log('in here')
     axios.get('/tests', {
       params : {
         id : this.state.id
@@ -64,7 +59,7 @@ class App extends Component {
     .catch((err) => {
       console.error(err);
     })
-  } // needs to render within index, KEEP ND SEND down as props within studentView
+  }
 
   getTutors () {
     axios.get('/tutors')
@@ -92,21 +87,7 @@ class App extends Component {
     .catch((err) => {
       console.error(err);
     })
-  } // will need for homepage AND studentView, KEEP
-
-  // setTestID (ID) {
-  //   this.setState({
-  //     test_ID : ID
-  //   }, () => {
-  //     this.getSelectTutors();
-  //   })
-  // } // just define in studentView, pass down from there
-
-  // grabTutorId(ID){
-  //   this.setState({
-  //     tutorId : ID
-  //   })
-  // } // student View NEEDS, send down as props
+  }
 
   componentDidMount() {
     this.getAllTests();
@@ -139,13 +120,14 @@ class App extends Component {
             </LinkContainer>
           </Nav>
         </Navbar>
+
+        
         <AuthStatus />
 
         <Route path='/' render={(routerProps) => (<Home {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
-        {/*add secret route here for dashboard*/}
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
-        <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
+        <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/tutor' render={(routerProps) => (<TutorRegistration {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/settings' render={(routerProps) => (<Settings {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
