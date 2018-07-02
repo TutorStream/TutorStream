@@ -26,7 +26,7 @@ exports.getTutorTests = (tutor_id, callback) => {
 //check if tutor profile exists & add or update accordingly
 exports.addOrUpdateTutor = (params, callback) => {
   console.log('params', params)
-  let initialQuery = `SELECT * FROM tutors WHERE ID = ${params.user_id}`;
+  let initialQuery = `SELECT * FROM tutors WHERE ID = ${params.id}`;
   db.query(initialQuery, (err, result) => {
     if (err) {//probably need to switch logic so if err; means user doesnt exist in tutors table
       console.error('There was an error retrieving the tutor from the database: ', err);
@@ -35,12 +35,12 @@ exports.addOrUpdateTutor = (params, callback) => {
       console.log('Info that got here : ', params)
       if (result.length === 0) {
         let queryStr = 'INSERT INTO tutors (ID, Name, Bio, Price) VALUES (?,?,?,?)';
-        db.query(queryStr, [ params.user_id, params.name, params.bio, params.rate ], (err, result) => {
+        db.query(queryStr, [ params.id, params.name, params.bio, params.rate ], (err, result) => {
           if (err) {
             console.error('There was an error adding a new tutor to the database: ', err);
           } else {
             //update tutor status in users table
-            let queryStr2 = `UPDATE users SET Tutor = 1 WHERE ID = ${params.user_id}`;
+            let queryStr2 = `UPDATE users SET Tutor = 1 WHERE ID = ${params.id}`;
             db.query(queryStr2, (err, result) => {
               if (err) {
                 console.error('There was an error updating the user\'s tutor field: ', err);
@@ -71,12 +71,12 @@ exports.addOrUpdateTutor = (params, callback) => {
         });
       } else {
       //if the tutor profile exists, update user's tutor profile info
-        let updateStr = `UPDATE tutors SET Bio = ?, Price = ? WHERE ID = ${params.user_id}`;
+        let updateStr = `UPDATE tutors SET Bio = ?, Price = ? WHERE ID = ${params.id}`;
         db.query(updateStr, [ params.bio, params.rate ], (err, result) => {
           if (err) {
             console.error('There was an error updating the tutor bio: ', err);
           } else {
-            let deleteOldTest = `DELETE FROM tutor_tests WHERE tutor_id = ${params.user_id}`;
+            let deleteOldTest = `DELETE FROM tutor_tests WHERE tutor_id = ${params.id}`;
             db.query(deleteOldTest, (err, result) => {
               if (err) {
                 console.error('There was an error deleting the tests: ', err);
@@ -111,8 +111,8 @@ exports.addOrUpdateTutor = (params, callback) => {
 
 //add rating and feedback 
 exports.addFeedback = (params, callback) => {
-  let queryStr = `INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES ?`;
-  db.query(queryStr, [ params.user_id, params.tutor_id, params.rating, params.content, params.date, params.time ], callback);
+  let queryStr = `INSERT INTO feedback (id, tutor_id, rating, content, date, time) VALUES ?`;
+  db.query(queryStr, [ params.id, params.tutor_id, params.rating, params.content, params.date, params.time ], callback);
 };
 
 exports.getFeedback = (tutor_id, callback) => {
