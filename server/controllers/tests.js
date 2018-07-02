@@ -13,8 +13,8 @@ exports.getAllTests = (req, res) => {
 
 //expecting to receive test id as req.query.testid
 exports.testSearch = (req, res) => {
-  let testID = req.params.testId;
-  testModel.selectTest(testID, (err, results) => {
+  let testId = req.params.testId;
+  testModel.selectTest(testId, (err, results) => {
     if (err) {
       console.error('There was an error selecting your specific test: ', err);
     } else {
