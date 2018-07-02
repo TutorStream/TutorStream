@@ -10,12 +10,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 /* Import Components */
 
 import Login from './components/Login.jsx'
-import Signup from './components/Signup.jsx'
 import Classroom from './components/Classroom.jsx'
 import Sessions from './components/Sessions.jsx'
 import Settings from './components/Settings.jsx'
 import TestList from './components/TestList.jsx'
-import TutorProfile from './components/TutorProfile.jsx'
 import TutorRegistration from './components/TutorRegistration.jsx'
 import TutorReview from './components/TutorReview.jsx'
 import SecretRoute from './SecretRoute.jsx'
@@ -129,6 +127,7 @@ class App extends Component {
             <LinkContainer to="/tutor">
               <NavItem>Become a Tutor</NavItem>
             </LinkContainer>
+            ()
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
