@@ -25,7 +25,7 @@ exports.addOrUpdateTutor = (req, res) => {
   console.log('we got here req.params', req.body)
 
   var name;
-  User.getUserInfoDB(req.body.user_id, (err, user) => {
+  User.getUserInfoDB(req.body.id, (err, user) => {
     if (err) {
       console.log('oh shit',err)
     } else {

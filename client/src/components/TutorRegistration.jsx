@@ -55,7 +55,7 @@ class TutorRegistration extends React.Component {
         event.preventDefault();
            var testsArray = [];
            this.state.selectedTests.forEach((test_id)=>{
-                testsArray.push({tutor_id : this.props.user_id,
+                testsArray.push({tutor_id : this.props.id,
                     test_id : test_id})
            })
 
@@ -63,10 +63,10 @@ class TutorRegistration extends React.Component {
                 tests: testsArray,
                 bio: this.state.bio,
                 rate: Number(this.state.rate),
-                user_id: this.props.user_id
+                id: this.props.id
             }
             console.log('form', form)
-            axios.post(`/tutors/${this.props.user_id}`,form)
+            axios.post(`/tutors/${this.props.id}`,form)
                  .then(()=>console.log('Updated and registered as tutor!'))
                  .catch((err)=>console.error(err))
         

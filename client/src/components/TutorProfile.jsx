@@ -65,7 +65,7 @@ class TutorProfile extends Component {
     axios.post('/sessions', {
       test_id : this.props.test_ID,
       tutor_id : this.props.tutor_id,
-      user_id : this.props.user_id,
+      id : this.props.id,
       date : this.state.date,
       time : this.state.time
     })

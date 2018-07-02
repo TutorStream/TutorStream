@@ -28,6 +28,7 @@ class Login extends Component {
       Password: this.state.Password
     })
     .then(({data}) => {
+      console.log(data, this.props, 'asdf')
       var ID = data.ID
       this.props.getID(ID);
       if(!!data.ID) {

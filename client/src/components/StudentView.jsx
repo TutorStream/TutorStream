@@ -10,7 +10,7 @@ class StudentView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user_id : this.props.ID,
+      id : this.props.ID,
       test_ID : 1,
       tutorId : null,
       Tutors: []
@@ -72,7 +72,7 @@ class StudentView extends Component {
   }
 
   render() {
-    // console.log('state test id and user id', [this.state.user_id, this.state.test_ID]);
+    // console.log('state test id and user id', [this.state.id, this.state.test_ID]);
     // console.log('this.state.Tutors', this.state.Tutors);
     console.log(this.state.Tutors);
     return (
@@ -85,7 +85,7 @@ class StudentView extends Component {
                 <LinkContainer to={"/student"}>
                   <NavItem>Home</NavItem>
                 </LinkContainer>
-                <LinkContainer to={`/sessions/${this.state.user_id}`}>
+                <LinkContainer to={`/sessions/${this.state.id}`}>
                   <NavItem>Sessions</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/classroom">
@@ -108,7 +108,7 @@ class StudentView extends Component {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} user_id={this.state.user_id} onClick={() => { this.props.history.push(route.path) }}/> }
+                render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} id={this.state.id} onClick={() => { this.props.history.push(route.path) }}/> }
               />
             ))}
             <div className="tutors-container">
@@ -137,7 +137,7 @@ class StudentView extends Component {
               return (
                   <TutorProfile 
                   tutor_id={this.state.tutorId} 
-                  user_id={this.state.user_id} 
+                  id={this.state.id} 
                   test_ID={this.state.test_ID} 
                   {...routerProps}
                   />
