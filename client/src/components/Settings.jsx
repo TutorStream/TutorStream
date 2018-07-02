@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import EditableLabel from "react-inline-editing";
 import axios from 'axios';
 import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
-
+import { Redirect } from 'react-router-dom';
 
 
 class Settings extends Component {
@@ -10,12 +10,12 @@ class Settings extends Component {
         super(props);
         this.state = {
             tests: [
-                {test:'DAT', test_id: '1'},
-                {test:'LSAT', test_id: '2'},
-                {test:'SAT', test_id: '3'},
-                {test:'GRE', test_id: '4'},
-                {test:'GMAT', test_id: '5'},
-                {test:'HR TA', test_id: '6'}
+                {test:'DAT', test_id: 1},
+                {test:'LSAT', test_id: 2},
+                {test:'SAT', test_id: 3},
+                {test:'GRE', test_id: 4},
+                {test:'GMAT', test_id: 5},
+                {test:'HR TA', test_id: 6}
             ],
             test: '',
             name: '',
@@ -23,8 +23,11 @@ class Settings extends Component {
             tutorBio: '',
             selectedTests : [],
             price: '',
-            isTutor : false
+            isTutor : false,
+            submitted: false,
+            preSelected: []
         }
+        this.isPreselectedTests = this.isPreselectedTests.bind(this)
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
@@ -52,11 +55,17 @@ class Settings extends Component {
 
                     axios.get(`/tutors/${id}`)
                     .then(({data}) => {
-                        info = data[0]
-                        console.log('data recieved in settings for tutor: ', info)
+                        info = data
+                        console.log('DATA HERE>>>>>: ', info)
+                        var preselected = []
+                        info.tests.forEach((test)=>{
+                            preselected.push(Number(test.test_id))
+                        })
+
                         this.setState({
                             tutorBio: info.Bio,
-                            price: info.Price
+                            price: info.Price,
+                            selectedTests: preselected
                         })
                     })
                 }
@@ -68,13 +77,13 @@ class Settings extends Component {
       
         var array = this.state.selectedTests.slice()
         console.log('selectedTests', array)
-        if(array.indexOf(e.target.value) === -1){
+        if(array.indexOf(Number(e.target.value)) === -1){
             this.setState({
                 selectedTests : [...this.state.selectedTests, e.target.value]
             }, ()=>console.log(this.state.selectedTests))
         }else {
             ///continue HERE!!!!
-            var idx = array.indexOf(e.target.value)
+            var idx = array.indexOf(Number(e.target.value))
             console.log('idx', idx)
             array.splice(idx,1)
             this.setState({
@@ -84,37 +93,49 @@ class Settings extends Component {
       }
 
       handleChange(event) {
-
-
-        console.log('Focused with text: ' + event.target.name);
         this.setState({
             [event.target.name] : event.target.value
         },()=>{console.log('We just updated : ', this.state)})
-         
-       
+      }
+
+      isPreselectedTests(id){
+          console.log('Id recieved is ',id, )
+          if(this.state.selectedTests.indexOf(id) !== -1){
+              console.log('It is in preselected : ',id)
+              return true;
+          }else{
+              return false
+          }
       }
 
    
-
-
       handleSubmit(event) {
+           event.preventDefault();
        console.log('state :', this.state)
-        // event.preventDefault();
-        //    var testsArray = [];
-        //    this.state.selectedTests.forEach((test_id)=>{
-        //         testsArray.push({tutor_id : this.props.id,
-        //             test_id : test_id})
-        //    })
+       
+           var testsArray = [];
+           this.state.selectedTests.forEach((test_id)=>{
+                testsArray.push({tutor_id : this.props.id,
+                    test_id : Number(test_id)})
+           })
 
            var form = {
-                tests: [],
-                bio: this.state.tutorBio,
+                tests: testsArray,
+                tutorBio: this.state.tutorBio,
                 rate: Number(this.state.price),
-                id: this.state.id
+                id: this.state.id,
+                userBio: this.state.bio,
+                name:this.state.name,
+                isTutor: this.state.isTutor
             }
             console.log('form', form)
-            axios.post(`/tutors/${this.state.id}`,form)
-                 .then(()=>console.log('Updated tutor!'))
+            axios.post(`/users/${this.state.id}`,form)
+                 .then(()=>{
+                     console.log('Updated tutor!');
+                     this.setState({
+                         submitted : true
+                     })
+                 })
                  .catch((err)=>console.error(err))
         
       }
@@ -145,13 +166,17 @@ class Settings extends Component {
             <FormGroup>
                 {this.state.tests.map((test,i)=>{
                                         return(
-                                            <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
+                                            <Checkbox onChange={this.handleCheck} inline key={i} value={Number(test.test_id)} checked={(this.isPreselectedTests(test.test_id)? "checked" : undefined)}>{test.test}</Checkbox>
                                         )
                                     })}
             
             </FormGroup>
             </div>
         );
+
+        if (this.state.submitted) {
+            return <Redirect to="/" />
+          }
         return (
             <div className= 'settings' >
                 
