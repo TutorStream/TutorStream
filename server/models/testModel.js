@@ -5,7 +5,7 @@ exports.getTests = (callback) => {
   db.query(queryStr, callback);
 };
 
-exports.selectTest = (testID, callback) => {
-  let queryStr = `SELECT * FROM tests WHERE ID = ${testID}`;
+exports.selectTest = (testId, callback) => {
+  let queryStr = `SELECT * FROM tests WHERE ID = ${testId}`;
   db.query(queryStr, callback);
 };

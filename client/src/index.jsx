@@ -1,29 +1,30 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Components */
 
-import Login from './components/Login.jsx'
-import Signup from './components/Signup.jsx'
-import Classroom from './components/Classroom.jsx'
-import Sessions from './components/Sessions.jsx'
-import Settings from './components/Settings.jsx'
-import TestList from './components/TestList.jsx'
-import TutorProfile from './components/TutorProfile.jsx'
-import TutorRegistration from './components/TutorRegistration.jsx'
-import TutorReview from './components/TutorReview.jsx'
-import SecretRoute from './SecretRoute.jsx'
+import Login from './components/Login.jsx';
+import Signup from './components/Signup.jsx';
+import Classroom from './components/Classroom.jsx';
+import Sessions from './components/Sessions.jsx';
+import Settings from './components/Settings.jsx';
+import TestList from './components/TestList.jsx';
+import TutorProfile from './components/TutorProfile.jsx';
+import TutorRegistration from './components/TutorRegistration.jsx';
+import TutorReview from './components/TutorReview.jsx';
+import SecretRoute from './SecretRoute.jsx';
+import Home from './components/Home.jsx';
 
 /* Import Services */
 
-import AuthService from './Auth/AuthService.js'
-import AuthStatus from './Auth/AuthStatus.js'
+import AuthService from './Auth/AuthService.js';
+import AuthStatus from './Auth/AuthStatus.js';
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class App extends Component {
       tests: [],
       test_ID : 1,
       tutorId : null,
-      Tutors: []
+      tutors: []
     }
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
@@ -68,12 +69,12 @@ class App extends Component {
     axios.get('/users/tutors')
     .then(({data}) => {
       this.setState({
-        Tutors : data
-      })
+        tutors : data
+      });
     })
     .catch((err) => {
       console.error(err);
-    })
+    });
   }
   getSelectTutors() {
     axios.get('/tutors/selectTutors',{
@@ -84,7 +85,7 @@ class App extends Component {
     .then(({data}) => {
       console.log('waht is this data', data);
       this.setState({
-        Tutors : data
+        tutors : data
       })
     })
     .catch((err) => {
@@ -116,7 +117,7 @@ class App extends Component {
         
         <Navbar style={{ fontSize: `130%` }}>
           <Nav>
-            <LinkContainer to={"/home"}>
+            <LinkContainer to={"/"}>
               <NavItem>Home</NavItem>
             </LinkContainer>
             <LinkContainer to={`/sessions/${this.state.id}`}>
@@ -135,7 +136,7 @@ class App extends Component {
         </Navbar>
         <AuthStatus />
 
-        <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
+        <Route path='/' render={(routerProps) => (<Home {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
@@ -146,5 +147,5 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<Router><App/></Router>, document.getElementById('app'))
+ReactDOM.render(<Router><App location={location}/></Router>, document.getElementById('app'))
 export default App;
