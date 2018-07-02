@@ -1,7 +1,7 @@
 const db = require('./../../database');
 
 exports.getTests = (callback) => {
-  let queryStr = 'SELECT * FROM tests ORDER BY name';
+  let queryStr = 'SELECT * FROM tests ORDER BY Name';
   db.query(queryStr, callback);
 };
 
