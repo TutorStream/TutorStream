@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { FormGroup, FormControl, ControlLabel, Checkbox, Button } from 'react-bootstrap';
+import AuthService from '../Auth/AuthService';
+import { Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class SignUp extends React.Component {
       bio: '',
       tutor: 0,
       photo: null,
+      redirectToPreviousRoute: false
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
@@ -38,15 +41,6 @@ class SignUp extends React.Component {
   }
 
   handleSignup (e) {
-    console.log('new user to be saved: ',{
-      Name : this.state.Name,
-      Password: this.state.Password,
-      Email: this.state.Email,
-      Tests: this.state.userTests,
-      Tutor: this.state.Tutor,
-      Bio: this.state.Bio
-    })
-    this.props.history.push('/student')
     e.preventDefault();
     axios.post('/users/signup', {
       name : this.state.name,
@@ -57,8 +51,11 @@ class SignUp extends React.Component {
       bio: this.state.bio
     })
     .then(({data}) => {
-      // this.props.history.push('/home');
-      // push to appropriate page
+      AuthService.authenticate();
+      this.setState({
+        redirectToPreviousRoute: true
+      });
+      this.props.history.push('/');
     })
     .catch((err) => {
       console.error(err);
