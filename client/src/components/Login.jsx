@@ -48,7 +48,7 @@ class Login extends Component {
     const { redirectToPreviousRoute } = this.state 
 
     if (redirectToPreviousRoute) {
-      return <Redirect to={from} />
+      return <Redirect to={from}{...this.props}/>
     }
     return (
       <div>
