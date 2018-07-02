@@ -39,7 +39,6 @@ exports.getUserInfo = (req, res) => {
       res.status(200).send(user)
     }
   })
-<<<<<<< HEAD
 }
 
 exports.getTutors = (req, res) => {
@@ -118,6 +117,3 @@ exports.updateUser = (req,res)=> {
 }
 
 
-=======
-};
->>>>>>> dev
