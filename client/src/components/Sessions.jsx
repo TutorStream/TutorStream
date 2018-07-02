@@ -10,6 +10,7 @@ class Sessions extends Component {
     }
     this.getUpcomingSessions = this.getUpcomingSessions.bind(this)
     this.deleteSession = this.deleteSession.bind(this)
+    this.updateSessionDisplay = this.updateSessionDisplay.bind(this);
   }
 
   getUpcomingSessions() {
@@ -29,6 +30,15 @@ class Sessions extends Component {
     })
   }
 
+  updateSessionDisplay () {
+    // could put jquery in here to update schema
+    return (
+      <div>
+        PAST SESSION
+      </div>
+    )
+  }
+
   componentDidMount(){
     this.getUpcomingSessions()
   }
@@ -46,7 +56,7 @@ class Sessions extends Component {
             {this.state.sessions.map((session, i) => {
               return (
                 <div className="indv-session" key={i}>
-                  {moment(session.date).isAfter(currentDate) ? console.log('in here, BUT NEED TO CHANGE SCHEMA') : null}
+                  {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
                   <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                   <br>
                   </br>
@@ -56,7 +66,7 @@ class Sessions extends Component {
                   <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
                 </div>
               )
-            })}
+            }).reverse()}
             </ul>
         </div>
     )
