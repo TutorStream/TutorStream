@@ -10,15 +10,15 @@ class StudentView extends Component {
   constructor(props){
     super(props);
     this.state = {
-      id : this.props.ID,
-      test_ID : 1,
+      // id : this.props.userId,
+      test_id : 1,
       tutorId : null,
-      Tutors: []
+      // Tutors: []
     }
-    this.getTutors = this.getTutors.bind(this);
+    // this.getTutors = this.getTutors.bind(this);
     this.setTestID = this.setTestID.bind(this);
     this.grabTutorId = this.grabTutorId.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
+    // this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
   getTutors () {
@@ -36,7 +36,7 @@ class StudentView extends Component {
   getSelectTutors() {
     axios.get('/tutors/selectTutors',{
       params : {
-        test_id : this.state.test_ID
+        test_id : this.state.test_id
       }
     })
     .then(({data}) => {
@@ -49,17 +49,17 @@ class StudentView extends Component {
     })
   }
 
-  setTestID (ID) {
+  setTestID (id) {
     this.setState({
-      test_ID : ID
+      test_id : id
     }, () => {
       this.getSelectTutors();
     })
   }
 
-  grabTutorId(ID){
+  grabTutorId(id){
     this.setState({
-      tutorId : ID
+      tutorId : id
     })
   }
 
@@ -67,13 +67,12 @@ class StudentView extends Component {
     console.log('user id is in those props: ? ', this.props)
     this.getTutors();
   }
+
   componentDidUpdate(prevProps, prevState) {
     console.log('updating')
   }
 
   render() {
-    // console.log('state test id and user id', [this.state.id, this.state.test_ID]);
-    // console.log('this.state.Tutors', this.state.Tutors);
     console.log(this.state.Tutors);
     return (
       <div>
@@ -108,7 +107,7 @@ class StudentView extends Component {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestID} id={this.state.id} onClick={() => { this.props.history.push(route.path) }}/> }
+                render={(routerProps) => <route.main {...routerProps} setTestID={this.setTestId} id={this.state.id} onClick={() => { this.props.history.push(route.path) }}/> }
               />
             ))}
             <div className="tutors-container">
@@ -138,7 +137,7 @@ class StudentView extends Component {
                   <TutorProfile 
                   tutor_id={this.state.tutorId} 
                   id={this.state.id} 
-                  test_ID={this.state.test_ID} 
+                  test_ID={this.state.test_id} 
                   {...routerProps}
                   />
               )}}/>
