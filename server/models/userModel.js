@@ -7,7 +7,7 @@ exports.addNewUser = (newUser, callback) => {
 };
 
 exports.addNewUserTests = (userId, testId, callback) => {
-  let queryStr = `INSERT INTO user_tests (user_id, test_id) VALUES (${userId}, ${testId})`;
+  let queryStr = `INSERT INTO user_tests (id, test_id) VALUES (${userId}, ${testId})`;
   db.query(queryStr, callback);
 };
 

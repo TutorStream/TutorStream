@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import EditableLabel from "react-inline-editing";
 import axios from 'axios';
 import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
 
 
 
-class Settings extends React.Component {
+class Settings extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -30,14 +30,14 @@ class Settings extends React.Component {
         this.handleCheck = this.handleCheck.bind(this);
       }
       componentDidMount(){
-          const {user_id: id} = this.props
+          const {id: id} = this.props
           let info;
           axios.get(`/users/info/${id}`)
             .then(({data}) => {
                 info = data[0]
                 console.log('data recieved in settings: ', info)
                 this.setState({
-                    user_id: info.ID,
+                    id: info.ID,
                     name: info.Name,
                     bio: info.Bio
                 })
@@ -102,7 +102,7 @@ class Settings extends React.Component {
         // event.preventDefault();
         //    var testsArray = [];
         //    this.state.selectedTests.forEach((test_id)=>{
-        //         testsArray.push({tutor_id : this.props.user_id,
+        //         testsArray.push({tutor_id : this.props.id,
         //             test_id : test_id})
         //    })
 
@@ -110,10 +110,10 @@ class Settings extends React.Component {
                 tests: [],
                 bio: this.state.tutorBio,
                 rate: Number(this.state.price),
-                user_id: this.state.user_id
+                id: this.state.id
             }
             console.log('form', form)
-            axios.post(`/tutors/${this.state.user_id}`,form)
+            axios.post(`/tutors/${this.state.id}`,form)
                  .then(()=>console.log('Updated tutor!'))
                  .catch((err)=>console.error(err))
         

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import AuthService from '../Auth/AuthService'
+import { Redirect } from 'react-router-dom'
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Email: '',
-      Password: ''
+      Password: '',
+      redirectToPreviousRoute: false
     }
     this.inputHandler = this.inputHandler.bind(this);
     this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
@@ -25,13 +28,15 @@ class Login extends React.Component {
       Password: this.state.Password
     })
     .then(({data}) => {
+      console.log(data, this.props, 'asdf')
       var ID = data.ID
       this.props.getID(ID);
       if(!!data.ID) {
-        this.props.history.push('/student');
+        AuthService.authenticate()
+        this.setState({
+          redirectToPreviousRoute: true
+        })
       }
-      // no need to set state, simply re-direct to approved login page 
-      // OR if not authetnicated, send back "error, not authenticated user"
     })
     .catch((err) => {
       console.error(err);
@@ -39,6 +44,12 @@ class Login extends React.Component {
   }
 
   render () {
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToPreviousRoute } = this.state 
+
+    if (redirectToPreviousRoute) {
+      return <Redirect to={from} />
+    }
     return (
       <div>
         <form className='login' onSubmit={(e) => {this.handeLoginSubmit(e)}}>
