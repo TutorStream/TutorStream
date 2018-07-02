@@ -28,9 +28,9 @@ CREATE TABLE tests (
 );
 
 CREATE TABLE user_tests (
-  id int,
+  user_id int,
   test_id int,
-  FOREIGN KEY (id) references users(id),
+  FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (test_id) references tests(id) 
 );
 
@@ -55,12 +55,12 @@ CREATE TABLE sessions (
 
 CREATE TABLE feedback (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  id int,
+  user_id int,
   tutor_id int,
   rating int,
   content varchar(255),
   date DATE NOT NULL,
   time TIME NOT NULL,
-  FOREIGN KEY (id) references users(id),
+  FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (tutor_id) references tutors(id)
 );
