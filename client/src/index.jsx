@@ -139,6 +139,8 @@ class App extends Component {
             </LinkContainer>
           </Nav>
         </Navbar>
+
+        
         <AuthStatus />
 
         <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
