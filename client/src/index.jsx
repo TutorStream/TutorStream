@@ -41,7 +41,7 @@ class App extends Component {
     this.getTutors = this.getTutors.bind(this);
     // this.setTestID = this.setTestID.bind(this);
     // this.grabTutorId = this.grabTutorId.bind(this);
-    // this.getSelectTutors = this.getSelectTutors.bind(this);
+    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
   getID (id) {
@@ -78,22 +78,22 @@ class App extends Component {
     })
   } // will need for homepage, KEEP
 
-  // getSelectTutors() {
-  //   axios.get('/tutors/selectTutors',{
-  //     params : {
-  //       test_id : this.state.test_ID
-  //     }
-  //   })
-  //   .then(({data}) => {
-  //     console.log('waht is this data', data);
-  //     this.setState({
-  //       tutors : data
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //   })
-  // } // will need for homepage AND studentView, KEEP
+  getSelectTutors(id) {
+    axios.get('/tutors/selectTutors',{
+      params : {
+        test_id : id
+      }
+    })
+    .then(({data}) => {
+      console.log('waht is this data', data);
+      this.setState({
+        tutors : data
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  } // will need for homepage AND studentView, KEEP
 
   // setTestID (ID) {
   //   this.setState({
@@ -144,7 +144,7 @@ class App extends Component {
         <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
         {/*add secret route here for dashboard*/}
-        <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tutors={this.state.tutors} tests={this.state.tests} userId={this.state.id}/>)}></SecretRoute>
+        <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} userId={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/tutor' render={(routerProps) => (<TutorRegistration {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
