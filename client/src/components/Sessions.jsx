@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 class Sessions extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ class Sessions extends Component {
     // import Link from react-router-dom and wrap around info.date or whatever we decide to put in there
     // also wrap whatever we put in there with a button that also has access to the id of the session 
     // put onClick => this.deleteSession
+    let currentDate = moment();
+
     return (
         <div>
             <h1 className="sessions-header">Sessions</h1> 
@@ -43,6 +46,7 @@ class Sessions extends Component {
             {this.state.sessions.map((session, i) => {
               return (
                 <div className="indv-session" key={i}>
+                  {moment(session.date).isAfter(currentDate) ? console.log('in here, BUT NEED TO CHANGE SCHEMA') : null}
                   <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                   <br>
                   </br>
