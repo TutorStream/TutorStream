@@ -24,3 +24,9 @@ exports.getUserInfoDB = (userId, callback) => {
 };
 
 
+exports.updateUser = (form,callback) => {
+  console.log('Form:', form)
+  let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE ID = ${form.id}`;
+        db.query(updateStr, [ form.userBio, form.name ], callback)
+}
+

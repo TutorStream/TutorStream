@@ -1,5 +1,5 @@
 const User = require('./../models/userModel');
-// const Tutor = require('./../models/tutorModel');
+const Tutor = require('./../models/tutorModel');
 
 exports.addNewUser = (req, res) => {
   console.log('req.body', req.body);
@@ -65,7 +65,7 @@ exports.getTutorProfile = (req, res) => {
 };
 
 exports.addOrUpdateTutor = (req, res) => {
-  console.log('we got here req.params', req.body)
+  console.log('We got here req.params', req.body)
 
   var name;
   User.getUserInfoDB(req.body.id, (err, user) => {
@@ -84,8 +84,39 @@ exports.addOrUpdateTutor = (req, res) => {
       });
     }
   })
-
-
-  
 };
+
+
+exports.updateUser = (req,res)=> {
+
+  console.log('I got to users to update, form : ', req.body)
+
+  User.updateUser(req.body,(err,results)=>{
+    if(err) {
+      res.sendStatus(400);
+    } 
+
+      if(req.body.isTutor){
+        var newUpdates = {
+          bio : req.body.tutorBio,
+          rate: req.body.rate,
+          id: req.body.id,
+          tests: req.body.tests,
+          name: req.body.name
+        }
+        Tutor.addOrUpdateTutor(newUpdates,(err, results) => {
+          if(err) {
+            res.sendStatus(400);
+          } else {
+            res.status(201).send('updated');
+          }
+        });
+    }else {
+      res.status(201).send('updated');
+  
+    }
+
+})
+}
+
 
