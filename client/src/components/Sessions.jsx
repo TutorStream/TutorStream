@@ -36,24 +36,20 @@ class Sessions extends Component {
     // import Link from react-router-dom and wrap around info.date or whatever we decide to put in there
     // also wrap whatever we put in there with a button that also has access to the id of the session 
     // put onClick => this.deleteSession
-    console.log(this.state.sessions, this.props, 'asdf')
     return (
         <div>
-            <h1>Session Component!</h1> 
+            <h1 className="sessions-header">Sessions</h1> 
             <ul className="all-sessions">
-            {/* {this.state.sessions.map((info, index) => {
-                return (<li key={index} >{info.date}</li>)
-            })} */}
             {this.state.sessions.map((session, i) => {
               return (
                 <div className="indv-session" key={i}>
-                  <span>Date: {session.date.slice(0,10)}</span>
+                  <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                   <br>
                   </br>
-                  <span>Time : {session.time.slice(0,5)}</span>
+                  <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
                   <br>
                   </br>
-                  <span>Tutor : {session.Name}</span>
+                  <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
                 </div>
               )
             })}

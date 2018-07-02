@@ -352,3 +352,44 @@ div.tutors{
 .tutor-name {
   font-size: 150%;
 }
+
+/* SESSIONS */
+
+.all-sessions {
+  background-color: lightblue;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  /* border-radius: 5%; */
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 7px 4px 15px 5px #333333;
+}
+
+.indv-session {
+  background-color: #18A361;
+  border-style: solid; 
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  font-size: 95%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 5%;
+  text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
+}
+
+
+.session-name {
+  font-size: 200%;
+  color: lightsalmon;
+}
+
+.sessions-header {
+  font-size: 400%;
+  color: lightsalmon;
+}
