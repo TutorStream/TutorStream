@@ -8,7 +8,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Components */
-import StudentView from './components/StudentView.jsx'
+
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Classroom from './components/Classroom.jsx'
@@ -29,28 +29,63 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ID : null,
-      Tests: []
+      id : null,
+      tests: [],
+      user_id : this.props.ID,
+      test_ID : 1,
+      tutorId : null,
+      Tutors: []
     }
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
+    this.getTutors = this.getTutors.bind(this);
+    this.setTestID = this.setTestID.bind(this);
+    this.grabTutorId = this.grabTutorId.bind(this);
+    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
-  getID (ID) {
+  getID (id) {
     this.setState({
-      ID : ID
+      id : id
     })
   }
 
   getAllTests () {
     axios.get('/tests', {
       params : {
-        user_id : this.state.ID
+        user_id : this.state.id
       }
     })
     .then(({data}) => {
       this.setState({
-        Tests : data
+        tests : data
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+  getTutors () {
+    axios.get('/users/tutors')
+    .then(({data}) => {
+      this.setState({
+        Tutors : data
+      })
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+  getSelectTutors() {
+    axios.get('/users/selectTutors',{
+      params : {
+        test_id : this.state.test_ID
+      }
+    })
+    .then(({data}) => {
+      console.log('waht is this data', data);
+      this.setState({
+        Tutors : data
       })
     })
     .catch((err) => {
@@ -58,8 +93,22 @@ class App extends Component {
     })
   }
 
+  setTestID (ID) {
+    this.setState({
+      test_ID : ID
+    }, () => {
+      this.getSelectTutors();
+    })
+  }
+  grabTutorId(ID){
+    this.setState({
+      tutorId : ID
+    })
+  }
+
   componentDidMount() {
     this.getAllTests();
+    this.getTutors();
   }
 
   render() {
