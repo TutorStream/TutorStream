@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AuthService from '../Auth/AuthService'
 import { Redirect } from 'react-router-dom'
+import Signup from './SignUp.jsx'
 
 class Login extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class Login extends Component {
   }
 
   render () {
+    console.log(this.props)
     const { from } = this.props.location.state || { from: { pathname: "/" } };
     const { redirectToPreviousRoute } = this.state 
 
@@ -61,6 +63,9 @@ class Login extends Component {
           <br></br>
           <button type="submit" value="Submit">Login</button>
         </form>
+
+        <Signup {...this.props}/>
+  
       </div>
     )
   }

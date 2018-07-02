@@ -50,6 +50,7 @@ class App extends Component {
   }
 
   getAllTests () {
+    console.log('in here')
     axios.get('/tests', {
       params : {
         id : this.state.id
@@ -136,7 +137,7 @@ class App extends Component {
         <AuthStatus />
 
         <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
-        <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
+        <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/tutor' render={(routerProps) => (<TutorRegistration {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
