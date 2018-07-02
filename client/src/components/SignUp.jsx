@@ -16,19 +16,12 @@ class SignUp extends React.Component {
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
-    this.handleIsTutorChange = this.handleIsTutorChange.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
   }
 
   inputHandler (e){
     this.setState({
       [e.target.name] : e.target.value
-    });
-  }
-
-  handleIsTutorChange (e) {
-    this.setState({
-      tutor : e.target.value
     });
   }
 
@@ -101,13 +94,6 @@ class SignUp extends React.Component {
             <ControlLabel>Bio :</ControlLabel>
             <FormControl componentClass="textarea" maxLength='255' placeholder="Tell us about yourself" name="bio" onChange={(e) => this.inputHandler(e)}/>
           </FormGroup>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Interested in tutoring? :</ControlLabel>
-            <FormControl componentClass="select" name="tutor" onChange={(e) => {this.handleIsTutorChange(e)}}>
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </FormControl>
-          </FormGroup>
           {/* need to connect this file upload input with upload function & service */}
           <FormGroup controlId="formControlsFile">
             <ControlLabel>Upload your profile picture :</ControlLabel>
@@ -115,7 +101,6 @@ class SignUp extends React.Component {
           </FormGroup>
           <Button type="submit">Save Profile</Button>
         </form>
-
       </div>
     )
   }
