@@ -77,9 +77,11 @@ class StudentView extends Component {
     console.log(this.props.tutors);
     return (
       <div>
+        <Router>
           <div>
-            <TestList setTestID={this.setTestID}/>
-          </div>
+            <div>
+              <TestList setTestID={this.setTestID}/>
+            </div>
             <div className="tutors-container">
               <div className="all-tutors">
                 {this.state.tutors.map((tutor, i) => {
@@ -102,7 +104,6 @@ class StudentView extends Component {
                 })}
               </div> 
             </div>
-            <Router>
               <div>
                 <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
                   return (
@@ -113,8 +114,10 @@ class StudentView extends Component {
                       {...routerProps}
                       />
                 )}}/>
-                </div>
-            </Router>
+              </div>
+
+            </div>
+          </Router>
       </div>
     )
   }
