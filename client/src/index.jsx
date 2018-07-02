@@ -10,12 +10,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 /* Import Components */
 
 import Login from './components/Login.jsx'
-import Signup from './components/Signup.jsx'
 import Classroom from './components/Classroom.jsx'
 import Sessions from './components/Sessions.jsx'
 import Settings from './components/Settings.jsx'
 import TestList from './components/TestList.jsx'
-import TutorProfile from './components/TutorProfile.jsx'
 import TutorRegistration from './components/TutorRegistration.jsx'
 import TutorReview from './components/TutorReview.jsx'
 import StudentView from './components/StudentView.jsx'
@@ -51,6 +49,7 @@ class App extends Component {
   } // need this for login, KEEP and send down as props in studentview
 
   getAllTests () {
+    console.log('in here')
     axios.get('/tests', {
       params : {
         id : this.state.id
@@ -134,6 +133,7 @@ class App extends Component {
             <LinkContainer to="/tutor">
               <NavItem>Become a Tutor</NavItem>
             </LinkContainer>
+            ()
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
@@ -142,7 +142,7 @@ class App extends Component {
         <AuthStatus />
 
         <Route path='/home' render={(routerProps) => (<TestList {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
-        <Route path='/login' render={(routerProps) => (<Login className='login' {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
+        <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
         {/*add secret route here for dashboard*/}
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
