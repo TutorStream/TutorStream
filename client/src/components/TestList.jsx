@@ -27,8 +27,9 @@ class TestList extends Component {
   handleTestSelect(test) {
     this.setState({
       dropDownTitle : test.Name
+    }, () => {
+      this.props.setTestID(test.ID);
     })
-    this.props.setTestID(test.ID);
   }
 
   render() {

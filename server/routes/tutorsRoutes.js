@@ -1,5 +1,4 @@
 const tutorsRouter = require('express').Router();
-// const usersControllers = require('./../controllers/users');
 const tutorsControllers = require('./../controllers/tutors');
 
 // tutorsRouter.get('/tutors', usersControllers.getTutors);

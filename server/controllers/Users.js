@@ -2,13 +2,10 @@ const User = require('./../models/userModel');
 const Tutor = require('./../models/tutorModel');
 
 exports.addNewUser = (req, res) => {
-  console.log('req.body', req.body);
   User.addNewUser(req.body, (err, addedUserResults) => {
     if(err) {
       res.status(400).send(err);
     } else {
-      console.log('req.body.Tests', req.body.tests);
-      console.log('what is coming back from DB', addedUserResults);
       req.body.tests.map((testId) => {
         User.addNewUserTests(addedUserResults.insertId, testId, (err, result) => {
           if(err) {
@@ -42,6 +39,7 @@ exports.getUserInfo = (req, res) => {
       res.status(200).send(user)
     }
   })
+<<<<<<< HEAD
 }
 
 exports.getTutors = (req, res) => {
@@ -120,3 +118,6 @@ exports.updateUser = (req,res)=> {
 }
 
 
+=======
+};
+>>>>>>> dev

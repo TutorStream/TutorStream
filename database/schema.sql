@@ -55,7 +55,8 @@ CREATE TABLE sessions (
 
 CREATE TABLE feedback (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  user_id int,
+  user_id
+   int,
   tutor_id int,
   rating int,
   content varchar(255),
