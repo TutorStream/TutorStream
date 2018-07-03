@@ -53,6 +53,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "path": "^0.12.7",
+    "popper.js": "^1.14.3",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-datetime": "^2.14.0",
