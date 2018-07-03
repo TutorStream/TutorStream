@@ -71,10 +71,6 @@ class TutorRegistration extends React.Component {
                  .catch((err)=>console.error(err))
         
       }
-    
-
-
-
     render() {
         return (
             <div className='tutor-registration'>
