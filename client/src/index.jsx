@@ -124,6 +124,7 @@ class App extends Component {
         <Route exact path='/' render={(routerProps) => (<Home {...routerProps} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} id={this.state.id} getID={this.getID}/>)}></Route>
         <Route path='/tutors/:id' render={(routerProps) => (<TutorProfile {...routerProps} id={this.state.id}/>)}></Route>
+        <Route path='/tests/:id' render={(routerProps) => (<TestProfile {...routerProps} id={this.state.id}/>)}></Route>
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>

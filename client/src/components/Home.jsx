@@ -21,7 +21,7 @@ class Home extends Component {
   getTutors () {
     axios.get('/tutors')
     .then(({data}) => {
-      data = data.slice(0, 10);
+      data = data.slice(0, 8);
       this.setState({
         tutors: data
       });
@@ -51,25 +51,34 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="main-info">
-          <Jumbotron className="container">
-            <PageHeader> TutorStream </PageHeader>
-            <p className="tag">You have questions, we have tutors.</p>
-            <br /><br />
-            <div>
-            Featured Tutors:
-            <Row>
+        <Jumbotron className="container">
+          <div className="main-info">
+              <PageHeader> TutorStream </PageHeader>
+              <p >You have questions, we have tutors.</p>
+          </div>
+            <br />
+            <hr />
+            <br />
+          <div className="main-info">
+              <h2>
+                Featured Tutors:
+              </h2>
+              <Row>
               <br />
-            { this.state.tutors.map((tutor) => <Col sm="3" key={tutor.ID}><Link to={`/tutors/${tutor.ID}`}><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} /></Link><br/></Col>) }
-            </Row>
-            </div>
+                { this.state.tutors.map((tutor) => <Col sm="3" key={tutor.ID}><Link to={`/tutors/${tutor.ID}`}><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} /></Link><br/></Col>) }
+              </Row>
+          </div>
             <br /><br />
-            <div>
-              Tests Available for Tutoring:
-              { this.state.tests.map((test) => <a key={test.ID} href="#"><h3>{test.Name}</h3></a>) }
-            </div>
-          </Jumbotron>
-        </div>
+          <div className="main-info">
+              <h2>
+                Tests Available for Tutoring:
+              </h2>
+              <br />
+              <Row>
+                { this.state.tests.map((test) => <Col sm="3" key={test.ID}><Link to={`/tests/${test.ID}`}><h3>{test.Name}</h3></Link></Col>) }
+              </Row>
+          </div>
+        </Jumbotron>
       </div>
     )
   }

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TutorCard from './TutorCard.jsx';
+import { Row, Col } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { PageHeader, Jumbotron } from 'react-bootstrap';
 
-//passing test id as props into TestProfile -- assuming this.props.test_id
 class TestProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false,
       name: '',
       description: '',
       tutors: []
@@ -17,6 +18,7 @@ class TestProfile extends Component {
   getTestInfo(test_id) {
     axios.get(`/tests/${test_id}`)
       .then(({data}) => {
+        data = data[0];
         this.setState({
           name: data.Name,
           description: data.Description
@@ -44,24 +46,29 @@ class TestProfile extends Component {
   }
 
   componentDidMount() {
-    this.getTestInfo(this.props.test_id);
-    this.getTutors(this.props.test_id);
+    const { id } = this.props.match.params;
+    this.getTestInfo(id);
+    this.getTutors(id);
   }
 
   render() {
     return (
       <div>
-        <div className="test-info">
+        <Jumbotron className="container">
+        <div className="main-info">
           <span>
-            <h5>{this.state.name}</h5>
+            <h1>{this.state.name}</h1>
           </span>
-          <br/><br/>
+          <br/>
           <p>{this.state.description}</p>
         </div>
         <hr />
-        <div>
-          { this.state.tutors.map((tutor) => <TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} />) }
+        <div className="main-info">
+          <Row>
+          { this.state.tutors.map((tutor) => <Col sm="3" key={tutor.ID}><Link to={`/tutors/${tutor.ID}`}><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating}/></Link></Col>) }
+          </Row>
         </div>
+        </Jumbotron>
       </div>
     )
   }
