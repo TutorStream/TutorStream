@@ -2,6 +2,7 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
 const config = require('../../credentials.json')
 // import user model
+// http://www.passportjs.org/docs/google/ 
 passport.use(
     new GoogleStrategy({
         // options for google strategy
