@@ -23,8 +23,9 @@ class TutorProfile extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this);
-    
+    this.handleTestSelect = this.handleTestSelect.bind(this);
   }
+
   getTutorInfo(){
     const { id } = this.props.match.params;
       axios.get(`/tutors/${id}`)
@@ -35,7 +36,8 @@ class TutorProfile extends Component {
             bio: data.Bio,
             price: data.Price,
             id: id,
-            tests: data.tests
+            tests: data.tests,
+            test_id: this.props.test_ID
           });
         }).catch((err) => {
           console.error('There was an error retrieving the tutor profile: ', err);
@@ -64,16 +66,18 @@ class TutorProfile extends Component {
     this.setState({date,time})
   }
   
-  // test id is either sent as props || this.state.test_id
-  handleTestSelect(test_id) {
-
+  
+  handleTestSelect(e) {
+    this.setState({
+      test_id: e.target.value
+    });
   }
 
   bookTutor(){
     if (AuthService.isAuthenticated) {
       axios.post('/sessions', {
-        test_id : this.props.test_ID,
-        tutor_id : this.props.tutor_id,
+        test_id : this.state.test_id,
+        tutor_id : this.state.id,
         id : this.props.id,
         date : this.state.date,
         time : this.state.time
@@ -92,8 +96,8 @@ class TutorProfile extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { ID } = this.props.match.params;
-      if(ID !== prevState.ID) {
+    const { id } = this.props.match.params;
+      if(id !== prevState.id) {
         this.getTutorInfo();
       }      
   }
@@ -112,11 +116,11 @@ class TutorProfile extends Component {
           <h1>Tutoring Subjects:</h1>
           <span>
           <FormGroup>
-          { this.state.tests.map((test) => {return <Radio name="radioGroup" inline key={test.ID}>{ test.Name }</Radio> }) } 
+          { this.state.tests.map((test) => {return <Radio name={test.Name} inline key={test.ID} value={test.ID} checked={this.state.test_id == test.ID} onChange={(e) => this.handleTestSelect(e)}>{ test.Name }</Radio> }) } 
           </FormGroup>
           </span>
         </div>
-        <br /><br />
+        <br />
         <div>
           <DateTime onChange={this.handleChange} inputProps={{ placeholder: "Click to select session's date and time"}}/>
           <button onClick={()=>this.bookTutor()}>Book Tutor session</button>
