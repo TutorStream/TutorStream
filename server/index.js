@@ -22,35 +22,34 @@ app.use(express.static(path.join(__dirname, './../client/dist')));
 /* Google authentication */
 // auth login
 router.get('/login', (req, res) => {
-  res.send('login')
-})
+  res.send('login');
+});
+
 // auth logout
 router.get('/logout', (req, res) => {
-  res.send('logging out')
-})
-// auth with google
-router.get('/google', passport.authenticate('google',{
-  scope:['profile']
-}))
+  // handle with passport
+  res.send('logging out');
+});
 
-// a.get('/auth/google/callback',
-//   passport.authenticate('google'), // complete the authenticate using the google strategy
-//   (err, req, res, next) => { // custom error handler to catch any errors, such as TokenError
-//     if (err.name === 'TokenError') {
-//      res.redirect('/auth/google'); // redirect them back to the login page
-//     } else {
-//      // Handle other errors here
-//     }
-//   },
-//   (req, res) => { // On success, redirect back to '/'
-//     res.redirect('/');
-//   }
-// );
+// auth with google+
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile']
+}));
 
-// callback route for google to redirect
-router.get('/auth/google/redirect', passport.authenticate('google') ,(req, res) => {
-  res.send('You reached the response URI')
-})
+router.get('/auth/google/redirect',
+  passport.authenticate('google'), // complete the authenticate using the google strategy
+  (err, req, res, next) => { // custom error handler to catch any errors, such as TokenError
+    if (err.name === 'TokenError') {
+     res.redirect('/'); // redirect them back to the login page
+    } else {
+     // Handle other errors here
+     res.redirect('/')
+    }
+  },
+  (req, res) => { // On success, redirect back to '/'
+    res.redirect('/');
+  }
+);
 
 
 
