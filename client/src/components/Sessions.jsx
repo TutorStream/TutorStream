@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 class Sessions extends Component {
   constructor(props) {
@@ -9,14 +10,11 @@ class Sessions extends Component {
     }
     this.getUpcomingSessions = this.getUpcomingSessions.bind(this)
     this.deleteSession = this.deleteSession.bind(this)
-  }
-  
-  componentDidMount(){
-      this.getUpcomingSessions()
+    this.updateSessionDisplay = this.updateSessionDisplay.bind(this);
   }
 
   getUpcomingSessions() {
-    const { id } = this.props.match.params
+   const id = this.props.id
     axios.get(`/sessions/${id}`)
     .then(({data}) => {
       this.setState({
@@ -30,34 +28,45 @@ class Sessions extends Component {
     .then(() => {
         this.getUpcomingSessions()
     })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
+  updateSessionDisplay () {
+    // could put jquery in here to update schema with red coloring?
+    return (
+      <div>
+        PAST SESSION
+      </div>
+    )
+  }
+
+  componentDidMount(){
+    this.getUpcomingSessions()
   }
 
   render() {
-    // import Link from react-router-dom and wrap around info.date or whatever we decide to put in there
-    // also wrap whatever we put in there with a button that also has access to the id of the session 
-    // put onClick => this.deleteSession
-    console.log(this.state.sessions)
+    let currentDate = moment();
+
     return (
         <div>
-            <h1>Session Component!</h1> 
+            <h1 className="sessions-header">Sessions</h1> 
             <ul className="all-sessions">
-            {/* {this.state.sessions.map((info, index) => {
-                return (<li key={index} >{info.date}</li>)
-            })} */}
             {this.state.sessions.map((session, i) => {
-              console.log(session.Name);
               return (
-                <div className="indv-session" key={i}>
-                  <span>Date: {session.date.slice(0,10)}</span>
+                <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
+                  {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
+                  <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                   <br>
                   </br>
-                  <span>Time : {session.time.slice(0,5)}</span>
+                  <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
                   <br>
                   </br>
-                  <span>Tutor : {session.Name}</span>
+                  <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
                 </div>
               )
-            })}
+            }).reverse()}
             </ul>
         </div>
     )

@@ -5,8 +5,8 @@ exports.addSession = ({test_id, tutor_id, id, date, time}, callback) => {
     db.query(queryStr, callback);
 };
 
-exports.deleteSession = ({sessionId}, callback) => {
-    let queryStr = `DELETE FROM sessions WHERE id = ${sessionId}`;
+exports.deleteSession = ({id}, callback) => {
+    let queryStr = `DELETE FROM sessions WHERE id = ${id}`;
     db.query(queryStr, callback);
 };
 

@@ -109,4 +109,3 @@ exports.updateUser = (req,res)=> {
     }
   })
 }
-
