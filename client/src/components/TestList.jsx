@@ -12,6 +12,7 @@ class TestList extends Component {
     this.handleTestSelect = this.handleTestSelect.bind(this);
   }
 
+
   componentDidMount() {
     axios.get('/tests')
       .then((response) => {

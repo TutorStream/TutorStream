@@ -63,7 +63,6 @@ exports.getTutorProfile = (req, res) => {
 
 exports.addOrUpdateTutor = (req, res) => {
   console.log('We got here req.params', req.body)
-
   var name;
   User.getUserInfoDB(req.body.id, (err, user) => {
     if (err) {
@@ -85,14 +84,11 @@ exports.addOrUpdateTutor = (req, res) => {
 
 
 exports.updateUser = (req,res)=> {
-
   console.log('I got to users to update, form : ', req.body)
-
   User.updateUser(req.body,(err,results)=>{
     if(err) {
       res.sendStatus(400);
     } 
-
       if(req.body.isTutor){
         var newUpdates = {
           bio : req.body.tutorBio,
@@ -108,12 +104,8 @@ exports.updateUser = (req,res)=> {
             res.status(201).send('updated');
           }
         });
-    }else {
+    } else {
       res.status(201).send('updated');
-  
     }
-
-})
+  })
 }
-
-
