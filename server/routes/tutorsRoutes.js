@@ -13,5 +13,4 @@ tutorsRouter.get('/:id', tutorsControllers.getTutorProfile);
 // tutorsRouter.post('/tutors/:id', usersControllers.addOrUpdateTutor);
 tutorsRouter.post('/:id', tutorsControllers.addOrUpdateTutor);
 
-
 module.exports = tutorsRouter;

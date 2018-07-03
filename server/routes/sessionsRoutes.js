@@ -13,5 +13,4 @@ sessionsRouter.put('/', sessionControllers.updateSession);
 // sessionsRouter.get('/sessions/:id', sessionControllers.getSession);
 sessionsRouter.get('/:id', sessionControllers.getSession);
 
-
 module.exports = sessionsRouter;

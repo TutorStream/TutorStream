@@ -4,7 +4,10 @@ exports.getAllTests = (req, res) => {
   // get all tests, nothing in req body, just run get all tests from DB helpers
   testModel.getTests((err, results) => {
     if (err) {
-      console.error('There was an error getting all tests from the database: ', err);
+      console.error(
+        'There was an error getting all tests from the database: ',
+        err
+      );
     } else {
       res.send(results);
     }

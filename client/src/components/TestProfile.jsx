@@ -15,31 +15,36 @@ class TestProfile extends Component {
   }
 
   getTestInfo(test_id) {
-    axios.get(`/tests/${test_id}`)
-      .then(({data}) => {
+    axios
+      .get(`/tests/${test_id}`)
+      .then(({ data }) => {
         this.setState({
           name: data.Name,
           description: data.Description
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error('There was an error getting your test info: ', err);
       });
   }
 
   getTutors(test_id) {
-    axios.get(`/tutors/selectTutors`, {
-      params: {
-        test_id: test_id
-      }
-    })
-      .then(({data}) => {
+    axios
+      .get(`/tutors/selectTutors`, {
+        params: {
+          test_id: test_id
+        }
+      })
+      .then(({ data }) => {
         this.setState({
           tutors: data
         });
       })
-      .catch((err) => {
-        console.error('There was an error getting the tutors for this test: ', err);
+      .catch(err => {
+        console.error(
+          'There was an error getting the tutors for this test: ',
+          err
+        );
       });
   }
 
@@ -55,15 +60,18 @@ class TestProfile extends Component {
           <span>
             <h5>{this.state.name}</h5>
           </span>
-          <br/><br/>
+          <br />
+          <br />
           <p>{this.state.description}</p>
         </div>
         <hr />
         <div>
-          { this.state.tutors.map((tutor) => <TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} />) }
+          {this.state.tutors.map(tutor => (
+            <TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} />
+          ))}
         </div>
       </div>
-    )
+    );
   }
 }
 

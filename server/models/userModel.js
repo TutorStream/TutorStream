@@ -1,8 +1,15 @@
 const db = require('./../../database');
 
 exports.addNewUser = (newUser, callback) => {
-  let queryStr = 'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
-  let params = [newUser.name, newUser.password, newUser.email, newUser.tutor, newUser.bio];
+  let queryStr =
+    'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
+  let params = [
+    newUser.name,
+    newUser.password,
+    newUser.email,
+    newUser.tutor,
+    newUser.bio
+  ];
   db.query(queryStr, params, callback);
 };
 
@@ -23,10 +30,8 @@ exports.getUserInfoDB = (userId, callback) => {
   db.query(queryStr, callback);
 };
 
-
-exports.updateUser = (form,callback) => {
-  console.log('Form:', form)
+exports.updateUser = (form, callback) => {
+  console.log('Form:', form);
   let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE ID = ${form.id}`;
-        db.query(updateStr, [ form.userBio, form.name ], callback)
-}
-
+  db.query(updateStr, [form.userBio, form.name], callback);
+};

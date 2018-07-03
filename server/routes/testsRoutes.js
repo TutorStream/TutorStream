@@ -7,5 +7,4 @@ testsRouter.get('/', testsControllers.getAllTests);
 // router.get('/tests/:testId', testsControllers.testSearch);
 testsRouter.get('/:testId', testsControllers.testSearch);
 
-
 module.exports = testsRouter;
