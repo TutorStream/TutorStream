@@ -15,7 +15,6 @@ import Sessions from './components/Sessions.jsx'
 import Settings from './components/Settings.jsx'
 import TestList from './components/TestList.jsx'
 import TutorRegistration from './components/TutorRegistration.jsx'
-import TutorReview from './components/TutorReview.jsx'
 import StudentView from './components/StudentView.jsx'
 import SecretRoute from './SecretRoute.jsx'
 
