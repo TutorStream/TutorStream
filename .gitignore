@@ -3,4 +3,4 @@ node_modules/
 bundle.js
 package-lock.json
 
-server/config
+credentials.json
