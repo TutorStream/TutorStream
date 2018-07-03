@@ -11,22 +11,23 @@ module.exports = {
     },
     module: {
         rules: [
-        {
-            test: /\.jsx?/,
-            include: SRC_DIR,
-            loader: 'babel-loader',
-            options: {
-                presets: ['react', 'es2015']
-            }
-        },
-        {
-            test: /\.css$/,  
-            include: /node_modules/,  
-            loaders: ['style-loader', 'css-loader'],
-       }
-    ]
-  },
-  devServer: {
-      historyApiFallback: true
-  }
+            {
+                test: /\.jsx?/,
+                include: SRC_DIR,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['react', 'es2015'],
+                    plugins: ["transform-object-rest-spread"]
+                }
+            },
+            {
+                test: /\.css$/,  
+                include: /node_modules/,  
+                loaders: ['style-loader', 'css-loader'],
+        }
+        ]
+    },
+    devServer: {
+        historyApiFallback: true
+    }
 };
