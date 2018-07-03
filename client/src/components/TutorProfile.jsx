@@ -22,8 +22,7 @@ class TutorProfile extends Component {
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this)
     
-  };
-
+  }
   getTutorInfo(){
     const { ID } = this.props.match.params 
       axios.get(`/tutors/${ID}`)
@@ -40,7 +39,6 @@ class TutorProfile extends Component {
           console.error('There was an error retrieving the tutor profile: ', err);
         });
   }
-
   handleChange(inputDate) {
     let months = {
       'Jan': '01',
@@ -67,7 +65,7 @@ class TutorProfile extends Component {
     axios.post('/sessions', {
       test_id : this.props.test_ID,
       tutor_id : this.props.tutor_id,
-      user_id : this.props.user_id,
+      id : this.props.id,
       date : this.state.date,
       time : this.state.time
     })
@@ -87,9 +85,7 @@ class TutorProfile extends Component {
         this.getTutorInfo()
       }      
   }
-
   render() {
-    
     return (
       <div>
         <h3>{this.state.name}'s Profile</h3>

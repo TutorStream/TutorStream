@@ -1,7 +1,7 @@
 const Feedback = require('./../models/feedbackModel');
 
 exports.addFeedback = (req, res) => {
-   // need ID, user_id, tutor_id, rating, content, date, time
+   // need ID, id, tutor_id, rating, content, date, time
    console.log('req.body should have all 5 necessary shcema columsn', req.body);
    Feedback.addFeedback(req.body, (err, newFeedback) => {
     if (err) {
@@ -13,7 +13,7 @@ exports.addFeedback = (req, res) => {
 };
 
 exports.updateFeedback = (req, res) => {
-   // need ID, user_id, tutor_id, rating, content, date, time
+   // need ID, id, tutor_id, rating, content, date, time
    console.log('req.body should have rating and content', req.body);
    Feedback.updateFeedback(req.body, (err, updatedFeedback) => {
      if(err) {

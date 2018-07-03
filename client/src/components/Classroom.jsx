@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import TutorProfile from '../student/TutorProfile.jsx'
+import TutorProfile from './TutorProfile.jsx'
 
 class Classroom extends Component {
     render() {
