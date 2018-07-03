@@ -9,7 +9,7 @@ const TutorCard = (props) => {
         <CardBody>
           <CardTitle>{props.name}</CardTitle>
           <CardSubtitle>{props.rating}</CardSubtitle>
-          <Button color="info" onClick={() => props.handleProfileClick()}>See Profile</Button>
+          <Button color="info" size="sm">See Profile</Button>
         </CardBody>
       </Card>
     </div>

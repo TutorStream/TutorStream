@@ -12,30 +12,31 @@ exports.getTutors = (req, res) => {
 };
 
 exports.getTutorProfile = (req, res) => {
-  console.log('I did get here Tutor-id: ',req.params.id);
-  
   Tutor.getTutorInfo(req.params.id,(err, results) => {
     if(err) {
       res.status(400).send(err);
     } else {
-     
-      console.log('and results is Tutor info : ',results)
     Test.getTutorTests(req.params.id,(err, data) => {
       if(err) {
         res.status(400).send(err);
       } else {
-        console.log("I'm gonna send you some tests.. data: ",data)
-        var tests = { tests : data}
-        var allResults = Object.assign(tests, results[0]);
-        console.log('All results after merge with row data,', allResults)
-        console.log('and results is Tutor info : ',results[0])
-        res.send(allResults);
-
+        // where to get the full test information from, like name? front or back end?
+        let test_ids = [];
+        data.forEach((test) => { test_ids.push(test.test_id); });
+        Test.getTestInfo(test_ids, (err, result) => {
+          if (err) {
+            console.error('There was an error getting all test info: ', err);
+          } else {
+            let tests = { tests: result };
+            let allResults = Object.assign(tests, results[0]);
+            res.send(allResults);
+          }
+        });
+      }
+    });
     }
   });
 };
-})
-}
 
 exports.addOrUpdateTutor = (req, res) => {
   console.log('we got here req.params', req.body)

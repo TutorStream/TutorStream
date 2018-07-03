@@ -27,7 +27,7 @@ class StudentView extends Component {
     .then(({data}) => {
       this.setState({
         tutors : data
-      })
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -41,14 +41,13 @@ class StudentView extends Component {
       }
     })
     .then(({data}) => {
-      console.log('waht data is here ', data);
       this.setState({
         tutors : data
-      })
+      });
     })
     .catch((err) => {
       console.error(err);
-    })
+    });
   }
 
   setTestID (id) {
@@ -56,28 +55,22 @@ class StudentView extends Component {
       test_id : id
     }, () => {
       this.getSelectTutors();
-    })
+    });
   }
 
   grabTutorId(id){
     this.setState({
       tutor_id : id
-    })
+    });
   }
 
   componentDidMount() {
     this.getTutors();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('updating');
-  }
-
   render() {
-    console.log(this.props.tutors);
     return (
       <div>
-        <Router>
           <div>
             <div>
               <TestList setTestID={this.setTestID}/>
@@ -86,8 +79,8 @@ class StudentView extends Component {
               <div className="all-tutors">
                 {this.state.tutors.map((tutor, i) => {
                   return (
-                    <div className="indv-tutor" onClick={()=>{this.grabTutorId(tutor.ID)}} key={i}>
-                      <Link to={`/tutor/${tutor.ID}`}>
+                    <div className="indv-tutor" key={i}>
+                      <Link to={`/tutors/${tutor.ID}`}>
                       <span className="tutor-name">{tutor.Name}</span>
                       </Link>
                       <br></br>
@@ -97,27 +90,17 @@ class StudentView extends Component {
                         <div>Rating: {tutor.Rating}</div>
                       <br></br>
                       <br></br>
-                        <div>Price: {tutor.Price}</div>
+                        <div>Price: ${tutor.Price} / hr</div>
                       <br></br>
                     </div>
                   )
                 })}
               </div> 
             </div>
-              <div>
-                <Route exact path ='/tutor/:ID' render = {(routerProps)=> {
-                  return (
-                      <TutorProfile 
-                      tutor_id={this.state.tutor_id} 
-                      id={this.props.id} 
-                      test_ID={this.state.test_id} 
-                      {...routerProps}
-                      />
-                )}}/>
-              </div>
-
+            <div>
+                
             </div>
-          </Router>
+            </div>
       </div>
     )
   }
