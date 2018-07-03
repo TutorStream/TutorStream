@@ -60,7 +60,7 @@ class TestProfile extends Component {
         </div>
         <hr />
         <div>
-          { this.state.tutors.map((tutor) => <TutorCard handleProfileClick={} key={tutor.ID} name={tutor.Name} rating={tutor.Rating} photo={/* profile img to render */}/>) }
+          { this.state.tutors.map((tutor) => <TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} />) }
         </div>
       </div>
     )

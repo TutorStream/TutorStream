@@ -254,7 +254,7 @@ html{
   #app{
     background-color: #0081BF;
     color:white;
-    padding: 2em
+    padding: 1em
   }
   
   a, li{
@@ -396,4 +396,9 @@ div.tutors{
 
 .test-info {
   text-align: center;
+}
+
+.main-info {
+  text-align: center;
+  color: #0081BF;
 }
