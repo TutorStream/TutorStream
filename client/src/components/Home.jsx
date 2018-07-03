@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
 import axios from 'axios';
 
@@ -59,7 +60,7 @@ class Home extends Component {
             Featured Tutors:
             <Row>
               <br />
-            { this.state.tutors.map((tutor) => <Col sm="3"><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} /><br/></Col>) }
+            { this.state.tutors.map((tutor) => <Col sm="3" key={tutor.ID}><Link to={`/tutors/${tutor.ID}`}><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} /></Link><br/></Col>) }
             </Row>
             </div>
             <br /><br />
