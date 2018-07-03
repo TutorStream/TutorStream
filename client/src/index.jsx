@@ -19,6 +19,7 @@ import TutorReview from './components/TutorReview.jsx';
 import SecretRoute from './SecretRoute.jsx';
 import Home from './components/Home.jsx';
 import StudentView from './components/StudentView.jsx';
+import TestProfile from './components/TestProfile.jsx';
 
 /* Import Services */
 
@@ -34,7 +35,7 @@ class App extends Component {
       // test_ID : 1,
       // tutorId : null,
       tutors: []
-    }
+    };
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
     this.getTutors = this.getTutors.bind(this);
@@ -50,33 +51,29 @@ class App extends Component {
   } // need this for login, KEEP and send down as props in studentview
 
   getAllTests () {
-    console.log('in here')
-    axios.get('/tests', {
-      params : {
-        id : this.state.id
-      }
-    })
+    axios.get('/tests')
     .then(({data}) => {
       this.setState({
         tests : data
-      })
+      });
     })
     .catch((err) => {
-      console.error(err);
-    })
+      console.error('There was an error getting all the tests: ', err);
+    });
   } // needs to render within index, KEEP ND SEND down as props within studentView
 
   getTutors () {
     axios.get('/tutors')
     .then(({data}) => {
       this.setState({
-        tutors : data
+        tutors: data
       });
     })
     .catch((err) => {
-      console.error(err);
+      console.error('There was an error getting all the tutors: ', err);
     });
   }
+
   getSelectTutors() {
     axios.get('/tutors/selectTutors',{
       params : {
@@ -84,10 +81,9 @@ class App extends Component {
       }
     })
     .then(({data}) => {
-      console.log('waht is this data', data);
       this.setState({
         tutors : data
-      })
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -109,8 +105,8 @@ class App extends Component {
   // } // student View NEEDS, send down as props
 
   componentDidMount() {
-    this.getAllTests();
     this.getTutors();
+    this.getAllTests();
   }
 
   render() {
@@ -133,7 +129,6 @@ class App extends Component {
             <LinkContainer to="/tutor">
               <NavItem>Become a Tutor</NavItem>
             </LinkContainer>
-            ()
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
@@ -141,8 +136,8 @@ class App extends Component {
         </Navbar>
         <AuthStatus />
 
-        <Route path='/' render={(routerProps) => (<Home {...routerProps} setTestID={this.setTestID} id={this.state.id} />)}></Route>
-        <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} ID={this.state.ID} getID={this.getID}/>)}></Route>
+        <Route path='/' render={(routerProps) => (<Home {...routerProps} id={this.state.id} />)}></Route>
+        <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} id={this.state.id} getID={this.getID}/>)}></Route>
         {/*add secret route here for dashboard*/}
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>
