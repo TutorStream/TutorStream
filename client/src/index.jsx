@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -20,6 +20,7 @@ import SecretRoute from './SecretRoute.jsx';
 import Home from './components/Home.jsx';
 import StudentView from './components/StudentView.jsx';
 import TestProfile from './components/TestProfile.jsx';
+import TutorProfile from './components/TutorProfile.jsx';
 
 /* Import Services */
 
@@ -106,7 +107,7 @@ class App extends Component {
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
             <LinkContainer to="/classroom">
-              <NavItem>ClassRoom</NavItem>
+              <NavItem>Classroom</NavItem>
             </LinkContainer>
             <LinkContainer to="/tutor">
               <NavItem>Become a Tutor</NavItem>
@@ -119,9 +120,10 @@ class App extends Component {
 
         
         <AuthStatus />
-
-        <Route path='/' render={(routerProps) => (<Home {...routerProps} id={this.state.id} />)}></Route>
+        
+        <Route exact path='/' render={(routerProps) => (<Home {...routerProps} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} id={this.state.id} getID={this.getID}/>)}></Route>
+        <Route path='/tutors/:id' render={(routerProps) => (<TutorProfile {...routerProps} id={this.state.id}/>)}></Route>
         <SecretRoute path='/findTutor' render={(routerProps) => (<StudentView {...routerProps} tests={this.state.tests} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/sessions/:id' render={(routerProps) => (<Sessions {...routerProps} id={this.state.id}/>)}></SecretRoute>
         <SecretRoute path='/classroom' render={(routerProps) => (<Classroom {...routerProps} setTestID={this.setTestID} id={this.state.id}/>)}></SecretRoute>

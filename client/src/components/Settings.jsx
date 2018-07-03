@@ -143,7 +143,7 @@ class Settings extends Component {
 
 
     render() {
-        let conditionalDisplay = !this.state.isTutor ? <div>NOT A TUTOR!!</div> : (
+        let conditionalDisplay = !this.state.isTutor ? <div></div> : (
             <div>
             <h2>Tutor settings </h2>
 
@@ -197,9 +197,8 @@ class Settings extends Component {
          
 
                 <h1>_____________</h1>
-                <br />
+                
                     {conditionalDisplay}
-              
                 <br />
                 <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 
