@@ -94,19 +94,15 @@ class TutorRegistration extends React.Component {
 
     
     <FormGroup>
-    {this.state.tests.map((test,i)=>{
-                                return(
-                                    <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
-                                )
-                            })}
+    {this.state.tests.map((test,i) => {
+        return(
+            <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
+        )
+    })}
       
     </FormGroup>
     <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
-    
-
-            </div>
-            
-            
+            </div> 
         )
     }
 }
