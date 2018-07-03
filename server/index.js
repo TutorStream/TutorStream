@@ -13,11 +13,23 @@ const feedbackRouter = require('./routes/feedbackRoutes');
 const router = express.Router()
 const passport = require('passport')
 const passportSetup = require('./config/passport_setup.js')
+// const cookieSession = require('cookie-session')
 
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './../client/dist')));
+
+// app.use(cookieSession({
+//   maxAge: 24 * 60 * 60 * 1000,
+//   keys:['tutorstreamcookiekey']
+// }))
+
+// // initialize passport
+
+// app.use(passport.initialize())
+// app.use(passport.session)
+
 
 /* Google authentication */
 // auth login
@@ -28,7 +40,8 @@ router.get('/login', (req, res) => {
 // auth logout
 router.get('/logout', (req, res) => {
   // handle with passport
-  res.send('logging out');
+  req.logout()
+  res.redirect('/')
 });
 
 // auth with google+
@@ -50,7 +63,6 @@ router.get('/auth/google/redirect',
     res.redirect('/');
   }
 );
-
 
 
 app.use(router)
