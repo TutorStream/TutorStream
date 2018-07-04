@@ -115,11 +115,11 @@ class App extends Component {
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
             </LinkContainer>
+            <AuthStatus />
           </Nav>
         </Navbar>
 
         
-        <AuthStatus />
         
         <Route exact path='/' render={(routerProps) => (<Home {...routerProps} id={this.state.id} />)}></Route>
         <Route path='/login' render={(routerProps) => (<Login className='login' tests={this.state.tests} {...routerProps} id={this.state.id} getID={this.getID}/>)}></Route>
