@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import DateTime from 'react-datetime';
 import AuthService from './../Auth/AuthService';
@@ -108,48 +108,50 @@ class TutorProfile extends Component {
   }
   render() {
     return (
-      <div>
-        <h3>{this.state.name}'s Profile</h3>
+      <Fragment>
         <div>
-          <h1>Rating: {this.state.rating}</h1>
-        </div>
-        <div>
-          <h1>Bio:</h1>
-          <p>{this.state.bio}</p>
-        </div>
-        <div>
-          <h1>Tutoring Subjects:</h1>
-          <span>
-            <FormGroup>
-              {this.state.tests.map(test => {
-                return (
-                  <Radio
-                    name={test.Name}
-                    inline
-                    key={test.ID}
-                    value={test.ID}
-                    checked={this.state.test_id == test.ID}
-                    onChange={e => this.handleTestSelect(e)}
-                  >
-                    {test.Name}
-                  </Radio>
-                );
-              })}
-            </FormGroup>
-          </span>
-        </div>
-        <br />
-        <div>
-          <DateTime
-            onChange={this.handleChange}
-            inputProps={{
-              placeholder: "Click to select session's date and time"
-            }}
-          />
-          <button onClick={() => this.bookTutor()}>Book Tutor session</button>
+          <h3>{this.state.name}'s Profile</h3>
+          <div>
+            <h1>Rating: {this.state.rating}</h1>
+          </div>
+          <div>
+            <h1>Bio:</h1>
+            <p>{this.state.bio}</p>
+          </div>
+          <div>
+            <h1>Tutoring Subjects:</h1>
+            <span>
+              <FormGroup>
+                {this.state.tests.map(test => {
+                  return (
+                    <Radio
+                      name={test.Name}
+                      inline
+                      key={test.ID}
+                      value={test.ID}
+                      checked={this.state.test_id == test.ID}
+                      onChange={e => this.handleTestSelect(e)}
+                    >
+                      {test.Name}
+                    </Radio>
+                  );
+                })}
+              </FormGroup>
+            </span>
+          </div>
+          <br />
+          <div>
+            <DateTime
+              onChange={this.handleChange}
+              inputProps={{
+                placeholder: "Click to select session's date and time"
+              }}
+            />
+            <button onClick={() => this.bookTutor()}>Book Tutor session</button>
+          </div>
         </div>
         <Review {...this.props} />
-      </div>
+      </Fragment>
     );
   }
 }

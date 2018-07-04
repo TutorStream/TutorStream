@@ -17,7 +17,6 @@ exports.updateFeedback = ({ rating, content }, callback) => {
 };
 
 exports.getFeedback = ({ id }, callback) => {
-  console.log('db', id);
   let queryStr = `SELECT * FROM feedback WHERE tutor_id = ${id}`;
   db.query(queryStr, callback);
 };
