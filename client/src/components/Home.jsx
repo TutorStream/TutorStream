@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Row,
+  Col
+} from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
 import axios from 'axios';
 
@@ -17,29 +27,31 @@ class Home extends Component {
     this.getAllTests = this.getAllTests.bind(this);
   }
 
-  getTutors () {
-    axios.get('/tutors')
-    .then(({data}) => {
-      data = data.slice(0, 10);
-      this.setState({
-        tutors: data
+  getTutors() {
+    axios
+      .get('/tutors')
+      .then(({ data }) => {
+        data = data.slice(0, 8);
+        this.setState({
+          tutors: data
+        });
+      })
+      .catch(err => {
+        console.error('There was an error getting all the tutors: ', err);
       });
-    })
-    .catch((err) => {
-      console.error('There was an error getting all the tutors: ', err);
-    });
   }
 
-  getAllTests () {
-    axios.get('/tests')
-    .then(({data}) => {
-      this.setState({
-        tests : data
+  getAllTests() {
+    axios
+      .get('/tests')
+      .then(({ data }) => {
+        this.setState({
+          tests: data
+        });
+      })
+      .catch(err => {
+        console.error('There was an error getting all the tests: ', err);
       });
-    })
-    .catch((err) => {
-      console.error('There was an error getting all the tests: ', err);
-    });
   }
 
   componentDidMount() {
@@ -50,32 +62,51 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="main-info">
-          <Jumbotron className="container">
+        <Jumbotron className="container">
+          <div className="main-info">
             <PageHeader> TutorStream </PageHeader>
-            <p className="tag">You have questions, we have tutors.</p>
-            <br /><br />
-            <div>
-            Featured Tutors:
+            <p>You have questions, we have tutors.</p>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <div className="main-info">
+            <h2>Featured Tutors:</h2>
             <Row>
               <br />
-            { this.state.tutors.map((tutor) => <Col sm="3"><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating} /><br/></Col>) }
+              {this.state.tutors.map(tutor => (
+                <Col sm="3" key={tutor.ID}>
+                  <Link to={`/tutors/${tutor.ID}`}>
+                    <TutorCard
+                      key={tutor.ID}
+                      name={tutor.Name}
+                      rating={tutor.Rating}
+                    />
+                  </Link>
+                  <br />
+                </Col>
+              ))}
             </Row>
-            </div>
-            <br /><br />
-            <div>
-              Tests Available for Tutoring:
-              { this.state.tests.map((test) => <a key={test.ID} href="#"><h3>{test.Name}</h3></a>) }
-            </div>
-          </Jumbotron>
-        </div>
+          </div>
+          <br />
+          <br />
+          <div className="main-info">
+            <h2>Tests Available for Tutoring:</h2>
+            <br />
+            <Row>
+              {this.state.tests.map(test => (
+                <Col sm="3" key={test.ID}>
+                  <Link to={`/tests/${test.ID}`}>
+                    <h3>{test.Name}</h3>
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Jumbotron>
       </div>
-    )
+    );
   }
-
-
 }
-
-
 
 export default Home;

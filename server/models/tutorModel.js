@@ -17,22 +17,14 @@ exports.getTutorInfo = (tutor_id, callback) => {
   db.query(queryStr, callback);
 };
 
-//pass in tutor_id and callback, sends back array of objects
-exports.getTutorTests = (tutor_id, callback) => {
-  let queryStr = `SELECT test_id FROM tutor_tests WHERE tutor_id = ${tutor_id}`;
-  db.query(queryStr, callback);
-};
-
 //check if tutor profile exists & add or update accordingly
 exports.addOrUpdateTutor = (params, callback) => {
-  console.log('params', params)
   let initialQuery = `SELECT * FROM tutors WHERE ID = ${params.id}`;
   db.query(initialQuery, (err, result) => {
     if (err) {//probably need to switch logic so if err; means user doesnt exist in tutors table
       console.error('There was an error retrieving the tutor from the database: ', err);
     } else {
       //if tutor profile doesn't exist, add new tutor
-      console.log('Info that got here : ', params)
       if (result.length === 0) {
         let queryStr = 'INSERT INTO tutors (ID, Name, Bio, Price) VALUES (?,?,?,?)';
         db.query(queryStr, [ params.id, params.name, params.bio, params.rate ], (err, result) => {
@@ -88,11 +80,10 @@ exports.addOrUpdateTutor = (params, callback) => {
                   // assuming input's params.tests is an array of arrays in format [ [tutor_id, test_id], [tutor_id, test2_id] ]
                   // this is the array of tests the tutor can teach
                   db.query(testUpdateStr, [test.tutor_id, test.test_id], (err, result) => {
-                    console.log('inserted in tutor table')
                     // PUSH A NEWLY CREATED PROMISE TO THE PROMISES ARRAY
                     promises.push(new Promise((resolve,reject)=>{
-                     if(err) reject(err);
-                     resolve(result); 
+                    if(err) reject(err);
+                      resolve(result); 
                     }))
                     // THAT RESOLVES WITH THE RESULT
                   });
