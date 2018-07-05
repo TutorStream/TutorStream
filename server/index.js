@@ -4,6 +4,11 @@ const path = require('path');
 const app = express();
 const db = require('./../database');
 
+// socket.io
+const server = require('http').Server(app);
+const io = require('socket.io')(server); // CREATES our socketIO using the instance of the server
+
+
 // const router = require('./routes');
 const usersRouter = require('./routes/usersRoutes');
 const tutorsRouter = require('./routes/tutorsRoutes');
@@ -77,6 +82,36 @@ app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/feedback', feedbackRouter);
 
-app.listen(port, () => {
+// socket.io listening
+
+io.on('connection', (socket) => {
+  console.log('user connected');
+  var room;
+  socket.on('room', (data) => {
+      console.log('data :', data);
+      room = data.room;
+      socket.join(data.room)
+  })
+  socket.on('new-message', (msg) => {
+    console.log('new message: ' + msg.message);
+    console.log('room ', msg.room);
+    socket.broadcast.to(msg.room).emit('sending-back', msg); // emit messages to all OTHER users
+  })
+  // socket.on('leaving-room', (data) => {
+  //   console.log('what room is being left ', data.room);
+  //   socket.leave(data.room, () => {
+  //     console.log('successfully left room');
+  //   })
+  // })
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    socket.leave(room, () => {
+      console.log('successfully left room');
+    })
+  })
+});
+
+server.listen(port, () => {
   console.log(`Magic happens on port ${port}`);
 });
+

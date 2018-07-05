@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const config = require('../../credentials.json');
 // import user model
 // http://www.passportjs.org/docs/google/
+=======
+// const passport = require('passport')
+// const GoogleStrategy = require('passport-google-oauth20')
+// const config = require('../../credentials.json')
+// // import user model
+// // http://www.passportjs.org/docs/google/
+>>>>>>> dev
 
 // // serialize a user when they are logged in
 // passport.serializeUser((user, done) => {
@@ -16,6 +24,7 @@ const config = require('../../credentials.json');
 
 // deserialize user when they log out
 
+<<<<<<< HEAD
 // { "id": '104688600378769499827',
 //   "displayName": 'Michael Cortez',
 //   "name": {
@@ -61,3 +70,17 @@ passport.use(
     }
   )
 );
+=======
+// passport.use(
+//     new GoogleStrategy({
+//         // options for google strategy
+//         clientID: config.web.client_id,
+//         clientSecret: config.web.client_secret,
+//         callbackURL: '/auth/google/redirect'
+//     }, (accessToken, refreshToken, profile, cb) => {
+//         // passport callback function
+//         console.log('passport callback function fired:');
+//         console.log(profile);
+//     })
+// );
+>>>>>>> dev

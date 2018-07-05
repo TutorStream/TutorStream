@@ -34,7 +34,10 @@
   "dependencies": {
     "@opentok/client": "^2.14.3",
     "array.prototype.findindex": "^2.0.2",
+<<<<<<< HEAD
     "aws-sdk": "^2.268.1",
+=======
+>>>>>>> dev
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
@@ -70,6 +73,8 @@
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.2.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "webpack-cli": "^2.1.4"
   }
 }

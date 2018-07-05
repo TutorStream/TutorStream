@@ -381,6 +381,13 @@ div.tutors{
   text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
 }
 
+.delete-btn:hover {
+  background-color: salmon;
+}
+
+.past-session {
+  background-color: red;
+}
 
 .session-name {
   font-size: 200%;
@@ -396,3 +403,33 @@ div.tutors{
   text-align: center;
   color: #0081BF;
 }
+
+
+/* LIVE CHAT */
+
+.header {
+  text-align: center;
+}
+
+.chat-container {
+  padding: 20px;
+}
+
+.all-messages {
+  background-color: lightsalmon;
+  border : black solid;
+}
+
+.msg {
+  color: black;
+  padding-left: 2%;
+}
+
+.input-msg {
+  color : black;
+}
+
+.add-new-message {
+  text-align: center;
+}
+
