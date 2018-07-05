@@ -9,11 +9,11 @@ class Chat extends Component {
       message : '',
       messages : ['bingo', 'bango'],
     };
-    this.addingMessage = this.addingMessage.bind(this);
+    this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
   }
 
-  addingMessage (e) {
+  messageHandler (e) {
     console.log('e.target.value', e.target.value);
     this.setState({
       [e.target.name] : e.target.value
@@ -32,12 +32,10 @@ class Chat extends Component {
         message : this.state.message
       });
     })
-    .catch((err) => {
-      console.error(err);
-    })
   }
 
   componentDidMount() {
+    // will eventually need to get all messages form th DB
     this.state.socket.on('connect', () => {
       console.log('making it into the chat');
     })
@@ -59,7 +57,7 @@ class Chat extends Component {
         {/* <ul className="messages"></ul> */}
         <form onSubmit={(e) => {this.postMessage(e)}}>
           <label>New Message:</label>
-          <input type="text" name="message" className="m" value={this.state.message} onChange={(e) => {this.addingMessage(e)}}/>
+          <input type="text" name="message" className="msg" value={this.state.message} onChange={this.messageHandler}/>
           <button type="submit" value="Submit">Send</button>
         </form>
       </div>
