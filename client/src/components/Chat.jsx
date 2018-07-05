@@ -7,7 +7,7 @@ class Chat extends Component {
     super(props);
     this.state = {
       message : '',
-      messages : ['bingo', 'bango'],
+      messages : ['bingo'],
       sessionId : '781918272828'
     };
     this.messageHandler = this.messageHandler.bind(this);
@@ -21,9 +21,6 @@ class Chat extends Component {
         messages : [msg.message, ...this.state.messages]
       })
     })
-
-    
-
   }
 
   clearInput () {
