@@ -62,7 +62,6 @@ exports.getTutorProfile = (req, res) => {
 };
 
 exports.addOrUpdateTutor = (req, res) => {
-  console.log('We got here req.params', req.body)
   var name;
   User.getUserInfoDB(req.body.id, (err, user) => {
     if (err) {
