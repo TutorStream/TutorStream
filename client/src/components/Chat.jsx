@@ -57,14 +57,14 @@ class Chat extends Component {
             {this.state.messages.map((msg, i) => {
               return (
                 <div key={i} className="msg">
-                  {msg}
+                  <strong>you:</strong> {msg} {/*can inlucde this.props.username at some point down the line*/}
                 </div>
               )
             })}
         </div>
         <form className="add-new-message" onSubmit={(e) => {this.postMessage(e)}}>
           <label>New Message:</label>
-          <input type="text" name="message" className="msg" value={this.state.message} onChange={this.messageHandler}/>
+          <input type="text" name="message" className="input-msg" value={this.state.message} onChange={this.messageHandler}/>
           <button type="submit" value="Submit">Send</button>
         </form>
       </div>

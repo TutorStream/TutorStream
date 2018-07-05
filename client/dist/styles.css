@@ -405,7 +405,7 @@ div.tutors{
 }
 
 .chat-container {
-  background-color: lightsalmon;
+  padding: 20px;
 }
 
 .all-messages {
@@ -414,6 +414,11 @@ div.tutors{
 }
 
 .msg {
+  color: black;
+  padding-left: 2%;
+}
+
+.input-msg {
   color : black;
 }
 
