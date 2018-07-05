@@ -22,6 +22,7 @@ import StudentView from './components/StudentView.jsx';
 import TestProfile from './components/TestProfile.jsx';
 import TutorProfile from './components/TutorProfile.jsx';
 import Chat from './components/Chat.jsx';
+import Review from './components/Review.jsx';
 
 /* Import Services */
 
@@ -156,6 +157,10 @@ class App extends Component {
           render={routerProps => (
             <TestProfile {...routerProps} id={this.state.id} />
           )}
+        />
+        <Route
+          path="/review"
+          render={routerProps => <Review {...routerProps} />}
         />
         <SecretRoute
           path="/findTutor"
