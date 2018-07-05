@@ -83,9 +83,9 @@ app.use('/sessions', sessionsRouter);
 
 io.on('connection', (socket) => {
   console.log('user connected');
-  socket.on('user-joins', (name) => {
-    socket.emit('new member', name);
-  })
+  // socket.on('user-joins', (name) => {
+  //   socket.emit('new member', name);
+  // })
   socket.on('new-message', (msg) => {
     console.log('new message: ' + msg.message);
     // socket.broadcast.emit(msg.message); // emit messages to all OTHER users

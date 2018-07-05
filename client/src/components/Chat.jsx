@@ -11,6 +11,7 @@ class Chat extends Component {
     };
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
+    this.clearInput = this.clearInput.bind(this);
 
     // SOCKET.IO : Client-Side Listeners --> put all here in constructor
     socket.on('sending-back', (msg) => {
@@ -21,25 +22,31 @@ class Chat extends Component {
     })
   }
 
+  clearInput () {
+    this.setState({
+      message : ''
+    })
+  }
+
   messageHandler (e) {
     console.log('e.target.value', e.target.value);
     this.setState({
       [e.target.name] : e.target.value
-    }, () => {
-      console.log(this.state.message);
     });
   }
 
   postMessage(e) {
     e.preventDefault();
-    console.log(this.state.message);
-    this.setState({
-      messages : [this.state.message, ...this.state.messages]
-    }, () => {
-      socket.emit('new-message', {
-        message : this.state.message
+    if (this.state.message.length > 0) {
+      this.setState({
+        messages : [this.state.message, ...this.state.messages]
+      }, () => {
+        socket.emit('new-message', {
+          message : this.state.message
+        });
+        this.clearInput();
       });
-    })
+    }
   }
 
   componentDidMount() {
