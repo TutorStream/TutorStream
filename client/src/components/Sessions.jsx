@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Row,
+  Col
+} from 'reactstrap';
+import { PageHeader, Jumbotron } from 'react-bootstrap';
 
 class Sessions extends Component {
   constructor(props) {
@@ -49,29 +60,41 @@ class Sessions extends Component {
   render() {
 
     return (
-        <div>
-            <h1 className="sessions-header">Sessions</h1> 
-            <ul className="all-sessions">
-            {this.state.sessions.map((session, i) => {
-              return (
-                  <div className="indv-session" key={i}>
-                    {moment(session.date).isBefore() ? this.updateSessionDisplay() : null}
-                    <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
-                    <br>
-                    </br>
-                    <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
-                    <br>
-                    </br>
-                    <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
-                    <br></br>
-                    <button className="delete-btn" onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
-                  </div>
-              )
-            })}
-            </ul>
-        </div>
+      <div>
+        <Jumbotron className="container">
+          <div className="main-info">
+            <PageHeader> Booked Sessions</PageHeader>
+            <p className="tag-line">currently booked sessions</p>
+            <br/>
+            <hr/>
+            <br/>
+            <div className="main-info">
+              <Row>
+                <br />
+                {this.state.sessions.map((session, i) => (
+                  <Col sm="3" key={i}>
+                    <div className="indv-session" key={i}>
+                      {moment(session.date).isBefore() ? this.updateSessionDisplay() : null}
+                      <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
+                      <br>
+                      </br>
+                      <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
+                      <br>
+                      </br>
+                      <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
+                      <br></br>
+                      <button className="delete-btn" onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          </div>
+        </Jumbotron>
+      </div>
     )
   }
 }
 
 export default Sessions 
+

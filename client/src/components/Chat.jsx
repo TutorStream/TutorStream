@@ -8,7 +8,7 @@ class Chat extends Component {
     this.state = {
       message : '',
       messages : ['bingo'],
-      sessionId : '781918272828'
+      sessionId : '781918272828' // hard-coded, delete this and jsut pass in sessionId below
     };
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
