@@ -16,32 +16,37 @@ class TestProfile extends Component {
   }
 
   getTestInfo(test_id) {
-    axios.get(`/tests/${test_id}`)
-      .then(({data}) => {
+    axios
+      .get(`/tests/${test_id}`)
+      .then(({ data }) => {
         data = data[0];
         this.setState({
           name: data.Name,
           description: data.Description
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error('There was an error getting your test info: ', err);
       });
   }
 
   getTutors(test_id) {
-    axios.get(`/tutors/selectTutors`, {
-      params: {
-        test_id: test_id
-      }
-    })
-      .then(({data}) => {
+    axios
+      .get(`/tutors/selectTutors`, {
+        params: {
+          test_id: test_id
+        }
+      })
+      .then(({ data }) => {
         this.setState({
           tutors: data
         });
       })
-      .catch((err) => {
-        console.error('There was an error getting the tutors for this test: ', err);
+      .catch(err => {
+        console.error(
+          'There was an error getting the tutors for this test: ',
+          err
+        );
       });
   }
 
@@ -55,22 +60,32 @@ class TestProfile extends Component {
     return (
       <div>
         <Jumbotron className="container">
-        <div className="main-info">
-          <span>
-            <h1>{this.state.name}</h1>
-          </span>
-          <br/>
-          <p>{this.state.description}</p>
-        </div>
-        <hr />
-        <div className="main-info">
-          <Row>
-          { this.state.tutors.map((tutor) => <Col sm="3" key={tutor.ID}><Link to={`/tutors/${tutor.ID}`}><TutorCard key={tutor.ID} name={tutor.Name} rating={tutor.Rating}/></Link></Col>) }
-          </Row>
-        </div>
+          <div className="main-info">
+            <span>
+              <h1>{this.state.name}</h1>
+            </span>
+            <br />
+            <p>{this.state.description}</p>
+          </div>
+          <hr />
+          <div className="main-info">
+            <Row>
+              {this.state.tutors.map(tutor => (
+                <Col sm="3" key={tutor.ID}>
+                  <Link to={`/tutors/${tutor.ID}`}>
+                    <TutorCard
+                      key={tutor.ID}
+                      name={tutor.Name}
+                      rating={tutor.Rating}
+                    />
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          </div>
         </Jumbotron>
       </div>
-    )
+    );
   }
 }
 
