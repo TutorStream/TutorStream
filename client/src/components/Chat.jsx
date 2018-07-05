@@ -8,7 +8,7 @@ class Chat extends Component {
     this.state = {
       message : '',
       messages : ['bingo'],
-      sessionId : '781918272828' // hard-coded, delete this and jsut pass in sessionId below
+      sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
     };
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
@@ -21,6 +21,7 @@ class Chat extends Component {
         messages : [msg.message, ...this.state.messages]
       })
     })
+
   }
 
   clearInput () {
@@ -30,7 +31,6 @@ class Chat extends Component {
   }
 
   messageHandler (e) {
-    console.log('e.target.value', e.target.value);
     this.setState({
       [e.target.name] : e.target.value
     });
@@ -43,17 +43,43 @@ class Chat extends Component {
         messages : [this.state.message, ...this.state.messages]
       }, () => {
         socket.emit('new-message', {
-          message : this.state.message
+          message : this.state.message,
+          room : this.state.sessionId
         });
         this.clearInput();
       });
-    }
+    } 
   }
 
+  // componentWillMount () {
+  //   socket.on('join-room', () => {
+  //     console.log('mounted!');
+  //     socket.emit('room', {
+  //       room : this.state.sessionId
+  //     })
+  //   })
+  // }
+
   componentDidMount() {
-    socket.on('connect', () => {
-      console.log('making it into the chat');
-      socket.emit('create', {room : this.state.sessionId})
+    console.log('chat mounting?')
+    // socket.on('join-room', () => {
+    //   console.log('mounted!');
+    //   socket.emit('room', {
+    //     room : this.state.sessionId
+    //   })
+    // })
+    // socket.on('connect', () => {
+    //   console.log('mounted!');
+      socket.emit('room', {room : this.state.sessionId});
+      // socket.emit('room', {
+      //   room : this.state.sessionId
+      // })
+    // })
+  }
+
+  componentWillUnmount () {
+    socket.on('leaving-room', {
+      room : this.state.sessionId
     })
   }
 

@@ -84,17 +84,24 @@ app.use('/sessions', sessionsRouter);
 io.on('connection', (socket) => {
   console.log('user connected');
   var room;
-  socket.on('create', (data) => {
-    console.log('data ', data);
-    room = data.room;
-    socket.join(room)
+  socket.on('room', (data) => {
+      console.log('data :', data);
+      room = data.room;
+      socket.join(data.room)
   })
   socket.on('new-message', (msg) => {
     console.log('new message: ' + msg.message);
-    socket.to(room).broadcast.emit('sending-back', msg); // emit messages to all OTHER users
+    console.log('room ', msg.room);
+    socket.broadcast.to(msg.room).emit('sending-back', msg); // emit messages to all OTHER users
   })
+  // socket.on('leaving-room', (data) => {
+  //   console.log('what room is being left ', data.room);
+  //   socket.leave(data.room, () => {
+  //     console.log('successfully left room');
+  //   })
+  // })
   socket.on('disconnect', () => {
-    console.log('user peaced out');
+    console.log('user disconnected');
     socket.leave(room, () => {
       console.log('successfully left room');
     })
