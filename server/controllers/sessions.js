@@ -12,9 +12,8 @@ exports.bookSession = (req, res) => {
 };
 
 exports.deleteSession = (req, res) => {
-  // use session model to delete session
-  // send back 201 to client
-  sessionModel.deleteSession(req.body, (err, result) => {
+  console.log('req.params', req.params);
+  sessionModel.deleteSession(req.params, (err, result) => {
     if (err)  {
       console.log(err)
     } else {
@@ -24,9 +23,9 @@ exports.deleteSession = (req, res) => {
 };
 
 exports.updateSession = (req, res) => {
-  var sessionId = req.body
-  // use session model to update a session
-  // send back 201 to  client
+//   var sessionId = req.body
+//   // use session model to update a session
+//   // send back 201 to  client
 };
 
 exports.getSession = (req, res) => {

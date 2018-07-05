@@ -12,6 +12,7 @@ class TestList extends Component {
     this.handleTestSelect = this.handleTestSelect.bind(this);
   }
 
+
   componentDidMount() {
     axios.get('/tests')
       .then((response) => {
@@ -27,8 +28,9 @@ class TestList extends Component {
   handleTestSelect(test) {
     this.setState({
       dropDownTitle : test.Name
+    }, () => {
+      this.props.setTestID(test.ID);
     })
-    this.props.setTestID(test.ID);
   }
 
   render() {
