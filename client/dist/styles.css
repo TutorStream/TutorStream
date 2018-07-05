@@ -397,6 +397,26 @@ div.tutors{
   color: #0081BF;
 }
 
+
+/* LIVE CHAT */
+
+.header {
+  text-align: center;
+}
+
+.chat-container {
+  background-color: lightsalmon;
+}
+
+.all-messages {
+  background-color: lightsalmon;
+  border : black solid;
+}
+
 .msg {
   color : black;
+}
+
+.add-new-message {
+  text-align: center;
 }

@@ -12,10 +12,8 @@ class Chat extends Component {
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
 
-    // SOCKET.IO : Client-Side Listeners
-    // may need to put all socket.on() functionality in this space before return
+    // SOCKET.IO : Client-Side Listeners --> put all here in constructor
     socket.on('sending-back', (msg) => {
-      // document.getElementsByClassName('all-messages').append(<div>msg</div>);
       console.log('what does this msg look like on client side :', msg);
       this.setState({
         messages : [msg.message, ...this.state.messages]
@@ -45,17 +43,16 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    // will eventually need to get all messages form th DB
+    // will eventually need to get all messages from the DB
     socket.on('connect', () => {
       console.log('making it into the chat');
     })
   }
 
   render() {
-    console.log(this.state.messages);
     return (
-      <div className="chat">
-        <h1>Chat Channel</h1>
+      <div className="chat-container">
+        <h1 className="header">Chat Channel</h1>
         <div className="all-messages">
             {this.state.messages.map((msg, i) => {
               return (
@@ -65,8 +62,7 @@ class Chat extends Component {
               )
             })}
         </div>
-        {/* <ul className="messages"></ul> */}
-        <form onSubmit={(e) => {this.postMessage(e)}}>
+        <form className="add-new-message" onSubmit={(e) => {this.postMessage(e)}}>
           <label>New Message:</label>
           <input type="text" name="message" className="msg" value={this.state.message} onChange={this.messageHandler}/>
           <button type="submit" value="Submit">Send</button>

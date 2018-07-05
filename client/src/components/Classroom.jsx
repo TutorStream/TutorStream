@@ -78,54 +78,10 @@ class Classroom extends Component {
       
     render() {
 
-        // const { apiKey, sessionId, token } = this.props.credentials;
-        const { connection, publishVideo, isOnline } = this.state;
-
-        if (API_KEY && TOKEN && SESSION_ID && isOnline) {
-            return (
-                <div>
-                 
-
-                  <OTSession
-                    apiKey={this.state.apiKey}
-                    sessionId={this.state.sessionId}
-                    token={this.state.token}
-                    onError={this.onSessionError}
-                    eventHandlers={this.sessionEventHandlers}
-                  >
-                    <button id="videoButton" onClick={this.toggleVideo}>
-                      {publishVideo ? 'Disable' : 'Enable'} Video
-                    </button>
-                    <p>Publisher Here!</p>
-                    <OTPublisher
-                      properties={{ publishVideo, width: 250, height: 250, }}
-                      onPublish={this.onPublish}
-                      onError={this.onPublishError}
-                      eventHandlers={this.publisherEventHandlers}
-                    />
-                    <p>Subscriber Here!</p>
-                    <OTStreams>
-                      <OTSubscriber
-                        properties={{ width: 200, height: 200 }}
-                        onSubscribe={this.onSubscribe}
-                        onError={this.onSubscribeError}
-                        eventHandlers={this.subscriberEventHandlers}
-                      />
-                    </OTStreams>
-                  </OTSession>
-                </div>
-              );
-          } else {
-            
-            return (
-                <div>
-                <h1>Classroom</h1>
-               
-                <button onClick={this.startConnection}>Connect</button>
-                
-                </div>
+      return(
+        <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=8544449c-6e81-4eed-a738-3ae823ba780e&room=123&iframe=true" width="800px" height="640px" allow="microphone; camera" ></iframe>
             )
-    }}
+   }
 }
 
 export default Classroom;
