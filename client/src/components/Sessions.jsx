@@ -83,7 +83,7 @@ class Sessions extends Component {
                       </br>
                       <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
                       <br></br>
-                      <button className="delete-btn" onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
+                      <button className="delete-btn" size="sm" onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
                     </div>
                   </Col>
                 ))}
