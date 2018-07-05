@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import AuthService from '../Auth/AuthService'
+import { Redirect } from 'react-router-dom'
+import Signup from './SignUp.jsx'
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Email: '',
-      Password: ''
+      Password: '',
+      redirectToPreviousRoute: false
     }
     this.inputHandler = this.inputHandler.bind(this);
-    this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
 
   inputHandler (e) {
@@ -18,7 +22,7 @@ class Login extends React.Component {
     })
   }
 
-  handeLoginSubmit (e) {
+  handleLoginSubmit (e) {
     e.preventDefault();
     axios.post('/users/login', {
       Email : this.state.Email,
@@ -28,10 +32,11 @@ class Login extends React.Component {
       var ID = data.ID
       this.props.getID(ID);
       if(!!data.ID) {
-        this.props.history.push('/student');
+        AuthService.authenticate()
+        this.setState({
+          redirectToPreviousRoute: true
+        })
       }
-      // no need to set state, simply re-direct to approved login page 
-      // OR if not authetnicated, send back "error, not authenticated user"
     })
     .catch((err) => {
       console.error(err);
@@ -39,9 +44,15 @@ class Login extends React.Component {
   }
 
   render () {
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToPreviousRoute } = this.state 
+
+    if (redirectToPreviousRoute) {
+      return <Redirect to={from}{...this.props}/>
+    }
     return (
       <div>
-        <form className='login' onSubmit={(e) => {this.handeLoginSubmit(e)}}>
+        <form className='login' onSubmit={(e) => {this.handleLoginSubmit(e)}}>
           <label>Email</label>
           <input value={this.state.Email} name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>
@@ -50,6 +61,9 @@ class Login extends React.Component {
           <br></br>
           <button type="submit" value="Submit">Login</button>
         </form>
+
+        <Signup {...this.props}/>
+  
       </div>
     )
   }
