@@ -13,7 +13,7 @@ class Login extends Component {
       redirectToPreviousRoute: false
     }
     this.inputHandler = this.inputHandler.bind(this);
-    this.handeLoginSubmit = this.handeLoginSubmit.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
 
   inputHandler (e) {
@@ -22,14 +22,13 @@ class Login extends Component {
     })
   }
 
-  handeLoginSubmit (e) {
+  handleLoginSubmit (e) {
     e.preventDefault();
     axios.post('/users/login', {
       Email : this.state.Email,
       Password: this.state.Password
     })
     .then(({data}) => {
-      console.log(data, this.props, 'asdf')
       var ID = data.ID
       this.props.getID(ID);
       if(!!data.ID) {
@@ -53,7 +52,7 @@ class Login extends Component {
     }
     return (
       <div>
-        <form className='login' onSubmit={(e) => {this.handeLoginSubmit(e)}}>
+        <form className='login' onSubmit={(e) => {this.handleLoginSubmit(e)}}>
           <label>Email</label>
           <input value={this.state.Email} name="Email" onChange={(e) => {this.inputHandler(e)}}></input>
           <br></br>

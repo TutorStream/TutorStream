@@ -1,14 +1,15 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import AuthService from './AuthService'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import AuthService from './AuthService';
+import { NavItem } from 'react-bootstrap';
 
 const AuthStatus = withRouter(({ history }) => (
     AuthService.isAuthenticated ? (
-      <button onClick={() => {
+      <NavItem onClick={() => {
           AuthService.logout(() => history.push('/'))
-        }}>Sign out</button>
+        }}>Sign out</NavItem>
     ) : (
-      <button onClick={() => history.push('/login')}>Log In Page</button>
+      <NavItem onClick={() => history.push('/login')}>Log In Page</NavItem>
     )
 ))
 
