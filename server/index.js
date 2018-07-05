@@ -83,11 +83,10 @@ app.use('/sessions', sessionsRouter);
 
 io.on('connection', (socket) => {
   console.log('user connected');
-  // socket.join('some room');
   socket.on('new-message', (msg) => {
     console.log('new message: ' + msg.message);
     // socket.broadcast.emit(msg.message); // emit messages to all OTHER users
-    socket.emit('sending message back', msg.message);
+    socket.broadcast.emit('sending-back', msg);
   })
   socket.on('disconnect', () => {
     console.log('user peaced out')
