@@ -55,15 +55,18 @@ class Sessions extends Component {
             <ul className="all-sessions">
             {this.state.sessions.map((session, i) => {
               return (
-                <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
-                  {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
-                  <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
-                  <br>
-                  </br>
-                  <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
-                  <br>
-                  </br>
-                  <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
+                <div>
+                  <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
+                    {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
+                    <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
+                    <br>
+                    </br>
+                    <span><strong><u>Date</u>:</strong> {session.date.slice(0,10)}</span>
+                    <br>
+                    </br>
+                    <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
+                  </div>
+                  <button onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
                 </div>
               )
             }).reverse()}

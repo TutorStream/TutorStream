@@ -59,6 +59,9 @@ INSERT INTO tests ( Name, Description) VALUES ('DAT', "The DAT is a dental educa
 -- -- Sessions 
 -- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
 -- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
+INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (12, 2, 2, 18, '2019-07-10', '10:20:05');
+INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (11, 2, 2, 18, '2018-11-03', '02:20:05');
+INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (10, 2, 2, 18, '2018-09-03', '04:00:05');
 
 --Tutors
 INSERT INTO tutors (ID, Name, Bio, Price) VALUES (1,'John Cynn',"I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40);
