@@ -54,7 +54,7 @@ class Sessions extends Component {
             <ul className="all-sessions">
             {this.state.sessions.map((session, i) => {
               return (
-                  <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
+                  <div className="indv-session" key={i}>
                     {moment(session.date).isBefore() ? this.updateSessionDisplay() : null}
                     <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                     <br>
