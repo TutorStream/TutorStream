@@ -396,3 +396,8 @@ div.tutors{
   text-align: center;
   color: #0081BF;
 }
+
+#myvideo:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+}

@@ -35,7 +35,7 @@ class TutorRegistration extends React.Component {
                 selectedTests : [...this.state.selectedTests, e.target.value]
             }, ()=>console.log(this.state.selectedTests))
         }else {
-            ///continue HERE!!!!
+         
             var idx = array.indexOf(e.target.value)
             console.log('idx', idx)
             array.splice(idx,1)
