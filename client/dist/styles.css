@@ -381,6 +381,13 @@ div.tutors{
   text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
 }
 
+.delete-btn:hover {
+  background-color: salmon;
+}
+
+.past-session {
+  background-color: red;
+}
 
 .session-name {
   font-size: 200%;
@@ -425,3 +432,4 @@ div.tutors{
 .add-new-message {
   text-align: center;
 }
+

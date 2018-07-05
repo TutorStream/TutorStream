@@ -36,7 +36,7 @@ class Sessions extends Component {
   updateSessionDisplay () {
     // could put jquery in here to update schema with red coloring?
     return (
-      <div>
+      <div className="past-session">
         PAST SESSION
       </div>
     )
@@ -47,7 +47,6 @@ class Sessions extends Component {
   }
 
   render() {
-    let currentDate = moment();
 
     return (
         <div>
@@ -55,9 +54,8 @@ class Sessions extends Component {
             <ul className="all-sessions">
             {this.state.sessions.map((session, i) => {
               return (
-                <div>
                   <div className="indv-session" key={i} onClick={() => {this.deleteSession(session.id)}}>
-                    {moment(session.date).isAfter(currentDate) ? this.updateSessionDisplay() : null}
+                    {moment(session.date).isBefore() ? this.updateSessionDisplay() : null}
                     <span className="session-name"><strong><u>Tutor</u>:</strong>  {session.Name}</span>
                     <br>
                     </br>
@@ -65,11 +63,11 @@ class Sessions extends Component {
                     <br>
                     </br>
                     <span><strong><u>Start Time</u>:</strong> {Number(session.time.slice(0,2)) < 12 ? session.time.slice(0,5) + ' a.m.' : String(24 - Number(session.time.slice(0,2))) + session.time.slice(2,5) + ' p.m.' }</span>
+                    <br></br>
+                    <button className="delete-btn" onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
                   </div>
-                  <button onClick={() => {this.deleteSession(session.id)}}>Delete Session</button>
-                </div>
               )
-            }).reverse()}
+            })}
             </ul>
         </div>
     )
