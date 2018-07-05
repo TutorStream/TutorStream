@@ -21,6 +21,7 @@ import Home from './components/Home.jsx';
 import StudentView from './components/StudentView.jsx';
 import TestProfile from './components/TestProfile.jsx';
 import TutorProfile from './components/TutorProfile.jsx';
+import Chat from './components/Chat.jsx';
 
 /* Import Services */
 
@@ -109,6 +110,9 @@ class App extends Component {
             <LinkContainer to={`/sessions/${this.state.id}`}>
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
+            <LinkContainer to={'/chat'}>
+              <NavItem>All Chats</NavItem>
+            </LinkContainer>
             <LinkContainer to="/classroom">
               <NavItem>Classroom</NavItem>
             </LinkContainer>
@@ -165,6 +169,14 @@ class App extends Component {
           path="/sessions/:id"
           render={routerProps => (
             <Sessions {...routerProps} id={this.state.id} />
+          )}
+        />
+        <SecretRoute 
+          path='/chat' 
+          render={(routerProps) => (
+            <Chat {...routerProps}  
+              id={this.state.id} 
+            />
           )}
         />
         <SecretRoute
