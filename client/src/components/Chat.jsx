@@ -8,6 +8,7 @@ class Chat extends Component {
     this.state = {
       message : '',
       messages : ['bingo', 'bango'],
+      sessionId : '781918272828'
     };
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
@@ -20,6 +21,9 @@ class Chat extends Component {
         messages : [msg.message, ...this.state.messages]
       })
     })
+
+    
+
   }
 
   clearInput () {
@@ -50,9 +54,9 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    // will eventually need to get all messages from the DB
     socket.on('connect', () => {
       console.log('making it into the chat');
+      socket.emit('create', {room : this.state.sessionId})
     })
   }
 
