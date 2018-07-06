@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FormGroup, FormControl, ControlLabel, Checkbox, Button } from 'react-bootstrap';
 import AuthService from '../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
-import { validate } from 'isemail'
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class SignUp extends React.Component {
       userTests: [],
       bio: '',
       tutor: 0,
-      photo: null,
+      selectedPhoto: null,
       redirectToPreviousRoute: false
     };
     this.inputHandler = this.inputHandler.bind(this);
@@ -29,6 +28,7 @@ class SignUp extends React.Component {
     });
   }
 
+
   handleTestSelect (e) {
     let newTests = this.state.userTests.slice();
     if (e.target.checked) {
@@ -39,6 +39,19 @@ class SignUp extends React.Component {
     this.setState({
       userTests: newTests
     });
+  }
+
+  selectPhoto(e) {
+    e.preventDefault();
+    this.setState({
+      selectedPhoto: e.target.files[0]
+    });
+  }
+
+  uploadFile() {
+    const formData = new FormData();
+    formData.append('photo', this.state.selectedPhoto);
+    
   }
 
   handleSignup (e) {
@@ -62,9 +75,10 @@ class SignUp extends React.Component {
     });
   }
 
+
   render () {
     const { from } = this.props.location.state || { from: { pathname: "/" } };
-    const { redirectToPreviousRoute } = this.state 
+    const { redirectToPreviousRoute } = this.state;
 
     if (redirectToPreviousRoute) {
       return <Redirect to={from} />
@@ -100,7 +114,7 @@ class SignUp extends React.Component {
           {/* need to connect this file upload input with upload function & service */}
           <FormGroup controlId="formControlsFile">
             <ControlLabel>Upload your profile picture :</ControlLabel>
-            <FormControl type="file" name="photo"/>
+            <FormControl type="file" name="photo" onChange={this.selectPhoto}/>
           </FormGroup>
           <button type="submit">Sign Up</button>
         </form>
