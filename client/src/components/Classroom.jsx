@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VideoChat from './VideoChat.jsx';
+import Chat from './Chat.jsx';
 
 
 class Classroom extends Component {
@@ -15,7 +16,10 @@ class Classroom extends Component {
     render() {
 
        return(
-        <VideoChat room_id = {this.state.session_id}/>
+        <div>
+          <VideoChat room_id = {this.state.session_id}/>
+          <Chat />
+        </div>
             )
     }
 }
