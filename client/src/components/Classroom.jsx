@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import VideoChat from './VideoChat.jsx';
 import WriteReview from './WriteReview.jsx';
 import axios from 'axios';
+import Chat from './Chat.jsx';
 
 
 class Classroom extends Component {
@@ -71,11 +72,14 @@ class Classroom extends Component {
     render() {
       
         let conditionalDisplay = this.state.review ? <WriteReview tutor_id ={this.props.id}/> :        
-         (<VideoChat room_id = {this.state.session_id} handleSubmit = {this.handleSubmit}/>);
+         (<div>
+            <VideoChat room_id = {this.state.session_id}/>
+            <Chat /></div>);
 
        return(
            <div>
         {conditionalDisplay}
+        
         </div>
             )
     }

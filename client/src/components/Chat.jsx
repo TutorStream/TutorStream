@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
-const socket = io('10.16.3.61:3000');
+const socket = io('10.16.3.61:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
+import axios from 'axios';
+
 
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username : '',
       message : '',
       messages : ['bingo'],
       sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
@@ -51,30 +54,20 @@ class Chat extends Component {
     } 
   }
 
-  // componentWillMount () {
-  //   socket.on('join-room', () => {
-  //     console.log('mounted!');
-  //     socket.emit('room', {
-  //       room : this.state.sessionId
-  //     })
-  //   })
-  // }
-
   componentDidMount() {
-    console.log('chat mounting?')
-    // socket.on('join-room', () => {
-    //   console.log('mounted!');
-    //   socket.emit('room', {
-    //     room : this.state.sessionId
-    //   })
-    // })
-    // socket.on('connect', () => {
-    //   console.log('mounted!');
-      socket.emit('room', {room : this.state.sessionId});
-      // socket.emit('room', {
-      //   room : this.state.sessionId
-      // })
-    // })
+    axios.get(`users/username/${this.props.id}`)
+      .then(({data}) => {
+        this.setState({
+          username : data[0].Name
+        }, () => {
+          console.log('username ', this.state.username);
+        })
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    console.log('chat mounting?');
+    socket.emit('room', {room : this.state.sessionId});
   }
 
   componentWillUnmount () {
@@ -91,7 +84,7 @@ class Chat extends Component {
             {this.state.messages.map((msg, i) => {
               return (
                 <div key={i} className="msg">
-                  <strong>you:</strong> {msg} {/*can inlucde this.props.username at some point down the line*/}
+                  <strong> {this.state.username}: </strong> {msg} {/*can inlucde this.props.username at some point down the line*/}
                 </div>
               )
             })}

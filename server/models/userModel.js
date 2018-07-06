@@ -19,7 +19,7 @@ exports.addNewUserTests = (userId, testId, callback) => {
 };
 
 exports.loginUser = (userCreds, callback) => {
-  console.log('usercreds ', userCreds);
+  // console.log('usercreds ', userCreds);
   let queryStr = 'SELECT * FROM users WHERE Email = ? AND Password = ?';
   let params = [userCreds.Email, userCreds.Password];
   db.query(queryStr, params, callback);
@@ -27,6 +27,11 @@ exports.loginUser = (userCreds, callback) => {
 
 exports.getUserInfoDB = (userId, callback) => {
   let queryStr = `SELECT * FROM users where ID = ${userId}`;
+  db.query(queryStr, callback);
+};
+
+exports.getUsernameById = (userId, callback) => {
+  let queryStr = `SELECT Name FROM users where ID = ${userId}`;
   db.query(queryStr, callback);
 };
 
