@@ -1,10 +1,12 @@
 const feedbackRouter = require('express').Router();
-const feedbackControllers = require('./../controllers/feedback');
+const feedbackController = require('./../controllers/feedback');
 
 // router.post('/feedback', feedbackControllers.addFeedback);
-feedbackRouter.post('/', feedbackControllers.addFeedback);
+feedbackRouter.post('/:id', feedbackController.addFeedback);
 
 // router.put('/feedback/updateFeedback', feedbackControllers.updateFeedback);
-feedbackRouter.put('/updateFeedback', feedbackControllers.updateFeedback);
+feedbackRouter.put('/:id', feedbackController.updateFeedback);
+
+feedbackRouter.get('/:id', feedbackController.getFeedback);
 
 module.exports = feedbackRouter;

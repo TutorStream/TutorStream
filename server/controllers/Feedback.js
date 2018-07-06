@@ -23,3 +23,14 @@ exports.updateFeedback = (req, res) => {
     }
   });
 };
+
+exports.getFeedback = (req, res) => {
+  // console.log(req.params.id);
+  Feedback.getFeedback(req.params, (err, feedback) => {
+    if (err) {
+      res.status(400).send(`Error getting feedback for ${req.params.id}`);
+    } else {
+      res.status(202).send(feedback);
+    }
+  });
+};

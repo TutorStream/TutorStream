@@ -33,27 +33,29 @@ class TutorRegistration extends React.Component {
     this.handleCheck = this.handleCheck.bind(this);
   }
 
-  handleCheck(e) {
-    console.log('lets check props : ', this.props);
-    var array = this.state.selectedTests.slice();
-    if (array.indexOf(e.target.value) === -1) {
-      this.setState(
-        {
-          selectedTests: [...this.state.selectedTests, e.target.value]
-        },
-        () => console.log(this.state.selectedTests)
-      );
-    } else {
-      ///continue HERE!!!!
-      var idx = array.indexOf(e.target.value);
-      console.log('idx', idx);
-      array.splice(idx, 1);
-      this.setState(
-        {
-          selectedTests: array
-        },
-        () => console.log(this.state.selectedTests)
-      );
+
+      handleCheck(e) {
+        console.log("lets check props : " , this.props);
+        var array = this.state.selectedTests.slice()
+        if(array.indexOf(e.target.value) === -1){
+            this.setState({
+                selectedTests : [...this.state.selectedTests, e.target.value]
+            }, ()=>console.log(this.state.selectedTests))
+        }else {
+        
+            var idx = array.indexOf(e.target.value)
+            console.log('idx', idx)
+            array.splice(idx,1)
+            this.setState({
+                selectedTests : array
+            }, ()=>console.log(this.state.selectedTests))
+        }
+      }
+    
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value},()=>{
+            console.log('We just updated : ', this.state.bio,' and ', this.state.rate)
+        });
     }
   }
 

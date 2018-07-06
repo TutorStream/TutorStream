@@ -15,3 +15,8 @@ exports.updateFeedback = ({ rating, content }, callback) => {
   let params = [rating, content];
   db.query(queryStr, params, callback);
 };
+
+exports.getFeedback = ({ id }, callback) => {
+  let queryStr = `SELECT * FROM feedback WHERE tutor_id = ${id}`;
+  db.query(queryStr, callback);
+};

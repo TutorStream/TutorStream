@@ -1,6 +1,7 @@
 const User = require('./../models/userModel');
 const Tutor = require('./../models/tutorModel');
 const Test = require('./../models/testModel');
+
 exports.getTutors = (req, res) => {
   Tutor.getTopTutors((err, topTutors) => {
     if (err) {

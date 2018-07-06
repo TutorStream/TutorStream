@@ -20,3 +20,11 @@ exports.getSession = (id, callback) => {
   let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id WHERE student_id = ${id} ORDER BY date DESC`;
   db.query(queryStr, callback);
 };
+
+
+exports.getTutorSession = (id, callback) => {
+    // still need to decide whether to sort 
+    // need name field tutors table
+    let queryStr = `SELECT * FROM sessions JOIN tutors ON sessions.tutor_id = tutors.id WHERE student_id = ${id} ORDER BY date DESC`;
+    db.query(queryStr, callback);
+};

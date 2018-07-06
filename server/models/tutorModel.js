@@ -154,8 +154,11 @@ exports.addFeedback = (params, callback) => {
     callback
   );
 };
+<<<<<<< HEAD
 
 exports.getFeedback = (tutor_id, callback) => {
   let queryStr = `SELECT * FROM feedback WHERE tutor_id = ${tutor_id}`;
   db.query(queryStr, callback);
 };
+=======
+>>>>>>> dev
