@@ -21,6 +21,7 @@ import Home from './components/Home.jsx';
 import StudentView from './components/StudentView.jsx';
 import TestProfile from './components/TestProfile.jsx';
 import TutorProfile from './components/TutorProfile.jsx';
+// import Chat from './components/Chat.jsx';
 import Review from './components/Review.jsx';
 
 /* Import Services */
@@ -110,6 +111,9 @@ class App extends Component {
             <LinkContainer to={`/sessions/${this.state.id}`}>
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
+            {/* <LinkContainer to={'/chat'}>
+              <NavItem>All Chats</NavItem>
+            </LinkContainer> */}
             <LinkContainer to="/classroom">
               <NavItem>Classroom</NavItem>
             </LinkContainer>
@@ -122,7 +126,9 @@ class App extends Component {
             <AuthStatus />
           </Nav>
         </Navbar>
-
+  {/*TESTING FOR LIVE CHAT*/}
+   {/* < Chat /> */}
+  {/*TESTING FOR LIVE CHAT*/}
         <Route
           exact
           path="/"
@@ -172,6 +178,14 @@ class App extends Component {
             <Sessions {...routerProps} id={this.state.id} />
           )}
         />
+        {/* <SecretRoute 
+          path='/chat' 
+          render={(routerProps) => (
+            <Chat {...routerProps} 
+            id={this.state.id} 
+            />
+          )}
+        /> */}
         <SecretRoute
           path="/classroom"
           render={routerProps => (
