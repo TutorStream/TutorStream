@@ -73,7 +73,7 @@ class Classroom extends Component {
       
         let conditionalDisplay = this.state.review ? <WriteReview tutor_id ={this.props.id}/> :        
          (<div>
-            <VideoChat room_id = {this.state.session_id}/>
+            <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
             <Chat /></div>);
 
        return(
