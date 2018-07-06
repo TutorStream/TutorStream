@@ -34,10 +34,7 @@
   "dependencies": {
     "@opentok/client": "^2.14.3",
     "array.prototype.findindex": "^2.0.2",
-<<<<<<< HEAD
     "aws-sdk": "^2.269.1",
-=======
->>>>>>> dev
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
