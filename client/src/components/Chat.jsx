@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
 import axios from 'axios';
-const socket = io.connect('http://localhost:3000');
+const socket = io.connect('http://localhost:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
 
 class Chat extends Component {
   constructor(props) {
