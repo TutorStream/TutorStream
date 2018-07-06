@@ -12,4 +12,6 @@ usersRouter.post('/:id', usersControllers.updateUser);
 // usersRouter.get('/users/info/:id', usersControllers.getUserInfo);
 usersRouter.get('/info/:id', usersControllers.getUserInfo);
 
+usersRouter.get('/username/:id', usersControllers.getUsernameById);
+
 module.exports = usersRouter;

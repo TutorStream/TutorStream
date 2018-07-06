@@ -41,6 +41,17 @@ exports.getUserInfo = (req, res) => {
   })
 }
 
+exports.getUsernameById = (req, res) => {
+  console.log(req.params.id)
+  User.getUsernameById(req.params.id, (err, username) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).send(username)
+    }
+  })
+}
+
 exports.getTutors = (req, res) => {
   Tutor.getTopTutors((err, topTutors) => {
     if(err) {
