@@ -1,4 +1,4 @@
-const db = require('./../../database');
+npm const db = require('./../../database');
 
 exports.getTests = (callback) => {
   let queryStr = 'SELECT * FROM tests ORDER BY Name';
