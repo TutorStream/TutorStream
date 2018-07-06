@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
-const socket = io();
+const socket = io('10.16.3.61:3000');
 
 class Chat extends Component {
   constructor(props) {

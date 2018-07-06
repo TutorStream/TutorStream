@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
-// import StarRating from 'react-star-rating';
-import ReactStars from 'react-stars'
+import { Redirect } from 'react-router-dom';
+
+import StarRatingComponent from 'react-star-rating-component';
 
 import {
   Card,
@@ -19,12 +20,12 @@ class WriteReview extends Component {
     this.state = {
       feedback: '',
       tutor_id: this.props.tutor_id,
-      rating: null
+      rating: 1,
+      submitted: false,
     };
-    this.ratingChanged = this.ratingChanged.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.change = this.change.bind(this)
+    this.onStarClick = this.onStarClick.bind(this)
   }
 
     handleChange(event) {
@@ -36,56 +37,60 @@ class WriteReview extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log('State now is : ', this.state)
-        // var testsArray = [];
-        // this.state.selectedTests.forEach((test_id)=>{
-        //         testsArray.push({tutor_id : this.props.id,
-        //             test_id : test_id})
-        // })
+        //need to refactor below to match desired purposes
         // var form = {
-        //         tests: testsArray,
-        //         bio: this.state.bio,
-        //         rate: Number(this.state.rate),
-        //         id: this.props.id
-        //     }
-        //     console.log('form', form)
-        //     axios.post(`/tutors/${this.props.id}`,form)
-        //         .then(()=>console.log('Updated and registered as tutor!'))
-        //         .catch((err)=>console.error(err)) 
+        //     tests: testsArray,
+        //     tutorBio: this.state.tutorBio,
+        //     rate: Number(this.state.price),
+        //     id: this.state.id,
+        //     userBio: this.state.bio,
+        //     name:this.state.name,
+        //     isTutor: this.state.isTutor
+        // }
+        // console.log('form', form)
+        // axios.post(`/feedback/${this.state.tutor_id}`,form)
+        //      .then(()=>{
+        //          console.log('Updated tutor!');
+        //          this.setState({
+        //              submitted : true
+        //          })
+        //      })
+        //      .catch((err)=>console.error(err))
+       
+
+             this.setState({
+                submitted : true
+            })
     }
 
-    change(rating){
-        this.setState({
-            rating: 5
-        })
+    onStarClick(nextValue) {
+    this.setState({rating: nextValue});
     }
-
-    ratingChanged(newRating){
-        console.log(newRating)
-        this.change(newRating)
-      }
-
-
 
 
   render() {
+    const { rating } = this.state;
+
+    if (this.state.submitted) {
+        return <Redirect to="/" />
+      }
     return (
      <div>
          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>Feedback</ControlLabel>
+            <ControlLabel><h2>Feedback</h2></ControlLabel>
             <FormControl  maxLength= '255' componentClass="textarea" placeholder="Leave feedback (Max: 255 characters)" name='feedback' value={this.state.feedback} onChange={this.handleChange} />
         </FormGroup>
         <br/>
-       
-        
-        <ReactStars
-  count={5}
-  onChange={this.ratingChanged}
-  size={24}
-  value = {4}
-  color2={'#ffd700'} />
-        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
-        
-            
+        <h2>Rate your tutor: {rating}</h2>
+        <StarRatingComponent 
+          name="rate1" 
+          starCount={5}
+          value={rating}
+          onStarClick={this.onStarClick}
+        />
+        <br/>
+        <br/>
+        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button> 
      </div>
     );
   }
