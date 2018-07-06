@@ -181,7 +181,8 @@ class App extends Component {
         <SecretRoute 
           path='/chat' 
           render={(routerProps) => (
-            <Chat {...routerProps}  
+            <Chat {...routerProps} 
+            id={this.state.id} 
             />
           )}
         />
