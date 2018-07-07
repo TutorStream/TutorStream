@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
-const socket = io('10.16.3.61:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
+const socket = io('144.121.106.166:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
 import axios from 'axios';
 
 
@@ -55,6 +55,7 @@ class Chat extends Component {
   }
 
   componentDidMount() {
+    console.log('chat user id', this.props)
     axios.get(`users/username/${this.props.id}`)
       .then(({data}) => {
         this.setState({

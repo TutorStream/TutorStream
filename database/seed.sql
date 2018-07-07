@@ -158,12 +158,6 @@ VALUES
 -- INSERT INTO user_tests (id, test_id) VALUES (3, 4);
 -- INSERT INTO user_tests (id, test_id) VALUES (6, 4);
 
--- -- Sessions 
--- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
--- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
-INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (12, 2, 2, 18, '2019-07-10', '10:20:05');
-INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (11, 2, 2, 18, '2018-11-03', '02:20:05');
-INSERT INTO sessions (id, test_id, tutor_id, student_id, date, time) VALUES (10, 2, 2, 18, '2018-09-03', '04:00:05');
 
 --Tutors
 INSERT INTO tutors
@@ -280,3 +274,10 @@ VALUES
     (12, 8, 5, 'Rose took the time to get into the details about my test prep');
 
 --
+
+-- -- Sessions 
+-- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
+-- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
+INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
