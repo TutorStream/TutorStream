@@ -278,6 +278,6 @@ VALUES
 -- -- Sessions 
 -- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
 -- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2019-07-10', '10:20:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
 INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);

@@ -13,7 +13,7 @@ class UpcomingSession extends Component {
         this.state = {
             room_id: 100 + this.props.room_id,
             active: false,
-            upcomingSession: this.props.upcomingSessions[0],
+            upcomingSession: this.props.upcomingSession,
             upcomingCaller: '',
             countdown: this.props.countdown
         };
@@ -22,7 +22,6 @@ class UpcomingSession extends Component {
       
 
     componentDidMount(){
-        console.log('my date is.. my date is.. weet weet :',`${this.props.upcomingSessions[0].date.slice(0,10)}T${this.props.upcomingSessions[0].time}.000`)
         if(this.props.isTutor){
             this.getUserInfo(this.state.upcomingSession.student_id)
         }else{
@@ -47,13 +46,27 @@ class UpcomingSession extends Component {
     render() {
         //room currently hardcoded.. will change it to session id as a chat room number
         var callerType = this.props.isTutor? 'Student' : 'Tutor';
+        var timer = ((Number(this.state.countdown.slice(0,2)) <=2) && ((this.state.countdown.slice(-7)=== 'minutes')||(this.state.countdown.slice(-6)=== 'minute')||(this.state.countdown.slice(-7)=== 'seconds')))? 'Now' : this.state.countdown;
+        console.log('time right now!!!! :', this.state.upcomingSession)
        return(
         <div>
         
         <FormGroup controlId="formControlsTextarea">
             <ControlLabel><h2>Upcoming Session</h2></ControlLabel>
             <br/>
-            <ControlLabel><h3>starts in : {this.state.countdown}</h3></ControlLabel>
+            
+            <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
+            <br />
+            <ControlLabel>
+            <p>Details:
+                <br/>
+                <h4>Date:</h4 >{this.state.upcomingSession.date.slice(0,10)}
+                <br/>
+                time:  {this.state.upcomingSession.time}
+                <br/>
+                with:  {this.state.upcomingCaller}
+                <br/>
+            </p></ControlLabel>
             <br/>
             <br/>
             <ControlLabel><h3>{callerType}: {`${this.state.upcomingCaller}`}</h3></ControlLabel>
