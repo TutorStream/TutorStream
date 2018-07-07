@@ -85,3 +85,9 @@ CREATE TABLE feedback (
 (id)
 );
 
+CREATE TABLE photos (
+  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  user_id int,
+  location varchar(255),
+  FOREIGN KEY (user_id) references users(id)
+)

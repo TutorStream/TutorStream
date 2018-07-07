@@ -14,12 +14,14 @@ class SignUp extends React.Component {
       userTests: [],
       bio: '',
       tutor: 0,
-      selectedPhoto: null,
+      selectedFile: 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png',
       redirectToPreviousRoute: false
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
+    this.handleFileSelect = this.handleFileSelect.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
 
   inputHandler (e){
@@ -41,17 +43,31 @@ class SignUp extends React.Component {
     });
   }
 
-  selectPhoto(e) {
-    e.preventDefault();
+  handleFileSelect(e) {
     this.setState({
-      selectedPhoto: e.target.files[0]
+      selectedFile: e.target.files
     });
   }
 
-  uploadFile() {
+  handleFileUpload(user_id) {
     const formData = new FormData();
-    formData.append('photo', this.state.selectedPhoto);
-    
+    formData.append('file', this.state.selectedFile[0]);
+    //need to update post link to be the EC2 environment variable
+    axios.post('127.0.0.1:5000/photo-upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(({ data }) => {
+      console.log('can we still access user_id in handleFileUpload? ', user_id);
+      let userPhoto = {
+        user_id,
+        location: data.location
+      };
+      //posting to database photos table
+      return axios.post('/users/photo', userPhoto);
+    })
+    .catch((error) => console.error('There was an error with the POST request to the server: ', error));
   }
 
   handleSignup (e) {
@@ -65,6 +81,9 @@ class SignUp extends React.Component {
       bio: this.state.bio
     })
     .then(({data}) => {
+      this.handleFileUpload(data);
+    })
+    .then(() => {
       AuthService.authenticate();
       this.setState({
         redirectToPreviousRoute: true
@@ -114,7 +133,7 @@ class SignUp extends React.Component {
           {/* need to connect this file upload input with upload function & service */}
           <FormGroup controlId="formControlsFile">
             <ControlLabel>Upload your profile picture :</ControlLabel>
-            <FormControl type="file" name="photo" onChange={this.selectPhoto}/>
+            <FormControl type="file" name="photo" onChange={this.handleFileSelect}/>
           </FormGroup>
           <button type="submit">Sign Up</button>
         </form>
