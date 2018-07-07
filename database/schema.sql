@@ -58,6 +58,7 @@ CREATE TABLE sessions (
   date DATE NOT NULL,
   time TIME NOT NULL,
   complete TINYINT(1) DEFAULT 0,
+  missed TINYINT(1) DEFAULT 1,
   FOREIGN KEY
 (test_id) references tests
 (id),
