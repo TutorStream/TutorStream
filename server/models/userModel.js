@@ -41,3 +41,18 @@ exports.updateUser = (form, callback) => {
   let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE ID = ${form.id}`;
   db.query(updateStr, [form.userBio, form.name], callback);
 };
+
+exports.addPhoto = (userPhoto, callback) => {
+  let queryStr = `INSERT INTO photos (user_id, location) VALUES (${userPhoto.user_id}, ${userPhoto.location})`;
+  db.query(queryStr, callback);
+};
+
+exports.updatePhoto = (userPhoto, callback) => {
+  let updateStr = `UPDATE photos SET location = ${userPhoto.location} WHERE user_id = ${userPhoto.user_id}`;
+  db.query(updateStr, callback);
+};
+
+exports.getPhoto = (userId, callback) => {
+  let queryStr = `SELECT location FROM photos WHERE ID = ${userId}`;
+  db.query(queryStr, callback);
+};
