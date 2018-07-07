@@ -31,18 +31,19 @@ exports.loginUserCheck = (req, res) => {
 }; 
 
 exports.getUserInfo = (req, res) => {
-  console.log(req.params.id)
+  console.log('Did I get here?',req.params.id)
   User.getUserInfoDB(req.params.id, (err, user) => {
     if (err) {
       console.log(err)
     } else {
+      console.log('user : ',user)
       res.status(200).send(user)
     }
   })
 }
 
 exports.getUsernameById = (req, res) => {
-  console.log(req.params.id)
+  console.log('this too: ',req.params.id)
   User.getUsernameById(req.params.id, (err, username) => {
     if (err) {
       console.log(err)

@@ -17,27 +17,35 @@ class Sessions extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sessions: []
+      sessions: [],
+      isTutor: false
     }
     this.getUpcomingSessions = this.getUpcomingSessions.bind(this)
     this.deleteSession = this.deleteSession.bind(this)
     this.updateSessionDisplay = this.updateSessionDisplay.bind(this);
   }
 
-  getUpcomingSessions() {
-   const id = this.props.id
-    axios.get(`/sessions/${id}`)
+  getUpcomingSessions(id) {
+  
+    axios.get(`/sessions/${id}`, {
+      params: {
+          isTutor: this.state.isTutor
+      }
+      })
     .then(({data}) => {
       this.setState({
           sessions: data
-      });
+      },()=>console.log('state after grabbing data again :',this.state));
     })
   }
 
   deleteSession(id){
     axios.delete(`/sessions/${id}`)
     .then(() => {
-        this.getUpcomingSessions()
+        this.getUpcomingSessions(id)
+    })
+    .then(()=>{
+      console.log('State in sessions now is :', this.state)
     })
     .catch((err) => {
       console.error(err);
@@ -54,7 +62,27 @@ class Sessions extends Component {
   }
 
   componentDidMount(){
-    this.getUpcomingSessions()
+    var id = this.props.id
+    var info;
+    axios.get(`/users/info/${id}`)
+            .then(({data}) => {
+                info = data[0]
+                console.log('data recieved in settings: ', info)
+                this.setState({
+                    name: info.Name,
+                })
+            })
+            .then(()=>{
+                console.log('state now is => ', this.state)
+                console.log('info???', info)
+                if(info.Tutor === 1){
+                    this.setState({
+                        isTutor: true
+                    },()=> this.getUpcomingSessions(id))      
+                }
+            })
+
+    
   }
 
   render() {
