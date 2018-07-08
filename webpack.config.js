@@ -4,13 +4,13 @@ const SRC_DIR = path.join(__dirname, '/client/src')
 const DIST_DIR = path.join(__dirname, '/client/dist');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CompressionPlugin = require("compression-webpack-plugin")
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
 // const webpackConfig = {
     entry: `${SRC_DIR}/index.jsx`,
     output: {
-      filename: 'bundle.js',
+      filename: 'bundle.js', 
       path: DIST_DIR,
       publicPath: '/'
     },
@@ -47,7 +47,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,  
-                include: /node_modules/,  
+                include: /node_modules/,
                 loaders: ['style-loader', 'css-loader'],
         }
         ]
