@@ -10,19 +10,19 @@ import { LinkContainer } from 'react-router-bootstrap';
 /* Import Components */
 
 // import Login from './components/Login.jsx';
-import Classroom from './components/Classroom.jsx';
-import Sessions from './components/Sessions.jsx';
-import Settings from './components/Settings.jsx';
-import TestList from './components/TestList.jsx';
-import TutorRegistration from './components/TutorRegistration.jsx';
-import TutorReview from './components/TutorReview.jsx';
-import SecretRoute from './SecretRoute.jsx';
-import Home from './components/Home.jsx';
-import StudentView from './components/StudentView.jsx';
-import TestProfile from './components/TestProfile.jsx';
-import TutorProfile from './components/TutorProfile.jsx';
+// import Classroom from './components/Classroom.jsx';
+// import Sessions from './components/Sessions.jsx';
+// import Settings from './components/Settings.jsx';
+// import TestList from './components/TestList.jsx';
+// import TutorRegistration from './components/TutorRegistration.jsx';
+// import TutorReview from './components/TutorReview.jsx';
+// import SecretRoute from './SecretRoute.jsx';
+// import Home from './components/Home.jsx';
+// import StudentView from './components/StudentView.jsx';
+// import TestProfile from './components/TestProfile.jsx';
+// import TutorProfile from './components/TutorProfile.jsx';
 // import Chat from './components/Chat.jsx';
-import Review from './components/Review.jsx';
+// import Review from './components/Review.jsx';
 
 /* Import Services */
 import AuthService from './Auth/AuthService.js';
@@ -31,7 +31,19 @@ import AuthStatus from './Auth/AuthStatus.js';
 /* Lazy Loaders */
 import Async from 'react-code-splitting';
 
-const Login = props => <Async load={import('./components/Login.jsx')} componetProps={props} />
+const Login = props => <Async load={import('./components/Login.jsx')} componentProps={props} />
+const TutorProfile = props => <Async load={import('./components/TutorProfile.jsx')} componentProps={props} />
+const Sessions = props => <Async load={import('./components/Sessions.jsx')} componentProps={props} />
+const TestProfile = props => <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
+const Review = props => <Async load={import('./components/Review.jsx')} componentProps={props} />
+const Settings = props => <Async load={import('./components/Settings.jsx')} componentProps={props} />
+const TestList = props => <Async load={import('./components/TestList.jsx')} componentProps={props} />
+const Classroom = props => <Async load={import('./components/Classroom.jsx')} componentProps={props} />
+const TutorRegistration = props => <Async load={import('./components/TutorRegistration.jsx')} componentProps={props} />
+const TutorReview = props => <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
+const Home = props => <Async load={import('./components/Home.jsx')} componentProps={props} />
+const StudentView = props => <Async load={import('./components/StudentView.jsx')} componentProps={props} />
+const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
 
 
 class App extends Component {
@@ -140,26 +152,16 @@ class App extends Component {
           path="/"
           render={routerProps => <Home {...routerProps} id={this.state.id} />}
         />
-        {/* <Route
+        <Route
           path="/login"
           render={routerProps => (
             <Login
               className="login"
               tests={this.state.tests}
+              testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
               getID={this.getID}
-            />
-          )}
-        /> */}
-        <Route path="/login"
-          render={routerProps => (
-            <Login 
-              className="login"
-              tests={this.state.tests}
-              {...routerProps}
-              id={this.state.id}
-              getID={this.state.getID}
             />
           )}
         />
