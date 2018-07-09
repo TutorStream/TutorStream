@@ -14,13 +14,13 @@ module.exports = {
       path: DIST_DIR,
       publicPath: '/'
     },
-    devtool: 'eval-source-map', // is this right?
+    devtool: 'cheap-eval-soruce-map', // if and how source maps are generated
     plugins: [
         new BundleAnalyzerPlugin({
             analyzerMode : 'static',
             openAnalyzer: true
         }),
-        new webpack.DefinePlugin({ // may have to import this module
+        new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
