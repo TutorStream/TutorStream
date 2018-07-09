@@ -16,7 +16,6 @@ module.exports = {
     devtool: 'cheap-eval-soruce-map', // if and how source maps are generated
     plugins: [
         new BundleAnalyzerPlugin({
-            analyzerMode : 'static',
             openAnalyzer: true
         }),
         new webpack.DefinePlugin({
