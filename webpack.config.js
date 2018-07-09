@@ -13,9 +13,12 @@ module.exports = {
       path: DIST_DIR,
       publicPath: '/'
     },
-    devtool: 'cheap-eval-soruce-map',
+    devtool: 'cheap-eval-soruce-map', // if and how source maps are generated
     plugins: [
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin({
+            analyzerMode : 'static',
+            openAnalyzer: true
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
