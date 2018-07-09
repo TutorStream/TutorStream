@@ -56,6 +56,7 @@ class Review extends Component {
           return (
             <Card>
               <CardBody>
+              <CardTitle> {`${review.rating}.0`}</CardTitle>
                 <CardTitle>{review.content}</CardTitle>
               </CardBody>
             </Card>

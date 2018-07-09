@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import DateTime from 'react-datetime';
 import AuthService from './../Auth/AuthService';
-import { Radio, FormGroup } from 'react-bootstrap';
+import { Radio, FormGroup, Jumbotron, Button } from 'react-bootstrap';
 import Review from './Review.jsx';
 
 class TutorProfile extends Component {
@@ -33,10 +33,12 @@ class TutorProfile extends Component {
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
+        console.log('data rating : ', data.rating)
         this.setState({
           name: data.Name,
           bio: data.Bio,
           price: data.Price,
+          rating: `${data.Rating}.0`,
           id: id,
           tests: data.tests,
           test_id: this.props.test_ID
@@ -57,7 +59,7 @@ class TutorProfile extends Component {
       Jun: '06',
       Jul: '07',
       Aug: '08',
-      Sep: '09',
+      Sep: '09',  
       Oct: '10',
       Nov: '11',
       Dec: '12'
@@ -121,7 +123,12 @@ class TutorProfile extends Component {
 
   render() {
     return (
+      <div>
+        
       <Fragment>
+
+
+        
         <div>
           <h3>{this.state.name}'s Profile</h3>
           <div>
@@ -165,6 +172,7 @@ class TutorProfile extends Component {
         </div>
         <Review {...this.props} />
       </Fragment>
+      </div>
     );
   }
 }

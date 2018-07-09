@@ -1,9 +1,7 @@
 const db = require('./../../database');
 
-exports.addFeedback = (
-  { user_id, tutor_id, rating, feedback, date, time },
-  callback
-) => {
+exports.addFeedback = (data, callback) => {
+  const { user_id, tutor_id, rating, feedback, date, time } = data;
   console.log("We're about to add feedback")
   let queryStr =                                                                      //(3,11, 4, 'Jess is great', '2017-12-12', '12:09:30')
     `INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES (?, ?, ?, ?, ?, ?)`
@@ -14,9 +12,24 @@ exports.addFeedback = (
     if (err) {
       console.error('There was an error adding feedback: ', err);
     } else {
-      let newQueryStr = `INSERT INTO TUTORS (rating) VALUES (${rating})`;
-      db.query(newQueryStr,callback)
-    }
+      let average = `select AVG(rating) AS Average from feedback where tutor_id = ${tutor_id}`
+     db.query(average, (err,results)=>{
+       if(err){
+         console.error('error inserting feedback : ',err);
+       }else {
+         console.log('average results : ',results[0].Average)
+        let newQueryStr = `Update tutors Set rating=${results[0].Average} where ID = ${tutor_id}`;
+        db.query(newQueryStr,(err,results)=>{
+          if(err){
+            console.log('error : ', err)
+            callback(err);
+          }else {
+            callback(null,results)
+          }
+       })
+     }
+    })
+  }
   })
 };
 

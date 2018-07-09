@@ -161,49 +161,49 @@ VALUES
 
 --Tutors
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40);
+    (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50);
+    (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60);
+    (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60, 4);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (8, 'Rose Lin', "I mainly tutor students in test prep for different levels of Math (Regents, SHSAT, SAT/ACT, SAT II). I can also help with various high school and college courses!", 45);
+    (8, 'Rose Lin', "I mainly tutor students in test prep for different levels of Math (Regents, SHSAT, SAT/ACT, SAT II). I can also help with various high school and college courses!", 45, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (10, 'Tom Wagner', "I graduated from Stuyvesant High School in 2014 and have 8 years of experience teaching at various tutoring/prep centers. I've also operated my own tutoring center in Brooklyn for 2 years.", 140);
+    (10, 'Tom Wagner', "I graduated from Stuyvesant High School in 2014 and have 8 years of experience teaching at various tutoring/prep centers. I've also operated my own tutoring center in Brooklyn for 2 years.", 140, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (11, 'Jessica Wolvington', "I have had a lot of experience with tutoring the new SAT, several AP courses, essay writing, and the college application process.  ", 65);
+    (11, 'Jessica Wolvington', "I have had a lot of experience with tutoring the new SAT, several AP courses, essay writing, and the college application process.  ", 65, 5);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (13, 'Joseph Martin', "I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. ", 70);
+    (13, 'Joseph Martin', "I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. ", 70, 2);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (15, 'David Baek', " I have many years of tutoring experience, and I currently teach an introductory Computer Science class at a private school on the UWS. ", 79);
+    (15, 'David Baek', " I have many years of tutoring experience, and I currently teach an introductory Computer Science class at a private school on the UWS. ", 79, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 43);
+    (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 43, 1);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30);
+    (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price)
+    (ID, Name, Bio, Price, Rating)
 VALUES
-    (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55);
+    (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
 
 
 --tutor_tests
