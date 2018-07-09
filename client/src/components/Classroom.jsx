@@ -3,6 +3,9 @@ import VideoChat from './VideoChat.jsx';
 import WriteReview from './WriteReview.jsx';
 import axios from 'axios';
 import Chat from './Chat.jsx';
+import UpcomingSession from './UpcomingSession.jsx';
+import moment from 'moment';
+import { ClipLoader } from 'react-spinners';
 
 
 class Classroom extends Component {
@@ -13,68 +16,166 @@ class Classroom extends Component {
         this.state = {
           session_id : 123,
           review : false,
-          isTutor: false,
+          isTutor: null,
           name: '',
           id: this.props.id,
-          sessions: ''
+          upcomingSessions: [],
+          upcomingSession: {},
+          ready : false,
+          countdown: '',
+          tooEarly: true,
+          interval: 1000,
+          loading: true,
+          active: false
         };
         this.getUpcomingSessionInfo = this.getUpcomingSessionInfo.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.getUserInfo = this.getUserInfo.bind(this)
+        this.markSessionComplete = this.markSessionComplete.bind(this)
+        this.isHistory = this.isHistory.bind(this)
     }
 
     componentDidMount(){
         var id = this.props.id
+        var info;
        console.log('props',this.props)
        console.log('id?',id)
-        // axios.get(`/users/info/${id}`)
-        //     .then(({data}) => {
-        //         info = data[0]
-        //         console.log('data recieved in settings: ', info)
-        //         this.setState({
-        //             name: info.Name,
-        //         })
-        //     })
-        //     .then(()=>{
-        //         console.log('state now is => ', this.state)
-        //         console.log('info???', info)
-        //         if(info.Tutor === 1){
-        //             this.setState({
-        //                 isTutor: true
-        //             },()=> this.getUpcomingSessionInfo(id))      
-        //         }
-        //     })
+       this.interval = setInterval(() => this.getUserInfo(id), 4000);
+        }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+
+        getUserInfo(id){
+            var info;
+            axios.get(`/users/info/${id}`)
+            .then(({data}) => {
+                info = data[0]
+                console.log('data recieved in settings: ', info)
+                this.setState({
+                    name: info.Name,
+                    isTutor: info.Tutor
+                },()=>this.getUpcomingSessionInfo(id))
+            })
+            .then(()=>{})
         }
 
     handleSubmit(){
         this.setState({
-            review : true
-        })
+            review : true,
+            interval: 60000
+        },()=>{
+           this.markSessionComplete()
+        }
+    )
+    }
+
+
+    markSessionComplete(){
+        console.log('updating to complete and state is : ', this.state)
+        axios.put(`/sessions/${this.state.session_id}`)
+             .then(()=>console.log('Marked Complete'))
     }
       //if isTutor is true get tutor session, else get user session
     getUpcomingSessionInfo(id){
-        console.log('About to grab upcoming session info for user id: ',id)
-        if(this.state.isTutor){
-            axios.get(`/session/${id}`)
-                 .then(({data}) => {
-                    info = data[0]
-                    console.log('data recieved in settings: ', info)
+        console.log('What is state ?? ',this.state)
+        axios.get(`/sessions/${id}`, {
+            params: {
+                isTutor: this.state.isTutor
+            }
+            })
+                .then(({data}) => {
+                var info = data
+                console.log('info>>>>>: ',info)
+                if(info.length > 0){
                     this.setState({
-                        
-                    })
-                 })
-        }else{
-            //get a student user session info
+                    upcomingSessions: info,
+                    upcomingSession: info[0],
+                    session_id: info[0].id,
+                    countdown: moment(`${info[0].date.slice(0,10)}T${info[0].time}.000`).fromNow(true)
+                },()=>{
+                    this.isHistory(this.state.upcomingSessions)
+                    console.log('upcoming sessions order!!!!! : ', this.state.upcomingSessions)
+                    if(this.state.upcomingSession){
+                        this.setState({
+                        ready: true
+                    },()=>{
+                        var timer = this.state.countdown
+                        console.log("TOO EARLY??", this.state.countdown)
+                        console.log("state's countdown", Number(this.state.countdown.slice(0,2)))
+                        if((Number(this.state.countdown.slice(0,2)) <=2) && ((timer.slice(-7)=== 'minutes')||(timer.slice(-7)=== 'seconds'))||(timer.slice(-6)=== 'minute')){
+                            console.log("YO!!", Number(this.state.countdown.slice(0,2)), " and is less than " ,1, "Bool:", Number(this.state.countdown.slice(0,2)) < 1)
+                            this.setState({
+                                tooEarly: false
+                            },()=>console.log('state after updating is it early or not? ', this.state))
+                        }
+                    })}
+                })}
+                }) 
+    }
+
+
+    isHistory(sessions){
+        console.log('in isHistory', sessions)
+        var currentSession;
+        for(var i = 0; i < sessions.length; i++){
+            var session = sessions[i]
+            var currentMoment = moment()
+            var sessionMoment = moment(`${session.date.slice(0,10)}T${session.time}.000`)
+            var passed = currentMoment.diff(sessionMoment,'minutes')
             
+            if(passed > 3){
+                this.markSessionComplete()
+            }else {
+                currentSession = session;
+                break;
+            }
         }
         
+        this.setState({
+            upcomingSession : currentSession,
+            session_id : currentSession.id
+        })
+
     }
 
     render() {
-      
-        let conditionalDisplay = this.state.review ? <WriteReview tutor_id ={this.props.id}/> :        
+
+        var flexStyle = {
+            display: 'flex',
+            justifyContent: 'space evenly'
+        }
+
+
+
+        let conditionalDisplayC = this.state.tooEarly?<UpcomingSession upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> :
+        <div>
+        <UpcomingSession upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> 
+        <div className='classroom-name'style={flexStyle}>
+        <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
+        <Chat id={this.state.id} upcomingSession={this.state.upcomingSession}/>
+        </div>
+        </div>
+
+        let conditionalDisplayb = this.state.ready? 
+        <div>
+            {conditionalDisplayC}
+            </div>
+        : <div>
+            <p>Loading Sessions</p>
+            <ClipLoader
+          color={'#FFF'} 
+          loading={this.state.loading} 
+        />
+            <p>No Upcoming Sessions at this time!</p>
+            </div>
+
+        let conditionalDisplay = this.state.review ? <WriteReview isTutor={this.state.isTutor} tutor_id ={this.state.upcomingSession.tutor_id} activeSession={this.state.upcomingSession}/> :        
          (<div>
-            <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
-            <Chat /></div>);
+             {conditionalDisplayb}
+            </div>);
 
        return(
            <div>
