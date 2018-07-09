@@ -7,26 +7,21 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-// const webpackConfig = {
     entry: `${SRC_DIR}/index.jsx`,
     output: {
       filename: 'bundle.js', 
       path: DIST_DIR,
       publicPath: '/'
     },
-    devtool: 'cheap-eval-soruce-map', // if and how source maps are generated
+    devtool: 'cheap-eval-soruce-map',
     plugins: [
-        new BundleAnalyzerPlugin({
-            analyzerMode : 'static',
-            openAnalyzer: true
-        }),
+        new BundleAnalyzerPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new CompressionPlugin()
     ],
-    // mode: "production", // for minificaiton --> UNNECESSARY, accounted for within DefinePlugin
     optimization: {
         minimizer: [
           new UglifyJsPlugin({
@@ -56,13 +51,3 @@ module.exports = {
         historyApiFallback: true
     }
 };
-
-// module.exports = function (env = {}) {
-//     if (env.runAnalyzer) {
-//         webpackConfig.plugins.push(new webpackBundleAnalyzer ({
-//             analyzerMode: 'static',
-//             openAnalyzer: true
-//         }));
-//     }
-//     return webpackConfig;
-// };
