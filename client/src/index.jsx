@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom'
 import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -241,9 +242,9 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <Router>
+  <HashRouter>
     <App location={location} />
-  </Router>,
+  </HashRouter>,
   document.getElementById('app')
 );
 export default App;
