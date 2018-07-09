@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const db = require('./../database');
+
 
 // socket.io
 const server = require('http').Server(app);
@@ -110,6 +110,7 @@ io.on('connection', (socket) => {
     })
   })
 });
+
 
 server.listen(port, () => {
   console.log(`Magic happens on port ${port}`);
