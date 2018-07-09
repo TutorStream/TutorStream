@@ -4,7 +4,6 @@ const SRC_DIR = path.join(__dirname, '/client/src')
 const DIST_DIR = path.join(__dirname, '/client/dist');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
     entry: `${SRC_DIR}/index.jsx`,
@@ -13,7 +12,7 @@ module.exports = {
       path: DIST_DIR,
       publicPath: '/'
     },
-    devtool: 'cheap-eval-soruce-map', // if and how source maps are generated
+    devtool: 'cheap-eval-soruce-map',
     plugins: [
         new BundleAnalyzerPlugin({
             openAnalyzer: true
@@ -21,8 +20,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-        new CompressionPlugin()
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     optimization: {
         minimizer: [
