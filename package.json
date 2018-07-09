@@ -8,6 +8,16 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "syntax-dynamic-import"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -64,6 +74,7 @@
     "popper.js": "^1.14.3",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
+    "react-code-splitting": "^1.2.1",
     "react-datetime": "^2.14.0",
     "react-dom": "^16.4.1",
     "react-edit-inline": "^1.0.8",

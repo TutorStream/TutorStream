@@ -29,44 +29,10 @@ import AuthService from './Auth/AuthService.js';
 import AuthStatus from './Auth/AuthStatus.js';
 
 /* Lazy Loaders */
-// import DynamicImport from './DynamicImport.js';
+import Async from 'react-code-splitting';
 
-class DynamicImport extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      component : null
-    }
-  }
+const Login = props => <Async load={import('./components/Login.jsx')} componetProps={props} />
 
-  componentWillMount () {
-    this.props.load()
-      .then((component) => {
-        this.setState(() => {
-          component : component.default ? component.default : component
-        })
-      })
-  }
-
-  render () {
-    return this.props.children(this.state.component)
-  }
-};
-
-const login = () => (
-  <DynamicImport load={() => import('./components/Login.jsx')}>
-    {(Component) => {
-      Component === null
-      ? <p>Loading...</p>
-      : <Component 
-          {...routerProps} 
-          tests={this.state.tests}
-          id={this.state.id}
-          getID={this.getID}
-        />
-    }}
-  </DynamicImport>
-)
 
 class App extends Component {
   constructor(props) {
@@ -187,7 +153,15 @@ class App extends Component {
           )}
         /> */}
         <Route path="/login"
-          render={login}
+          render={routerProps => (
+            <Login 
+              className="login"
+              tests={this.state.tests}
+              {...routerProps}
+              id={this.state.id}
+              getID={this.state.getID}
+            />
+          )}
         />
         <Route
           path="/tutors/:id"

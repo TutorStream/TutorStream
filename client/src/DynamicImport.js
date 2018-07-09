@@ -8,7 +8,7 @@ class DynamicImport extends Component {
       }
     }
 
-    componentWillMount () {
+    componentDiDMount () {
       this.props.load()
         .then((component) => {
           this.setState(() => {
