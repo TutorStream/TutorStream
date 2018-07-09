@@ -38,29 +38,27 @@ class Classroom extends Component {
     componentDidMount(){
         var id = this.props.id
         var info;
-       console.log('props',this.props)
-       console.log('id?',id)
-       this.interval = setInterval(() => this.getUserInfo(id), 4000);
-        }
+        this.interval = setInterval(() => this.getUserInfo(id), 4000);
+   }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
 
-        getUserInfo(id){
-            var info;
-            axios.get(`/users/info/${id}`)
-            .then(({data}) => {
-                info = data[0]
-                console.log('data recieved in settings: ', info)
-                this.setState({
-                    name: info.Name,
-                    isTutor: info.Tutor
-                },()=>this.getUpcomingSessionInfo(id))
-            })
-            .then(()=>{})
-        }
+    getUserInfo(id){
+        var info;
+        axios.get(`/users/info/${id}`)
+        .then(({data}) => {
+            info = data[0]
+            console.log('data recieved in settings: ', info)
+            this.setState({
+                name: info.Name,
+                isTutor: info.Tutor
+            },()=>this.getUpcomingSessionInfo(id))
+        })
+        .then(()=>{})
+    }
 
     handleSubmit(){
         this.setState({
@@ -68,8 +66,7 @@ class Classroom extends Component {
             interval: 60000
         },()=>{
            this.markSessionComplete()
-        }
-    )
+        })
     }
 
 
@@ -103,7 +100,7 @@ class Classroom extends Component {
                         ready: true
                     },()=>{
                         var timer = this.state.countdown
-                        console.log("TOO EARLY??", this.state.countdown)
+                        console.log("TOO EARLY??", this.state.countdown,'Current time is : ',moment() )
                         console.log("state's countdown", Number(this.state.countdown.slice(0,2)))
                         if((Number(this.state.countdown.slice(0,2)) <=2) && ((timer.slice(-7)=== 'minutes')||(timer.slice(-7)=== 'seconds'))||(timer.slice(-6)=== 'minute')){
                             console.log("YO!!", Number(this.state.countdown.slice(0,2)), " and is less than " ,1, "Bool:", Number(this.state.countdown.slice(0,2)) < 1)
@@ -112,33 +109,42 @@ class Classroom extends Component {
                             },()=>console.log('state after updating is it early or not? ', this.state))
                         }
                     })}
-                })}
-                }) 
+                })}else {
+                    
+                    this.setState({
+                        loading: false
+                    })
+                }
+            })
     }
 
 
     isHistory(sessions){
         console.log('in isHistory', sessions)
-        var currentSession;
+        var currentSession = null
         for(var i = 0; i < sessions.length; i++){
             var session = sessions[i]
             var currentMoment = moment()
             var sessionMoment = moment(`${session.date.slice(0,10)}T${session.time}.000`)
             var passed = currentMoment.diff(sessionMoment,'minutes')
             
-            if(passed > 3){
+            if(passed > 1){
                 this.markSessionComplete()
             }else {
                 currentSession = session;
                 break;
             }
         }
-        
-        this.setState({
-            upcomingSession : currentSession,
-            session_id : currentSession.id
-        })
 
+        if(currentSession){
+            console.log('currentSession is :',currentSession)
+            this.setState({
+                upcomingSession : currentSession,
+                session_id : currentSession.id
+            })
+        
+        }
+       
     }
 
     render() {
@@ -149,33 +155,38 @@ class Classroom extends Component {
         }
 
 
+        let conditionalLoading = this.state.loading? <div>
+                                                    <p>Loading Sessions</p>
+                                                    <ClipLoader
+                                                    color={'#FFF'} 
+                                                    loading={this.state.loading} 
+                                                    /></div> : <div><p>No Upcoming Sessions at this time!</p></div>
 
-        let conditionalDisplayC = this.state.tooEarly?<UpcomingSession upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> :
+        let conditionalDisplayC = this.state.tooEarly?<UpcomingSession  upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> :
         <div>
-        <UpcomingSession upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> 
+        <UpcomingSession  upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> 
         <div className='classroom-name'style={flexStyle}>
         <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
         <Chat id={this.state.id} upcomingSession={this.state.upcomingSession}/>
         </div>
         </div>
-
+        
         let conditionalDisplayb = this.state.ready? 
         <div>
             {conditionalDisplayC}
             </div>
         : <div>
-            <p>Loading Sessions</p>
-            <ClipLoader
-          color={'#FFF'} 
-          loading={this.state.loading} 
-        />
-            <p>No Upcoming Sessions at this time!</p>
+           {conditionalLoading}
             </div>
 
         let conditionalDisplay = this.state.review ? <WriteReview isTutor={this.state.isTutor} tutor_id ={this.state.upcomingSession.tutor_id} activeSession={this.state.upcomingSession}/> :        
          (<div>
              {conditionalDisplayb}
             </div>);
+
+
+
+
 
        return(
            <div>

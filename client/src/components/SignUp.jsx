@@ -14,7 +14,7 @@ class SignUp extends React.Component {
       userTests: [],
       bio: '',
       tutor: 0,
-      selectedFile: 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png',
+      selectedFile: [],
       redirectToPreviousRoute: false
     };
     this.inputHandler = this.inputHandler.bind(this);
@@ -52,20 +52,18 @@ class SignUp extends React.Component {
   handleFileUpload(user_id) {
     const formData = new FormData();
     formData.append('file', this.state.selectedFile[0]);
-    //need to update post link to be the EC2 environment variable
-    axios.post('127.0.0.1:5000/photo-upload', formData, {
+    axios.post('http://ec2-34-207-66-224.compute-1.amazonaws.com:5000/photo-upload', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'crossDomain': true
       }
     })
-    .then(({ data }) => {
-      console.log('can we still access user_id in handleFileUpload? ', user_id);
+    .then(({data}) => {
       let userPhoto = {
         user_id,
-        location: data.location
+        location: data.Location
       };
-      //posting to database photos table
-      return axios.post('/users/photo', userPhoto);
+      axios.post('/users/photo', userPhoto);
     })
     .catch((error) => console.error('There was an error with the POST request to the server: ', error));
   }
@@ -130,8 +128,7 @@ class SignUp extends React.Component {
             <ControlLabel>Bio :</ControlLabel>
             <FormControl componentClass="textarea" maxLength='255' placeholder="Tell us about yourself" name="bio" onChange={(e) => this.inputHandler(e)}/>
           </FormGroup>
-          {/* need to connect this file upload input with upload function & service */}
-          <FormGroup controlId="formControlsFile">
+          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
             <ControlLabel>Upload your profile picture :</ControlLabel>
             <FormControl type="file" name="photo" onChange={this.handleFileSelect}/>
           </FormGroup>
