@@ -17,15 +17,14 @@ class UpcomingSession extends Component {
             upcomingCaller: '',
             countdown: this.props.countdown
         };
-
     }
       
 
     componentDidMount(){
         if(this.props.isTutor){
-            this.getUserInfo(this.state.upcomingSession.student_id)
+            this.getUserInfo(this.props.upcomingSession.student_id)
         }else{
-            this.getUserInfo(this.state.upcomingSession.tutor_id)
+            this.getUserInfo(this.props.upcomingSession.tutor_id)
         }
     }
 
@@ -46,13 +45,14 @@ class UpcomingSession extends Component {
     render() {
         //room currently hardcoded.. will change it to session id as a chat room number
         var callerType = this.props.isTutor? 'Student' : 'Tutor';
-        var timer = ((Number(this.state.countdown.slice(0,2)) <=2) && ((this.state.countdown.slice(-7)=== 'minutes')||(this.state.countdown.slice(-6)=== 'minute')||(this.state.countdown.slice(-7)=== 'seconds')))? 'Now' : this.state.countdown;
-        console.log('time right now!!!! :', this.state.upcomingSession)
+        var timer = ((Number(this.props.countdown.slice(0,2)) <=2) && ((this.props.countdown.slice(-7)=== 'minutes')||(this.props.countdown.slice(-6)=== 'minute')||(this.props.countdown.slice(-7)=== 'seconds')))? 'Now' : this.props.countdown;
+        console.log('time right now!!!! countdown from state :', this.state.countdown,'time right now!!!! countdown from props :',this.props.countdown)
        return(
         <div>
         
         <FormGroup controlId="formControlsTextarea">
             <ControlLabel><h2>Upcoming Session</h2></ControlLabel>
+            <hr/>
             <br/>
             
             <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
@@ -60,13 +60,30 @@ class UpcomingSession extends Component {
             <ControlLabel>
             <p>Details:
                 <br/>
-                <h4>Date:</h4 >{this.state.upcomingSession.date.slice(0,10)}
+                <h4>Date:</h4 >{this.props.upcomingSession.date.slice(0,10)}
                 <br/>
-                time:  {this.state.upcomingSession.time}
+                time:  {this.props.upcomingSession.time}
                 <br/>
                 with:  {this.state.upcomingCaller}
                 <br/>
             </p></ControlLabel>
+
+            {/* <ControlLabel><h2>Next:</h2></ControlLabel>
+            <br/>
+            
+            <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
+            <br />
+            <ControlLabel>
+            <p>Details:
+                <br/> //this.props.upcoming.. will get the freshest upcoming if we need that // this.state.upcomingSess will get you the upcoming one on component did mount (not live update)
+                <h4>Date:</h4 >{this.props.upcomingSession.date.slice(0,10)}
+                <br/>
+       time:  {this.props.upcomingSession.time} 
+                <br/>
+                with:  {this.props.upcomingCaller}
+                <br/>
+            </p></ControlLabel> */}
+
             <br/>
             <br/>
             <ControlLabel><h3>{callerType}: {`${this.state.upcomingCaller}`}</h3></ControlLabel>

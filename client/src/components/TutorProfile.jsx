@@ -25,6 +25,7 @@ class TutorProfile extends Component {
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
+    this.updateRating = this.updateRating.bind(this);
   }
 
   getTutorInfo() {
@@ -34,7 +35,6 @@ class TutorProfile extends Component {
       .then(({ data }) => {
         this.setState({
           name: data.Name,
-          rating: data.Rating,
           bio: data.Bio,
           price: data.Price,
           id: id,
@@ -106,6 +106,19 @@ class TutorProfile extends Component {
       this.getTutorInfo();
     }
   }
+
+  updateRating(array){
+    console.log('array :', array)
+    var sum = 0;
+    array.forEach((review)=>{
+      console.log('rating for each is : ', review.rating ,'and current sum: ',sum)
+      sum += review.rating
+      console.log('sum now is : ',sum)
+    })
+    console.log('AVG is :',sum/ array.length)
+    return sum/ array.length
+  }
+
   render() {
     return (
       <Fragment>
