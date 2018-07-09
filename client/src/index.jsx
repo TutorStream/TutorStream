@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Components */
 
-import Login from './components/Login.jsx';
+// import Login from './components/Login.jsx';
 import Classroom from './components/Classroom.jsx';
 import Sessions from './components/Sessions.jsx';
 import Settings from './components/Settings.jsx';
@@ -25,9 +25,48 @@ import TutorProfile from './components/TutorProfile.jsx';
 import Review from './components/Review.jsx';
 
 /* Import Services */
-
 import AuthService from './Auth/AuthService.js';
 import AuthStatus from './Auth/AuthStatus.js';
+
+/* Lazy Loaders */
+// import DynamicImport from './DynamicImport.js';
+
+class DynamicImport extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      component : null
+    }
+  }
+
+  componentWillMount () {
+    this.props.load()
+      .then((component) => {
+        this.setState(() => {
+          component : component.default ? component.default : component
+        })
+      })
+  }
+
+  render () {
+    return this.props.children(this.state.component)
+  }
+};
+
+const login = () => (
+  <DynamicImport load={() => import('./components/Login.jsx')}>
+    {(Component) => {
+      Component === null
+      ? <p>Loading...</p>
+      : <Component 
+          {...routerProps} 
+          tests={this.state.tests}
+          id={this.state.id}
+          getID={this.getID}
+        />
+    }}
+  </DynamicImport>
+)
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +81,7 @@ class App extends Component {
     this.getTutors = this.getTutors.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
+  
 
   getID(id) {
     this.setState({
@@ -134,7 +174,7 @@ class App extends Component {
           path="/"
           render={routerProps => <Home {...routerProps} id={this.state.id} />}
         />
-        <Route
+        {/* <Route
           path="/login"
           render={routerProps => (
             <Login
@@ -145,6 +185,9 @@ class App extends Component {
               getID={this.getID}
             />
           )}
+        /> */}
+        <Route path="/login"
+          render={login}
         />
         <Route
           path="/tutors/:id"
