@@ -11,4 +11,8 @@ usersRouter.get('/info/:id', usersControllers.getUserInfo);
 
 usersRouter.get('/username/:id', usersControllers.getUsernameById);
 
+usersRouter.post('/photo', usersControllers.addOrUpdateUserPhoto);
+
+usersRouter.get('/photo', usersControllers.getUserPhoto);
+
 module.exports = usersRouter;

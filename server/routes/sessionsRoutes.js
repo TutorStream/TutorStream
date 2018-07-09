@@ -8,7 +8,7 @@ sessionsRouter.post('/', sessionControllers.bookSession);
 sessionsRouter.delete('/:id', sessionControllers.deleteSession);
 
 // sessionsRouter.put('/sessions', sessionControllers.updateSession);
-sessionsRouter.put('/', sessionControllers.updateSession);
+sessionsRouter.put('/:id', sessionControllers.updateSession);
 
 // sessionsRouter.get('/sessions/:id', sessionControllers.getSession);
 sessionsRouter.get('/:id', sessionControllers.getSession);

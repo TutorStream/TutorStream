@@ -26,10 +26,12 @@ class WriteReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isTutor: 0,
       feedback: '',
       tutor_id: this.props.tutor_id,
       rating: 1,
-      submitted: false
+      submitted: false,
+      activeSession: this.props.activeSession
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,28 +48,24 @@ class WriteReview extends Component {
     event.preventDefault();
     console.log('State now is : ', this.state);
     //need to refactor below to match desired purposes
-    // var form = {
-    //     tests: testsArray,
-    //     tutorBio: this.state.tutorBio,
-    //     rate: Number(this.state.price),
-    //     id: this.state.id,
-    //     userBio: this.state.bio,
-    //     name:this.state.name,
-    //     isTutor: this.state.isTutor
-    // }
-    // console.log('form', form)
-    // axios.post(`/feedback/${this.state.tutor_id}`,form)
-    //      .then(()=>{
-    //          console.log('Updated tutor!');
-    //          this.setState({
-    //              submitted : true
-    //          })
-    //      })
-    //      .catch((err)=>console.error(err))
-
-    this.setState({
-      submitted: true
-    });
+    var form = {
+      feedback: this.state.feedback,
+      tutor_id: this.props.tutor_id,
+      rating: this.state.rating,
+      user_id: this.props.activeSession.student_id,
+      date: this.props.activeSession.date.slice(0, 10),
+      time: this.props.activeSession.time
+    };
+    console.log('form', form);
+    axios
+      .post(`/feedback/${this.state.tutor_id}`, form)
+      .then(() => {
+        console.log('Updated Feedback!');
+        this.setState({
+          submitted: true
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   onStarClick(nextValue) {
@@ -77,7 +75,7 @@ class WriteReview extends Component {
   render() {
     const { rating } = this.state;
 
-    if (this.state.submitted) {
+    if (this.state.submitted || this.props.isTutor) {
       return <Redirect to="/" />;
     }
     return (
