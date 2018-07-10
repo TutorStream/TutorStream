@@ -45,7 +45,6 @@ class Classroom extends Component {
         clearInterval(this.interval);
     }
 
-
     getUserInfo(id){
         var info;
         axios.get(`/users/info/${id}`)
@@ -167,7 +166,7 @@ class Classroom extends Component {
         <UpcomingSession  upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> 
         <div className='classroom-name'style={flexStyle}>
         <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
-        <Chat id={this.state.id} upcomingSession={this.state.upcomingSession}/>
+        <Chat id={this.state.id} upcomingSession={this.state.upcomingSession} session_id={this.state.session_id}/>
         </div>
         </div>
         

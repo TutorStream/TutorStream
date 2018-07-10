@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
+const db = require('./../database');
+const compression = require('compression');
 
 
 // socket.io
@@ -23,6 +25,18 @@ const feedbackRouter = require('./routes/feedbackRoutes');
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+app.use(compression({filter: shouldCompress}))
+
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+
 app.use(express.static(path.join(__dirname, './../client/dist')));
 
 // app.use(cookieSession({
