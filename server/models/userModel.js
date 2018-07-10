@@ -43,8 +43,8 @@ exports.updateUser = (form, callback) => {
 };
 
 exports.addPhoto = (userPhoto, callback) => {
-  let queryStr = `INSERT INTO photos (user_id, location) VALUES (${userPhoto.user_id}, ${userPhoto.location})`;
-  db.query(queryStr, callback);
+  let queryStr = `INSERT INTO photos (user_id, location) VALUES (?, ?)`;
+  db.query(queryStr, [userPhoto.user_id, userPhoto.location], callback);
 };
 
 exports.updatePhoto = (userPhoto, callback) => {
@@ -53,6 +53,6 @@ exports.updatePhoto = (userPhoto, callback) => {
 };
 
 exports.getPhoto = (userId, callback) => {
-  let queryStr = `SELECT location FROM photos WHERE ID = ${userId}`;
+  let queryStr = `SELECT location FROM photos WHERE user_id = ${userId}`;
   db.query(queryStr, callback);
 };

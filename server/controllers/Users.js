@@ -87,7 +87,7 @@ exports.addOrUpdateUserPhoto = (req, res) => {
           if (err) {
             console.error('There was an error adding the user\'s photo: ', err);
           } else {
-            res.status(201).send(`The photo has been added! Here is the result: ${result}`);
+            res.send(`The photo has been added! Here is the result: ${result}`);
           }
         });
       } else {
@@ -95,7 +95,7 @@ exports.addOrUpdateUserPhoto = (req, res) => {
           if (err) {
             console.error('There was an error updating the user\'s photo: ', err);
           } else {
-            res.status(200).send(`The photo has been updated! Here is the result: ${result}`);
+            res.send(`The photo has been updated! Here is the result: ${result}`);
           }
         });
       }
@@ -104,12 +104,11 @@ exports.addOrUpdateUserPhoto = (req, res) => {
 };
 
 exports.getUserPhoto = (req, res) => {
-  User.getPhoto(req.params.id, (err, result) => {
+  User.getPhoto(req.query.user_id, (err, result) => {
     if (err) {
       console.error('There was an error getting the user photo: ', err);
     } else {
-      console.log('what is the result of GET the USER PHOTO?: ', result);
-      res.status(200).send(result);
+      res.send(result);
     }
   });
 };

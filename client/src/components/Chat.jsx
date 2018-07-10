@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
-const socket = io('144.121.106.166:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
 import axios from 'axios';
+// const socket = io('144.121.106.166:3000'); // hany's IP
+// const socket = io(); // may need to just instantiate conenct like this to work when deployed?
+const socket = io.connect('10.16.3.61:3000'); // to work locally, need to set to one of our local IP addresses (custom socket)
 
 
 class Chat extends Component {
@@ -10,8 +12,8 @@ class Chat extends Component {
     this.state = {
       username : '',
       message : '',
-      messages : ['bingo'],
-      sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
+      messages : ['bingo']
+      // sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
     };
     this.messageHandler = this.messageHandler.bind(this);
     this.postMessage = this.postMessage.bind(this);
@@ -47,7 +49,7 @@ class Chat extends Component {
       }, () => {
         socket.emit('new-message', {
           message : this.state.message,
-          room : this.state.sessionId
+          room : this.props.session_id
         });
         this.clearInput();
       });
@@ -68,7 +70,7 @@ class Chat extends Component {
         console.error(err);
       })
     console.log('chat mounting?');
-    socket.emit('room', {room : this.state.sessionId});
+    socket.emit('room', {room : this.props.session_id});
   }
 
   componentWillUnmount () {
@@ -78,6 +80,7 @@ class Chat extends Component {
   }
 
   render() {
+    console.log(this.props.upcomingSession, 'upcoming session');
     return (
       <div className="chat-container">
         <h1 className="header">Chat Channel</h1>

@@ -8,6 +8,16 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "syntax-dynamic-import"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,17 +29,24 @@
     "type": "git",
     "url": "git+https://github.com/TutorStream/TutorStream.git"
   },
+  "sideEffects": false,
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^2.0.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "webpack": "^4.15.1"
+    "extract-text-webpack-plugin": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.15.1",
+    "webpack-bundle-analyzer": "^2.13.1"
   },
   "dependencies": {
     "@opentok/client": "^2.14.3",
@@ -37,9 +54,9 @@
     "aws-sdk": "^2.269.1",
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
-    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
+    "compression": "^1.7.2",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
@@ -58,6 +75,7 @@
     "popper.js": "^1.14.3",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
+    "react-code-splitting": "^1.2.1",
     "react-datetime": "^2.14.0",
     "react-dom": "^16.4.1",
     "react-edit-inline": "^1.0.8",
