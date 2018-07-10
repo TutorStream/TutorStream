@@ -146,7 +146,7 @@ class App extends Component {
           </Nav>
         </Navbar>
   {/*TESTING FOR LIVE CHAT*/}
-   {/* < Chat /> */}
+  {/* < Chat /> */}
   {/*TESTING FOR LIVE CHAT*/}
         <Route
           exact
