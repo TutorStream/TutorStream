@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
+import Earnings from './Earnings.jsx';
 
 class TutorRegistration extends React.Component {
     constructor(props){
@@ -20,7 +21,8 @@ class TutorRegistration extends React.Component {
             rate: '',
             form: {
 
-            }
+            },
+            isTutor: this.props.tutors_ids.indexOf(this.props.id)
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,36 +74,35 @@ class TutorRegistration extends React.Component {
         
       }
     render() {
+        console.log('props id? >>', this.state.isTutor)
+        let conditional = this.props.isTutor > -1? <div><Earnings /></div>: 
+        <div> <h1>Tutor Registration</h1>
+        <br/><br/>
+        <FormGroup controlId="formControlsTextarea">
+        <ControlLabel>Bio</ControlLabel>
+        <FormControl  maxLength= '255' componentClass="textarea" placeholder="Enter text (Max: 255 characters)" name='bio' value={this.state.bio} onChange={this.handleChange} />
+        </FormGroup>
+        <FormGroup controlId="formControlsTextarea">
+        <ControlLabel>Rate: (hourly)</ControlLabel>
+        <FormControl
+                type="number"
+                placeholder="$$$"
+                name='rate' value={this.state.rate} onChange={this.handleChange}
+            />
+        </FormGroup>
+
+        <FormGroup>
+        {this.state.tests.map((test,i) => {
+            return(
+                <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
+            )
+        })}
+        
+        </FormGroup>
+        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button></div>
         return (
             <div className='tutor-registration'>
-                <h1>Tutor Registration</h1>
-                <br/><br/>
-                
-
-    <FormGroup controlId="formControlsTextarea">
-      <ControlLabel>Bio</ControlLabel>
-      <FormControl  maxLength= '255' componentClass="textarea" placeholder="Enter text (Max: 255 characters)" name='bio' value={this.state.bio} onChange={this.handleChange} />
-    </FormGroup>
-     <FormGroup controlId="formControlsTextarea">
-      <ControlLabel>Rate: (hourly)</ControlLabel>
-    <FormControl
-            type="number"
-            placeholder="$$$"
-            name='rate' value={this.state.rate} onChange={this.handleChange}
-          />
-          </FormGroup>
-    
-
-    
-    <FormGroup>
-    {this.state.tests.map((test,i) => {
-        return(
-            <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
-        )
-    })}
-      
-    </FormGroup>
-    <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button>
+               {conditional}
             </div> 
         )
     }

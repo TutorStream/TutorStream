@@ -53,12 +53,14 @@ class App extends Component {
     this.state = {
       id: null,
       tests: [],
-      tutors: []
+      tutors: [],
+      isTutor: -1
     };
     this.getID = this.getID.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
     this.getTutors = this.getTutors.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
+    this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
   
 
@@ -66,6 +68,16 @@ class App extends Component {
     this.setState({
       id: id
     });
+  }
+
+  checkTutorStatus(id,tutors){
+    console.log('checking tutor status')
+    if(tutors.indexOf(id)>-1){
+      console.log('Tutor is here!')
+      this.setState({
+        isTutor: 1
+      })
+    }
   }
 
   getAllTests() {
@@ -86,8 +98,13 @@ class App extends Component {
       .get('/tutors')
       .then(({ data }) => {
         this.setState({
-          tutors: data
+          tutors: data,
+          tutors_ids: data.map(a => a.ID)
         });
+      })
+      .then(()=>{
+        console.log('array? >> ',this.state.id)
+
       })
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
@@ -117,6 +134,7 @@ class App extends Component {
   }
 
   render() {
+    let conditionalTitle = this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor'
     return (
       <div>
         <Navbar style={{ fontSize: `130%` }}>
@@ -137,7 +155,7 @@ class App extends Component {
               <NavItem>Classroom</NavItem>
             </LinkContainer>
             <LinkContainer to="/tutor">
-              <NavItem>Become a Tutor</NavItem>
+              <NavItem>{conditionalTitle}</NavItem>
             </LinkContainer>
             <LinkContainer to="/settings">
               <NavItem>Settings</NavItem>
@@ -162,7 +180,9 @@ class App extends Component {
               testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
+              tutors_ids = {this.state.tutors_ids}
               getID={this.getID}
+              checkTutorStatus={this.checkTutorStatus}
             />
           )}
         />
@@ -223,6 +243,8 @@ class App extends Component {
               {...routerProps}
               setTestID={this.setTestID}
               id={this.state.id}
+              tutors_ids={this.state.tutors_ids}
+              isTutor={this.state.isTutor}
             />
           )}
         />
