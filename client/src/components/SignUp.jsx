@@ -121,7 +121,7 @@ class SignUp extends React.Component {
           <FormGroup >
             <ControlLabel>Exams you're interested in :</ControlLabel><div></div>
             { this.props.tests.map((test, index) => 
-              <Checkbox inline key={test.ID} value={test.ID} name={test.Name} onClick={(e) => this.handleTestSelect(e)}>{test.Name}</Checkbox>
+              <Checkbox inline key={test.id} value={test.id} name={test.Name} onClick={(e) => this.handleTestSelect(e)}>{test.Name}</Checkbox>
             )}
           </FormGroup>
           <FormGroup controlId="formControlsTextarea">
