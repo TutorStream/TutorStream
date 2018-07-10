@@ -13,6 +13,7 @@ module.exports = {
       path: DIST_DIR,
       publicPath: '/'
     },
+    mode: "production",
     devtool: 'cheap-eval-source-map',
     plugins: [
         new BundleAnalyzerPlugin({

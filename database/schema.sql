@@ -52,10 +52,23 @@ CREATE TABLE sessions (
   date DATE NOT NULL,
   time TIME NOT NULL,
   complete TINYINT(1) DEFAULT 0,
+<<<<<<< HEAD
   missed TINYINT(1) DEFAULT 1,
   FOREIGN KEY (test_id) references tests (id),
   FOREIGN KEY (tutor_id) references tutors (id),
   FOREIGN KEY (student_id) references users (id)
+=======
+  current_rate int DEFAULT 0,
+  FOREIGN KEY
+(test_id) references tests
+(id),
+  FOREIGN KEY
+(tutor_id) references tutors
+(id),
+  FOREIGN KEY
+(student_id) references users
+(id)
+>>>>>>> dev
 );
 
 CREATE TABLE feedback (
