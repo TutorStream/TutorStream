@@ -5,7 +5,7 @@ const TutorCard = (props) => {
   return (
     <div>
       <Card>
-        <CardImg top width="20%" src="https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png" alt="default picture" />
+        <CardImg className="img-circle" top width="20%" src={ props.photo || 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'} alt="default picture" />
         <CardBody>
           <CardTitle>{props.name}</CardTitle>
           <CardSubtitle>{props.rating}</CardSubtitle>
