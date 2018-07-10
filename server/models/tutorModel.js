@@ -1,25 +1,24 @@
 const db = require('./../../database');
 
-//pass in callback and optional testID -- if no testID is passed in, testID defaults to null
 exports.getTopTutors = (callback, test_id = null) => {
   let queryStr = '';
   if (test_id === null) {
     queryStr = 'SELECT * FROM tutors ORDER BY Rating DESC';
   } else {
-    queryStr = `SELECT * FROM tutors WHERE ID IN (SELECT tutor_id FROM tutor_tests WHERE test_id = ${test_id}) ORDER BY Rating DESC`;
+    queryStr = `SELECT * FROM tutors WHERE id IN (SELECT tutor_id FROM tutor_tests WHERE test_id = ${test_id}) ORDER BY Rating DESC`;
   }
   db.query(queryStr, callback);
 };
 
 //pass in tutor_id and callback
 exports.getTutorInfo = (tutor_id, callback) => {
-  let queryStr = `SELECT * FROM tutors WHERE ID = ${tutor_id}`;
+  let queryStr = `SELECT * FROM tutors WHERE id = ${tutor_id}`;
   db.query(queryStr, callback);
 };
 
 //check if tutor profile exists & add or update accordingly
 exports.addOrUpdateTutor = (params, callback) => {
-  let initialQuery = `SELECT * FROM tutors WHERE ID = ${params.id}`;
+  let initialQuery = `SELECT * FROM tutors WHERE id = ${params.id}`;
   db.query(initialQuery, (err, result) => {
     if (err) {
       //probably need to switch logic so if err; means user doesnt exist in tutors table
@@ -31,7 +30,7 @@ exports.addOrUpdateTutor = (params, callback) => {
       //if tutor profile doesn't exist, add new tutor
       if (result.length === 0) {
         let queryStr =
-          'INSERT INTO tutors (ID, Name, Bio, Price) VALUES (?,?,?,?)';
+          'INSERT INTO tutors (id, Name, Bio, Price) VALUES (?,?,?,?)';
         db.query(
           queryStr,
           [params.id, params.name, params.bio, params.rate],
@@ -43,7 +42,7 @@ exports.addOrUpdateTutor = (params, callback) => {
               );
             } else {
               //update tutor status in users table
-              let queryStr2 = `UPDATE users SET Tutor = 1 WHERE ID = ${
+              let queryStr2 = `UPDATE users SET Tutor = 1 WHERE id = ${
                 params.id
               }`;
               db.query(queryStr2, (err, result) => {
@@ -87,7 +86,7 @@ exports.addOrUpdateTutor = (params, callback) => {
         );
       } else {
         //if the tutor profile exists, update user's tutor profile info
-        let updateStr = `UPDATE tutors SET Bio = ?, Price = ?, Name = ? WHERE ID = ${
+        let updateStr = `UPDATE tutors SET Bio = ?, Price = ?, Name = ? WHERE id = ${
           params.id
         }`;
         db.query(

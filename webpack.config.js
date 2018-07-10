@@ -7,12 +7,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: `${SRC_DIR}/index.jsx`,
+    mode: 'production',
     output: {
       filename: 'bundle.js', 
       path: DIST_DIR,
       publicPath: '/'
     },
-    devtool: 'cheap-eval-soruce-map',
+    devtool: 'cheap-eval-source-map',
     plugins: [
         new BundleAnalyzerPlugin({
             openAnalyzer: true

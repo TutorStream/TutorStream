@@ -91,7 +91,7 @@ class StudentView extends Component {
               {this.state.tutors.map((tutor, i) => {
                 return (
                   <div className="indv-tutor" key={i}>
-                    <Link to={`/tutors/${tutor.ID}`}>
+                    <Link to={`/tutors/${tutor.id}`}>
                       <span className="tutor-name">{tutor.Name}</span>
                     </Link>
                     <br />
