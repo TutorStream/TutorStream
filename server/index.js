@@ -107,7 +107,9 @@ io.on('connection', socket => {
   socket.on('new-message', msg => {
     console.log('new message: ' + msg.message);
     console.log('room ', msg.room);
-    socket.broadcast.to(msg.room).emit('sending-back', msg); // emit messages to all OTHER users
+    socket.broadcast
+      .to(msg.room)
+      .emit('sending-back', { user: socket['name'], message: msg.message }); // emit messages to all OTHER users
   });
   // socket.on('leaving-room', (data) => {
   //   console.log('what room is being left ', data.room);

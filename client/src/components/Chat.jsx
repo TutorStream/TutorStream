@@ -41,6 +41,7 @@ class Chat extends Component {
 
   postMessage(e) {
     e.preventDefault();
+    socket['name'] = this.state.username;
     if (this.state.message.length > 0) {
       this.setState(
         {
@@ -48,6 +49,7 @@ class Chat extends Component {
         },
         () => {
           socket.emit('new-message', {
+            user: socket['name'],
             message: this.state.message,
             room: this.props.session_id
           });
@@ -99,7 +101,7 @@ class Chat extends Component {
           {this.state.messages.map((msg, i) => {
             return (
               <div key={i} className="msg">
-                <strong> {this.state.username}: </strong> {msg}{' '}
+                <strong> {msg.user}: </strong> {msg.message}{' '}
               </div>
             );
           })}
