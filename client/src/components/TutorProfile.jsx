@@ -34,6 +34,7 @@ class TutorProfile extends Component {
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
+        console.log('what is the data: ', data);
         console.log('data rating : ', data.rating)
         this.setState({
           name: data.Name,
@@ -54,7 +55,7 @@ class TutorProfile extends Component {
       })
       .then(({ data }) => {
         this.setState({
-          photo: data[0].location
+          photo: data[0].location || 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
         });
       })
       .catch(err => {
@@ -157,9 +158,9 @@ class TutorProfile extends Component {
                     <Radio
                       name={test.Name}
                       inline
-                      key={test.ID}
-                      value={test.ID}
-                      checked={this.state.test_id == test.ID}
+                      key={test.id}
+                      value={test.id}
+                      checked={this.state.test_id == test.id}
                       onChange={e => this.handleTestSelect(e)}
                     >
                       {test.Name}

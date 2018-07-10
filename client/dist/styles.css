@@ -411,6 +411,10 @@ div.tutors{
   max-width: 200px;
 }
 
+.image-settings {
+  text-align: center;
+}
+
 .col-sm-4 {
   padding-bottom: 15px;
 }

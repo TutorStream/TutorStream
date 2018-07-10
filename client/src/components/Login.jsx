@@ -29,11 +29,11 @@ class Login extends Component {
       Password: this.state.Password
     })
     .then(({data}) => {
-      var ID = data.ID
-      this.props.getID(ID);
+      var id = data.id
+      this.props.getID(id);
       console.log('props for login: ', this.props)
-      this.props.checkTutorStatus(ID,this.props.tutors_ids)
-      if(!!data.ID) {
+      this.props.checkTutorStatus(id,this.props.tutors_ids)
+      if(!!data.id) {
         AuthService.authenticate()
         this.setState({
           redirectToPreviousRoute: true
