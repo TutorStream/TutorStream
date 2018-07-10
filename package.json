@@ -1,7 +1,7 @@
 {
   "name": "TutorStream",
   "version": "1.0.0",
-  "description": "Platform to find a mentor",
+  "description": "Platform to find a tutor",
   "main": "server/index.js",
   "scripts": {
     "start": "npm run react-dev | npm run server-dev",

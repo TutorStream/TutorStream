@@ -71,10 +71,10 @@ class TestProfile extends Component {
           <div className="main-info">
             <Row>
               {this.state.tutors.map(tutor => (
-                <Col sm="3" key={tutor.ID}>
-                  <Link to={`/tutors/${tutor.ID}`}>
+                <Col sm="3" key={tutor.id}>
+                  <Link to={`/tutors/${tutor.id}`}>
                     <TutorCard
-                      key={tutor.ID}
+                      key={tutor.id}
                       name={tutor.Name}
                       rating={tutor.Rating}
                     />
