@@ -12,15 +12,14 @@ CREATE TABLE users (
   Email varchar
 (255) NOT NULL UNIQUE UNIQUE,
   Tutor int NOT NULL,
-  Bio varchar
-(255)
+  Bio TEXT
 );
 
 CREATE TABLE tutors
 (
   ID int,
   Name varchar(255) NOT NULL,
-  Bio varchar(255) NOT NULL,
+  Bio TEXT,
   Price int NOT NULL,
   Rating int DEFAULT 0,
   FOREIGN KEY (ID) references users(id)
@@ -30,8 +29,7 @@ CREATE TABLE tests (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   Name varchar
 (255) NOT NULL UNIQUE,
-  Description varchar
-(255) NOT NULL
+  Description TEXT NOT NULL
 );
 
 CREATE TABLE user_tests
@@ -75,8 +73,7 @@ CREATE TABLE feedback (
   user_id int,
   tutor_id int,
   rating int,
-  content varchar
-(255),
+  content TEXT,
   date DATE NOT NULL,
   time TIME NOT NULL,
   FOREIGN KEY
