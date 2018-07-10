@@ -3,6 +3,7 @@
 -- Seed data for tables 
 
 -- Users
+
 INSERT INTO users
     (name, password, email, tutor, bio)
 VALUES

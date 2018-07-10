@@ -68,6 +68,7 @@ CREATE TABLE sessions (
 (id)
 );
 
+
 CREATE TABLE feedback (
   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   user_id int,
