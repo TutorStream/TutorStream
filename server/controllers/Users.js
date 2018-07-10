@@ -83,8 +83,6 @@ exports.addOrUpdateUserPhoto = (req, res) => {
       console.error('There was an error getting the photo to add to user photo', err);
     } else {
       if (result.length === 0) {
-        console.log('what is the req?', req);
-        console.log('what is the req.body?', req.body);
         User.addPhoto(req.body, (err, result) => {
           if (err) {
             console.error('There was an error adding the user\'s photo: ', err);
@@ -106,7 +104,8 @@ exports.addOrUpdateUserPhoto = (req, res) => {
 };
 
 exports.getUserPhoto = (req, res) => {
-  User.getPhoto(req.params.id, (err, result) => {
+  console.log('what request data do i get: ', req.query);
+  User.getPhoto(req.query.user_id, (err, result) => {
     if (err) {
       console.error('There was an error getting the user photo: ', err);
     } else {

@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Row,
-  Col
-} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
@@ -21,7 +12,8 @@ class Home extends Component {
       isAuthenticated: false,
       user_id: this.props.id || null,
       tutors: [],
-      tests: []
+      tests: [],
+      photos: {}
     };
     this.getTutors = this.getTutors.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
@@ -31,9 +23,31 @@ class Home extends Component {
     axios
       .get('/tutors')
       .then(({ data }) => {
-        data = data.slice(0, 8);
+        data = data.slice(0, 9);
+        let idList = '';
+        for (let i = 0; i < data.length; i++) {
+          if (i === data.length - 1) {
+            idList += data[i].ID;
+          } else {
+            idList += data[i].ID + ', ';
+          }
+        }
         this.setState({
           tutors: data
+        });
+        return axios.get('/tutors/photo', {
+          params: {
+            idList
+          }
+        });
+      })
+      .then(({ data }) => {
+        let photoObj = {};
+        for (let i = 0; i < data.length; i++) {
+          photoObj[data[i].user_id] = data[i].location;
+        }
+        this.setState({
+          photos: photoObj
         });
       })
       .catch(err => {
@@ -70,20 +84,20 @@ class Home extends Component {
           <br />
           <hr />
           <br />
-          <div className="main-info">
+          <div className="main-info" >
             <h2>Featured Tutors:</h2>
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
-                <Col sm="3" key={tutor.ID}>
+                <Col xs="6" sm="4" key={tutor.ID}>
                   <Link to={`/tutors/${tutor.ID}`}>
                     <TutorCard
                       key={tutor.ID}
                       name={tutor.Name}
                       rating={tutor.Rating}
+                      photo={this.state.photos[tutor.ID]}
                     />
                   </Link>
-                  <br />
                 </Col>
               ))}
             </Row>

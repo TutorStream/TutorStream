@@ -19,7 +19,8 @@ class TutorProfile extends Component {
       time: '',
       price: null,
       id: null,
-      test_id: undefined
+      test_id: undefined,
+      photo: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.bookTutor = this.bookTutor.bind(this);
@@ -40,6 +41,18 @@ class TutorProfile extends Component {
           id: id,
           tests: data.tests,
           test_id: this.props.test_ID
+        });
+      })
+      .then(() => {
+        return axios.get('/users/photo', {
+          params: {
+            user_id: this.state.id
+          }
+        });
+      })
+      .then(({ data }) => {
+        this.setState({
+          photo: data[0].location
         });
       })
       .catch(err => {
@@ -110,10 +123,16 @@ class TutorProfile extends Component {
     return (
       <Fragment>
         <div>
+          <span style={{ 'textAlign': 'center'}}>
           <h3>{this.state.name}'s Profile</h3>
+          <br />
+          <div>
+            <img className="img-circle" src={this.state.photo} alt="Tutor Photo" />
+          </div>
           <div>
             <h1>Rating: {this.state.rating}</h1>
           </div>
+          </span>
           <div>
             <h1>Bio:</h1>
             <p>{this.state.bio}</p>

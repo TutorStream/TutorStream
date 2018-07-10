@@ -26,8 +26,6 @@ exports.updateFeedback = (req, res) => {
 };
 
 exports.getFeedback = (req, res) => {
-  // console.log(req.params.id);
-  console.log('feedback params: ', req.params)
   Feedback.getFeedback(req.params, (err, feedback) => {
     if (err) {
       res.status(400).send(`Error getting feedback for ${req.params.id}`);

@@ -53,6 +53,6 @@ exports.updatePhoto = (userPhoto, callback) => {
 };
 
 exports.getPhoto = (userId, callback) => {
-  let queryStr = `SELECT location FROM photos WHERE ID = ${userId}`;
+  let queryStr = `SELECT location FROM photos WHERE user_id = ${userId}`;
   db.query(queryStr, callback);
 };
