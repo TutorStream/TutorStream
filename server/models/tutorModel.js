@@ -1,6 +1,6 @@
 const db = require('./../../database');
 
-//pass in callback and optional testID -- if no testID is passed in, testID defaults to null
+//pass in callback and optional testid -- if no testid is passed in, testid defaults to null
 exports.getTopTutors = (callback, test_id = null) => {
   let queryStr = '';
   if (test_id === null) {
@@ -43,7 +43,7 @@ exports.addOrUpdateTutor = (params, callback) => {
               );
             } else {
               //update tutor status in users table
-              let queryStr2 = `UPDATE users SET Tutor = 1 WHERE ID = ${
+              let queryStr2 = `UPDATE users SET Tutor = 1 WHERE id = ${
                 params.id
               }`;
               db.query(queryStr2, (err, result) => {

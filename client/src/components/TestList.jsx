@@ -29,7 +29,7 @@ class TestList extends Component {
     this.setState({
       dropDownTitle : test.Name
     }, () => {
-      this.props.setTestID(test.ID);
+      this.props.setTestid(test.id);
     })
   }
 

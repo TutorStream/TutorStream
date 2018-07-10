@@ -4,44 +4,37 @@ CREATE DATABASE TutorStream;
 USE TutorStream;
 
 CREATE TABLE users (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  Name varchar
-(255) NOT NULL,
-  Password varchar
-(255) NOT NULL,
-  Email varchar
-(255) NOT NULL UNIQUE UNIQUE,
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  Name varchar (255) NOT NULL,
+  Password varchar (255) NOT NULL,
+  Email varchar (255) NOT NULL UNIQUE UNIQUE,
   Tutor int NOT NULL,
   Bio TEXT
 );
 
-CREATE TABLE tutors
-(
-  ID int,
+CREATE TABLE tutors (
+  id int,
   Name varchar(255) NOT NULL,
   Bio TEXT,
   Price int NOT NULL,
   Rating int DEFAULT 0,
-  FOREIGN KEY (ID) references users(id)
+  FOREIGN KEY (id) references users(id)
 );
 
 CREATE TABLE tests (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  Name varchar
-(255) NOT NULL UNIQUE,
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  Name varchar (255) NOT NULL UNIQUE,
   Description TEXT NOT NULL
 );
 
-CREATE TABLE user_tests
-(
+CREATE TABLE user_tests (
   user_id int,
   test_id int,
   FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (test_id) references tests(id)
-);
+)
 
-CREATE TABLE tutor_tests
-(
+CREATE TABLE tutor_tests (
   tutor_id int,
   test_id int,
   FOREIGN KEY (tutor_id) references tutors(id),
@@ -57,35 +50,25 @@ CREATE TABLE sessions (
   time TIME NOT NULL,
   complete TINYINT(1) DEFAULT 0,
   current_rate int DEFAULT 0,
-  FOREIGN KEY
-(test_id) references tests
-(id),
-  FOREIGN KEY
-(tutor_id) references tutors
-(id),
-  FOREIGN KEY
-(student_id) references users
-(id)
+  FOREIGN KEY (test_id) references tests (id),
+  FOREIGN KEY (tutor_id) references tutors (id),
+  FOREIGN KEY (student_id) references users (id)
 );
 
 CREATE TABLE feedback (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   user_id int,
   tutor_id int,
   rating int,
   content TEXT,
   date DATE NOT NULL,
   time TIME NOT NULL,
-  FOREIGN KEY
-(user_id) references users
-(id),
-  FOREIGN KEY
-(tutor_id) references tutors
-(id)
+  FOREIGN KEY (user_id) references users (id),
+  FOREIGN KEY (tutor_id) references tutors (id)
 );
 
 CREATE TABLE photos (
-  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   user_id int,
   location varchar(255),
   FOREIGN KEY (user_id) references users(id)

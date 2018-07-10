@@ -24,8 +24,8 @@ exports.loginUserCheck = (req, res) => {
     if(err) {
       console.log(err);
     } else {
-      var ID = user[0] === undefined ? 0 : user[0].ID;
-      res.send({ID});
+      var id = user[0] === undefined ? 0 : user[0].id;
+      res.send({id});
     }
   });
 }; 

@@ -42,7 +42,7 @@ class TutorProfile extends Component {
           rating: `${data.Rating}.0`,
           id: id,
           tests: data.tests,
-          test_id: this.props.test_ID
+          test_id: this.props.test_id
         });
       })
       .then(() => {
@@ -166,9 +166,9 @@ class TutorProfile extends Component {
                     <Radio
                       name={test.Name}
                       inline
-                      key={test.ID}
-                      value={test.ID}
-                      checked={this.state.test_id == test.ID}
+                      key={test.id}
+                      value={test.id}
+                      checked={this.state.test_id == test.id}
                       onChange={e => this.handleTestSelect(e)}
                     >
                       {test.Name}

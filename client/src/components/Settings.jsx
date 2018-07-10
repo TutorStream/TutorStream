@@ -40,7 +40,7 @@ class Settings extends Component {
                 info = data[0]
                 console.log('data recieved in settings: ', info)
                 this.setState({
-                    id: info.ID,
+                    id: info.id,
                     name: info.Name,
                     bio: info.Bio
                 })

@@ -55,14 +55,14 @@ class App extends Component {
       tests: [],
       tutors: []
     };
-    this.getID = this.getID.bind(this);
+    this.getid = this.getid.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
     this.getTutors = this.getTutors.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
   
 
-  getID(id) {
+  getid(id) {
     this.setState({
       id: id
     });
@@ -162,7 +162,7 @@ class App extends Component {
               testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
-              getID={this.getID}
+              getid={this.getid}
             />
           )}
         />
@@ -211,7 +211,7 @@ class App extends Component {
           render={routerProps => (
             <Classroom
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
             />
           )}
@@ -221,7 +221,7 @@ class App extends Component {
           render={routerProps => (
             <TutorRegistration
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
             />
           )}
@@ -231,7 +231,7 @@ class App extends Component {
           render={routerProps => (
             <Settings
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
             />
           )}
