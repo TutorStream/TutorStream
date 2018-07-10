@@ -5,11 +5,9 @@ const app = express();
 const db = require('./../database');
 const compression = require('compression');
 
-
 // socket.io
 const server = require('http').Server(app);
 const io = require('socket.io')(server); // CREATES our socketIO using the instance of the server
-
 
 // const router = require('./routes');
 const usersRouter = require('./routes/usersRoutes');
@@ -26,15 +24,15 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-app.use(compression({filter: shouldCompress}))
+app.use(compression({ filter: shouldCompress }));
 
-function shouldCompress (req, res) {
+function shouldCompress(req, res) {
   if (req.headers['x-no-compression']) {
     // don't compress responses with this request header
-    return false
+    return false;
   }
   // fallback to standard filter function
-  return compression.filter(req, res)
+  return compression.filter(req, res);
 }
 
 app.use(express.static(path.join(__dirname, './../client/dist')));
@@ -98,19 +96,19 @@ app.use('/feedback', feedbackRouter);
 
 // socket.io listening
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
   console.log('user connected');
   var room;
-  socket.on('room', (data) => {
-      console.log('data :', data);
-      room = data.room;
-      socket.join(data.room)
-  })
-  socket.on('new-message', (msg) => {
+  socket.on('room', data => {
+    console.log('data :', data);
+    room = data.room;
+    socket.join(data.room);
+  });
+  socket.on('new-message', msg => {
     console.log('new message: ' + msg.message);
     console.log('room ', msg.room);
     socket.broadcast.to(msg.room).emit('sending-back', msg); // emit messages to all OTHER users
-  })
+  });
   // socket.on('leaving-room', (data) => {
   //   console.log('what room is being left ', data.room);
   //   socket.leave(data.room, () => {
@@ -121,12 +119,10 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
     socket.leave(room, () => {
       console.log('successfully left room');
-    })
-  })
+    });
+  });
 });
-
 
 server.listen(port, () => {
   console.log(`Magic happens on port ${port}`);
 });
-
