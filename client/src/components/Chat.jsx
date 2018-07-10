@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import io from 'socket.io-client'; 
-const socket = io('144.121.106.166:3000'); // to work ocally, need to set to one of our local IP addresses (custom socket)
+const socket = io(); // to work ocally, need to set to one of our local IP addresses (custom socket)
 import axios from 'axios';
 
 

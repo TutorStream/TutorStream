@@ -1,10 +1,13 @@
 const Feedback = require('./../models/feedbackModel');
+const Tutor = require('./../models/tutorModel');
+
 
 exports.addFeedback = (req, res) => {
   // need ID, id, tutor_id, rating, content, date, time
   console.log('req.body should have all 5 necessary schema columns', req.body);
   Feedback.addFeedback(req.body, (err, newFeedback) => {
     if (err) {
+      console.log('big problem!!!!!!!!', err)
       res.sendStatus(400);
     } else {
       console.log('added!!')
