@@ -405,9 +405,10 @@ div.tutors{
 }
 
 .img-circle {
-  border-radius: 50%;
+  border-radius: 5px 20px 5px !important;
+  overflow: hidden;
   max-height: 300px;
-  max-width: 250px;
+  max-width: 200px;
 }
 
 .col-sm-4 {

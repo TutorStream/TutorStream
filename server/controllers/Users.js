@@ -104,12 +104,10 @@ exports.addOrUpdateUserPhoto = (req, res) => {
 };
 
 exports.getUserPhoto = (req, res) => {
-  console.log('what request data do i get: ', req.query);
   User.getPhoto(req.query.user_id, (err, result) => {
     if (err) {
       console.error('There was an error getting the user photo: ', err);
     } else {
-      console.log('what is the result of GET the USER PHOTO?: ', result);
       res.send(result);
     }
   });
