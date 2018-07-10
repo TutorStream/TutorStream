@@ -66,9 +66,6 @@ class Chat extends Component {
           console.log('username ', this.state.username);
         })
       })
-      // .then(() => {
-      //   axios.get(``)
-      // })
       .catch((err) => {
         console.error(err);
       })
