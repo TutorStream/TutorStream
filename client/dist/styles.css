@@ -404,6 +404,21 @@ div.tutors{
   color: #0081BF;
 }
 
+.img-circle {
+  border-radius: 5px 20px 5px !important;
+  overflow: hidden;
+  max-height: 300px;
+  max-width: 200px;
+}
+
+.col-sm-4 {
+  padding-bottom: 15px;
+}
+
+#myvideo:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+}
 
 /* LIVE CHAT */
 
@@ -433,3 +448,6 @@ div.tutors{
   text-align: center;
 }
 
+.classroom-name{
+
+}

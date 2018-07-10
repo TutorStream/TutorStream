@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const db = require('./../database');
+const compression = require('compression');
+
 
 // socket.io
 const server = require('http').Server(app);
@@ -15,14 +17,26 @@ const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
 const feedbackRouter = require('./routes/feedbackRoutes');
-const router = express.Router();
-const passport = require('passport');
-const passportSetup = require('./config/passport_setup.js');
+// const router = express.Router();
+// const passport = require('passport');
+// const passportSetup = require('./config/passport_setup.js');
 // const cookieSession = require('cookie-session')
 
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+app.use(compression({filter: shouldCompress}))
+
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+
 app.use(express.static(path.join(__dirname, './../client/dist')));
 
 // app.use(cookieSession({
@@ -37,44 +51,44 @@ app.use(express.static(path.join(__dirname, './../client/dist')));
 
 /* Google authentication */
 // auth login
-router.get('/login', (req, res) => {
-  res.send('login');
-});
+// router.get('/login', (req, res) => {
+//   res.send('login');
+// });
 
 // auth logout
-router.get('/logout', (req, res) => {
-  // handle with passport
-  req.logout();
-  res.redirect('/');
-});
+// router.get('/logout', (req, res) => {
+//   // handle with passport
+//   req.logout();
+//   res.redirect('/');
+// });
 
 // auth with google+
-router.get(
-  '/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'https://www.googleapis.com/auth/calendar']
-  })
-);
+// router.get(
+//   '/google',
+//   passport.authenticate('google', {
+//     scope: ['profile', 'https://www.googleapis.com/auth/calendar']
+//   })
+// );
 
-router.get(
-  '/auth/google/redirect',
-  passport.authenticate('google'), // complete the authenticate using the google strategy
-  (err, req, res, next) => {
-    // custom error handler to catch any errors, such as TokenError
-    if (err.name === 'TokenError') {
-      res.redirect('/'); // redirect them back to the login page
-    } else {
-      // Handle other errors here
-      res.redirect('/');
-    }
-  },
-  (req, res) => {
-    // On success, redirect back to '/'
-    res.redirect('/');
-  }
-);
+// router.get(
+//   '/auth/google/redirect',
+//   passport.authenticate('google'), // complete the authenticate using the google strategy
+//   (err, req, res, next) => {
+//     // custom error handler to catch any errors, such as TokenError
+//     if (err.name === 'TokenError') {
+//       res.redirect('/'); // redirect them back to the login page
+//     } else {
+//       // Handle other errors here
+//       res.redirect('/');
+//     }
+//   },
+//   (req, res) => {
+//     // On success, redirect back to '/'
+//     res.redirect('/');
+//   }
+// );
 
-app.use(router);
+// app.use(router);
 // app.use('/', router);
 app.use('/users', usersRouter);
 app.use('/tutors', tutorsRouter);
@@ -110,6 +124,7 @@ io.on('connection', (socket) => {
     })
   })
 });
+
 
 server.listen(port, () => {
   console.log(`Magic happens on port ${port}`);

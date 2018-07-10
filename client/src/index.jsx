@@ -3,31 +3,49 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom'
 import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Components */
 
-import Login from './components/Login.jsx';
-import Classroom from './components/Classroom.jsx';
-import Sessions from './components/Sessions.jsx';
-import Settings from './components/Settings.jsx';
-import TestList from './components/TestList.jsx';
-import TutorRegistration from './components/TutorRegistration.jsx';
-import TutorReview from './components/TutorReview.jsx';
-import SecretRoute from './SecretRoute.jsx';
-import Home from './components/Home.jsx';
-import StudentView from './components/StudentView.jsx';
-import TestProfile from './components/TestProfile.jsx';
-import TutorProfile from './components/TutorProfile.jsx';
-import Chat from './components/Chat.jsx';
-import Review from './components/Review.jsx';
+// import Login from './components/Login.jsx';
+// import Classroom from './components/Classroom.jsx';
+// import Sessions from './components/Sessions.jsx';
+// import Settings from './components/Settings.jsx';
+// import TestList from './components/TestList.jsx';
+// import TutorRegistration from './components/TutorRegistration.jsx';
+// import TutorReview from './components/TutorReview.jsx';
+// import SecretRoute from './SecretRoute.jsx';
+// import Home from './components/Home.jsx';
+// import StudentView from './components/StudentView.jsx';
+// import TestProfile from './components/TestProfile.jsx';
+// import TutorProfile from './components/TutorProfile.jsx';
+// import Chat from './components/Chat.jsx';
+// import Review from './components/Review.jsx';
 
 /* Import Services */
-
 import AuthService from './Auth/AuthService.js';
 import AuthStatus from './Auth/AuthStatus.js';
+
+/* Lazy Loaders */
+import Async from 'react-code-splitting';
+
+const Login = props => <Async load={import('./components/Login.jsx')} componentProps={props} />
+const TutorProfile = props => <Async load={import('./components/TutorProfile.jsx')} componentProps={props} />
+const Sessions = props => <Async load={import('./components/Sessions.jsx')} componentProps={props} />
+const TestProfile = props => <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
+const Review = props => <Async load={import('./components/Review.jsx')} componentProps={props} />
+const Settings = props => <Async load={import('./components/Settings.jsx')} componentProps={props} />
+const TestList = props => <Async load={import('./components/TestList.jsx')} componentProps={props} />
+const Classroom = props => <Async load={import('./components/Classroom.jsx')} componentProps={props} />
+const TutorRegistration = props => <Async load={import('./components/TutorRegistration.jsx')} componentProps={props} />
+const TutorReview = props => <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
+const Home = props => <Async load={import('./components/Home.jsx')} componentProps={props} />
+const StudentView = props => <Async load={import('./components/StudentView.jsx')} componentProps={props} />
+const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
+
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +60,7 @@ class App extends Component {
     this.getTutors = this.getTutors.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
+  
 
   getID(id) {
     this.setState({
@@ -111,9 +130,9 @@ class App extends Component {
             <LinkContainer to={`/sessions/${this.state.id}`}>
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
-            <LinkContainer to={'/chat'}>
+            {/* <LinkContainer to={'/chat'}>
               <NavItem>All Chats</NavItem>
-            </LinkContainer>
+            </LinkContainer> */}
             <LinkContainer to="/classroom">
               <NavItem>Classroom</NavItem>
             </LinkContainer>
@@ -140,6 +159,7 @@ class App extends Component {
             <Login
               className="login"
               tests={this.state.tests}
+              testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
               getID={this.getID}
@@ -178,13 +198,14 @@ class App extends Component {
             <Sessions {...routerProps} id={this.state.id} />
           )}
         />
-        <SecretRoute 
+        {/* <SecretRoute 
           path='/chat' 
           render={(routerProps) => (
-            <Chat {...routerProps}  
+            <Chat {...routerProps} 
+            id={this.state.id} 
             />
           )}
-        />
+        /> */}
         <SecretRoute
           path="/classroom"
           render={routerProps => (
@@ -221,9 +242,9 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <Router>
+  <HashRouter>
     <App location={location} />
-  </Router>,
+  </HashRouter>,
   document.getElementById('app')
 );
 export default App;

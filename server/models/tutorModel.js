@@ -154,3 +154,8 @@ exports.addFeedback = (params, callback) => {
     callback
   );
 };
+
+exports.getTutorsPhotos = (idList, callback) => {
+  let queryStr = `SELECT * FROM photos WHERE user_id IN (${idList})`;
+  db.query(queryStr, callback);
+};
