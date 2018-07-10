@@ -29,9 +29,9 @@ class Login extends Component {
       Password: this.state.Password
     })
     .then(({data}) => {
-      var ID = data.ID
-      this.props.getID(ID);
-      if(!!data.ID) {
+      var id = data.id
+      this.props.getID(id);
+      if(!!data.id) {
         AuthService.authenticate()
         this.setState({
           redirectToPreviousRoute: true

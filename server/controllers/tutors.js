@@ -21,7 +21,6 @@ exports.getTutorProfile = (req, res) => {
         if (err) {
           res.status(400).send(err);
         } else {
-          // where to get the full test information from, like name? front or back end?
           let test_ids = [];
           data.forEach(test => {
             test_ids.push(test.test_id);

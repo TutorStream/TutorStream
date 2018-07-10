@@ -18,7 +18,7 @@ exports.addFeedback = (data, callback) => {
          console.error('error inserting feedback : ',err);
        }else {
          console.log('average results : ',results[0].Average)
-        let newQueryStr = `Update tutors Set rating=${results[0].Average} where ID = ${tutor_id}`;
+        let newQueryStr = `Update tutors Set rating=${results[0].Average} where id = ${tutor_id}`;
         db.query(newQueryStr,(err,results)=>{
           if(err){
             console.log('error : ', err)

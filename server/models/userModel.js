@@ -26,19 +26,17 @@ exports.loginUser = (userCreds, callback) => {
 };
 
 exports.getUserInfoDB = (userId, callback) => {
-  console.log('I got here too', userId)
-  let queryStr = `SELECT * FROM users where ID = ${userId}`;
+  let queryStr = `SELECT * FROM users where id = ${userId}`;
   db.query(queryStr, callback);
 };
 
 exports.getUsernameById = (userId, callback) => {
-  let queryStr = `SELECT Name FROM users where ID = ${userId}`;
+  let queryStr = `SELECT Name FROM users where id = ${userId}`;
   db.query(queryStr, callback);
 };
 
 exports.updateUser = (form, callback) => {
-  console.log('Form:', form);
-  let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE ID = ${form.id}`;
+  let updateStr = `UPDATE users SET Bio = ?, Name = ? WHERE id = ${form.id}`;
   db.query(updateStr, [form.userBio, form.name], callback);
 };
 
@@ -48,7 +46,7 @@ exports.addPhoto = (userPhoto, callback) => {
 };
 
 exports.updatePhoto = (userPhoto, callback) => {
-  let updateStr = `UPDATE photos SET location = ${userPhoto.location} WHERE user_id = ${userPhoto.user_id}`;
+  let updateStr = `UPDATE photos SET location = '${userPhoto.location}' WHERE user_id = ${userPhoto.user_id}`;
   db.query(updateStr, callback);
 };
 
