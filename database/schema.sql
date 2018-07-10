@@ -57,6 +57,8 @@ CREATE TABLE sessions (
   student_id int,
   date DATE NOT NULL,
   time TIME NOT NULL,
+  complete TINYINT(1) DEFAULT 0,
+  missed TINYINT(1) DEFAULT 1,
   FOREIGN KEY
 (test_id) references tests
 (id),
@@ -85,3 +87,9 @@ CREATE TABLE feedback (
 (id)
 );
 
+CREATE TABLE photos (
+  ID int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+  user_id int,
+  location varchar(255),
+  FOREIGN KEY (user_id) references users(id)
+)

@@ -5,6 +5,7 @@ const app = express();
 const db = require('./../database');
 const compression = require('compression');
 
+
 // socket.io
 const server = require('http').Server(app);
 const io = require('socket.io')(server); // CREATES our socketIO using the instance of the server
@@ -123,6 +124,7 @@ io.on('connection', (socket) => {
     })
   })
 });
+
 
 server.listen(port, () => {
   console.log(`Magic happens on port ${port}`);

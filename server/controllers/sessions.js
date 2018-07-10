@@ -23,17 +23,32 @@ exports.deleteSession = (req, res) => {
 };
 
 exports.updateSession = (req, res) => {
-//   var sessionId = req.body
-//   // use session model to update a session
-//   // send back 201 to  client
-};
-
-exports.getSession = (req, res) => {
-  let id = req.params.id;
-  sessionModel.getSession(id, (err, result) => {
+  console.log("We're here about to update session to complete",req.params.id)
+  sessionModel.updateSession(req.params.id, (err, result) => {
     if (err) {
       console.error('There was an error getting the session info: ', err);
     } else {
+      console.log('result is ??? oh Updated',result)
+      res.status(201);
+    }
+  });
+};
+
+exports.getSession = (req, res) => {
+  // console.log('params: ',req)
+  // let id = req.params.id;
+  var form = {
+    id : req.params.id,
+    isTutor: Number(req.query.isTutor)
+  }
+  // console.log('what??? ',typeof req.query.isTutor)
+
+  console.log('form :', form)
+  sessionModel.getSession(form, (err, result) => {
+    if (err) {
+      console.error('There was an error getting the session info: ', err);
+    } else {
+      console.log('result is ??? ',result)
       res.send(result);
     }
   });

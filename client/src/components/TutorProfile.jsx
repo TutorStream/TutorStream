@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import DateTime from 'react-datetime';
 import AuthService from './../Auth/AuthService';
-import { Radio, FormGroup } from 'react-bootstrap';
+import { Radio, FormGroup, Jumbotron, Button } from 'react-bootstrap';
 import Review from './Review.jsx';
 
 class TutorProfile extends Component {
@@ -25,6 +25,7 @@ class TutorProfile extends Component {
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
+    this.updateRating = this.updateRating.bind(this);
   }
 
   getTutorInfo() {
@@ -32,11 +33,12 @@ class TutorProfile extends Component {
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
+        console.log('data rating : ', data.rating)
         this.setState({
           name: data.Name,
-          rating: data.Rating,
           bio: data.Bio,
           price: data.Price,
+          rating: `${data.Rating}.0`,
           id: id,
           tests: data.tests,
           test_id: this.props.test_ID
@@ -57,7 +59,7 @@ class TutorProfile extends Component {
       Jun: '06',
       Jul: '07',
       Aug: '08',
-      Sep: '09',
+      Sep: '09',  
       Oct: '10',
       Nov: '11',
       Dec: '12'
@@ -106,9 +108,27 @@ class TutorProfile extends Component {
       this.getTutorInfo();
     }
   }
+
+  updateRating(array){
+    console.log('array :', array)
+    var sum = 0;
+    array.forEach((review)=>{
+      console.log('rating for each is : ', review.rating ,'and current sum: ',sum)
+      sum += review.rating
+      console.log('sum now is : ',sum)
+    })
+    console.log('AVG is :',sum/ array.length)
+    return sum/ array.length
+  }
+
   render() {
     return (
+      <div>
+        
       <Fragment>
+
+
+        
         <div>
           <h3>{this.state.name}'s Profile</h3>
           <div>
@@ -152,6 +172,7 @@ class TutorProfile extends Component {
         </div>
         <Review {...this.props} />
       </Fragment>
+      </div>
     );
   }
 }
