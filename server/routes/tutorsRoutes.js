@@ -5,6 +5,8 @@ tutorsRouter.get('/', tutorsControllers.getTutors);
 
 tutorsRouter.get('/selectTutors', tutorsControllers.getTutors);
 
+tutorsRouter.get('/photo', tutorsControllers.getTopTutorPhotos);
+
 tutorsRouter.get('/:id', tutorsControllers.getTutorProfile);
 
 tutorsRouter.post('/:id', tutorsControllers.addOrUpdateTutor);
