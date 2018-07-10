@@ -12,6 +12,7 @@ module.exports = {
       path: DIST_DIR,
       publicPath: '/'
     },
+    mode: "production",
     devtool: 'cheap-eval-soruce-map',
     plugins: [
         new BundleAnalyzerPlugin({
