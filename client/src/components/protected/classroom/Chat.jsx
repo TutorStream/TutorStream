@@ -11,11 +11,7 @@ class Chat extends Component {
       message : '',
       messages : ['bingo']
     };
-    this.messageHandler = this.messageHandler.bind(this);
-    this.postMessage = this.postMessage.bind(this);
-    this.clearInput = this.clearInput.bind(this);
-
-    // SOCKET.IO : Client-Side Listeners --> put all here in constructor
+    // SOCKET.IO : Client-Side Listeners
     socket.on('sending-back', (msg) => {
       console.log('what does this msg look like on client side :', msg);
       this.setState({
@@ -31,13 +27,13 @@ class Chat extends Component {
     })
   }
 
-  messageHandler (e) {
+  messageHandler = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     });
   }
 
-  postMessage(e) {
+  postMessage = (e) => {
     e.preventDefault();
     if (this.state.message.length > 0) {
       this.setState({
@@ -52,7 +48,7 @@ class Chat extends Component {
     } 
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     console.log('chat user id', this.props)
     axios.get(`users/username/${this.props.id}`)
       .then(({data}) => {
@@ -69,7 +65,7 @@ class Chat extends Component {
     socket.emit('room', {room : this.props.session_id});
   }
 
-  componentWillUnmount () {
+  componentWillUnmount = () => {
     socket.on('leaving-room', {
       room : this.state.sessionId
     })
