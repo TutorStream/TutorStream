@@ -28,7 +28,7 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jeff Anderson', '
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jon Izak', 'password', 'jon@gmail.com', 0, "I received my BS in Biochemistry and Bioinformatics from Ramapo and attained an MS from Rutgers in Biomedical Informatics. I graduated with an MS in Computational Biology and Bioinformatics from Yale in 2014. I have extensive teaching experience: I served as a Supplemental Instructor for 5 semesters in Elementary Probability & Statistics at Ramapo and worked as an Anatomy & Physiology lecturer at Success Training College, and an Instrumental Analysis lecturer at Terreve College. I also tutored Math in the Bahamas from 2009-2010.");
 
 
--- Tests Tutors can Tutor
+-- Tests
 INSERT INTO tests (Name, Description) VALUES ('LSAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
 INSERT INTO tests (Name, Description) VALUES ('SAT', "The SAT is a standardized test widely used for college admissions in the United States. Introduced in 1926, its name and scoring have changed several times; originally called the Scholastic Aptitude Test, it was later called the Scholastic Assessment Test, then the SAT I: Reasoning Test, then the SAT Reasoning Test, and now, simply the SAT.");
 INSERT INTO tests (Name, Description) VALUES ('ACT', "The ACT is a standardized test used for college admissions in the United States. It was first introduced in November 1959 by University of Iowa professor Everett Franklin Lindquist as a competitor to the Scholastic Aptitude Test (SAT).[11] It is currently administered by ACT, a nonprofit organization of the same name.");
@@ -49,7 +49,7 @@ INSERT INTO tests (Name, Description) VALUES ('DAT', "The DAT is a dental educat
 -- INSERT INTO user_tests (id, test_id) VALUES (6, 4);
 
 
---Tutors
+-- Tutors
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50, 3);
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60, 4);
@@ -63,7 +63,7 @@ INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (17, 'Isto Barton', "I 
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
 
 
--- photos
+-- Photos
 
 INSERT INTO photos (user_id, location) VALUES (2, 'https://s3.amazonaws.com/tutorstream-files/images+(6).jpeg');
 INSERT INTO photos (user_id, location) VALUES (6, 'https://s3.amazonaws.com/tutorstream-files/female.jpeg');
@@ -77,72 +77,26 @@ INSERT INTO photos (user_id, location) VALUES (17, 'https://s3.amazonaws.com/tut
 INSERT INTO photos (user_id, location) VALUES (21, 'https://s3.amazonaws.com/tutorstream-files/guy-fieri.jpeg');
 
 
---tutor_tests
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (1, 11);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (2, 10);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (6, 9);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (8, 8);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (10, 7);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (11, 6);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (13, 5);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (15, 4);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (16, 3);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (17, 2);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (21, 1);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (1, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (2, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (10, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (13, 12);
+-- Tutor Tests
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (1, 11);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (2, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (6, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (8, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (10, 7);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (11, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (13, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (15, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (16, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (17, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (21, 1);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (1, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (2, 12); 
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (10, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (13, 12);
 
-INSERT INTO feedback
-    (user_id, tutor_id, rating, content)
-VALUES
-    (12, 8, 5, 'Rose took the time to get into the details about my test prep');
+
+-- Feedback
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (12, 8, 5, 'Rose took the time to get into the details about my test prep');
 
 --
 
@@ -150,7 +104,7 @@ VALUES
 -- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
 -- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
-INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
 
 
