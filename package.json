@@ -11,11 +11,14 @@
   "babel": {
     "presets": [
       "react",
-      "es2015"
+      "es2015",
+      "stage-1"
     ],
     "plugins": [
       "transform-object-rest-spread",
-      "syntax-dynamic-import"
+      "syntax-dynamic-import",
+      "transform-class-constructor-call",
+      "transform-export-extensions"
     ]
   },
   "keywords": [],

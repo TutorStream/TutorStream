@@ -12,10 +12,6 @@ class Chat extends Component {
       messages: ['bingo']
       // sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
     };
-    this.messageHandler = this.messageHandler.bind(this);
-    this.postMessage = this.postMessage.bind(this);
-    this.clearInput = this.clearInput.bind(this);
-
     // SOCKET.IO : Client-Side Listeners --> put all here in constructor
     socket.on('new-message', msg => {
       this.setState({

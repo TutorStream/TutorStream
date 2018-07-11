@@ -15,11 +15,9 @@ class Home extends Component {
       tests: [],
       photos: {}
     };
-    this.getTutors = this.getTutors.bind(this);
-    this.getAllTests = this.getAllTests.bind(this);
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -53,9 +51,9 @@ class Home extends Component {
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
-  }
+  };
 
-  getAllTests() {
+  getAllTests = () => {
     axios
       .get('/tests')
       .then(({ data }) => {
@@ -66,7 +64,7 @@ class Home extends Component {
       .catch(err => {
         console.error('There was an error getting all the tests: ', err);
       });
-  }
+  };
 
   componentDidMount() {
     this.getTutors();
@@ -84,7 +82,7 @@ class Home extends Component {
           <br />
           <hr />
           <br />
-          <div className="main-info" >
+          <div className="main-info">
             <h2>Featured Tutors:</h2>
             <Row>
               <br />

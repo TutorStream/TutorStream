@@ -33,18 +33,15 @@ class WriteReview extends Component {
       submitted: false,
       activeSession: this.props.activeSession
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.onStarClick = this.onStarClick.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value }, () => {
       console.log('We just updated : ', this.state.feedback);
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     console.log('State now is : ', this.state);
     //need to refactor below to match desired purposes
@@ -66,11 +63,11 @@ class WriteReview extends Component {
         });
       })
       .catch(err => console.error(err));
-  }
+  };
 
-  onStarClick(nextValue) {
+  onStarClick = nextValue => {
     this.setState({ rating: nextValue });
-  }
+  };
 
   render() {
     const { rating } = this.state;

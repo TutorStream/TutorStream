@@ -26,11 +26,6 @@ class Classroom extends Component {
       loading: true,
       active: false
     };
-    this.getUpcomingSessionInfo = this.getUpcomingSessionInfo.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.getUserInfo = this.getUserInfo.bind(this);
-    this.markSessionComplete = this.markSessionComplete.bind(this);
-    this.isHistory = this.isHistory.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +38,7 @@ class Classroom extends Component {
     clearInterval(this.interval);
   }
 
-  getUserInfo(id) {
+  getUserInfo = id => {
     var info;
     axios
       .get(`/users/info/${id}`)
@@ -58,9 +53,9 @@ class Classroom extends Component {
         );
       })
       .then(() => {});
-  }
+  };
 
-  handleSubmit() {
+  handleSubmit = () => {
     this.setState(
       {
         review: true,
@@ -70,15 +65,15 @@ class Classroom extends Component {
         this.markSessionComplete();
       }
     );
-  }
+  };
 
-  markSessionComplete() {
+  markSessionComplete = () => {
     axios
       .put(`/sessions/${this.state.session_id}`)
       .then(() => console.log('Marked Complete'));
-  }
+  };
   //if isTutor is true get tutor session, else get user session
-  getUpcomingSessionInfo(id) {
+  getUpcomingSessionInfo = id => {
     axios
       .get(`/sessions/${id}`, {
         params: {
@@ -126,9 +121,9 @@ class Classroom extends Component {
           });
         }
       });
-  }
+  };
 
-  isHistory(sessions) {
+  isHistory = sessions => {
     var currentSession = null;
     for (var i = 0; i < sessions.length; i++) {
       var session = sessions[i];
@@ -152,7 +147,7 @@ class Classroom extends Component {
         session_id: currentSession.id
       });
     }
-  }
+  };
 
   render() {
     var flexStyle = {

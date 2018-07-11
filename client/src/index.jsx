@@ -87,28 +87,23 @@ class App extends Component {
       tutors: [],
       isTutor: -1
     };
-    this.getid = this.getid.bind(this);
-    this.getAllTests = this.getAllTests.bind(this);
-    this.getTutors = this.getTutors.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
-    this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
 
-  getid(id) {
+  getid = id => {
     this.setState({
       id: id
     });
-  }
+  };
 
-  checkTutorStatus(id, tutors) {
+  checkTutorStatus = (id, tutors) => {
     if (tutors.indexOf(id) > -1) {
       this.setState({
         isTutor: 1
       });
     }
-  }
+  };
 
-  getAllTests() {
+  getAllTests = () => {
     axios
       .get('/tests')
       .then(({ data }) => {
@@ -119,9 +114,9 @@ class App extends Component {
       .catch(err => {
         console.error(err);
       });
-  }
+  };
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -134,9 +129,9 @@ class App extends Component {
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
-  }
+  };
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -151,7 +146,7 @@ class App extends Component {
       .catch(err => {
         console.error(err);
       });
-  }
+  };
 
   componentDidMount() {
     this.getTutors();

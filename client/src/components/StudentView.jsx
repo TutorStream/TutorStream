@@ -28,7 +28,7 @@ class StudentView extends Component {
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -39,9 +39,9 @@ class StudentView extends Component {
       .catch(err => {
         console.error(err);
       });
-  }
+  };
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -56,9 +56,9 @@ class StudentView extends Component {
       .catch(err => {
         console.error(err);
       });
-  }
+  };
 
-  setTestid(id) {
+  setTestid = id => {
     this.setState(
       {
         test_id: id
@@ -67,13 +67,13 @@ class StudentView extends Component {
         this.getSelectTutors();
       }
     );
-  }
+  };
 
-  grabTutorId(id) {
+  grabTutorId = id => {
     this.setState({
       tutor_id: id
     });
-  }
+  };
 
   componentDidMount() {
     this.getTutors();

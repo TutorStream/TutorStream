@@ -33,7 +33,7 @@ class UpcomingSession extends Component {
     }
   }
 
-  getUserInfo(id) {
+  getUserInfo = id => {
     var info;
     axios.get(`/users/info/${id}`).then(({ data }) => {
       info = data[0];
@@ -42,7 +42,7 @@ class UpcomingSession extends Component {
         isTutor: info.Tutor
       });
     });
-  }
+  };
 
   render() {
     //room currently hardcoded.. will change it to session id as a chat room number
