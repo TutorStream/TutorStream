@@ -94,8 +94,8 @@ class Home extends Component {
                     <TutorCard
                       key={tutor.id}
                       name={tutor.Name}
-                      rating={tutor.Rating}
-                      photo={this.state.photos[tutor.id]}
+                      rating={`${tutor.Rating}.0`}
+                      photo={this.state.photos[tutor.ID]}
                     />
                   </Link>
                 </Col>
