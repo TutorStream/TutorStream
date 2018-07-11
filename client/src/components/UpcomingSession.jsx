@@ -64,7 +64,7 @@ class UpcomingSession extends Component {
                 <br/>
                 time:  {this.props.upcomingSession.time}
                 <br/>
-                with:  {this.state.upcomingCaller}
+                with:  {this.props.upcomingCaller}
                 <br/>
             </p></ControlLabel>
 
