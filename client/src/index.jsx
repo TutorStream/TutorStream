@@ -181,7 +181,7 @@ class App extends Component {
               {...routerProps}
               id={this.state.id}
               tutors_ids = {this.state.tutors_ids}
-              getID={this.getID}
+              getid={this.getid}
               checkTutorStatus={this.checkTutorStatus}
             />
           )}
