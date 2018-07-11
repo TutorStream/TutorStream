@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { HashRouter, Route } from 'react-router-dom';
+
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 /* Import Services */
-import AuthService from './Auth/AuthService.js';
+
 import AuthStatus from './Auth/AuthStatus.js';
 
 /* Lazy Loaders */
@@ -92,15 +91,12 @@ const SecretRoute = props => (
 );
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: null,
-      tests: [],
-      tutors: [],
-      isTutor: -1
-    };
-  }
+  state = {
+    id: null,
+    tests: [],
+    tutors: [],
+    isTutor: -1
+  };
 
   componentDidMount() {
     this.getTutors();
