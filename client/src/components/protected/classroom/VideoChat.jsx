@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 // import TutorProfile from './TutorProfile.jsx';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Checkbox,
-  Radio,
-  FieldGroup,
-  Button
-} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class VideoChat extends Component {
   constructor(props) {

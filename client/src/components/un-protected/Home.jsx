@@ -17,6 +17,11 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getTutors();
+    this.getAllTests();
+  }
+
   getTutors = () => {
     axios
       .get('/tutors')
@@ -65,11 +70,6 @@ class Home extends Component {
         console.error('There was an error getting all the tests: ', err);
       });
   };
-
-  componentDidMount() {
-    this.getTutors();
-    this.getAllTests();
-  }
 
   render() {
     return (

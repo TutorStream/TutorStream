@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import DateTime from 'react-datetime';
-import AuthService from './../Auth/AuthService';
+import AuthService from './../../../Auth/AuthService';
 import { Radio, FormGroup, Jumbotron, Button } from 'react-bootstrap';
 import Review from './Review.jsx';
 
@@ -22,19 +22,24 @@ class TutorProfile extends Component {
       test_id: undefined,
       photo: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.bookTutor = this.bookTutor.bind(this);
-    this.getTutorInfo = this.getTutorInfo.bind(this);
-    this.handleTestSelect = this.handleTestSelect.bind(this);
   }
 
-  getTutorInfo() {
+  componentDidMount() {
+    this.getTutorInfo();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { id } = this.props.match.params;
+    if (id !== prevState.id) {
+      this.getTutorInfo();
+    }
+  }
+
+  getTutorInfo = () => {
     const { id } = this.props.match.params;
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
-        console.log('what is the data: ', data);
-        console.log('data rating : ', data.rating);
         this.setState({
           name: data.Name,
           bio: data.Bio,
@@ -67,9 +72,9 @@ class TutorProfile extends Component {
       .catch(err => {
         console.error('There was an error retrieving the tutor profile: ', err);
       });
-  }
+  };
 
-  handleChange(inputDate) {
+  handleChange = inputDate => {
     let months = {
       Jan: '01',
       Feb: '02',
@@ -91,13 +96,13 @@ class TutorProfile extends Component {
     mm = months[mm];
     let date = `${yyyy}-${mm}-${dd}`;
     this.setState({ date, time });
-  }
+  };
 
-  handleTestSelect(e) {
+  handleTestSelect = e => {
     this.setState({
       test_id: e.target.value
     });
-  }
+  };
 
   bookTutor() {
     if (!AuthService.isAuthenticated) {
@@ -112,9 +117,6 @@ class TutorProfile extends Component {
           date: this.state.date,
           time: this.state.time,
           rate: this.state.price
-        })
-        .then(({ data }) => {
-          console.log('saved and back to client', data);
         })
         .catch(err => console.error(err));
     }

@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import TutorProfile from './TutorProfile.jsx';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import TestList from './TestList.jsx';
+import TestList from './../../un-protected/TestList.jsx';
 
 class StudentView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id : this.props.userId,
       test_id: 1,
       tutor_id: null,
       tutors: []
     };
-    this.getTutors = this.getTutors.bind(this);
-    this.setTestid = this.setTestid.bind(this);
-    this.grabTutorId = this.grabTutorId.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
   getTutors = () => {
@@ -75,9 +61,9 @@ class StudentView extends Component {
     });
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getTutors();
-  }
+  };
 
   render() {
     return (

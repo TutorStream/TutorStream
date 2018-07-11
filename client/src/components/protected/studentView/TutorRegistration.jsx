@@ -9,32 +9,24 @@ import {
   FieldGroup,
   Button
 } from 'react-bootstrap';
-import Earnings from './Earnings.jsx';
+import Earnings from './../tutorView/Earnings.jsx';
 
 class TutorRegistration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tests: [
-        { test: 'DAT', test_id: '1' },
-        { test: 'LSAT', test_id: '2' },
-        { test: 'SAT', test_id: '3' },
-        { test: 'GRE', test_id: '4' },
-        { test: 'GMAT', test_id: '5' },
-        { test: 'HR TA', test_id: '6' }
-      ],
+      tests: this.props.tests,
       test: '',
       selectedTests: [],
       bio: '',
       rate: '',
-      form: {}
+      form: {
+        // what goes in here?
+      }
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
   }
 
-  handleCheck(e) {
+  handleCheck = e => {
     console.log('lets check props : ', this.props);
     var array = this.state.selectedTests.slice();
     if (array.indexOf(e.target.value) === -1) {
@@ -55,9 +47,9 @@ class TutorRegistration extends React.Component {
         () => console.log(this.state.selectedTests)
       );
     }
-  }
+  };
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value }, () => {
       console.log(
         'We just updated : ',
@@ -66,9 +58,9 @@ class TutorRegistration extends React.Component {
         this.state.rate
       );
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     var testsArray = [];
     this.state.selectedTests.forEach(test_id => {
@@ -89,7 +81,7 @@ class TutorRegistration extends React.Component {
       .post(`/tutors/${this.props.id}`, form)
       .then(() => console.log('Updated and registered as tutor!'))
       .catch(err => console.error(err));
-  }
+  };
   render() {
     let conditional =
       this.props.isTutor > -1 ? (
@@ -130,9 +122,9 @@ class TutorRegistration extends React.Component {
                   onChange={this.handleCheck}
                   inline
                   key={i}
-                  value={test.test_id}
+                  value={test.id}
                 >
-                  {test.test}
+                  {test.Name}
                 </Checkbox>
               );
             })}

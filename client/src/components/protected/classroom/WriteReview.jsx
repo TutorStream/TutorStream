@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Checkbox,
-  Radio,
-  FieldGroup,
-  Button
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 import StarRatingComponent from 'react-star-rating-component';
@@ -63,6 +55,10 @@ class WriteReview extends Component {
         });
       })
       .catch(err => console.error(err));
+  };
+
+  onStarClick = nextValue => {
+    this.setState({ rating: nextValue });
   };
 
   onStarClick = nextValue => {
