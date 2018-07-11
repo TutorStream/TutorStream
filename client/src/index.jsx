@@ -52,13 +52,8 @@ class App extends Component {
     });
   }
 
-<<<<<<< HEAD
-  checkTutorStatus(id,tutors){
-    if(tutors.indexOf(id)>-1){
-=======
   checkTutorStatus = (id,tutors) => {
     if(tutors.indexOf(id) > -1){
->>>>>>> dev
       this.setState({
         isTutor: 1
       });
@@ -88,10 +83,6 @@ class App extends Component {
           tutors_ids: data.map((tutor) => tutor.id)
         });
       })
-<<<<<<< HEAD
-=======
-      .then(() => {})
->>>>>>> dev
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
