@@ -27,7 +27,7 @@ class Chat extends Component {
     });
   }
 
-  clearInput() {  '       \'    ``````````````````````````````````````````
+  clearInput() {
     this.setState({
       message: ''
     });
