@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { FormGroup, FormControl, ControlLabel, Checkbox, Button } from 'react-bootstrap';
-import AuthService from '../Auth/AuthService';
+import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {
@@ -17,21 +17,16 @@ class SignUp extends React.Component {
       selectedFile: [],
       redirectToPreviousRoute: false
     };
-    this.inputHandler = this.inputHandler.bind(this);
-    this.handleSignup = this.handleSignup.bind(this);
-    this.handleTestSelect = this.handleTestSelect.bind(this);
-    this.handleFileSelect = this.handleFileSelect.bind(this);
-    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
 
-  inputHandler (e){
+  inputHandler = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     });
   }
 
 
-  handleTestSelect (e) {
+  handleTestSelect = (e) => {
     let newTests = this.state.userTests.slice();
     if (e.target.checked) {
       newTests.push(e.target.value);
@@ -43,13 +38,13 @@ class SignUp extends React.Component {
     });
   }
 
-  handleFileSelect(e) {
+  handleFileSelect = (e) => {
     this.setState({
       selectedFile: e.target.files
     });
   }
 
-  handleFileUpload(user_id) {
+  handleFileUpload = (user_id) => {
     const formData = new FormData();
     formData.append('file', this.state.selectedFile[0]);
     axios.post('http://ec2-34-207-66-224.compute-1.amazonaws.com:5000/photo-upload', formData, {
@@ -68,7 +63,7 @@ class SignUp extends React.Component {
     .catch((error) => console.error('There was an error with the POST request to the server: ', error));
   }
 
-  handleSignup (e) {
+  handleSignup = (e) => {
     e.preventDefault();
     axios.post('/users/signup', {
       name : this.state.name,
@@ -91,7 +86,6 @@ class SignUp extends React.Component {
       console.error(err);
     });
   }
-
 
   render () {
     const { from } = this.props.location.state || { from: { pathname: "/" } };

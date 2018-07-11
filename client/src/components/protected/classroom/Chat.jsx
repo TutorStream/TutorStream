@@ -10,33 +10,53 @@ class Chat extends Component {
       username: '',
       message: '',
       messages: ['bingo']
-      // sessionId : '781918272828' // hard-coded, delete this and just pass in sessionId below
     };
-    this.messageHandler = this.messageHandler.bind(this);
-    this.postMessage = this.postMessage.bind(this);
-    this.clearInput = this.clearInput.bind(this);
-
-    // SOCKET.IO : Client-Side Listeners --> put all here in constructor
-    socket.on('new-message', msg => {
+    
+    // SOCKET.IO : Client-Side Listeners
+    socket.on('sending-back', (msg) => {
+      console.log('what does this msg look like on client side :', msg);
       this.setState({
         messages: [msg, ...this.state.messages]
       });
     });
   }
 
-  clearInput() {
+  componentDidMount () {
+    console.log('chat user id', this.props)
+    axios.get(`users/username/${this.props.id}`)
+      .then(({data}) => {
+        this.setState({
+          username : data[0].Name
+        }, () => {
+          console.log('username ', this.state.username);
+        })
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    console.log('chat mounting?');
+    socket.emit('room', {room : this.props.session_id});
+  }
+
+  componentWillUnmount () {
+    socket.on('leaving-room', {
+      room : this.state.sessionId
+    })
+  }
+
+  clearInput = () => {
     this.setState({
       message: ''
     });
   }
 
-  messageHandler(e) {
+  messageHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
-  postMessage(e) {
+  postMessage = (e) => {
     e.preventDefault();
     socket['name'] = this.state.username;
     if (this.state.message.length > 0) {
@@ -56,38 +76,19 @@ class Chat extends Component {
     }
   }
 
-  componentDidMount() {
-    axios
-      .get(`users/username/${this.props.id}`)
-      .then(({ data }) => {
-        this.setState({
-          username: data[0].Name
-        });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-    socket.emit('room', { room: this.props.session_id });
-  }
-
-  componentWillUnmount() {
-    socket.on('leaving-room', {
-      room: this.state.sessionId
-    });
-  }
-
-  render() {
+  render () {
+    console.log(this.props.upcomingSession, 'upcoming session');
     return (
       <div className="chat-container">
         <h1 className="header">Chat Channel</h1>
         <div className="all-messages">
-          {this.state.messages.map((msg, i) => {
-            return (
-              <div key={i} className="msg">
-                <strong> {msg.user}: </strong> {msg.message}{' '}
-              </div>
-            );
-          })}
+            {this.state.messages.map((msg, i) => {
+              return (
+                <div key={i} className="msg">
+                  <strong> {this.state.username}: </strong> {msg}
+                </div>
+              )
+            })}
         </div>
         <form
           className="add-new-message"

@@ -8,23 +8,6 @@ import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-/* Import Components */
-
-// import Login from './components/Login.jsx';
-// import Classroom from './components/Classroom.jsx';
-// import Sessions from './components/Sessions.jsx';
-// import Settings from './components/Settings.jsx';
-// import TestList from './components/TestList.jsx';
-// import TutorRegistration from './components/TutorRegistration.jsx';
-// import TutorReview from './components/TutorReview.jsx';
-// import SecretRoute from './SecretRoute.jsx';
-// import Home from './components/Home.jsx';
-// import StudentView from './components/StudentView.jsx';
-// import TestProfile from './components/TestProfile.jsx';
-// import TutorProfile from './components/TutorProfile.jsx';
-// import Chat from './components/Chat.jsx';
-// import Review from './components/Review.jsx';
-
 /* Import Services */
 import AuthService from './Auth/AuthService.js';
 import AuthStatus from './Auth/AuthStatus.js';
@@ -32,51 +15,20 @@ import AuthStatus from './Auth/AuthStatus.js';
 /* Lazy Loaders */
 import Async from 'react-code-splitting';
 
-const Login = props => (
-  <Async load={import('./components/Login.jsx')} componentProps={props} />
-);
-const TutorProfile = props => (
-  <Async
-    load={import('./components/TutorProfile.jsx')}
-    componentProps={props}
-  />
-);
-const Sessions = props => (
-  <Async load={import('./components/Sessions.jsx')} componentProps={props} />
-);
-const TestProfile = props => (
-  <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
-);
-const Review = props => (
-  <Async load={import('./components/Review.jsx')} componentProps={props} />
-);
-const Settings = props => (
-  <Async load={import('./components/Settings.jsx')} componentProps={props} />
-);
-const TestList = props => (
-  <Async load={import('./components/TestList.jsx')} componentProps={props} />
-);
-const Classroom = props => (
-  <Async load={import('./components/Classroom.jsx')} componentProps={props} />
-);
-const TutorRegistration = props => (
-  <Async
-    load={import('./components/TutorRegistration.jsx')}
-    componentProps={props}
-  />
-);
-const TutorReview = props => (
-  <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
-);
-const Home = props => (
-  <Async load={import('./components/Home.jsx')} componentProps={props} />
-);
-const StudentView = props => (
-  <Async load={import('./components/StudentView.jsx')} componentProps={props} />
-);
-const SecretRoute = props => (
-  <Async load={import('./SecretRoute.jsx')} componentProps={props} />
-);
+const Login = props => <Async load={import('./components/un-protected/Login.jsx')} componentProps={props} />
+const TutorProfile = props => <Async load={import('./components/protected/tutorView/TutorProfile.jsx')} componentProps={props} />
+const Sessions = props => <Async load={import('./components/protected/Sessions.jsx')} componentProps={props} />
+const TestProfile = props => <Async load={import('./components/un-protected/TestProfile.jsx')} componentProps={props} />
+const Review = props => <Async load={import('./components/protected/tutorView/Review.jsx')} componentProps={props} />
+const Settings = props => <Async load={import('./components/protected/Settings.jsx')} componentProps={props} />
+const TestList = props => <Async load={import('./components/un-protected/TestList.jsx')} componentProps={props} />
+const Classroom = props => <Async load={import('./components/protected/classroom/Classroom.jsx')} componentProps={props} />
+const TutorRegistration = props => <Async load={import('./components/protected/studentView/TutorRegistration.jsx')} componentProps={props} />
+const TutorReview = props => <Async load={import('./components/protected/TutorReview.jsx')} componentProps={props} />
+const Home = props => <Async load={import('./components/un-protected/Home.jsx')} componentProps={props} />
+const StudentView = props => <Async load={import('./components/protected/studentView/StudentView.jsx')} componentProps={props} />
+const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
+
 
 class App extends Component {
   constructor(props) {
@@ -87,28 +39,28 @@ class App extends Component {
       tutors: [],
       isTutor: -1
     };
-    this.getid = this.getid.bind(this);
-    this.getAllTests = this.getAllTests.bind(this);
-    this.getTutors = this.getTutors.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
-    this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
 
-  getid(id) {
+  componentDidMount() {
+    this.getTutors();
+    this.getAllTests();
+  }
+
+  getid = (id) => {
     this.setState({
       id: id
     });
   }
 
-  checkTutorStatus(id, tutors) {
-    if (tutors.indexOf(id) > -1) {
+  checkTutorStatus = (id,tutors) => {
+    if(tutors.indexOf(id) > -1){
       this.setState({
         isTutor: 1
       });
     }
   }
 
-  getAllTests() {
+  getAllTests = () => {
     axios
       .get('/tests')
       .then(({ data }) => {
@@ -121,7 +73,7 @@ class App extends Component {
       });
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -136,7 +88,7 @@ class App extends Component {
       });
   }
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -152,12 +104,7 @@ class App extends Component {
         console.error(err);
       });
   }
-
-  componentDidMount() {
-    this.getTutors();
-    this.getAllTests();
-  }
-
+  
   render() {
     let conditionalTitle =
       this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
@@ -174,9 +121,6 @@ class App extends Component {
             <LinkContainer to={`/sessions/${this.state.id}`}>
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
-            {/* <LinkContainer to={'/chat'}>
-              <NavItem>All Chats</NavItem>
-            </LinkContainer> */}
             <LinkContainer to="/classroom">
               <NavItem>Classroom</NavItem>
             </LinkContainer>
@@ -189,9 +133,6 @@ class App extends Component {
             <AuthStatus />
           </Nav>
         </Navbar>
-        {/*TESTING FOR LIVE CHAT*/}
-        {/* < Chat /> */}
-        {/*TESTING FOR LIVE CHAT*/}
         <Route
           exact
           path="/"
@@ -244,14 +185,6 @@ class App extends Component {
             <Sessions {...routerProps} id={this.state.id} />
           )}
         />
-        {/* <SecretRoute 
-          path='/chat' 
-          render={(routerProps) => (
-            <Chat {...routerProps} 
-            id={this.state.id} 
-            />
-          )}
-        /> */}
         <SecretRoute
           path="/classroom"
           render={routerProps => (

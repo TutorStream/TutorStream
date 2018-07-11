@@ -17,7 +17,7 @@ class Earnings extends React.Component {
      this.spreadData = this.spreadData.bind(this)
       }
 
-    componentDidMount(){
+    componentDidMount () {
         this.getEarnings(this.props.id)
     }
 

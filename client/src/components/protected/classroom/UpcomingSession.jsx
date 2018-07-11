@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import TutorProfile from './TutorProfile.jsx';
 import {
   FormGroup,
   ControlLabel,
@@ -25,7 +24,7 @@ class UpcomingSession extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.props.isTutor) {
       this.getUserInfo(this.props.upcomingSession.student_id);
     } else {
@@ -33,7 +32,7 @@ class UpcomingSession extends Component {
     }
   }
 
-  getUserInfo(id) {
+  getUserInfo = (id) => {
     var info;
     axios.get(`/users/info/${id}`).then(({ data }) => {
       info = data[0];
@@ -44,8 +43,7 @@ class UpcomingSession extends Component {
     });
   }
 
-  render() {
-    //room currently hardcoded.. will change it to session id as a chat room number
+  render () {
     var callerType = this.props.isTutor ? 'Student' : 'Tutor';
     var timer =
       Number(this.props.countdown.slice(0, 2)) <= 2 &&
@@ -73,25 +71,6 @@ class UpcomingSession extends Component {
                 with:  {this.props.upcomingCaller}
                 <br/>
             </p></ControlLabel>
-
-         
-
-          {/* <ControlLabel><h2>Next:</h2></ControlLabel>
-            <br/>
-            
-            <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
-            <br />
-            <ControlLabel>
-            <p>Details:
-                <br/> //this.props.upcoming.. will get the freshest upcoming if we need that // this.state.upcomingSess will get you the upcoming one on component did mount (not live update)
-                <h4>Date:</h4 >{this.props.upcomingSession.date.slice(0,10)}
-                <br/>
-       time:  {this.props.upcomingSession.time} 
-                <br/>
-                with:  {this.props.upcomingCaller}
-                <br/>
-            </p></ControlLabel> */}
-
           <br />
           <br />
           <ControlLabel>

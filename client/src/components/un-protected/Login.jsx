@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import AuthService from '../Auth/AuthService'
+import AuthService from './../../Auth/AuthService'
 import { Redirect } from 'react-router-dom'
 import Signup from './SignUp.jsx'
 
@@ -12,17 +12,15 @@ class Login extends Component {
       Password: '',
       redirectToPreviousRoute: false
     }
-    this.inputHandler = this.inputHandler.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
 
-  inputHandler (e) {
+  inputHandler = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     })
   }
 
-  handleLoginSubmit (e) {
+  handleLoginSubmit = (e) => {
     e.preventDefault();
     axios.post('/users/login', {
       Email : this.state.Email,

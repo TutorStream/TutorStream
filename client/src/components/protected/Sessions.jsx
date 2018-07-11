@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import {
@@ -20,44 +20,9 @@ class Sessions extends Component {
       sessions: [],
       isTutor: false
     }
-    this.getUpcomingSessions = this.getUpcomingSessions.bind(this)
-    this.deleteSession = this.deleteSession.bind(this)
-    this.updateSessionDisplay = this.updateSessionDisplay.bind(this);
   }
 
-  getUpcomingSessions(id) {
-  
-    axios.get(`/sessions/${id}`, {
-      params: {
-          isTutor: this.state.isTutor
-      }
-    })
-    .then(({data}) => {
-      this.setState({
-          sessions: data
-      });
-    })
-  }
-
-  deleteSession(id){
-    axios.delete(`/sessions/${id}`)
-    .then(() => {
-        this.getUpcomingSessions(id)
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-  }
-
-  updateSessionDisplay () {
-    return (
-      <div className="past-session">
-        PAST SESSION
-      </div>
-    )
-  }
-
-  componentDidMount(){
+  componentDidMount () {
     var id = this.props.id
     var info;
     axios.get(`/users/info/${id}`)
@@ -81,6 +46,38 @@ class Sessions extends Component {
             this.getUpcomingSessions(id)
           }
       }) 
+  }
+
+  getUpcomingSessions = (id) => {
+  
+    axios.get(`/sessions/${id}`, {
+      params: {
+          isTutor: this.state.isTutor
+      }
+    })
+    .then(({data}) => {
+      this.setState({
+          sessions: data
+      });
+    })
+  }
+
+  deleteSession = (id) => {
+    axios.delete(`/sessions/${id}`)
+    .then(() => {
+        this.getUpcomingSessions(this.props.id)
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
+
+  updateSessionDisplay = () => {
+    return (
+      <div className="past-session">
+        PAST SESSION
+      </div>
+    )
   }
 
   render() {
