@@ -87,7 +87,7 @@ class Chat extends Component {
           {this.state.messages.map((msg, i) => {
             return (
               <div key={i} className="msg">
-                <strong> {this.state.username}: </strong> {msg}
+                <strong> {msg.user}: </strong> {msg.message}
               </div>
             );
           })}
