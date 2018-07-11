@@ -96,7 +96,7 @@ app.use('/tutors', tutorsRouter);
 app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/feedback', feedbackRouter);
-
+app.use('/earnings', earningsRouter);
 // socket.io listening
 
 io.on('connection', (socket) => {

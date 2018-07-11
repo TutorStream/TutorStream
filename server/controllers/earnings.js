@@ -2,16 +2,18 @@ const Earnings = require('./../models/earningsModel');
 
 
 
-exports.addEarnings = (req, res) => {
+exports.getEarnings = (req, res) => {
 
-  console.log('req.body should for adding earnings', req.body);
-  Earnings.addEarnings(req.body, (err, newEarnings) => {
+  console.log('req.body for adding earnings', req.params);
+
+
+  Earnings.getEarnings(req.params.id, (err, newEarnings) => {
     if (err) {
       console.log('big problem!!!!!!!!', err)
       res.sendStatus(400);
     } else {
-      console.log('added!!')
-      res.send(201);
+      console.log('new Earnings', newEarnings)
+      res.send(newEarnings);
     }
   });
 };
@@ -28,10 +30,10 @@ exports.updateEarnings = (req, res) => {
   });
 };
 
-exports.getEarnings = (req, res) => {
-  Earnings.getEarnings(req.params, (err, earnings) => {
+exports.addEarnings = (req, res) => {
+  Earnings.addEarnings(req.params, (err, earnings) => {
     if (err) {
-      res.status(400).send(`Error getting earnings for ${req.params.id}`);
+      res.status(400).send(`Error adding earnings for ${req.params.id}`);
     } else {
       res.status(202).send(earnings);
     }

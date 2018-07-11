@@ -99,7 +99,7 @@ class App extends Component {
       .then(({ data }) => {
         this.setState({
           tutors: data,
-          tutors_ids: data.map(a => a.ID)
+          tutors_ids: data.map(a => a.id)
         });
       })
       .then(()=>{

@@ -22,7 +22,7 @@ class TutorRegistration extends React.Component {
             form: {
 
             },
-            isTutor: this.props.tutors_ids.indexOf(this.props.id)
+         
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -74,8 +74,8 @@ class TutorRegistration extends React.Component {
         
       }
     render() {
-        console.log('props id? >>', this.state.isTutor)
-        let conditional = this.props.isTutor > -1? <div><Earnings /></div>: 
+        
+        let conditional = this.props.isTutor > -1? <div><Earnings id={this.props.id}/></div>: 
         <div> <h1>Tutor Registration</h1>
         <br/><br/>
         <FormGroup controlId="formControlsTextarea">
