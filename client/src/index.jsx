@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -15,18 +15,18 @@ import AuthStatus from './Auth/AuthStatus.js';
 /* Lazy Loaders */
 import Async from 'react-code-splitting';
 
-const Login = props => <Async load={import('./components/Login.jsx')} componentProps={props} />
-const TutorProfile = props => <Async load={import('./components/TutorProfile.jsx')} componentProps={props} />
-const Sessions = props => <Async load={import('./components/Sessions.jsx')} componentProps={props} />
-const TestProfile = props => <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
-const Review = props => <Async load={import('./components/Review.jsx')} componentProps={props} />
-const Settings = props => <Async load={import('./components/Settings.jsx')} componentProps={props} />
-const TestList = props => <Async load={import('./components/TestList.jsx')} componentProps={props} />
-const Classroom = props => <Async load={import('./components/Classroom.jsx')} componentProps={props} />
-const TutorRegistration = props => <Async load={import('./components/TutorRegistration.jsx')} componentProps={props} />
-const TutorReview = props => <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
-const Home = props => <Async load={import('./components/Home.jsx')} componentProps={props} />
-const StudentView = props => <Async load={import('./components/StudentView.jsx')} componentProps={props} />
+const Login = props => <Async load={import('./components/un-protected/Login.jsx')} componentProps={props} />
+const TutorProfile = props => <Async load={import('./components/protected/tutorView/TutorProfile.jsx')} componentProps={props} />
+const Sessions = props => <Async load={import('./components/protected/Sessions.jsx')} componentProps={props} />
+const TestProfile = props => <Async load={import('./components/un-protected/TestProfile.jsx')} componentProps={props} />
+const Review = props => <Async load={import('./components/protected/tutorView/Review.jsx')} componentProps={props} />
+const Settings = props => <Async load={import('./components/protected/Settings.jsx')} componentProps={props} />
+const TestList = props => <Async load={import('./components/un-protected/TestList.jsx')} componentProps={props} />
+const Classroom = props => <Async load={import('./components/protected/classroom/Classroom.jsx')} componentProps={props} />
+const TutorRegistration = props => <Async load={import('./components/protected/studentView/TutorRegistration.jsx')} componentProps={props} />
+const TutorReview = props => <Async load={import('./components/protected/TutorReview.jsx')} componentProps={props} />
+const Home = props => <Async load={import('./components/un-protected/Home.jsx')} componentProps={props} />
+const StudentView = props => <Async load={import('./components/protected/studentView/StudentView.jsx')} componentProps={props} />
 const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
 
 
@@ -39,29 +39,33 @@ class App extends Component {
       tutors: [],
       isTutor: -1
     };
-    this.getid = this.getid.bind(this);
-    this.getAllTests = this.getAllTests.bind(this);
-    this.getTutors = this.getTutors.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
-    this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
-  
 
-  getid(id) {
+  componentDidMount() {
+    this.getTutors();
+    this.getAllTests();
+  }
+
+  getid = (id) => {
     this.setState({
       id: id
     });
   }
 
+<<<<<<< HEAD
   checkTutorStatus(id,tutors){
     if(tutors.indexOf(id)>-1){
+=======
+  checkTutorStatus = (id,tutors) => {
+    if(tutors.indexOf(id) > -1){
+>>>>>>> dev
       this.setState({
         isTutor: 1
-      })
+      });
     }
   }
 
-  getAllTests() {
+  getAllTests = () => {
     axios
       .get('/tests')
       .then(({ data }) => {
@@ -75,7 +79,7 @@ class App extends Component {
       });
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -84,12 +88,16 @@ class App extends Component {
           tutors_ids: data.map((tutor) => tutor.id)
         });
       })
+<<<<<<< HEAD
+=======
+      .then(() => {})
+>>>>>>> dev
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
   }
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -105,14 +113,10 @@ class App extends Component {
         console.error(err);
       });
   }
-
-  componentDidMount() {
-    this.getTutors();
-    this.getAllTests();
-  }
-
+  
   render() {
-    let conditionalTitle = this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor'
+    let conditionalTitle =
+      this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
       <div>
         <Navbar style={{ fontSize: `130%` }}>
@@ -152,7 +156,7 @@ class App extends Component {
               testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
-              tutors_ids = {this.state.tutors_ids}
+              tutors_ids={this.state.tutors_ids}
               getid={this.getid}
               checkTutorStatus={this.checkTutorStatus}
             />
