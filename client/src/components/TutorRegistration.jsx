@@ -7,14 +7,7 @@ class TutorRegistration extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            tests: [
-                {test:'DAT', test_id: '1'},
-                {test:'LSAT', test_id: '2'},
-                {test:'SAT', test_id: '3'},
-                {test:'GRE', test_id: '4'},
-                {test:'GMAT', test_id: '5'},
-                {test:'HR TA', test_id: '6'}
-            ],
+            tests: this.props.tests,
             test: '',
             selectedTests : [],
             bio: '',
@@ -94,7 +87,7 @@ class TutorRegistration extends React.Component {
         <FormGroup>
         {this.state.tests.map((test,i) => {
             return(
-                <Checkbox onChange={this.handleCheck} inline key={i} value={test.test_id}>{test.test}</Checkbox>
+                <Checkbox onChange={this.handleCheck} inline key={i} value={test.id}>{test.Name}</Checkbox>
             )
         })}
         

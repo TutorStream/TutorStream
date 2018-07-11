@@ -8,23 +8,6 @@ import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-/* Import Components */
-
-// import Login from './components/Login.jsx';
-// import Classroom from './components/Classroom.jsx';
-// import Sessions from './components/Sessions.jsx';
-// import Settings from './components/Settings.jsx';
-// import TestList from './components/TestList.jsx';
-// import TutorRegistration from './components/TutorRegistration.jsx';
-// import TutorReview from './components/TutorReview.jsx';
-// import SecretRoute from './SecretRoute.jsx';
-// import Home from './components/Home.jsx';
-// import StudentView from './components/StudentView.jsx';
-// import TestProfile from './components/TestProfile.jsx';
-// import TutorProfile from './components/TutorProfile.jsx';
-// import Chat from './components/Chat.jsx';
-// import Review from './components/Review.jsx';
-
 /* Import Services */
 import AuthService from './Auth/AuthService.js';
 import AuthStatus from './Auth/AuthStatus.js';
@@ -71,9 +54,7 @@ class App extends Component {
   }
 
   checkTutorStatus(id,tutors){
-    console.log('checking tutor status')
     if(tutors.indexOf(id)>-1){
-      console.log('Tutor is here!')
       this.setState({
         isTutor: 1
       })
@@ -84,6 +65,7 @@ class App extends Component {
     axios
       .get('/tests')
       .then(({ data }) => {
+        console.log('what does data come through as: ', data);
         this.setState({
           tests: data
         });
@@ -99,12 +81,8 @@ class App extends Component {
       .then(({ data }) => {
         this.setState({
           tutors: data,
-          tutors_ids: data.map(a => a.id)
+          tutors_ids: data.map((tutor) => tutor.id)
         });
-      })
-      .then(()=>{
-        console.log('array? >> ',this.state.id)
-
       })
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
@@ -148,9 +126,6 @@ class App extends Component {
             <LinkContainer to={`/sessions/${this.state.id}`}>
               <NavItem>All Sessions</NavItem>
             </LinkContainer>
-            {/* <LinkContainer to={'/chat'}>
-              <NavItem>All Chats</NavItem>
-            </LinkContainer> */}
             <LinkContainer to="/classroom">
               <NavItem>Classroom</NavItem>
             </LinkContainer>
@@ -163,9 +138,6 @@ class App extends Component {
             <AuthStatus />
           </Nav>
         </Navbar>
-  {/*TESTING FOR LIVE CHAT*/}
-   {/* < Chat /> */}
-  {/*TESTING FOR LIVE CHAT*/}
         <Route
           exact
           path="/"
@@ -218,14 +190,6 @@ class App extends Component {
             <Sessions {...routerProps} id={this.state.id} />
           )}
         />
-        {/* <SecretRoute 
-          path='/chat' 
-          render={(routerProps) => (
-            <Chat {...routerProps} 
-            id={this.state.id} 
-            />
-          )}
-        /> */}
         <SecretRoute
           path="/classroom"
           render={routerProps => (
@@ -245,6 +209,7 @@ class App extends Component {
               id={this.state.id}
               tutors_ids={this.state.tutors_ids}
               isTutor={this.state.isTutor}
+              tests={this.state.tests}
             />
           )}
         />
