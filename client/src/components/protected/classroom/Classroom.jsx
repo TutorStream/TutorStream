@@ -30,7 +30,6 @@ class Classroom extends Component {
 
   componentDidMount() {
     var id = this.props.id;
-    var info;
     this.interval = setInterval(() => this.getUserInfo(id), 4000);
   }
 
