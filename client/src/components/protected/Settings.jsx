@@ -10,23 +10,20 @@ import {
 import { Redirect } from 'react-router-dom';
 
 class Settings extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tests: [],
-      test: '',
-      name: '',
-      bio: '',
-      tutorBio: '',
-      submitted: false,
-      selectedTests: [],
-      price: '',
-      isTutor: false,
-      preSelected: [],
-      photo: '',
-      selectedFile: null
-    };
-  }
+  state = {
+    tests: [],
+    test: '',
+    name: '',
+    bio: '',
+    tutorBio: '',
+    submitted: false,
+    selectedTests: [],
+    price: '',
+    isTutor: false,
+    preSelected: [],
+    photo: '',
+    selectedFile: null
+  };
 
   componentDidMount() {
     const { id } = this.props;

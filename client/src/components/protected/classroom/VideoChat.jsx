@@ -3,17 +3,13 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
 class VideoChat extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      room_id: 100 + this.props.room_id,
-      active: false,
-      upcomingSession: this.props.upcomingSessions,
-      upcomingCaller: '',
-      countdown: null
-    };
-  }
+  state = {
+    room_id: 100 + this.props.room_id,
+    active: false,
+    upcomingSession: this.props.upcomingSessions,
+    upcomingCaller: '',
+    countdown: null
+  };
   render() {
     //room currently hardcoded.. will change it to session id as a chat room number
     var callerType = this.props.isTutor ? 'Student' : 'Tutor';
