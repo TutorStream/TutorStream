@@ -1,9 +1,8 @@
 const sessionModel = require('./../models/sessionModel');
 
 exports.bookSession = (req, res) => {
-  console.log('rec.body for adding session : ',req.body)
   sessionModel.addSession(req.body, (err, newSession) => {
-    if(err) {
+    if (err) {
       console.error(err);
     } else {
       res.sendStatus(201);
@@ -13,12 +12,12 @@ exports.bookSession = (req, res) => {
 
 exports.deleteSession = (req, res) => {
   sessionModel.deleteSession(req.params, (err, result) => {
-    if (err)  {
-      console.log(err)
+    if (err) {
+      console.log(err);
     } else {
-      res.status(201).end()
+      res.status(201).end();
     }
-  })
+  });
 };
 
 exports.updateSession = (req, res) => {
@@ -26,7 +25,6 @@ exports.updateSession = (req, res) => {
     if (err) {
       console.error('There was an error getting the session info: ', err);
     } else {
-      console.log('result is ??? oh Updated',result)
       res.status(201);
     }
   });
@@ -34,7 +32,7 @@ exports.updateSession = (req, res) => {
 
 exports.getSession = (req, res) => {
   var form = {
-    id : req.params.id,
+    id: req.params.id,
     isTutor: Number(req.query.isTutor)
   }
   sessionModel.getSession(form, (err, result) => {
@@ -44,5 +42,4 @@ exports.getSession = (req, res) => {
       res.send(result);
     }
   });
-
 };
