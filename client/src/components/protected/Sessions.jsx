@@ -65,7 +65,7 @@ class Sessions extends Component {
   deleteSession = (id) => {
     axios.delete(`/sessions/${id}`)
     .then(() => {
-        this.getUpcomingSessions(id)
+        this.getUpcomingSessions(this.props.id)
     })
     .catch((err) => {
       console.error(err);
