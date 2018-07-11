@@ -15,17 +15,14 @@ import {
 } from 'reactstrap';
 
 class WriteReview extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isTutor: 0,
-      feedback: '',
-      tutor_id: this.props.tutor_id,
-      rating: 1,
-      submitted: false,
-      activeSession: this.props.activeSession
-    };
-  }
+  state = {
+    isTutor: 0,
+    feedback: '',
+    tutor_id: this.props.tutor_id,
+    rating: 1,
+    submitted: false,
+    activeSession: this.props.activeSession
+  };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value }, () => {

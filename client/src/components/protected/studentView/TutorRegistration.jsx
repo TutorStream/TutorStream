@@ -10,19 +10,16 @@ import {
 import Earnings from './../tutorView/Earnings.jsx';
 
 class TutorRegistration extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tests: this.props.tests,
-      test: '',
-      selectedTests: [],
-      bio: '',
-      rate: '',
-      form: {
-        // what goes in here?
-      }
-    };
-  }
+  state = {
+    tests: this.props.tests,
+    test: '',
+    selectedTests: [],
+    bio: '',
+    rate: '',
+    form: {
+      // what goes in here?
+    }
+  };
 
   handleCheck = e => {
     console.log('lets check props : ', this.props);

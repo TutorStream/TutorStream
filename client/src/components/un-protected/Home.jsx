@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
 import axios from 'axios';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuthenticated: false,
-      user_id: this.props.id || null,
-      tutors: [],
-      tests: [],
-      photos: {}
-    };
-  }
+  state = {
+    isAuthenticated: false,
+    user_id: this.props.id || null,
+    tutors: [],
+    tests: [],
+    photos: {}
+  };
 
   componentDidMount() {
     this.getTutors();

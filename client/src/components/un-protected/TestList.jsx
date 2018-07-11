@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Dropdown, DropdownButton, MenuItem, Button } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class TestList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Tests: [],
-      dropDownTitle: 'Tests'
-    };
-  }
+  state = {
+    Tests: [],
+    dropDownTitle: 'Tests'
+  };
 
   componentDidMount() {
     axios
