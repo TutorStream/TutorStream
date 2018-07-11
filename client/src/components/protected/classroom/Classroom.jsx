@@ -7,7 +7,6 @@ import UpcomingSession from './UpcomingSession.jsx';
 import moment from 'moment';
 import { ClipLoader } from 'react-spinners';
 
-
 class Classroom extends Component {
 
     constructor(props) {
@@ -65,13 +64,10 @@ class Classroom extends Component {
 
 
     markSessionComplete = () => {
-        console.log('updating to complete and state is : ', this.state)
         axios.put(`/sessions/${this.state.session_id}`)
-             .then(()=>console.log('Marked Complete'))
+          .then(()=>console.log('Marked Complete'))
     }
-      //if isTutor is true get tutor session, else get user session
     getUpcomingSessionInfo = (id) => {
-        console.log('What is state ?? ',this.state)
         axios.get(`/sessions/${id}`, {
             params: {
                 isTutor: this.state.isTutor
@@ -112,83 +108,89 @@ class Classroom extends Component {
             })
     }
 
+  isHistory(sessions) {
+    var currentSession = null;
+    for (var i = 0; i < sessions.length; i++) {
+      var session = sessions[i];
+      var currentMoment = moment();
+      var sessionMoment = moment(
+        `${session.date.slice(0, 10)}T${session.time}.000`
+      );
+      var passed = currentMoment.diff(sessionMoment, 'minutes');
 
-    isHistory = (sessions) => {
-        console.log('in isHistory', sessions)
-        var currentSession = null
-        for(var i = 0; i < sessions.length; i++){
-            var session = sessions[i]
-            var currentMoment = moment()
-            var sessionMoment = moment(`${session.date.slice(0,10)}T${session.time}.000`)
-            var passed = currentMoment.diff(sessionMoment,'minutes')
-            
-            if(passed > 1){
-                this.markSessionComplete()
-            }else {
-                currentSession = session;
-                break;
-            }
-        }
-
-        if(currentSession){
-            console.log('currentSession is :',currentSession)
-            this.setState({
-                upcomingSession : currentSession,
-                session_id : currentSession.id
-            })
-        
-        }
-       
+      if (passed > 1) {
+        this.markSessionComplete();
+      } else {
+        currentSession = session;
+        break;
+      }
     }
+  }
 
-    render () {
+  render() {
+    var flexStyle = {
+      display: 'flex',
+      justifyContent: 'space evenly'
+    };
 
-        var flexStyle = {
-            display: 'flex',
-            justifyContent: 'space evenly'
-        }
+    let conditionalLoading = this.state.loading ? (
+      <div>
+        <p>Loading Sessions</p>
+        <ClipLoader color={'#FFF'} loading={this.state.loading} />
+      </div>
+    ) : (
+      <div>
+        <p>No Upcoming Sessions at this time!</p>
+      </div>
+    );
 
-
-        let conditionalLoading = this.state.loading? <div>
-                                                    <p>Loading Sessions</p>
-                                                    <ClipLoader
-                                                    color={'#FFF'} 
-                                                    loading={this.state.loading} 
-                                                    /></div> : <div><p>No Upcoming Sessions at this time!</p></div>
-
-        let conditionalDisplayC = this.state.tooEarly?<UpcomingSession  upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> :
-        <div>
-        <UpcomingSession  upcomingSession = {this.state.upcomingSession} isTutor={this.state.isTutor} getUserInfo={this.getUserInfo} countdown={this.state.countdown}/> 
-        <div className='classroom-name'style={flexStyle}>
-        <VideoChat room_id = {this.state.session_id} handleSubmit={this.handleSubmit}/>
-        <Chat id={this.state.id} upcomingSession={this.state.upcomingSession} session_id={this.state.session_id}/>
+    let conditionalDisplayC = this.state.tooEarly ? (
+      <UpcomingSession
+        upcomingSession={this.state.upcomingSession}
+        isTutor={this.state.isTutor}
+        getUserInfo={this.getUserInfo}
+        countdown={this.state.countdown}
+      />
+    ) : (
+      <div>
+        <UpcomingSession
+          upcomingSession={this.state.upcomingSession}
+          isTutor={this.state.isTutor}
+          getUserInfo={this.getUserInfo}
+          countdown={this.state.countdown}
+        />
+        <div className="classroom-name" style={flexStyle}>
+          <VideoChat
+            room_id={this.state.session_id}
+            handleSubmit={this.handleSubmit}
+          />
+          <Chat
+            id={this.state.id}
+            upcomingSession={this.state.upcomingSession}
+            session_id={this.state.session_id}
+          />
         </div>
-        </div>
-        
-        let conditionalDisplayb = this.state.ready? 
-        <div>
-            {conditionalDisplayC}
-            </div>
-        : <div>
-           {conditionalLoading}
-            </div>
+      </div>
+    );
 
-        let conditionalDisplay = this.state.review ? <WriteReview isTutor={this.state.isTutor} tutor_id ={this.state.upcomingSession.tutor_id} activeSession={this.state.upcomingSession}/> :        
-         (<div>
-             {conditionalDisplayb}
-            </div>);
+    let conditionalDisplayb = this.state.ready ? (
+      <div>{conditionalDisplayC}</div>
+    ) : (
+      <div>{conditionalLoading}</div>
+    );
 
+    let conditionalDisplay = this.state.review ? (
+      <WriteReview
+        isTutor={this.state.isTutor}
+        tutor_id={this.state.upcomingSession.tutor_id}
+        activeSession={this.state.upcomingSession}
+      />
+    ) : (
+      <div>{conditionalDisplayb}</div>
+    );
 
-
-
-
-       return(
-           <div>
-        {conditionalDisplay}
-        
-        </div>
-            )
-    }
+    return <div>{conditionalDisplay}</div>;
+  }
 }
 
 export default Classroom;

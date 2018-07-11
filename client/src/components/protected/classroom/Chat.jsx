@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import io from 'socket.io-client'; 
+import React, { Component } from 'react';
+import io from 'socket.io-client';
 import axios from 'axios';
 const socket = io();
 
@@ -7,19 +7,18 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : '',
-      message : '',
-      messages : ['bingo']
+      username: '',
+      message: '',
+      messages: ['bingo']
     };
     
     // SOCKET.IO : Client-Side Listeners
     socket.on('sending-back', (msg) => {
       console.log('what does this msg look like on client side :', msg);
       this.setState({
-        messages : [msg.message, ...this.state.messages]
-      })
-    })
-
+        messages: [msg, ...this.state.messages]
+      });
+    });
   }
 
   componentDidMount () {
@@ -47,29 +46,34 @@ class Chat extends Component {
 
   clearInput = () => {
     this.setState({
-      message : ''
-    })
+      message: ''
+    });
   }
 
   messageHandler = (e) => {
     this.setState({
-      [e.target.name] : e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
   postMessage = (e) => {
     e.preventDefault();
+    socket['name'] = this.state.username;
     if (this.state.message.length > 0) {
-      this.setState({
-        messages : [this.state.message, ...this.state.messages]
-      }, () => {
-        socket.emit('new-message', {
-          message : this.state.message,
-          room : this.props.session_id
-        });
-        this.clearInput();
-      });
-    } 
+      this.setState(
+        {
+          messages: [this.state.message, ...this.state.messages]
+        },
+        () => {
+          socket.emit('new-message', {
+            user: socket['name'],
+            message: this.state.message,
+            room: this.props.session_id
+          });
+          this.clearInput();
+        }
+      );
+    }
   }
 
   render () {
@@ -86,13 +90,26 @@ class Chat extends Component {
               )
             })}
         </div>
-        <form className="add-new-message" onSubmit={(e) => {this.postMessage(e)}}>
+        <form
+          className="add-new-message"
+          onSubmit={e => {
+            this.postMessage(e);
+          }}
+        >
           <label>New Message:</label>
-          <input type="text" name="message" className="input-msg" value={this.state.message} onChange={this.messageHandler}/>
-          <button type="submit" value="Submit">Send</button>
+          <input
+            type="text"
+            name="message"
+            className="input-msg"
+            value={this.state.message}
+            onChange={this.messageHandler}
+          />
+          <button type="submit" value="Submit">
+            Send
+          </button>
         </form>
       </div>
-    )
+    );
   }
 }
 

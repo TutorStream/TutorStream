@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
+import {
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Checkbox,
+  Radio,
+  FieldGroup,
+  Button
+} from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 import StarRatingComponent from 'react-star-rating-component';
@@ -61,31 +69,45 @@ class WriteReview extends Component {
   this.setState({rating: nextValue});
   }
 
+  onStarClick(nextValue) {
+    this.setState({ rating: nextValue });
+  }
 
   render () {
     const { rating } = this.state;
 
     if (this.state.submitted || this.props.isTutor) {
-        return <Redirect to="/" />
-      }
+      return <Redirect to="/" />;
+    }
     return (
-     <div>
-         <FormGroup controlId="formControlsTextarea">
-            <ControlLabel><h2>Feedback</h2></ControlLabel>
-            <FormControl  maxLength= '255' componentClass="textarea" placeholder="Leave feedback (Max: 255 characters)" name='feedback' value={this.state.feedback} onChange={this.handleChange} />
+      <div>
+        <FormGroup controlId="formControlsTextarea">
+          <ControlLabel>
+            <h2>Feedback</h2>
+          </ControlLabel>
+          <FormControl
+            maxLength="255"
+            componentClass="textarea"
+            placeholder="Leave feedback (Max: 255 characters)"
+            name="feedback"
+            value={this.state.feedback}
+            onChange={this.handleChange}
+          />
         </FormGroup>
-        <br/>
+        <br />
         <h2>Rate your tutor: {rating}</h2>
-        <StarRatingComponent 
-          name="rate1" 
+        <StarRatingComponent
+          name="rate1"
           starCount={5}
           value={rating}
           onStarClick={this.onStarClick}
         />
-        <br/>
-        <br/>
-        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>Submit</Button> 
-     </div>
+        <br />
+        <br />
+        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
+          Submit
+        </Button>
+      </div>
     );
   }
 }

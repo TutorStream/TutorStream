@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -53,12 +53,10 @@ class App extends Component {
   }
 
   checkTutorStatus = (id,tutors) => {
-    console.log('checking tutor status')
-    if(tutors.indexOf(id)>-1){
-      console.log('Tutor is here!')
+    if(tutors.indexOf(id) > -1){
       this.setState({
         isTutor: 1
-      })
+      });
     }
   }
 
@@ -84,10 +82,7 @@ class App extends Component {
           tutors_ids: data.map(a => a.id)
         });
       })
-      .then(()=>{
-        console.log('array? >> ',this.state.id)
-
-      })
+      .then(() => {})
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
@@ -109,9 +104,10 @@ class App extends Component {
         console.error(err);
       });
   }
-
-  render () {
-    let conditionalTitle = this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor'
+  
+  render() {
+    let conditionalTitle =
+      this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
       <div>
         <Navbar style={{ fontSize: `130%` }}>
@@ -151,7 +147,7 @@ class App extends Component {
               testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
-              tutors_ids = {this.state.tutors_ids}
+              tutors_ids={this.state.tutors_ids}
               getid={this.getid}
               checkTutorStatus={this.checkTutorStatus}
             />
