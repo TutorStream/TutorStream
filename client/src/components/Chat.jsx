@@ -19,10 +19,9 @@ class Chat extends Component {
     this.clearInput = this.clearInput.bind(this);
 
     // SOCKET.IO : Client-Side Listeners --> put all here in constructor
-    socket.on('sending-back', msg => {
-      console.log('what does this msg look like on client side :', msg);
+    socket.on('new-message', msg => {
       this.setState({
-        messages: [msg.message, ...this.state.messages]
+        messages: [msg, ...this.state.messages]
       });
     });
   }
@@ -78,11 +77,6 @@ class Chat extends Component {
       room: this.state.sessionId
     });
   }
-  //   <Chat
-  //   id={this.state.id}
-  //   upcomingSession={this.state.upcomingSession}
-  //   session_id={this.state.session_id}
-  // />
 
   render() {
     return (

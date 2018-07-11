@@ -106,40 +106,14 @@ class Classroom extends Component {
                   },
                   () => {
                     var timer = this.state.countdown;
-                    console.log(
-                      'TOO EARLY??',
-                      this.state.countdown,
-                      'Current time is : ',
-                      moment()
-                    );
-                    console.log(
-                      "state's countdown",
-                      Number(this.state.countdown.slice(0, 2))
-                    );
+
                     if (
                       (Number(this.state.countdown.slice(0, 2)) <= 2 &&
                         (timer.slice(-7) === 'minutes' ||
                           timer.slice(-7) === 'seconds')) ||
                       timer.slice(-6) === 'minute'
                     ) {
-                      console.log(
-                        'YO!!',
-                        Number(this.state.countdown.slice(0, 2)),
-                        ' and is less than ',
-                        1,
-                        'Bool:',
-                        Number(this.state.countdown.slice(0, 2)) < 1
-                      );
-                      this.setState(
-                        {
-                          tooEarly: false
-                        },
-                        () =>
-                          console.log(
-                            'state after updating is it early or not? ',
-                            this.state
-                          )
-                      );
+                      this.setState({ tooEarly: false });
                     }
                   }
                 );

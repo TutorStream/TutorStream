@@ -32,63 +32,12 @@ function shouldCompress(req, res) {
     // don't compress responses with this request header
     return false;
   }
-  // fallback to standard filter function
+
   return compression.filter(req, res);
 }
 
 app.use(express.static(path.join(__dirname, './../client/dist')));
 
-// app.use(cookieSession({
-//   maxAge: 24 * 60 * 60 * 1000,
-//   keys:['tutorstreamcookiekey']
-// }))
-
-// // initialize passport
-
-// app.use(passport.initialize())
-// app.use(passport.session)
-
-/* Google authentication */
-// auth login
-// router.get('/login', (req, res) => {
-//   res.send('login');
-// });
-
-// auth logout
-// router.get('/logout', (req, res) => {
-//   // handle with passport
-//   req.logout();
-//   res.redirect('/');
-// });
-
-// auth with google+
-// router.get(
-//   '/google',
-//   passport.authenticate('google', {
-//     scope: ['profile', 'https://www.googleapis.com/auth/calendar']
-//   })
-// );
-
-// router.get(
-//   '/auth/google/redirect',
-//   passport.authenticate('google'), // complete the authenticate using the google strategy
-//   (err, req, res, next) => {
-//     // custom error handler to catch any errors, such as TokenError
-//     if (err.name === 'TokenError') {
-//       res.redirect('/'); // redirect them back to the login page
-//     } else {
-//       // Handle other errors here
-//       res.redirect('/');
-//     }
-//   },
-//   (req, res) => {
-//     // On success, redirect back to '/'
-//     res.redirect('/');
-//   }
-// );
-
-// app.use(router);
-// app.use('/', router);
 app.use('/users', usersRouter);
 app.use('/tutors', tutorsRouter);
 app.use('/tests', testsRouter);
@@ -98,26 +47,17 @@ app.use('/earnings', earningsRouter);
 // socket.io listening
 
 io.on('connection', socket => {
-  console.log('user connected');
   var room;
   socket.on('room', data => {
-    console.log('data :', data);
     room = data.room;
     socket.join(data.room);
   });
   socket.on('new-message', msg => {
-    console.log('new message: ' + msg.message);
-    console.log('room ', msg.room);
     socket.broadcast
       .to(msg.room)
-      .emit('sending-back', { user: socket['name'], message: msg.message }); // emit messages to all OTHER users
+      .emit('new-message', { user: msg.user, message: msg.message });
   });
-  // socket.on('leaving-room', (data) => {
-  //   console.log('what room is being left ', data.room);
-  //   socket.leave(data.room, () => {
-  //     console.log('successfully left room');
-  //   })
-  // })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
     socket.leave(room, () => {
