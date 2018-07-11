@@ -31,11 +31,13 @@ class Sessions extends Component {
       params: {
           isTutor: this.state.isTutor
       }
-      })
+    })
     .then(({data}) => {
       this.setState({
           sessions: data
-      },()=>console.log('state after grabbing data again :',this.state));
+      },() => {
+         console.log('state after grabbing data again :',this.state)
+       });
     })
   }
 
@@ -44,16 +46,12 @@ class Sessions extends Component {
     .then(() => {
         this.getUpcomingSessions(id)
     })
-    .then(()=>{
-      console.log('State in sessions now is :', this.state)
-    })
     .catch((err) => {
       console.error(err);
     })
   }
 
   updateSessionDisplay () {
-    // could put jquery in here to update schema with red coloring?
     return (
       <div className="past-session">
         PAST SESSION
@@ -65,28 +63,29 @@ class Sessions extends Component {
     var id = this.props.id
     var info;
     axios.get(`/users/info/${id}`)
-            .then(({data}) => {
-                info = data[0]
-                console.log('data recieved in settings: ', info)
-                this.setState({
-                    name: info.Name,
-                })
-            })
-            .then(()=>{
-                console.log('state now is => ', this.state)
-                console.log('info???', info)
-                if(info.Tutor === 1){
-                    this.setState({
-                        isTutor: true
-                    },()=> this.getUpcomingSessions(id))      
-                }
-            })
-
-    
+      .then(({data}) => {
+          info = data[0]
+          console.log('data recieved in settings: ', info)
+          this.setState({
+              name: info.Name,
+          })
+      })
+      .then(()=>{
+          console.log('state now is => ', this.state)
+          console.log('info???', info)
+          if(info.Tutor === 1){
+              this.setState({
+                  isTutor: true
+              },() => {
+                this.getUpcomingSessions(id)
+              });      
+          } else {
+            this.getUpcomingSessions(id)
+          }
+      }) 
   }
 
   render() {
-
     return (
       <div>
         <Jumbotron className="container">
