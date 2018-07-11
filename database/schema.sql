@@ -56,7 +56,6 @@ CREATE TABLE sessions (
   FOREIGN KEY (test_id) references tests (id),
   FOREIGN KEY (tutor_id) references tutors (id),
   FOREIGN KEY (student_id) references users (id)
-
 );
 
 
@@ -84,5 +83,5 @@ CREATE TABLE earnings (
   date DATE NOT NULL,
   tutor_id int,
   day_earnings int DEFAULT 0,
-  FOREIGN KEY (tutor_id) references tutors(ID)
+  FOREIGN KEY (tutor_id) references tutors (id)
 );
