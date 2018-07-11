@@ -6,23 +6,20 @@ import { Radio, FormGroup, Jumbotron, Button } from 'react-bootstrap';
 import Review from './Review.jsx';
 
 class TutorProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      rating: null,
-      bio: '',
-      tests: [],
-      feedback: [],
-      availability: null,
-      date: '',
-      time: '',
-      price: null,
-      id: null,
-      test_id: undefined,
-      photo: ''
-    };
-  }
+  state = {
+    name: '',
+    rating: null,
+    bio: '',
+    tests: [],
+    feedback: [],
+    availability: null,
+    date: '',
+    time: '',
+    price: null,
+    id: null,
+    test_id: undefined,
+    photo: ''
+  };
 
   componentDidMount() {
     this.getTutorInfo();

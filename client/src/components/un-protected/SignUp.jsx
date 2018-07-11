@@ -4,26 +4,22 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Checkbox,
-  Button
+  Checkbox
 } from 'react-bootstrap';
 import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      userTests: [],
-      bio: '',
-      tutor: 0,
-      selectedFile: [],
-      redirectToPreviousRoute: false
-    };
-  }
+  state = {
+    name: '',
+    email: '',
+    password: '',
+    userTests: [],
+    bio: '',
+    tutor: 0,
+    selectedFile: [],
+    redirectToPreviousRoute: false
+  };
 
   inputHandler = e => {
     this.setState({
