@@ -11,6 +11,7 @@ class Chat extends Component {
       message : '',
       messages : ['bingo']
     };
+    
     // SOCKET.IO : Client-Side Listeners
     socket.on('sending-back', (msg) => {
       console.log('what does this msg look like on client side :', msg);
@@ -21,7 +22,30 @@ class Chat extends Component {
 
   }
 
-  clearInput () {
+  componentDidMount () {
+    console.log('chat user id', this.props)
+    axios.get(`users/username/${this.props.id}`)
+      .then(({data}) => {
+        this.setState({
+          username : data[0].Name
+        }, () => {
+          console.log('username ', this.state.username);
+        })
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    console.log('chat mounting?');
+    socket.emit('room', {room : this.props.session_id});
+  }
+
+  componentWillUnmount () {
+    socket.on('leaving-room', {
+      room : this.state.sessionId
+    })
+  }
+
+  clearInput = () => {
     this.setState({
       message : ''
     })
@@ -48,30 +72,7 @@ class Chat extends Component {
     } 
   }
 
-  componentDidMount = () => {
-    console.log('chat user id', this.props)
-    axios.get(`users/username/${this.props.id}`)
-      .then(({data}) => {
-        this.setState({
-          username : data[0].Name
-        }, () => {
-          console.log('username ', this.state.username);
-        })
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-    console.log('chat mounting?');
-    socket.emit('room', {room : this.props.session_id});
-  }
-
-  componentWillUnmount = () => {
-    socket.on('leaving-room', {
-      room : this.state.sessionId
-    })
-  }
-
-  render() {
+  render () {
     console.log(this.props.upcomingSession, 'upcoming session');
     return (
       <div className="chat-container">
@@ -80,7 +81,7 @@ class Chat extends Component {
             {this.state.messages.map((msg, i) => {
               return (
                 <div key={i} className="msg">
-                  <strong> {this.state.username}: </strong> {msg} {/*can inlucde this.props.username at some point down the line*/}
+                  <strong> {this.state.username}: </strong> {msg}
                 </div>
               )
             })}

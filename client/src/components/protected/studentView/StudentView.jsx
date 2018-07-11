@@ -22,13 +22,9 @@ class StudentView extends Component {
       tutor_id: null,
       tutors: []
     };
-    this.getTutors = this.getTutors.bind(this);
-    this.setTestid = this.setTestid.bind(this);
-    this.grabTutorId = this.grabTutorId.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -41,7 +37,7 @@ class StudentView extends Component {
       });
   }
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -58,7 +54,7 @@ class StudentView extends Component {
       });
   }
 
-  setTestid(id) {
+  setTestid = (id) => {
     this.setState(
       {
         test_id: id
@@ -69,13 +65,13 @@ class StudentView extends Component {
     );
   }
 
-  grabTutorId(id) {
+  grabTutorId = (id) => {
     this.setState({
       tutor_id: id
     });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getTutors();
   }
 

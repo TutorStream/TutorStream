@@ -28,14 +28,9 @@ class Classroom extends Component {
           loading: true,
           active: false
         };
-        this.getUpcomingSessionInfo = this.getUpcomingSessionInfo.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.getUserInfo = this.getUserInfo.bind(this)
-        this.markSessionComplete = this.markSessionComplete.bind(this)
-        this.isHistory = this.isHistory.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount () {
         var id = this.props.id
         var info;
         this.interval = setInterval(() => this.getUserInfo(id), 4000);
@@ -45,7 +40,7 @@ class Classroom extends Component {
         clearInterval(this.interval);
     }
 
-    getUserInfo(id){
+    getUserInfo = (id) => {
         var info;
         axios.get(`/users/info/${id}`)
         .then(({data}) => {
@@ -59,7 +54,7 @@ class Classroom extends Component {
         .then(()=>{})
     }
 
-    handleSubmit(){
+    handleSubmit = () => {
         this.setState({
             review : true,
             interval: 60000
@@ -69,13 +64,13 @@ class Classroom extends Component {
     }
 
 
-    markSessionComplete(){
+    markSessionComplete = () => {
         console.log('updating to complete and state is : ', this.state)
         axios.put(`/sessions/${this.state.session_id}`)
              .then(()=>console.log('Marked Complete'))
     }
       //if isTutor is true get tutor session, else get user session
-    getUpcomingSessionInfo(id){
+    getUpcomingSessionInfo = (id) => {
         console.log('What is state ?? ',this.state)
         axios.get(`/sessions/${id}`, {
             params: {
@@ -118,7 +113,7 @@ class Classroom extends Component {
     }
 
 
-    isHistory(sessions){
+    isHistory = (sessions) => {
         console.log('in isHistory', sessions)
         var currentSession = null
         for(var i = 0; i < sessions.length; i++){
@@ -146,7 +141,7 @@ class Classroom extends Component {
        
     }
 
-    render() {
+    render () {
 
         var flexStyle = {
             display: 'flex',

@@ -18,18 +18,16 @@ class UpcomingSession extends Component {
             countdown: this.props.countdown
         };
     }
-      
 
-    componentDidMount(){
+    componentDidMount () {
         if(this.props.isTutor){
             this.getUserInfo(this.props.upcomingSession.student_id)
         }else{
             this.getUserInfo(this.props.upcomingSession.tutor_id)
         }
-    }
+    } 
 
-
-    getUserInfo(id){
+    getUserInfo = (id) => {
         var info;
         axios.get(`/users/info/${id}`)
         .then(({data}) => {
@@ -42,8 +40,7 @@ class UpcomingSession extends Component {
         })
     }
 
-    render() {
-        //room currently hardcoded.. will change it to session id as a chat room number
+    render () {
         var callerType = this.props.isTutor? 'Student' : 'Tutor';
         var timer = ((Number(this.props.countdown.slice(0,2)) <=2) && ((this.props.countdown.slice(-7)=== 'minutes')||(this.props.countdown.slice(-6)=== 'minute')||(this.props.countdown.slice(-7)=== 'seconds')))? 'Now' : this.props.countdown;
         console.log('time right now!!!! countdown from state :', this.state.countdown,'time right now!!!! countdown from props :',this.props.countdown)
@@ -87,12 +84,7 @@ class UpcomingSession extends Component {
             <br/>
             <br/>
             <ControlLabel><h3>{callerType}: {`${this.state.upcomingCaller}`}</h3></ControlLabel>
-        </FormGroup>
-
-
-
-
-       
+        </FormGroup>       
         </div>
        
             )

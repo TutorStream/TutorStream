@@ -22,14 +22,20 @@ class TutorProfile extends Component {
       test_id: undefined,
       photo: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.bookTutor = this.bookTutor.bind(this);
-    this.getTutorInfo = this.getTutorInfo.bind(this);
-    this.handleTestSelect = this.handleTestSelect.bind(this);
-
   }
 
-  getTutorInfo() {
+  componentDidMount () {
+    this.getTutorInfo();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { id } = this.props.match.params;
+    if (id !== prevState.id) {
+      this.getTutorInfo();
+    }
+  }
+
+  getTutorInfo = () => {
     const { id } = this.props.match.params;
     axios
       .get(`/tutors/${id}`)
@@ -63,7 +69,7 @@ class TutorProfile extends Component {
       });
   }
 
-  handleChange(inputDate) {
+  handleChange = (inputDate) => {
     let months = {
       Jan: '01',
       Feb: '02',
@@ -87,13 +93,13 @@ class TutorProfile extends Component {
     this.setState({ date, time });
   }
 
-  handleTestSelect(e) {
+  handleTestSelect = (e) => {
     this.setState({
       test_id: e.target.value
     });
   }
 
-  bookTutor() {
+  bookTutor = () => {
     if (AuthService.isAuthenticated) {
       axios
         .post('/sessions', {
@@ -112,19 +118,6 @@ class TutorProfile extends Component {
       this.props.history.push('/login');
     }
   }
-
-  componentDidMount() {
-    this.getTutorInfo();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { id } = this.props.match.params;
-    if (id !== prevState.id) {
-      this.getTutorInfo();
-    }
-  }
-
-
 
   render() {
     return (

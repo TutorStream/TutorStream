@@ -22,16 +22,9 @@ class Settings extends Component {
 						photo: '',
 						selectedFile: null
 				};
-				this.isPreselectedTests = this.isPreselectedTests.bind(this);
-				this.handleChange = this.handleChange.bind(this);
-				this.handleSubmit = this.handleSubmit.bind(this);
-				this.handleCheck = this.handleCheck.bind(this);
-				this.handleFileSelect = this.handleFileSelect.bind(this);
-				this.handleFileUpload = this.handleFileUpload.bind(this);
-				this.getAllTests = this.getAllTests.bind(this);
 		}
 		
-		componentDidMount(){
+		componentDidMount () {
 				const { id } = this.props;
 				let info;
 				axios.get(`/users/info/${id}`)
@@ -81,7 +74,7 @@ class Settings extends Component {
 						});
 		}
 
-		getAllTests() {
+		getAllTests = () => {
 			axios.get('/tests')
       .then(({ data }) => {
         this.setState({
@@ -93,7 +86,7 @@ class Settings extends Component {
       });
 		}
 
-		handleCheck(e) {
+		handleCheck = (e) => {
 				var array = this.state.selectedTests.slice()
 				if(array.indexOf(Number(e.target.value)) === -1){
 						this.setState({
@@ -109,13 +102,13 @@ class Settings extends Component {
 				}
 		}
 
-		handleChange(event) {
+		handleChange = (event) => {
 				this.setState({
 						[event.target.name] : event.target.value
 				});
 		}
 
-		isPreselectedTests(id){
+		isPreselectedTests = (id) => {
 				if(this.state.selectedTests.indexOf(id) !== -1) {
 						return true;
 				} else{
@@ -123,7 +116,7 @@ class Settings extends Component {
 				}
 		}
 
-		handleSubmit(event) {
+		handleSubmit = (event) => {
 				event.preventDefault();
 				var testsArray = [];
 				this.state.selectedTests.forEach((test_id)=>{
@@ -157,13 +150,13 @@ class Settings extends Component {
 				
 		}
 		
-		handleFileSelect(e) {
+		handleFileSelect = (e) => {
 				this.setState({
 						selectedFile: e.target.files
 				});
 		}
 		
-		handleFileUpload(user_id) {
+		handleFileUpload = (user_id) => {
 			const formData = new FormData();
 			formData.append('file', this.state.selectedFile[0]);
 			axios.post('http://ec2-34-207-66-224.compute-1.amazonaws.com:5000/photo-upload', formData, {
@@ -183,7 +176,7 @@ class Settings extends Component {
 		}
 
 
-		render() {
+		render () {
 				let conditionalDisplay = !this.state.isTutor ? <div></div> : (
 						<div>
 						<h2>Tutor settings </h2>

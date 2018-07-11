@@ -18,10 +18,9 @@ class Review extends Component {
       tutor_id: null,
       averageRating: null
     };
-    this.getAverage = this.getAverage.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { id } = this.props.match.params;
     axios.get(`/feedback/${id}`).then(({ data }) => {
       this.setState({
@@ -37,7 +36,7 @@ class Review extends Component {
     });
   }
 
-  getAverage(array){
+  getAverage = (array) => {
     console.log('array :', array)
     var sum = 0;
     array.forEach((review)=>{
@@ -49,7 +48,7 @@ class Review extends Component {
     return sum/ array.length
   }
 
-  render() {
+  render () {
     return (
       <div>
         {this.state.reviews.map((review, index) => {

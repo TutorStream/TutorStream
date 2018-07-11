@@ -20,16 +20,12 @@ class TutorRegistration extends React.Component {
             bio: '',
             rate: '',
             form: {
-
+                // what goes in here?
             },
-         
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
       }
 
-      handleCheck(e) {
+      handleCheck = (e) => {
         console.log("lets check props : " , this.props);
         var array = this.state.selectedTests.slice()
         if(array.indexOf(e.target.value) === -1){
@@ -47,13 +43,13 @@ class TutorRegistration extends React.Component {
         }
       }
     
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value},()=>{
             console.log('We just updated : ', this.state.bio,' and ', this.state.rate)
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
            var testsArray = [];
            this.state.selectedTests.forEach((test_id)=>{
@@ -73,7 +69,7 @@ class TutorRegistration extends React.Component {
                  .catch((err)=>console.error(err))
         
       }
-    render() {
+    render () {
         
         let conditional = this.props.isTutor > -1? <div><Earnings id={this.props.id}/></div>: 
         <div> <h1>Tutor Registration</h1>

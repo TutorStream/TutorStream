@@ -9,11 +9,9 @@ class TestList extends Component {
       Tests : [],
       dropDownTitle : 'Tests'
     }
-    this.handleTestSelect = this.handleTestSelect.bind(this);
   }
 
-
-  componentDidMount() {
+  componentDidMount () {
     axios.get('/tests')
       .then((response) => {
         this.setState({
@@ -25,7 +23,7 @@ class TestList extends Component {
       });
   }
 
-  handleTestSelect(test) {
+  handleTestSelect = (test) => {
     this.setState({
       dropDownTitle : test.Name
     }, () => {
@@ -33,7 +31,7 @@ class TestList extends Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div>

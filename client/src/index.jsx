@@ -39,21 +39,20 @@ class App extends Component {
       tutors: [],
       isTutor: -1
     };
-    this.getid = this.getid.bind(this);
-    this.getAllTests = this.getAllTests.bind(this);
-    this.getTutors = this.getTutors.bind(this);
-    this.getSelectTutors = this.getSelectTutors.bind(this);
-    this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
-  
 
-  getid(id) {
+  componentDidMount() {
+    this.getTutors();
+    this.getAllTests();
+  }
+
+  getid = (id) => {
     this.setState({
       id: id
     });
   }
 
-  checkTutorStatus(id,tutors){
+  checkTutorStatus = (id,tutors) => {
     console.log('checking tutor status')
     if(tutors.indexOf(id)>-1){
       console.log('Tutor is here!')
@@ -63,7 +62,7 @@ class App extends Component {
     }
   }
 
-  getAllTests() {
+  getAllTests = () => {
     axios
       .get('/tests')
       .then(({ data }) => {
@@ -76,7 +75,7 @@ class App extends Component {
       });
   }
 
-  getTutors() {
+  getTutors = () => {
     axios
       .get('/tutors')
       .then(({ data }) => {
@@ -94,7 +93,7 @@ class App extends Component {
       });
   }
 
-  getSelectTutors() {
+  getSelectTutors = () => {
     axios
       .get('/tutors/selectTutors', {
         params: {
@@ -111,12 +110,7 @@ class App extends Component {
       });
   }
 
-  componentDidMount() {
-    this.getTutors();
-    this.getAllTests();
-  }
-
-  render() {
+  render () {
     let conditionalTitle = this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor'
     return (
       <div>

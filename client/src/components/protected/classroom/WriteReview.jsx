@@ -25,47 +25,44 @@ class WriteReview extends Component {
       submitted: false,
       activeSession: this.props.activeSession
     };
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.onStarClick = this.onStarClick.bind(this)
   }
 
-    handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value},()=>{
-            console.log('We just updated : ', this.state.feedback)
-        });
-    }
+  handleChange = (event) => {
+      this.setState({ [event.target.name]: event.target.value},()=>{
+          console.log('We just updated : ', this.state.feedback)
+      });
+  }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        console.log('State now is : ', this.state)
-        //need to refactor below to match desired purposes
-        var form = {
-          feedback: this.state.feedback,
-          tutor_id: this.props.tutor_id,
-          rating: this.state.rating,
-          user_id : this.props.activeSession.student_id,
-          date: this.props.activeSession.date.slice(0,10),
-          time: this.props.activeSession.time
-        }
-        console.log('form', form)
-        axios.post(`/feedback/${this.state.tutor_id}`,form)
-             .then(()=>{
-                 console.log('Updated Feedback!');
-                 this.setState({
-                     submitted : true
-                 })
-             })
-             .catch((err)=>console.error(err))
+  handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('State now is : ', this.state)
+      //need to refactor below to match desired purposes
+      var form = {
+        feedback: this.state.feedback,
+        tutor_id: this.props.tutor_id,
+        rating: this.state.rating,
+        user_id : this.props.activeSession.student_id,
+        date: this.props.activeSession.date.slice(0,10),
+        time: this.props.activeSession.time
+      }
+      console.log('form', form)
+      axios.post(`/feedback/${this.state.tutor_id}`,form)
+            .then(()=>{
+                console.log('Updated Feedback!');
+                this.setState({
+                    submitted : true
+                })
+            })
+            .catch((err)=>console.error(err))
 
-    }
+  }
 
-    onStarClick(nextValue) {
-    this.setState({rating: nextValue});
-    }
+  onStarClick = (nextValue) => {
+  this.setState({rating: nextValue});
+  }
 
 
-  render() {
+  render () {
     const { rating } = this.state;
 
     if (this.state.submitted || this.props.isTutor) {
