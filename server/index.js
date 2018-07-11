@@ -17,6 +17,7 @@ const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
 const feedbackRouter = require('./routes/feedbackRoutes');
+const earningsRouter = require('./routes/earningsRoutes');
 // const router = express.Router();
 // const passport = require('passport');
 // const passportSetup = require('./config/passport_setup.js');
@@ -95,7 +96,7 @@ app.use('/tutors', tutorsRouter);
 app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/feedback', feedbackRouter);
-
+app.use('/earnings', earningsRouter);
 // socket.io listening
 
 io.on('connection', (socket) => {

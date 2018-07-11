@@ -35,7 +35,7 @@ class Sessions extends Component {
     .then(({data}) => {
       this.setState({
           sessions: data
-      },()=>console.log('state after grabbing data again :',this.state));
+      });
     })
   }
 
@@ -67,14 +67,11 @@ class Sessions extends Component {
     axios.get(`/users/info/${id}`)
             .then(({data}) => {
                 info = data[0]
-                console.log('data recieved in settings: ', info)
                 this.setState({
                     name: info.Name,
                 })
             })
             .then(()=>{
-                console.log('state now is => ', this.state)
-                console.log('info???', info)
                 if(info.Tutor === 1){
                     this.setState({
                         isTutor: true

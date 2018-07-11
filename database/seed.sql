@@ -3,6 +3,7 @@
 -- Seed data for tables 
 
 -- Users
+
 INSERT INTO users
     (name, password, email, tutor, bio)
 VALUES
@@ -161,49 +162,63 @@ VALUES
 
 --Tutors
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60, 4);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (8, 'Rose Lin', "I mainly tutor students in test prep for different levels of Math (Regents, SHSAT, SAT/ACT, SAT II). I can also help with various high school and college courses!", 45, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (10, 'Tom Wagner', "I graduated from Stuyvesant High School in 2014 and have 8 years of experience teaching at various tutoring/prep centers. I've also operated my own tutoring center in Brooklyn for 2 years.", 140, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (11, 'Jessica Wolvington', "I have had a lot of experience with tutoring the new SAT, several AP courses, essay writing, and the college application process.  ", 65, 5);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (13, 'Joseph Martin', "I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. ", 70, 2);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (15, 'David Baek', " I have many years of tutoring experience, and I currently teach an introductory Computer Science class at a private school on the UWS. ", 79, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 43, 1);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30, 3);
 INSERT INTO tutors
-    (ID, Name, Bio, Price, Rating)
+    (id, Name, Bio, Price, Rating)
 VALUES
     (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
+
+
+-- photos
+INSERT INTO photos (user_id, location) VALUES (1, 'https://s3.amazonaws.com/tutorstream-files/download.jpeg');
+INSERT INTO photos (user_id, location) VALUES (2, 'https://s3.amazonaws.com/tutorstream-files/images+(4).jpeg');
+INSERT INTO photos (user_id, location) VALUES (6, 'https://s3.amazonaws.com/tutorstream-files/download+(2).jpeg');
+INSERT INTO photos (user_id, location) VALUES (8, 'https://s3.amazonaws.com/tutorstream-files/female.jpeg');
+INSERT INTO photos (user_id, location) VALUES (10, 'https://s3.amazonaws.com/tutorstream-files/download+(3).jpeg');
+INSERT INTO photos (user_id, location) VALUES (11, 'https://s3.amazonaws.com/tutorstream-files/139662784.jpg');
+INSERT INTO photos (user_id, location) VALUES (13, 'https://s3.amazonaws.com/tutorstream-files/guy-fieri.jpeg');
+INSERT INTO photos (user_id, location) VALUES (15, 'https://s3.amazonaws.com/tutorstream-files/images+(3).jpeg');
+INSERT INTO photos (user_id, location) VALUES (16, 'https://s3.amazonaws.com/tutorstream-files/images+(1).jpeg');
+INSERT INTO photos (user_id, location) VALUES (17, 'https://s3.amazonaws.com/tutorstream-files/images+(2).jpeg');
+INSERT INTO photos (user_id, location) VALUES (21, 'https://s3.amazonaws.com/tutorstream-files/images.jpeg');
 
 
 --tutor_tests
@@ -281,3 +296,72 @@ VALUES
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
 INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
+
+
+
+--- Earnings
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25',2,100);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26',11,65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26',2,150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26',6,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27',11,65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27',1,80);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28',11,260);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28',1,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28',2,200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29',11,65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30',11,65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30',1,80);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30',2,250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30',6,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01',11,195);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01',1,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01',2,150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01',6,180);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02',11,195);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02',1,160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02',2,250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03',11,65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03',2,150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03',6,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04',1,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04',2,250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04',6,180);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05',2,100);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05',6,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06',1,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07',1,160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07',2,200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08',1,200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08',6,120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09',1,40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09',6,60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10',11,130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10',1,160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10',2,50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10',6,240);
+

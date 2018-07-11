@@ -26,7 +26,7 @@ class TutorProfile extends Component {
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
-    this.updateRating = this.updateRating.bind(this);
+
   }
 
   getTutorInfo() {
@@ -34,6 +34,7 @@ class TutorProfile extends Component {
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
+        console.log('what is the data: ', data);
         console.log('data rating : ', data.rating)
         this.setState({
           name: data.Name,
@@ -54,7 +55,7 @@ class TutorProfile extends Component {
       })
       .then(({ data }) => {
         this.setState({
-          photo: data[0].location
+          photo: data[0].location || 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
         });
       })
       .catch(err => {
@@ -100,7 +101,8 @@ class TutorProfile extends Component {
           tutor_id: this.state.id,
           id: this.props.id,
           date: this.state.date,
-          time: this.state.time
+          time: this.state.time,
+          rate: this.state.price
         })
         .then(({ data }) => {
           console.log('saved and back to client', data);
@@ -122,17 +124,7 @@ class TutorProfile extends Component {
     }
   }
 
-  updateRating(array){
-    console.log('array :', array)
-    var sum = 0;
-    array.forEach((review)=>{
-      console.log('rating for each is : ', review.rating ,'and current sum: ',sum)
-      sum += review.rating
-      console.log('sum now is : ',sum)
-    })
-    console.log('AVG is :',sum/ array.length)
-    return sum/ array.length
-  }
+
 
   render() {
     return (
@@ -154,11 +146,11 @@ class TutorProfile extends Component {
           </div>
           </span>
           <div>
-            <h1>Bio:</h1>
+            <h2>Bio:</h2>
             <p>{this.state.bio}</p>
           </div>
           <div>
-            <h1>Tutoring Subjects:</h1>
+            <h3>Tutoring Subjects:</h3>
             <span>
               <FormGroup>
                 {this.state.tests.map(test => {
@@ -166,9 +158,9 @@ class TutorProfile extends Component {
                     <Radio
                       name={test.Name}
                       inline
-                      key={test.ID}
-                      value={test.ID}
-                      checked={this.state.test_id == test.ID}
+                      key={test.id}
+                      value={test.id}
+                      checked={this.state.test_id == test.id}
                       onChange={e => this.handleTestSelect(e)}
                     >
                       {test.Name}
@@ -177,6 +169,10 @@ class TutorProfile extends Component {
                 })}
               </FormGroup>
             </span>
+          </div>
+          <div>
+            <h3>Session Rate:</h3>
+            <p>$ <strong>{this.state.price}</strong>/hr</p>
           </div>
           <br />
           <div>

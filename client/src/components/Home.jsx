@@ -27,9 +27,9 @@ class Home extends Component {
         let idList = '';
         for (let i = 0; i < data.length; i++) {
           if (i === data.length - 1) {
-            idList += data[i].ID;
+            idList += data[i].id;
           } else {
-            idList += data[i].ID + ', ';
+            idList += data[i].id + ', ';
           }
         }
         this.setState({
@@ -89,12 +89,12 @@ class Home extends Component {
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
-                <Col xs="6" sm="4" key={tutor.ID}>
-                  <Link to={`/tutors/${tutor.ID}`}>
+                <Col xs="6" sm="4" key={tutor.id}>
+                  <Link to={`/tutors/${tutor.id}`}>
                     <TutorCard
-                      key={tutor.ID}
+                      key={tutor.id}
                       name={tutor.Name}
-                      rating={tutor.Rating}
+                      rating={`${tutor.Rating}.0`}
                       photo={this.state.photos[tutor.ID]}
                     />
                   </Link>
@@ -109,8 +109,8 @@ class Home extends Component {
             <br />
             <Row>
               {this.state.tests.map(test => (
-                <Col sm="3" key={test.ID}>
-                  <Link to={`/tests/${test.ID}`}>
+                <Col sm="3" key={test.id}>
+                  <Link to={`/tests/${test.id}`}>
                     <h3>{test.Name}</h3>
                   </Link>
                 </Col>

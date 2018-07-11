@@ -1,7 +1,7 @@
 {
   "name": "TutorStream",
   "version": "1.0.0",
-  "description": "Platform to find a mentor",
+  "description": "Platform to find a tutor",
   "main": "server/index.js",
   "scripts": {
     "start": "npm run react-dev | npm run server-dev",
@@ -59,6 +59,7 @@
     "compression": "^1.7.2",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
+    "d3": "^5.5.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "install": "^0.11.0",
@@ -76,6 +77,8 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-code-splitting": "^1.2.1",
+    "react-d3-basic": "^1.6.11",
+    "react-d3-components": "^0.9.1",
     "react-datetime": "^2.14.0",
     "react-dom": "^16.4.1",
     "react-edit-inline": "^1.0.8",

@@ -24,8 +24,8 @@ exports.loginUserCheck = (req, res) => {
     if(err) {
       console.log(err);
     } else {
-      var ID = user[0] === undefined ? 0 : user[0].ID;
-      res.send({ID});
+      var id = user[0] === undefined ? 0 : user[0].id;
+      res.send({id});
     }
   });
 }; 
@@ -86,16 +86,12 @@ exports.addOrUpdateUserPhoto = (req, res) => {
         User.addPhoto(req.body, (err, result) => {
           if (err) {
             console.error('There was an error adding the user\'s photo: ', err);
-          } else {
-            res.send(`The photo has been added! Here is the result: ${result}`);
           }
         });
       } else {
         User.updatePhoto(req.body, (err, result) => {
           if (err) {
             console.error('There was an error updating the user\'s photo: ', err);
-          } else {
-            res.send(`The photo has been updated! Here is the result: ${result}`);
           }
         });
       }
