@@ -1,11 +1,12 @@
 const sessionModel = require('./../models/sessionModel');
 
 exports.bookSession = (req, res) => {
+  console.log('rec.body for adding session : ',req.body)
   sessionModel.addSession(req.body, (err, newSession) => {
     if(err) {
       console.error(err);
     } else {
-      console.log('whats returning from DB : newSession?', newSession);
+      console.log('whats returning from DB : newSession booked?', newSession);
       res.sendStatus(201);
     }
   });

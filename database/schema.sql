@@ -58,6 +58,7 @@ CREATE TABLE sessions (
   FOREIGN KEY (student_id) references users (id)
 );
 
+
 CREATE TABLE feedback (
   id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   user_id int,

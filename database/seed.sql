@@ -3,6 +3,7 @@
 -- Seed data for tables 
 
 -- Users
+
 INSERT INTO users
     (name, password, email, tutor, bio)
 VALUES
@@ -295,6 +296,7 @@ VALUES
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
 INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
+
 
 
 --- Earnings
