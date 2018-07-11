@@ -15,11 +15,7 @@ class TestProfile extends Component {
     };
   }
 
-<<<<<<< HEAD:client/src/components/TestProfile.jsx
   getTestInfo = test_id => {
-=======
-  getTestInfo = (test_id) => {
->>>>>>> dev:client/src/components/un-protected/TestProfile.jsx
     axios
       .get(`/tests/${test_id}`)
       .then(({ data }) => {
@@ -34,17 +30,13 @@ class TestProfile extends Component {
       });
   };
 
-<<<<<<< HEAD:client/src/components/TestProfile.jsx
-  getTutors = test_id => {
-=======
-  componentDidMount () {
+  componentDidMount() {
     const { id } = this.props.match.params;
     this.getTestInfo(id);
     this.getTutors(id);
   }
 
-  getTutors = (test_id) => {
->>>>>>> dev:client/src/components/un-protected/TestProfile.jsx
+  getTutors = test_id => {
     axios
       .get(`/tutors/selectTutors`, {
         params: {

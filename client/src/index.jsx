@@ -15,20 +15,81 @@ import AuthStatus from './Auth/AuthStatus.js';
 /* Lazy Loaders */
 import Async from 'react-code-splitting';
 
-const Login = props => <Async load={import('./components/un-protected/Login.jsx')} componentProps={props} />
-const TutorProfile = props => <Async load={import('./components/protected/tutorView/TutorProfile.jsx')} componentProps={props} />
-const Sessions = props => <Async load={import('./components/protected/Sessions.jsx')} componentProps={props} />
-const TestProfile = props => <Async load={import('./components/un-protected/TestProfile.jsx')} componentProps={props} />
-const Review = props => <Async load={import('./components/protected/tutorView/Review.jsx')} componentProps={props} />
-const Settings = props => <Async load={import('./components/protected/Settings.jsx')} componentProps={props} />
-const TestList = props => <Async load={import('./components/un-protected/TestList.jsx')} componentProps={props} />
-const Classroom = props => <Async load={import('./components/protected/classroom/Classroom.jsx')} componentProps={props} />
-const TutorRegistration = props => <Async load={import('./components/protected/studentView/TutorRegistration.jsx')} componentProps={props} />
-const TutorReview = props => <Async load={import('./components/protected/TutorReview.jsx')} componentProps={props} />
-const Home = props => <Async load={import('./components/un-protected/Home.jsx')} componentProps={props} />
-const StudentView = props => <Async load={import('./components/protected/studentView/StudentView.jsx')} componentProps={props} />
-const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
-
+const Login = props => (
+  <Async
+    load={import('./components/un-protected/Login.jsx')}
+    componentProps={props}
+  />
+);
+const TutorProfile = props => (
+  <Async
+    load={import('./components/protected/tutorView/TutorProfile.jsx')}
+    componentProps={props}
+  />
+);
+const Sessions = props => (
+  <Async
+    load={import('./components/protected/Sessions.jsx')}
+    componentProps={props}
+  />
+);
+const TestProfile = props => (
+  <Async
+    load={import('./components/un-protected/TestProfile.jsx')}
+    componentProps={props}
+  />
+);
+const Review = props => (
+  <Async
+    load={import('./components/protected/tutorView/Review.jsx')}
+    componentProps={props}
+  />
+);
+const Settings = props => (
+  <Async
+    load={import('./components/protected/Settings.jsx')}
+    componentProps={props}
+  />
+);
+const TestList = props => (
+  <Async
+    load={import('./components/un-protected/TestList.jsx')}
+    componentProps={props}
+  />
+);
+const Classroom = props => (
+  <Async
+    load={import('./components/protected/classroom/Classroom.jsx')}
+    componentProps={props}
+  />
+);
+const TutorRegistration = props => (
+  <Async
+    load={import('./components/protected/studentView/TutorRegistration.jsx')}
+    componentProps={props}
+  />
+);
+const TutorReview = props => (
+  <Async
+    load={import('./components/protected/TutorReview.jsx')}
+    componentProps={props}
+  />
+);
+const Home = props => (
+  <Async
+    load={import('./components/un-protected/Home.jsx')}
+    componentProps={props}
+  />
+);
+const StudentView = props => (
+  <Async
+    load={import('./components/protected/studentView/StudentView.jsx')}
+    componentProps={props}
+  />
+);
+const SecretRoute = props => (
+  <Async load={import('./SecretRoute.jsx')} componentProps={props} />
+);
 
 class App extends Component {
   constructor(props) {
@@ -41,28 +102,19 @@ class App extends Component {
     };
   }
 
-<<<<<<< HEAD
-  getid = id => {
-=======
   componentDidMount() {
     this.getTutors();
     this.getAllTests();
   }
 
-  getid = (id) => {
->>>>>>> dev
+  getid = id => {
     this.setState({
       id: id
     });
   };
 
-<<<<<<< HEAD
   checkTutorStatus = (id, tutors) => {
     if (tutors.indexOf(id) > -1) {
-=======
-  checkTutorStatus = (id,tutors) => {
-    if(tutors.indexOf(id) > -1){
->>>>>>> dev
       this.setState({
         isTutor: 1
       });
@@ -112,18 +164,8 @@ class App extends Component {
       .catch(err => {
         console.error(err);
       });
-<<<<<<< HEAD
   };
 
-  componentDidMount() {
-    this.getTutors();
-    this.getAllTests();
-  }
-
-=======
-  }
-  
->>>>>>> dev
   render() {
     let conditionalTitle =
       this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';

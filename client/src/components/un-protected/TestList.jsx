@@ -6,7 +6,6 @@ class TestList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD:client/src/components/TestList.jsx
       Tests: [],
       dropDownTitle: 'Tests'
     };
@@ -16,16 +15,6 @@ class TestList extends Component {
     axios
       .get('/tests')
       .then(response => {
-=======
-      Tests : [],
-      dropDownTitle : 'Tests'
-    }
-  }
-
-  componentDidMount () {
-    axios.get('/tests')
-      .then((response) => {
->>>>>>> dev:client/src/components/un-protected/TestList.jsx
         this.setState({
           Tests: response.data
         });
@@ -35,7 +24,6 @@ class TestList extends Component {
       });
   }
 
-<<<<<<< HEAD:client/src/components/TestList.jsx
   handleTestSelect = test => {
     this.setState(
       {
@@ -46,17 +34,8 @@ class TestList extends Component {
       }
     );
   };
-=======
-  handleTestSelect = (test) => {
-    this.setState({
-      dropDownTitle : test.Name
-    }, () => {
-      this.props.setTestid(test.id);
-    })
-  }
->>>>>>> dev:client/src/components/un-protected/TestList.jsx
 
-  render () {
+  render() {
     return (
       <div>
         <div>
