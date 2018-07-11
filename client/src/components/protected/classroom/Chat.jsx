@@ -61,10 +61,14 @@ class Chat extends Component {
   postMessage = e => {
     e.preventDefault();
     socket['name'] = this.state.username;
+    console.log(this.state.messages);
     if (this.state.message.length > 0) {
       this.setState(
         {
-          messages: [this.state.message, ...this.state.messages]
+          messages: [
+            { user: this.state.username, message: this.state.message },
+            ...this.state.messages
+          ]
         },
         () => {
           socket.emit('new-message', {
@@ -79,7 +83,6 @@ class Chat extends Component {
   };
 
   render() {
-    console.log(this.props.upcomingSession, 'upcoming session');
     return (
       <div className="chat-container">
         <h1 className="header">Chat Channel</h1>
