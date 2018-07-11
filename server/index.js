@@ -13,6 +13,7 @@ const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
 const feedbackRouter = require('./routes/feedbackRoutes');
+const earningsRouter = require('./routes/earningsRoutes');
 
 const port = process.env.PORT || 3000;
 
@@ -36,9 +37,10 @@ app.use('/tutors', tutorsRouter);
 app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/feedback', feedbackRouter);
+app.use('/earnings', earningsRouter);
 
-/* SOCKET */
 
+// socket.io listening
 io.on('connection', (socket) => {
   console.log('user connected');
   var room;

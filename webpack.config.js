@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: `${SRC_DIR}/index.jsx`,
+    mode: 'production',
     output: {
       filename: 'bundle.js', 
       path: DIST_DIR,

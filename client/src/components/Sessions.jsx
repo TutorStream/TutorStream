@@ -35,9 +35,7 @@ class Sessions extends Component {
     .then(({data}) => {
       this.setState({
           sessions: data
-      },() => {
-         console.log('state after grabbing data again :',this.state)
-       });
+      });
     })
   }
 

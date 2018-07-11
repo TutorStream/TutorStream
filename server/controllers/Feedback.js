@@ -3,8 +3,6 @@ const Tutor = require('./../models/tutorModel');
 
 
 exports.addFeedback = (req, res) => {
-  // need id, id, tutor_id, rating, content, date, time
-  console.log('req.body should have all 5 necessary schema columns', req.body);
   Feedback.addFeedback(req.body, (err, newFeedback) => {
     if (err) {
       console.log('big problem!!!!!!!!', err)
@@ -17,8 +15,6 @@ exports.addFeedback = (req, res) => {
 };
 
 exports.updateFeedback = (req, res) => {
-  // need id, id, tutor_id, rating, content, date, time
-  console.log('req.body should have rating and content', req.body);
   Feedback.updateFeedback(req.body, (err, updatedFeedback) => {
     if (err) {
       res.sendStatus(400);

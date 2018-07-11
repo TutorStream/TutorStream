@@ -411,6 +411,10 @@ div.tutors{
   max-width: 200px;
 }
 
+.image-settings {
+  text-align: center;
+}
+
 .col-sm-4 {
   padding-bottom: 15px;
 }
@@ -432,22 +436,38 @@ div.tutors{
 
 .all-messages {
   background-color: lightsalmon;
-  border : black solid;
+  border : white solid;
 }
 
 .msg {
-  color: black;
+  color: white;
   padding-left: 2%;
 }
 
 .input-msg {
-  color : black;
+  color : white;
 }
 
 .add-new-message {
   text-align: center;
 }
 
-.classroom-name{
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #FFF;
+  shape-rendering: crispEdges;
+}
 
+.bar {
+  fill: white;
+}
+
+.x.axis path {
+  /* display: none; */
+  color: white;
+}
+
+.axis text {
+  color: white;
 }

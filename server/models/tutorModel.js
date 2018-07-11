@@ -1,6 +1,5 @@
 const db = require('./../../database');
 
-//pass in callback and optional testid -- if no testid is passed in, testid defaults to null
 exports.getTopTutors = (callback, test_id = null) => {
   let queryStr = '';
   if (test_id === null) {
