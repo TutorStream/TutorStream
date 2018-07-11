@@ -1,11 +1,12 @@
 const sessionModel = require('./../models/sessionModel');
 
 exports.bookSession = (req, res) => {
+  console.log('rec.body for adding session : ',req.body)
   sessionModel.addSession(req.body, (err, newSession) => {
     if(err) {
       console.error(err);
     } else {
-      console.log('whats returning from DB : newSession?', newSession);
+      console.log('whats returning from DB : newSession booked?', newSession);
       res.sendStatus(201);
     }
   });
@@ -35,15 +36,10 @@ exports.updateSession = (req, res) => {
 };
 
 exports.getSession = (req, res) => {
-  // console.log('params: ',req)
-  // let id = req.params.id;
   var form = {
     id : req.params.id,
     isTutor: Number(req.query.isTutor)
-  }
-  // console.log('what??? ',typeof req.query.isTutor)
-
-  console.log('form :', form)
+  };
   sessionModel.getSession(form, (err, result) => {
     if (err) {
       console.error('There was an error getting the session info: ', err);

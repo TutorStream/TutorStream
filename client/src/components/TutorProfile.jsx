@@ -26,7 +26,7 @@ class TutorProfile extends Component {
     this.bookTutor = this.bookTutor.bind(this);
     this.getTutorInfo = this.getTutorInfo.bind(this);
     this.handleTestSelect = this.handleTestSelect.bind(this);
-    this.updateRating = this.updateRating.bind(this);
+
   }
 
   getTutorInfo() {
@@ -101,7 +101,8 @@ class TutorProfile extends Component {
           tutor_id: this.state.id,
           id: this.props.id,
           date: this.state.date,
-          time: this.state.time
+          time: this.state.time,
+          rate: this.state.price
         })
         .then(({ data }) => {
           console.log('saved and back to client', data);
@@ -123,17 +124,7 @@ class TutorProfile extends Component {
     }
   }
 
-  updateRating(array){
-    console.log('array :', array)
-    var sum = 0;
-    array.forEach((review)=>{
-      console.log('rating for each is : ', review.rating ,'and current sum: ',sum)
-      sum += review.rating
-      console.log('sum now is : ',sum)
-    })
-    console.log('AVG is :',sum/ array.length)
-    return sum/ array.length
-  }
+
 
   render() {
     return (
@@ -155,11 +146,11 @@ class TutorProfile extends Component {
           </div>
           </span>
           <div>
-            <h1>Bio:</h1>
+            <h2>Bio:</h2>
             <p>{this.state.bio}</p>
           </div>
           <div>
-            <h1>Tutoring Subjects:</h1>
+            <h3>Tutoring Subjects:</h3>
             <span>
               <FormGroup>
                 {this.state.tests.map(test => {
@@ -178,6 +169,10 @@ class TutorProfile extends Component {
                 })}
               </FormGroup>
             </span>
+          </div>
+          <div>
+            <h3>Session Rate:</h3>
+            <p>$ <strong>{this.state.price}</strong>/hr</p>
           </div>
           <br />
           <div>

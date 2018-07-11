@@ -31,6 +31,8 @@ class Login extends Component {
     .then(({data}) => {
       var id = data.id
       this.props.getID(id);
+      console.log('props for login: ', this.props)
+      this.props.checkTutorStatus(id,this.props.tutors_ids)
       if(!!data.id) {
         AuthService.authenticate()
         this.setState({
