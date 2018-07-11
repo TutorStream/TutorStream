@@ -28,10 +28,17 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jeff Anderson', '
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jon Izak', 'password', 'jon@gmail.com', 0, "I received my BS in Biochemistry and Bioinformatics from Ramapo and attained an MS from Rutgers in Biomedical Informatics. I graduated with an MS in Computational Biology and Bioinformatics from Yale in 2014. I have extensive teaching experience: I served as a Supplemental Instructor for 5 semesters in Elementary Probability & Statistics at Ramapo and worked as an Anatomy & Physiology lecturer at Success Training College, and an Instrumental Analysis lecturer at Terreve College. I also tutored Math in the Bahamas from 2009-2010.");
 
 -- added by nick
+<<<<<<< Updated upstream
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jill Ryan', 'password', 'jill@gmail.com', 0, "Finished up at Dartmouth with a 7.4 GPA and also go my PhD from Yale in Greek machine learning.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Bill BoBaggins', 'password', 'bill@gmail.com', 0, "Mathmatics professor at Columbia, graduated from Harvard sometime in the early 20s");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Yolo Ronaldhino', 'password', 'yolo@gmail.com', 0, "Comp-Sci wunderkid, have been building full-stack appliations since 1994");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tennessee Williams', 'password', 'tennessee@gmail.com', 0, "Avid ortnothologist, part-time bare-knuckle boxer");
+=======
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jill Ryan', 'password', 'jill@gmail.com', 0, "Finished up at Dartmouth with a 7.4 GPA and also got my PhD from Yale in Greek machine learning.");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Bill BoBaggins', 'password', 'bill@gmail.com', 0, "Mathmatics professor at Columbia, graduated from Harvard sometime in the early 20s");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Yolo Ronaldhino', 'password', 'yolo@gmail.com', 0, "Comp-Sci wunderkid, have been building full-stack appliations since 1994");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tennessee Williams', 'password', 'tennessee@gmail.com', 0, "Avid ortnothologist, part-time bare-knuckle boxer, LSAT aficionado");
+>>>>>>> Stashed changes
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jack Ryan', 'password', 'jack@gmail.com', 0, "I am a character in a book");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tom Clancy', 'password', 'tom@gmail.com', 0, "Skilled writer with a passion for thrillers");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Vladimir Putin', 'password', 'damian@gmail.com', 0, "Just tryna make ends meet");
@@ -40,12 +47,20 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Shifty Powers', '
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Richard Winters', 'password', 'richard@gmail.com', 0, "My ability to lead an assault on a larger enemy force firmly-dug into a fixed position, with a smaller force of my own, is un-paralled. nbd.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Kaitlyn Wingo', 'password', 'kaitlyn@gmail.com', 0, "Skilled dentist and moderately talented basketball player");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Rango Cunningham', 'password', 'rango@gmail.com', 0, "Finished top of my class at MIT, mathematics is my passion");
+<<<<<<< Updated upstream
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('John Thompson', 'password', 'michael@gmail.com', 0, "UC-Berkeley undergrad, received my PhD in Biology from the Univeristy of Chicago");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Conor MacGregor', 'password', 'conor@gmail.com', 0, "When I am not in a cage, im taking professional educational exams for kicks");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Marquis de Lafayette', 'password', 'marquis@gmail.com', 0, "I'm a big America guy");
 
 
 
+=======
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('John Thompson', 'password', 'john@gmail.com', 0, "UC-Berkeley undergrad, received my PhD in Biology from the Univeristy of Chicago");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Conor MacGregor', 'password', 'conor@gmail.com', 0, "When I am not in a cage, im taking professional education courses");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Marquis de Lafayette', 'password', 'marquis@gmail.com', 0, "I'm a big America guy");
+
+
+>>>>>>> Stashed changes
 -- Tests Tutors can Tutor
 INSERT INTO tests (Name, Description) VALUES ('LSAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
 INSERT INTO tests (Name, Description) VALUES ('SAT', "The SAT is a standardized test widely used for college admissions in the United States. Introduced in 1926, its name and scoring have changed several times; originally called the Scholastic Aptitude Test, it was later called the Scholastic Assessment Test, then the SAT I: Reasoning Test, then the SAT Reasoning Test, and now, simply the SAT.");
@@ -164,13 +179,51 @@ VALUES
 --
 
 -- -- Sessions 
--- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
--- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
 INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
-
-
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-11-05', '06:05:07',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-11-05', '10:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 33, '2019-11-05', '07:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 32, '2019-11-05', '02:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-11-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 30, '2019-11-05', '04:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 28, '2019-11-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-11-05', '06:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-11-05', '04:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 29, '2019-11-05', '02:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 27, '2019-11-05', '04:09:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-11-05', '04:01:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 23, '2019-11-05', '04:02:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 36, '2019-11-05', '04:02:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-10-05', '06:05:07',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-02-05', '10:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 33, '2019-01-05', '07:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 32, '2019-04-05', '02:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-07-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 30, '2019-08-05', '04:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 28, '2019-12-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-10-05', '10:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 29, '2019-09-05', '02:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 27, '2019-09-05', '04:09:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-08-05', '04:01:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 23, '2019-10-10', '06:02:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 32, '2019-11-05', '04:02:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-10-05', '07:05:03',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-02-05', '08:05:03',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 32, '2019-01-05', '10:05:02',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 33, '2019-04-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-07-05', '07:05:02',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 28, '2019-08-05', '02:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 30, '2019-12-05', '01:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-10-05', '11:05:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 27, '2019-09-05', '07:05:03',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 29, '2019-09-05', '04:09:02',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-08-05', '03:01:01',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 32, '2019-10-10', '04:02:05',0);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 23, '2019-11-05', '05:02:03',0);
 
 --- Earnings
 INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25',11,130);
