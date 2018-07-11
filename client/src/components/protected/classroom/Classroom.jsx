@@ -108,7 +108,7 @@ class Classroom extends Component {
             })
     }
 
-  isHistory(sessions) {
+  isHistory = (sessions) => {
     var currentSession = null;
     for (var i = 0; i < sessions.length; i++) {
       var session = sessions[i];
