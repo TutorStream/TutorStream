@@ -5,13 +5,10 @@ import { Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 
 class Sessions extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sessions: [],
-      isTutor: false
-    };
-  }
+  state = {
+    sessions: [],
+    isTutor: false
+  };
 
   componentDidMount() {
     var id = this.props.id;

@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import TestList from './../../un-protected/TestList.jsx';
 
 class StudentView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      test_id: 1,
-      tutor_id: null,
-      tutors: []
-    };
-  }
+  state = {
+    test_id: 1,
+    tutor_id: null,
+    tutors: []
+  };
 
   getTutors = () => {
     axios

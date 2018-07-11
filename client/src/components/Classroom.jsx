@@ -8,25 +8,21 @@ import moment from 'moment';
 import { ClipLoader } from 'react-spinners';
 
 class Classroom extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      session_id: 123,
-      review: false,
-      isTutor: null,
-      name: '',
-      id: this.props.id,
-      upcomingSessions: [],
-      upcomingSession: {},
-      ready: false,
-      countdown: '',
-      tooEarly: true,
-      interval: 1000,
-      loading: true,
-      active: false
-    };
-  }
+  state = {
+    session_id: 123,
+    review: false,
+    isTutor: null,
+    name: '',
+    id: this.props.id,
+    upcomingSessions: [],
+    upcomingSession: {},
+    ready: false,
+    countdown: '',
+    tooEarly: true,
+    interval: 1000,
+    loading: true,
+    active: false
+  };
 
   componentDidMount() {
     var id = this.props.id;

@@ -3,14 +3,11 @@ import axios from 'axios';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 
 class Review extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviews: [],
-      tutor_id: null,
-      averageRating: null
-    };
-  }
+  state = {
+    reviews: [],
+    tutor_id: null,
+    averageRating: null
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
