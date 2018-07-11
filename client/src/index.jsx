@@ -143,7 +143,6 @@ class App extends Component {
           tutors_ids: data.map(a => a.id)
         });
       })
-      .then(() => {})
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });

@@ -32,7 +32,7 @@ CREATE TABLE user_tests (
   test_id int,
   FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (test_id) references tests(id)
-)
+);
 
 CREATE TABLE tutor_tests (
   tutor_id int,
