@@ -49,7 +49,6 @@ class Classroom extends Component {
       .get(`/users/info/${id}`)
       .then(({ data }) => {
         info = data[0];
-        console.log('data recieved in settings: ', info);
         this.setState(
           {
             name: info.Name,
@@ -74,14 +73,12 @@ class Classroom extends Component {
   }
 
   markSessionComplete() {
-    console.log('updating to complete and state is : ', this.state);
     axios
       .put(`/sessions/${this.state.session_id}`)
       .then(() => console.log('Marked Complete'));
   }
   //if isTutor is true get tutor session, else get user session
   getUpcomingSessionInfo(id) {
-    console.log('What is state ?? ', this.state);
     axios
       .get(`/sessions/${id}`, {
         params: {
@@ -90,7 +87,6 @@ class Classroom extends Component {
       })
       .then(({ data }) => {
         var info = data;
-        console.log('info>>>>>: ', info);
         if (info.length > 0) {
           this.setState(
             {
@@ -103,10 +99,6 @@ class Classroom extends Component {
             },
             () => {
               this.isHistory(this.state.upcomingSessions);
-              console.log(
-                'upcoming sessions order!!!!! : ',
-                this.state.upcomingSessions
-              );
               if (this.state.upcomingSession) {
                 this.setState(
                   {
@@ -163,7 +155,6 @@ class Classroom extends Component {
   }
 
   isHistory(sessions) {
-    console.log('in isHistory', sessions);
     var currentSession = null;
     for (var i = 0; i < sessions.length; i++) {
       var session = sessions[i];
@@ -182,7 +173,6 @@ class Classroom extends Component {
     }
 
     if (currentSession) {
-      console.log('currentSession is :', currentSession);
       this.setState({
         upcomingSession: currentSession,
         session_id: currentSession.id

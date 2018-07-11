@@ -60,23 +60,16 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    console.log('chat user id', this.props);
     axios
       .get(`users/username/${this.props.id}`)
       .then(({ data }) => {
-        this.setState(
-          {
-            username: data[0].Name
-          },
-          () => {
-            console.log('username ', this.state.username);
-          }
-        );
+        this.setState({
+          username: data[0].Name
+        });
       })
       .catch(err => {
         console.error(err);
       });
-    console.log('chat mounting?');
     socket.emit('room', { room: this.props.session_id });
   }
 
@@ -92,8 +85,6 @@ class Chat extends Component {
   // />
 
   render() {
-    console.log(this.props.upcomingSession, 'upcoming session');
-
     return (
       <div className="chat-container">
         <h1 className="header">Chat Channel</h1>
