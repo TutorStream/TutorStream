@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
-import Earnings from './Earnings.jsx';
+import Earnings from './../tutorView/Earnings.jsx';
 
 class TutorRegistration extends React.Component {
     constructor(props){

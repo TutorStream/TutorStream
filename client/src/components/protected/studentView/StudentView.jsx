@@ -8,10 +8,10 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 
-import TutorProfile from './TutorProfile.jsx';
+import TutorProfile from './../tutorView/TutorProfile.jsx';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import TestList from './TestList.jsx';
+import TestList from './../../un-protected/TestList.jsx';
 
 class StudentView extends Component {
   constructor(props) {

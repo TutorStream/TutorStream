@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import DateTime from 'react-datetime';
-import AuthService from './../Auth/AuthService';
+import AuthService from './../../../Auth/AuthService';
 import { Radio, FormGroup, Jumbotron, Button } from 'react-bootstrap';
 import Review from './Review.jsx';
 

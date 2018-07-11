@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { FormGroup, FormControl, ControlLabel, Checkbox, Button } from 'react-bootstrap';
-import AuthService from '../Auth/AuthService';
+import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {

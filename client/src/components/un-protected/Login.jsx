@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import AuthService from '../Auth/AuthService'
+import AuthService from './../../Auth/AuthService'
 import { Redirect } from 'react-router-dom'
 import Signup from './SignUp.jsx'
 
