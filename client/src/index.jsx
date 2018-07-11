@@ -52,8 +52,13 @@ class App extends Component {
     });
   }
 
+<<<<<<< HEAD
+  checkTutorStatus(id,tutors){
+    if(tutors.indexOf(id)>-1){
+=======
   checkTutorStatus = (id,tutors) => {
     if(tutors.indexOf(id) > -1){
+>>>>>>> dev
       this.setState({
         isTutor: 1
       });
@@ -64,6 +69,7 @@ class App extends Component {
     axios
       .get('/tests')
       .then(({ data }) => {
+        console.log('what does data come through as: ', data);
         this.setState({
           tests: data
         });
@@ -79,10 +85,13 @@ class App extends Component {
       .then(({ data }) => {
         this.setState({
           tutors: data,
-          tutors_ids: data.map(a => a.id)
+          tutors_ids: data.map((tutor) => tutor.id)
         });
       })
+<<<<<<< HEAD
+=======
       .then(() => {})
+>>>>>>> dev
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
@@ -204,6 +213,7 @@ class App extends Component {
               id={this.state.id}
               tutors_ids={this.state.tutors_ids}
               isTutor={this.state.isTutor}
+              tests={this.state.tests}
             />
           )}
         />
