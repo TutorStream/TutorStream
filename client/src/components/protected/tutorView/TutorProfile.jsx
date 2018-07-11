@@ -108,7 +108,7 @@ class TutorProfile extends Component {
     if (!AuthService.isAuthenticated) {
       this.props.history.push('/login');
       return;
-    } else if (AuthService.isAuthenticated && this.state.id !== this.state.id) {
+    } else if (AuthService.isAuthenticated ) {
       axios
         .post('/sessions', {
           test_id: this.state.test_id,
