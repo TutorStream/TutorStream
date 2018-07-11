@@ -3,7 +3,7 @@ const db = require('./../../database');
 exports.addFeedback = (data, callback) => {
   const { user_id, tutor_id, rating, feedback, date, time } = data;
   console.log("We're about to add feedback")
-  let queryStr =                                                                      //(3,11, 4, 'Jess is great', '2017-12-12', '12:09:30')
+  let queryStr =                                                                     
     `INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES (?, ?, ?, ?, ?, ?)`
     let params = [Number(user_id), Number(tutor_id), Number(rating), String(feedback),String(date), String(time)]
   db.query(queryStr, params,(err,result)=>{

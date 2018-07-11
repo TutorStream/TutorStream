@@ -23,7 +23,7 @@ class StudentView extends Component {
       tutors: []
     };
     this.getTutors = this.getTutors.bind(this);
-    this.setTestID = this.setTestID.bind(this);
+    this.setTestid = this.setTestid.bind(this);
     this.grabTutorId = this.grabTutorId.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
   }
@@ -58,7 +58,7 @@ class StudentView extends Component {
       });
   }
 
-  setTestID(id) {
+  setTestid(id) {
     this.setState(
       {
         test_id: id
@@ -84,7 +84,7 @@ class StudentView extends Component {
       <div>
         <div>
           <div>
-            <TestList setTestID={this.setTestID} />
+            <TestList setTestid={this.setTestid} />
           </div>
           <div className="tutors-container">
             <div className="all-tutors">

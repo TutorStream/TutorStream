@@ -12,8 +12,7 @@ CREATE TABLE users (
   Bio TEXT
 );
 
-CREATE TABLE tutors
-(
+CREATE TABLE tutors (
   id int,
   Name varchar(255) NOT NULL,
   Bio TEXT,
@@ -28,16 +27,14 @@ CREATE TABLE tests (
   Description TEXT NOT NULL
 );
 
-CREATE TABLE user_tests
-(
+CREATE TABLE user_tests (
   user_id int,
   test_id int,
   FOREIGN KEY (user_id) references users(id),
   FOREIGN KEY (test_id) references tests(id)
-);
+)
 
-CREATE TABLE tutor_tests
-(
+CREATE TABLE tutor_tests (
   tutor_id int,
   test_id int,
   FOREIGN KEY (tutor_id) references tutors(id),
