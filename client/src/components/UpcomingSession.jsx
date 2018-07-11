@@ -57,29 +57,24 @@ class UpcomingSession extends Component {
     return (
       <div>
         <FormGroup controlId="formControlsTextarea">
-          <ControlLabel>
-            <h2>Upcoming Session</h2>
-          </ControlLabel>
-          <hr />
-          <br />
+            <ControlLabel><h2>Upcoming Session</h2></ControlLabel>
+            <hr/>
+            <br/>
+            
+            <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
+            <br />
+            <ControlLabel>
+            <p>Details:
+                <br/>
+                <h4>Date:</h4 >{this.props.upcomingSession.date.slice(0,10)}
+                <br/>
+                time:  {this.props.upcomingSession.time}
+                <br/>
+                with:  {this.props.upcomingCaller}
+                <br/>
+            </p></ControlLabel>
 
-          <ControlLabel>
-            <h4>starts in : {timer}</h4>
-          </ControlLabel>
-          <br />
-          <ControlLabel>
-            <p>
-              Details:
-              <br />
-              <h4>Date:</h4>
-              {this.props.upcomingSession.date.slice(0, 10)}
-              <br />
-              time: {this.props.upcomingSession.time}
-              <br />
-              with: {this.state.upcomingCaller}
-              <br />
-            </p>
-          </ControlLabel>
+         
 
           {/* <ControlLabel><h2>Next:</h2></ControlLabel>
             <br/>
