@@ -4,22 +4,15 @@ const path = require('path');
 const app = express();
 const db = require('./../database');
 const compression = require('compression');
-
-// socket.io
 const server = require('http').Server(app);
-const io = require('socket.io')(server); // CREATES our socketIO using the instance of the server
+const io = require('socket.io')(server);
 
-// const router = require('./routes');
 const usersRouter = require('./routes/usersRoutes');
 const tutorsRouter = require('./routes/tutorsRoutes');
 const testsRouter = require('./routes/testsRoutes');
 const sessionsRouter = require('./routes/sessionsRoutes');
 const feedbackRouter = require('./routes/feedbackRoutes');
 const earningsRouter = require('./routes/earningsRoutes');
-// const router = express.Router();
-// const passport = require('passport');
-// const passportSetup = require('./config/passport_setup.js');
-// const cookieSession = require('cookie-session')
 
 const port = process.env.PORT || 3000;
 
@@ -44,7 +37,6 @@ app.use('/tests', testsRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/feedback', feedbackRouter);
 app.use('/earnings', earningsRouter);
-// socket.io listening
 
 io.on('connection', socket => {
   var room;

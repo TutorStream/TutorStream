@@ -1,8 +1,7 @@
 const db = require('./../../database');
 
 exports.addNewUser = (newUser, callback) => {
-  let queryStr =
-    'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
+  let queryStr = 'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
   let params = [
     newUser.name,
     newUser.password,
@@ -19,7 +18,6 @@ exports.addNewUserTests = (userId, testId, callback) => {
 };
 
 exports.loginUser = (userCreds, callback) => {
-  // console.log('usercreds ', userCreds);
   let queryStr = 'SELECT * FROM users WHERE Email = ? AND Password = ?';
   let params = [userCreds.Email, userCreds.Password];
   db.query(queryStr, params, callback);

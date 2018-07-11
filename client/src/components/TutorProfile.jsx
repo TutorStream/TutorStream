@@ -43,7 +43,7 @@ class TutorProfile extends Component {
           rating: `${data.Rating}.0`,
           id: id,
           tests: data.tests,
-          test_id: this.props.test_ID
+          test_id: this.props.test_id
         });
       })
       .then(() => {

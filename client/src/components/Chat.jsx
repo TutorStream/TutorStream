@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
-// const socket = io('144.121.106.166:3000'); // hany's IP
-// const socket = io(); // may need to just instantiate conenct like this to work when deployed?
-const socket = io.connect('10.16.3.19:3000'); // to work locally, need to set to one of our local IP addresses (custom socket)
+const socket = io();
 
 class Chat extends Component {
   constructor(props) {
