@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -32,20 +32,51 @@ import AuthStatus from './Auth/AuthStatus.js';
 /* Lazy Loaders */
 import Async from 'react-code-splitting';
 
-const Login = props => <Async load={import('./components/Login.jsx')} componentProps={props} />
-const TutorProfile = props => <Async load={import('./components/TutorProfile.jsx')} componentProps={props} />
-const Sessions = props => <Async load={import('./components/Sessions.jsx')} componentProps={props} />
-const TestProfile = props => <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
-const Review = props => <Async load={import('./components/Review.jsx')} componentProps={props} />
-const Settings = props => <Async load={import('./components/Settings.jsx')} componentProps={props} />
-const TestList = props => <Async load={import('./components/TestList.jsx')} componentProps={props} />
-const Classroom = props => <Async load={import('./components/Classroom.jsx')} componentProps={props} />
-const TutorRegistration = props => <Async load={import('./components/TutorRegistration.jsx')} componentProps={props} />
-const TutorReview = props => <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
-const Home = props => <Async load={import('./components/Home.jsx')} componentProps={props} />
-const StudentView = props => <Async load={import('./components/StudentView.jsx')} componentProps={props} />
-const SecretRoute = props => <Async load={import('./SecretRoute.jsx')} componentProps={props} />
-
+const Login = props => (
+  <Async load={import('./components/Login.jsx')} componentProps={props} />
+);
+const TutorProfile = props => (
+  <Async
+    load={import('./components/TutorProfile.jsx')}
+    componentProps={props}
+  />
+);
+const Sessions = props => (
+  <Async load={import('./components/Sessions.jsx')} componentProps={props} />
+);
+const TestProfile = props => (
+  <Async load={import('./components/TestProfile.jsx')} componentProps={props} />
+);
+const Review = props => (
+  <Async load={import('./components/Review.jsx')} componentProps={props} />
+);
+const Settings = props => (
+  <Async load={import('./components/Settings.jsx')} componentProps={props} />
+);
+const TestList = props => (
+  <Async load={import('./components/TestList.jsx')} componentProps={props} />
+);
+const Classroom = props => (
+  <Async load={import('./components/Classroom.jsx')} componentProps={props} />
+);
+const TutorRegistration = props => (
+  <Async
+    load={import('./components/TutorRegistration.jsx')}
+    componentProps={props}
+  />
+);
+const TutorReview = props => (
+  <Async load={import('./components/TutorReview.jsx')} componentProps={props} />
+);
+const Home = props => (
+  <Async load={import('./components/Home.jsx')} componentProps={props} />
+);
+const StudentView = props => (
+  <Async load={import('./components/StudentView.jsx')} componentProps={props} />
+);
+const SecretRoute = props => (
+  <Async load={import('./SecretRoute.jsx')} componentProps={props} />
+);
 
 class App extends Component {
   constructor(props) {
@@ -56,27 +87,24 @@ class App extends Component {
       tutors: [],
       isTutor: -1
     };
-    this.getID = this.getID.bind(this);
+    this.getid = this.getid.bind(this);
     this.getAllTests = this.getAllTests.bind(this);
     this.getTutors = this.getTutors.bind(this);
     this.getSelectTutors = this.getSelectTutors.bind(this);
     this.checkTutorStatus = this.checkTutorStatus.bind(this);
   }
-  
 
-  getID(id) {
+  getid(id) {
     this.setState({
       id: id
     });
   }
 
-  checkTutorStatus(id,tutors){
-    console.log('checking tutor status')
-    if(tutors.indexOf(id)>-1){
-      console.log('Tutor is here!')
+  checkTutorStatus(id, tutors) {
+    if (tutors.indexOf(id) > -1) {
       this.setState({
         isTutor: 1
-      })
+      });
     }
   }
 
@@ -102,10 +130,7 @@ class App extends Component {
           tutors_ids: data.map(a => a.id)
         });
       })
-      .then(()=>{
-        console.log('array? >> ',this.state.id)
-
-      })
+      .then(() => {})
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
@@ -134,7 +159,8 @@ class App extends Component {
   }
 
   render() {
-    let conditionalTitle = this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor'
+    let conditionalTitle =
+      this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
       <div>
         <Navbar style={{ fontSize: `130%` }}>
@@ -163,9 +189,9 @@ class App extends Component {
             <AuthStatus />
           </Nav>
         </Navbar>
-  {/*TESTING FOR LIVE CHAT*/}
-   {/* < Chat /> */}
-  {/*TESTING FOR LIVE CHAT*/}
+        {/*TESTING FOR LIVE CHAT*/}
+        {/* < Chat /> */}
+        {/*TESTING FOR LIVE CHAT*/}
         <Route
           exact
           path="/"
@@ -180,8 +206,8 @@ class App extends Component {
               testProps={this.state.tests}
               {...routerProps}
               id={this.state.id}
-              tutors_ids = {this.state.tutors_ids}
-              getID={this.getID}
+              tutors_ids={this.state.tutors_ids}
+              getid={this.getid}
               checkTutorStatus={this.checkTutorStatus}
             />
           )}
@@ -231,7 +257,7 @@ class App extends Component {
           render={routerProps => (
             <Classroom
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
             />
           )}
@@ -241,7 +267,7 @@ class App extends Component {
           render={routerProps => (
             <TutorRegistration
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
               tutors_ids={this.state.tutors_ids}
               isTutor={this.state.isTutor}
@@ -253,7 +279,7 @@ class App extends Component {
           render={routerProps => (
             <Settings
               {...routerProps}
-              setTestID={this.setTestID}
+              setTestid={this.setTestid}
               id={this.state.id}
             />
           )}
