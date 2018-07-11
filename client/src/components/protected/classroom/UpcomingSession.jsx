@@ -3,17 +3,13 @@ import { FormGroup, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
 
 class UpcomingSession extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      room_id: 100 + this.props.room_id,
-      active: false,
-      upcomingSession: this.props.upcomingSession,
-      upcomingCaller: '',
-      countdown: this.props.countdown
-    };
-  }
+  state = {
+    room_id: 100 + this.props.room_id,
+    active: false,
+    upcomingSession: this.props.upcomingSession,
+    upcomingCaller: '',
+    countdown: this.props.countdown
+  };
 
   componentDidMount() {
     if (this.props.isTutor) {

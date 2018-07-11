@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TutorCard from './TutorCard.jsx';
 import { Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 class TestProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      description: '',
-      tutors: []
-    };
-  }
+  state = {
+    name: '',
+    description: '',
+    tutors: []
+  };
 
   getTestInfo = test_id => {
     axios

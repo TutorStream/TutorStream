@@ -5,14 +5,11 @@ import { Redirect } from 'react-router-dom';
 import Signup from './SignUp.jsx';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Email: '',
-      Password: '',
-      redirectToPreviousRoute: false
-    };
-  }
+  state = {
+    Email: '',
+    Password: '',
+    redirectToPreviousRoute: false
+  };
 
   inputHandler = e => {
     this.setState({
