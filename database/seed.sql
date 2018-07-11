@@ -27,6 +27,24 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jason McCutchan',
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jeff Anderson', 'password', 'jeff@gmail.com', 1, "I scored in the upper 99th percentile on the LSAT. I have interviewed with nearly every major law firm and will serve as a judicial extern for SDNY in the fall. I assure you I am qualified to instruct you, but more than this, I simply would love to. I have been a professional tutor for many years and there is nothing I enjoy doing more than helping others achieve their goals, especially when they might seem just barely out of reach.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jon Izak', 'password', 'jon@gmail.com', 0, "I received my BS in Biochemistry and Bioinformatics from Ramapo and attained an MS from Rutgers in Biomedical Informatics. I graduated with an MS in Computational Biology and Bioinformatics from Yale in 2014. I have extensive teaching experience: I served as a Supplemental Instructor for 5 semesters in Elementary Probability & Statistics at Ramapo and worked as an Anatomy & Physiology lecturer at Success Training College, and an Instrumental Analysis lecturer at Terreve College. I also tutored Math in the Bahamas from 2009-2010.");
 
+-- added by nick
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jill Ryan', 'password', 'jill@gmail.com', 0, "Finished up at Dartmouth with a 7.4 GPA and also go my PhD from Yale in Greek machine learning.");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Bill BoBaggins', 'password', 'bill@gmail.com', 0, "Mathmatics professor at Columbia, graduated from Harvard sometime in the early 20s");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Yolo Ronaldhino', 'password', 'yolo@gmail.com', 0, "Comp-Sci wunderkid, have been building full-stack appliations since 1994");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tennessee Williams', 'password', 'tennessee@gmail.com', 0, "Avid ortnothologist, part-time bare-knuckle boxer");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jack Ryan', 'password', 'jack@gmail.com', 0, "I am a character in a book");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tom Clancy', 'password', 'tom@gmail.com', 0, "Skilled writer with a passion for thrillers");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Vladimir Putin', 'password', 'damian@gmail.com', 0, "Just tryna make ends meet");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Buck Compton', 'password', 'buck@gmail.com', 0, "really hoping to do well on something");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Shifty Powers', 'password', 'shifty@gmail.com', 0, "Whether its learning full-stack JavaScript or translating Spanish literature into Japanese, I'm your guy");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Richard Winters', 'password', 'richard@gmail.com', 0, "My ability to lead an assault on a larger enemy force firmly-dug into a fixed position, with a smaller force of my own, is un-paralled. nbd.");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Kaitlyn Wingo', 'password', 'kaitlyn@gmail.com', 0, "Skilled dentist and moderately talented basketball player");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Rango Cunningham', 'password', 'rango@gmail.com', 0, "Finished top of my class at MIT, mathematics is my passion");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('John Thompson', 'password', 'michael@gmail.com', 0, "UC-Berkeley undergrad, received my PhD in Biology from the Univeristy of Chicago");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Conor MacGregor', 'password', 'conor@gmail.com', 0, "When I am not in a cage, im taking professional educational exams for kicks");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Marquis de Lafayette', 'password', 'marquis@gmail.com', 0, "I'm a big America guy");
+
+
 
 -- Tests Tutors can Tutor
 INSERT INTO tests (Name, Description) VALUES ('LSAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
@@ -61,7 +79,6 @@ INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (15, 'David Baek', " I 
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 43, 1);
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30, 3);
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
-
 
 -- photos
 
