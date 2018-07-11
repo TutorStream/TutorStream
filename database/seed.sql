@@ -20,8 +20,8 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Joseph Martin', '
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Koichi Sakamaki', 'password', 'koichi@gmail.com', 0, "Hi! My name is Koichi and I'm a junior at Barnard studying Biology and Computer Science. I also have an interest in Education.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('David Baek', 'password', 'davidb@hotmail.com', 1, "I am a PhD student studying statistics. I really enjoy teaching and tutor in statistics, regression, and math (from algebra and geometry to calculus and linear algebra). I can also help doctoral candidates run, interpret, and report their statistical analysis. I usually suggest that any prospective student go through a practice run before we commit to anything more, and guarantee your money back if you are not satisfied with my services.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Seamus Martin', 'password', 'seamus@gmail.com', 1, "Hey there! My name is Seamus, and I'm a tutor who is interested in helping people reach their full potential. I am in my second year of law school, and I have over 3 years of tutoring experience. I have a strong background in reading, writing (essay, research paper, etc.), and history. I am additionally well versed in test prep for college (act, PSAT, sat) and applying for college, jobs, or scholarships. I'd love to help However I can!");
-INSERT INTO users (name, password, email, tutor, bio) VALUES ('Isto Barton', 'password', 'isto@gmail.com', 1, "I got a 2300 on my SATs, a 35 on my ACT, 95th percentile on my GRE, and worked as an Alzheimer's researcher for three years at Langone Medical Center. ");
-INSERT INTO users (name, password, email, tutor, bio) VALUES ('Philip Gonzalez', 'password', 'philip@gmail.com', 0, "My name is Philip and I am an engineer. I have an undergraduate degree in Chemical Engineering and a masters degree in Environmental Engineering with a concentration in Groundwater and Soil Pollution Control. I am passionate about teaching and sharing my expansive knowledge of math, science, and engineering with students. ");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Isto Barton', 'password', 'isto@gmail.com', 1, "I got a 2300 on my SATs, a 35 on my ACT, 95th percentile on my GRE, and worked as an Alzheimer's researcher for three years at Langone Medical Center.");
+INSERT INTO users (name, password, email, tutor, bio) VALUES ('Philip Gonzalez', 'password', 'philip@gmail.com', 0, "My name is Philip and I am an engineer. I have an undergraduate degree in Chemical Engineering and a masters degree in Environmental Engineering with a concentration in Groundwater and Soil Pollution Control. I am passionate about teaching and sharing my expansive knowledge of math, science, and engineering with students.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jack Lim', 'password', 'jack@gmail.com', 0, "A Biology teacher at daytime, master student and Tutor at night time, and math teacher on weekend. I am specializing in helping high school students getting through their regents, SAT, and AP courses and preparing them to get to their dream colleges. My thousands of hours of tutoring and proven techniques in effectively scoring high have helped hundreds of students getting through their academics and achieving success.");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jason McCutchan', 'password', 'jason@gmail.com', 0, "In my 2+ years at Guideline, I've taught everything from SAT/ACT/SSHAT classes to one-on-one prep sessions for GED, AP, and NYS Regents. Additionally, I've provided mentorship to various ex-students for college counseling, personal essay writing, and language lessons. Outside of Guideline, I've assisted with state examination and homework help for local Elementary / M.S. students./-All my rates are negotiable; I'll provide one free hour to meet and understand the level you or your child is at through a short diagnostic. After, I'd be able to offer a flat rate for further sessions after figuring out a time frame for skill building and practice");
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Jeff Anderson', 'password', 'jeff@gmail.com', 1, "I scored in the upper 99th percentile on the LSAT. I have interviewed with nearly every major law firm and will serve as a judicial extern for SDNY in the fall. I assure you I am qualified to instruct you, but more than this, I simply would love to. I have been a professional tutor for many years and there is nothing I enjoy doing more than helping others achieve their goals, especially when they might seem just barely out of reach.");
@@ -42,12 +42,6 @@ INSERT INTO tests (Name, Description) VALUES ('CFA', "The Chartered Financial An
 INSERT INTO tests (Name, Description) VALUES ('MCAT', "The Medical College Admission Test is a computer-based standardized examination for prospective medical students in the United States, Australia, Canada, and Caribbean Islands");
 INSERT INTO tests (Name, Description) VALUES ('DAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
 
--- -- Tests Users are interested in
--- INSERT INTO user_tests (id, test_id) VALUES (1, 1);
--- INSERT INTO user_tests (id, test_id) VALUES (2 , 2);
--- INSERT INTO user_tests (id, test_id) VALUES (3, 4);
--- INSERT INTO user_tests (id, test_id) VALUES (6, 4);
-
 
 -- Tutors
 INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
@@ -64,7 +58,7 @@ INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (21, 'Jeff Anderson', "
 
 
 -- Photos
-
+INSERT INTO photos (user_id, location) VALUES (1, 'https://s3.amazonaws.com/tutorstream-files/download+(1).jpeg');
 INSERT INTO photos (user_id, location) VALUES (2, 'https://s3.amazonaws.com/tutorstream-files/images+(6).jpeg');
 INSERT INTO photos (user_id, location) VALUES (6, 'https://s3.amazonaws.com/tutorstream-files/female.jpeg');
 INSERT INTO photos (user_id, location) VALUES (8, 'https://s3.amazonaws.com/tutorstream-files/images+(1).jpeg');
