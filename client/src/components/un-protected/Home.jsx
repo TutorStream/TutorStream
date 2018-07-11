@@ -17,7 +17,7 @@ class Home extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getTutors();
     this.getAllTests();
   }
@@ -56,7 +56,7 @@ class Home extends Component {
       .catch(err => {
         console.error('There was an error getting all the tutors: ', err);
       });
-  }
+  };
 
   getAllTests = () => {
     axios
@@ -69,7 +69,7 @@ class Home extends Component {
       .catch(err => {
         console.error('There was an error getting all the tests: ', err);
       });
-  }
+  };
 
   render() {
     return (
@@ -82,7 +82,7 @@ class Home extends Component {
           <br />
           <hr />
           <br />
-          <div className="main-info" >
+          <div className="main-info">
             <h2>Featured Tutors:</h2>
             <Row>
               <br />

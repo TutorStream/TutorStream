@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Checkbox,
-  Radio,
-  FieldGroup,
-  Button
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
-import moment from 'moment';
 
 class UpcomingSession extends Component {
   constructor(props) {
@@ -24,7 +15,7 @@ class UpcomingSession extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (this.props.isTutor) {
       this.getUserInfo(this.props.upcomingSession.student_id);
     } else {
@@ -32,7 +23,7 @@ class UpcomingSession extends Component {
     }
   }
 
-  getUserInfo = (id) => {
+  getUserInfo = id => {
     var info;
     axios.get(`/users/info/${id}`).then(({ data }) => {
       info = data[0];
@@ -41,9 +32,9 @@ class UpcomingSession extends Component {
         isTutor: info.Tutor
       });
     });
-  }
+  };
 
-  render () {
+  render() {
     var callerType = this.props.isTutor ? 'Student' : 'Tutor';
     var timer =
       Number(this.props.countdown.slice(0, 2)) <= 2 &&
@@ -55,22 +46,29 @@ class UpcomingSession extends Component {
     return (
       <div>
         <FormGroup controlId="formControlsTextarea">
-            <ControlLabel><h2>Upcoming Session</h2></ControlLabel>
-            <hr/>
-            <br/>
-            
-            <ControlLabel><h4>starts in : {timer}</h4></ControlLabel>
-            <br />
-            <ControlLabel>
-            <p>Details:
-                <br/>
-                <h4>Date:</h4 >{this.props.upcomingSession.date.slice(0,10)}
-                <br/>
-                time:  {this.props.upcomingSession.time}
-                <br/>
-                with:  {this.props.upcomingCaller}
-                <br/>
-            </p></ControlLabel>
+          <ControlLabel>
+            <h2>Upcoming Session</h2>
+          </ControlLabel>
+          <hr />
+          <br />
+
+          <ControlLabel>
+            <h4>starts in : {timer}</h4>
+          </ControlLabel>
+          <br />
+          <ControlLabel>
+            <p>
+              Details:
+              <br />
+              <h4>Date:</h4>
+              {this.props.upcomingSession.date.slice(0, 10)}
+              <br />
+              time: {this.props.upcomingSession.time}
+              <br />
+              with: {this.props.upcomingCaller}
+              <br />
+            </p>
+          </ControlLabel>
           <br />
           <br />
           <ControlLabel>

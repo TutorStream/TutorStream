@@ -24,7 +24,7 @@ class TutorProfile extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getTutorInfo();
   }
 
@@ -58,16 +58,23 @@ class TutorProfile extends Component {
         });
       })
       .then(({ data }) => {
-        this.setState({
-          photo: data[0].location || 'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
-        });
+        this.setState(
+          {
+            photo:
+              data[0].location ||
+              'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
+          },
+          () => {
+            console.log(this.state);
+          }
+        );
       })
       .catch(err => {
         console.error('There was an error retrieving the tutor profile: ', err);
       });
-  }
+  };
 
-  handleChange = (inputDate) => {
+  handleChange = inputDate => {
     let months = {
       Jan: '01',
       Feb: '02',
@@ -77,7 +84,7 @@ class TutorProfile extends Component {
       Jun: '06',
       Jul: '07',
       Aug: '08',
-      Sep: '09',  
+      Sep: '09',
       Oct: '10',
       Nov: '11',
       Dec: '12'
@@ -89,16 +96,19 @@ class TutorProfile extends Component {
     mm = months[mm];
     let date = `${yyyy}-${mm}-${dd}`;
     this.setState({ date, time });
-  }
+  };
 
-  handleTestSelect = (e) => {
+  handleTestSelect = e => {
     this.setState({
       test_id: e.target.value
     });
-  }
+  };
 
-  bookTutor = () => {
-    if (AuthService.isAuthenticated) {
+  bookTutor() {
+    if (!AuthService.isAuthenticated) {
+      this.props.history.push('/login');
+      return;
+    } else if (AuthService.isAuthenticated && this.state.id !== this.state.id) {
       axios
         .post('/sessions', {
           test_id: this.state.test_id,
@@ -109,69 +119,85 @@ class TutorProfile extends Component {
           rate: this.state.price
         })
         .catch(err => console.error(err));
-    } else {
-      this.props.history.push('/login');
+    }
+  }
+
+  componentDidMount() {
+    this.getTutorInfo();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { id } = this.props.match.params;
+    if (id !== prevState.id) {
+      this.getTutorInfo();
     }
   }
 
   render() {
     return (
       <div>
-        
-      <Fragment>
-        <div>
-          <span style={{ 'textAlign': 'center'}}>
-          <h3>{this.state.name}'s Profile</h3>
-          <br />
+        <Fragment>
           <div>
-            <img className="img-circle" src={this.state.photo} alt="Tutor Photo" />
-          </div>
-          <div>
-            <h1>Rating: {this.state.rating}</h1>
-          </div>
-          </span>
-          <div>
-            <h2>Bio:</h2>
-            <p>{this.state.bio}</p>
-          </div>
-          <div>
-            <h3>Tutoring Subjects:</h3>
-            <span>
-              <FormGroup>
-                {this.state.tests.map(test => {
-                  return (
-                    <Radio
-                      name={test.Name}
-                      inline
-                      key={test.id}
-                      value={test.id}
-                      checked={this.state.test_id == test.id}
-                      onChange={e => this.handleTestSelect(e)}
-                    >
-                      {test.Name}
-                    </Radio>
-                  );
-                })}
-              </FormGroup>
+            <span style={{ textAlign: 'center' }}>
+              <h3>{this.state.name}'s Profile</h3>
+              <br />
+              <div>
+                <img
+                  className="img-circle"
+                  src={this.state.photo}
+                  alt="Tutor Photo"
+                />
+              </div>
+              <div>
+                <h1>Rating: {this.state.rating}</h1>
+              </div>
             </span>
+            <div>
+              <h2>Bio:</h2>
+              <p>{this.state.bio}</p>
+            </div>
+            <div>
+              <h3>Tutoring Subjects:</h3>
+              <span>
+                <FormGroup>
+                  {this.state.tests.map(test => {
+                    return (
+                      <Radio
+                        name={test.Name}
+                        inline
+                        key={test.id}
+                        value={test.id}
+                        checked={this.state.test_id == test.id}
+                        onChange={e => this.handleTestSelect(e)}
+                      >
+                        {test.Name}
+                      </Radio>
+                    );
+                  })}
+                </FormGroup>
+              </span>
+            </div>
+            <div>
+              <h3>Session Rate:</h3>
+              <p>
+                $ <strong>{this.state.price}</strong>/hr
+              </p>
+            </div>
+            <br />
+            <div>
+              <DateTime
+                onChange={this.handleChange}
+                inputProps={{
+                  placeholder: "Click to select session's date and time"
+                }}
+              />
+              <button onClick={() => this.bookTutor()}>
+                Book Tutor session
+              </button>
+            </div>
           </div>
-          <div>
-            <h3>Session Rate:</h3>
-            <p>$ <strong>{this.state.price}</strong>/hr</p>
-          </div>
-          <br />
-          <div>
-            <DateTime
-              onChange={this.handleChange}
-              inputProps={{
-                placeholder: "Click to select session's date and time"
-              }}
-            />
-            <button onClick={() => this.bookTutor()}>Book Tutor session</button>
-          </div>
-        </div>
-        <Review {...this.props} />
-      </Fragment>
+          <Review {...this.props} />
+        </Fragment>
       </div>
     );
   }
