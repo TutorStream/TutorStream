@@ -19,7 +19,7 @@ exports.getEarnings = (req, res) => {
 };
 
 exports.updateEarnings = (req, res) => {
-  // need ID, id, tutor_id, rating, content, date, time
+  // need id, id, tutor_id, rating, content, date, time
   console.log('req.body should have rating and content', req.body);
   Earnings.updateEarnings(req.body, (err, updatedEarnings) => {
     if (err) {
