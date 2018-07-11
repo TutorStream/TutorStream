@@ -35,15 +35,10 @@ exports.updateSession = (req, res) => {
 };
 
 exports.getSession = (req, res) => {
-  // console.log('params: ',req)
-  // let id = req.params.id;
   var form = {
     id : req.params.id,
     isTutor: Number(req.query.isTutor)
-  }
-  // console.log('what??? ',typeof req.query.isTutor)
-
-  console.log('form :', form)
+  };
   sessionModel.getSession(form, (err, result) => {
     if (err) {
       console.error('There was an error getting the session info: ', err);
