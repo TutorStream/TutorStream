@@ -206,6 +206,20 @@ VALUES
     (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
 
 
+-- photos
+INSERT INTO photos (user_id, location) VALUES (1, 'https://s3.amazonaws.com/tutorstream-files/download.jpeg');
+INSERT INTO photos (user_id, location) VALUES (2, 'https://s3.amazonaws.com/tutorstream-files/images+(4).jpeg');
+INSERT INTO photos (user_id, location) VALUES (6, 'https://s3.amazonaws.com/tutorstream-files/download+(2).jpeg');
+INSERT INTO photos (user_id, location) VALUES (8, 'https://s3.amazonaws.com/tutorstream-files/female.jpeg');
+INSERT INTO photos (user_id, location) VALUES (10, 'https://s3.amazonaws.com/tutorstream-files/download+(3).jpeg');
+INSERT INTO photos (user_id, location) VALUES (11, 'https://s3.amazonaws.com/tutorstream-files/139662784.jpg');
+INSERT INTO photos (user_id, location) VALUES (13, 'https://s3.amazonaws.com/tutorstream-files/guy-fieri.jpeg');
+INSERT INTO photos (user_id, location) VALUES (15, 'https://s3.amazonaws.com/tutorstream-files/images+(3).jpeg');
+INSERT INTO photos (user_id, location) VALUES (16, 'https://s3.amazonaws.com/tutorstream-files/images+(1).jpeg');
+INSERT INTO photos (user_id, location) VALUES (17, 'https://s3.amazonaws.com/tutorstream-files/images+(2).jpeg');
+INSERT INTO photos (user_id, location) VALUES (21, 'https://s3.amazonaws.com/tutorstream-files/images.jpeg');
+
+
 --tutor_tests
 INSERT INTO tutor_tests
     (tutor_id, test_id)

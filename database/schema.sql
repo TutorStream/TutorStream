@@ -56,7 +56,6 @@ CREATE TABLE sessions (
   FOREIGN KEY (test_id) references tests (id),
   FOREIGN KEY (tutor_id) references tutors (id),
   FOREIGN KEY (student_id) references users (id)
-
 );
 
 CREATE TABLE feedback (
@@ -76,14 +75,12 @@ CREATE TABLE photos (
   user_id int,
   location varchar(255),
   FOREIGN KEY (user_id) references users(id)
-)
+);
 
 CREATE TABLE earnings (
   id int NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   date DATE NOT NULL,
   tutor_id int,
   day_earnings int DEFAULT 0,
-  FOREIGN KEY
-(tutor_id) references tutors
-(id)
-)
+  FOREIGN KEY (tutor_id) references tutors (id)
+);
