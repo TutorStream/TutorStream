@@ -44,7 +44,6 @@ class Classroom extends Component {
       .get(`/users/info/${id}`)
       .then(({ data }) => {
         info = data[0];
-        console.log('data recieved in settings: ', info);
         this.setState(
           {
             name: info.Name,
@@ -73,6 +72,7 @@ class Classroom extends Component {
       .put(`/sessions/${this.state.session_id}`)
       .then(() => console.log('Marked Complete'));
   };
+  //if isTutor is true get tutor session, else get user session
   getUpcomingSessionInfo = id => {
     axios
       .get(`/sessions/${id}`, {
@@ -82,7 +82,6 @@ class Classroom extends Component {
       })
       .then(({ data }) => {
         var info = data;
-        console.log('info>>>>>: ', info);
         if (info.length > 0) {
           this.setState(
             {
@@ -95,10 +94,6 @@ class Classroom extends Component {
             },
             () => {
               this.isHistory(this.state.upcomingSessions);
-              console.log(
-                'upcoming sessions order!!!!! : ',
-                this.state.upcomingSessions
-              );
               if (this.state.upcomingSession) {
                 this.setState(
                   {
@@ -106,40 +101,14 @@ class Classroom extends Component {
                   },
                   () => {
                     var timer = this.state.countdown;
-                    console.log(
-                      'TOO EARLY??',
-                      this.state.countdown,
-                      'Current time is : ',
-                      moment()
-                    );
-                    console.log(
-                      "state's countdown",
-                      Number(this.state.countdown.slice(0, 2))
-                    );
+
                     if (
                       (Number(this.state.countdown.slice(0, 2)) <= 2 &&
                         (timer.slice(-7) === 'minutes' ||
                           timer.slice(-7) === 'seconds')) ||
                       timer.slice(-6) === 'minute'
                     ) {
-                      console.log(
-                        'YO!!',
-                        Number(this.state.countdown.slice(0, 2)),
-                        ' and is less than ',
-                        1,
-                        'Bool:',
-                        Number(this.state.countdown.slice(0, 2)) < 1
-                      );
-                      this.setState(
-                        {
-                          tooEarly: false
-                        },
-                        () =>
-                          console.log(
-                            'state after updating is it early or not? ',
-                            this.state
-                          )
-                      );
+                      this.setState({ tooEarly: false });
                     }
                   }
                 );
@@ -170,6 +139,13 @@ class Classroom extends Component {
         currentSession = session;
         break;
       }
+    }
+
+    if (currentSession) {
+      this.setState({
+        upcomingSession: currentSession,
+        session_id: currentSession.id
+      });
     }
   };
 
