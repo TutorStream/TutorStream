@@ -15,7 +15,7 @@ class TestProfile extends Component {
     };
   }
 
-  getTestInfo = (test_id) => {
+  getTestInfo = test_id => {
     axios
       .get(`/tests/${test_id}`)
       .then(({ data }) => {
@@ -28,15 +28,15 @@ class TestProfile extends Component {
       .catch(err => {
         console.error('There was an error getting your test info: ', err);
       });
-  }
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     const { id } = this.props.match.params;
     this.getTestInfo(id);
     this.getTutors(id);
   }
 
-  getTutors = (test_id) => {
+  getTutors = test_id => {
     axios
       .get(`/tutors/selectTutors`, {
         params: {
@@ -54,7 +54,7 @@ class TestProfile extends Component {
           err
         );
       });
-  }
+  };
 
   render() {
     return (
