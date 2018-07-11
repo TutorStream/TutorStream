@@ -17,7 +17,6 @@ class StudentView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id : this.props.userId,
       test_id: 1,
       tutor_id: null,
       tutors: []

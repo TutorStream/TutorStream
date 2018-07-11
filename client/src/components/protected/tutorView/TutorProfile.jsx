@@ -40,8 +40,6 @@ class TutorProfile extends Component {
     axios
       .get(`/tutors/${id}`)
       .then(({ data }) => {
-        console.log('what is the data: ', data);
-        console.log('data rating : ', data.rating)
         this.setState({
           name: data.Name,
           bio: data.Bio,
@@ -110,9 +108,6 @@ class TutorProfile extends Component {
           time: this.state.time,
           rate: this.state.price
         })
-        .then(({ data }) => {
-          console.log('saved and back to client', data);
-        })
         .catch(err => console.error(err));
     } else {
       this.props.history.push('/login');
@@ -124,9 +119,6 @@ class TutorProfile extends Component {
       <div>
         
       <Fragment>
-
-
-        
         <div>
           <span style={{ 'textAlign': 'center'}}>
           <h3>{this.state.name}'s Profile</h3>
