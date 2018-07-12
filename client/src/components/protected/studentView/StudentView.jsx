@@ -72,16 +72,18 @@ class StudentView extends Component {
   render() {
     return (
       <div>
-        <TestList setTestid={this.setTestid} />
         <Jumbotron className="container">
         <div className="row-background">
    
         </div>
         <hr className="my-2" />
+        <br />
         <Row>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p className="lead">
-        </p>
+        <Col xs="6" sm="4">.col</Col>
+          <Col xs="6" sm="4">.col</Col>
+          <Col xs="6" sm="4">.col</Col>
+
+  
         </Row>
       </Jumbotron>
         <Jumbotron className="container">
@@ -105,7 +107,7 @@ class StudentView extends Component {
             })} */}
 
             <div className="main-info">
-            <h2>Featured Tutors:</h2>
+            <h2>Featured Tutors:</h2> <TestList setTestid={this.setTestid} />
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
