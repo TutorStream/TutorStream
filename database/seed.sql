@@ -64,7 +64,7 @@ INSERT INTO users (name, password, email, tutor, bio) VALUES ('Britney Nagasawa'
 INSERT INTO users (name, password, email, tutor, bio) VALUES ('Tony Xu', 'password', 'tony@gmail.com', 0, "Hello! I am currently a student at MIT. My focus is in chemical engineering and mathematics. In my free time I enjoy playing the violin in the Central Park");
 
 -- Tests Tutors can Tutor
-INSERT INTO tests (Name, Description) VALUES ('LSAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
+INSERT INTO tests (Name, Description) VALUES ('LSAT', "The Law School Admission Test (LSAT) is a half-day standardized test administered 4 times each year (6 starting in 2018-2019) at designated testing centers throughout the world. Administered by the Law School Admission Council (LSAC) for prospective law school candidates, the LSAT is designed to assess reading comprehension, logical, and verbal reasoning proficiency.");
 INSERT INTO tests (Name, Description) VALUES ('SAT', "The SAT is a standardized test widely used for college admissions in the United States. Introduced in 1926, its name and scoring have changed several times; originally called the Scholastic Aptitude Test, it was later called the Scholastic Assessment Test, then the SAT I: Reasoning Test, then the SAT Reasoning Test, and now, simply the SAT.");
 INSERT INTO tests (Name, Description) VALUES ('ACT', "The ACT is a standardized test used for college admissions in the United States. It was first introduced in November 1959 by University of Iowa professor Everett Franklin Lindquist as a competitor to the Scholastic Aptitude Test (SAT).[11] It is currently administered by ACT, a nonprofit organization of the same name.");
 INSERT INTO tests (Name, Description) VALUES ('SSAT', "The Secondary School Admission Test (SSAT) is an admission test administered by The Enrollment Management Association in the United States to students in grades 3–11 to provide a standardized measure that will help professionals in independent or private elementary, middle, and high schools to make decisions regarding student admission.");
@@ -78,51 +78,32 @@ INSERT INTO tests (Name, Description) VALUES ('MCAT', "The Medical College Admis
 INSERT INTO tests (Name, Description) VALUES ('DAT', "The DAT is a dental education admission test designed to provide dental education programs with a means to assess program applicants' potential for success.");
 
 -- Tutors
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60, 4);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (8, 'Rose Lin', "I mainly tutor students in test prep for different levels of Math (Regents, SHSAT, SAT/ACT, SAT II). I can also help with various high school and college courses!", 45, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (10, 'Tom Wagner', "I graduated from Stuyvesant High School in 2014 and have 8 years of experience teaching at various tutoring/prep centers. I've also operated my own tutoring center in Brooklyn for 2 years.", 140, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (11, 'Jessica Wolvington', "I have had a lot of experience with tutoring the new SAT, several AP courses, essay writing, and the college application process.  ", 65, 5);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (13, 'Joseph Martin', "I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. ", 70, 2);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (15, 'David Baek', " I have many years of tutoring experience, and I currently teach an introductory Computer Science class at a private school on the UWS. ", 79, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 43, 1);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30, 3);
-INSERT INTO tutors
-    (id, Name, Bio, Price, Rating)
-VALUES
-    (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
-
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (1, 'John Cynn', "I graduated from Columbia University with a PhD degree in Physics and I got a Master's degree in Applied Math from Moscow Institute of Physics and Technology. ", 40, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (2, 'Michael Cortez', "I have taught ESL at the English Language Institute at the University of Florida and have had the wonderful experience of living in Spain for over 4 years and teaching EFL in both private and public schools to students of all ages. Currently, I work part time for the Community Impact program as an ESL teacher trainer. ", 50, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (6, 'Lina Lei', "I am truly passionate about teaching and particularly the learning of languages. I love learning languages myself and love to help others in their pursuit of language learning. ", 60, 4);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (8, 'Rose Lin', "I mainly tutor students in test prep for different levels of Math (Regents, SHSAT, SAT/ACT, SAT II). I can also help with various high school and college courses!", 45, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (10, 'Tom Wagner', "I graduated from Stuyvesant High School in 2014 and have 8 years of experience teaching at various tutoring/prep centers. I've also operated my own tutoring center in Brooklyn for 2 years.", 140, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (11, 'Jessica Wolvington', "I have had a lot of experience with tutoring the new SAT, several AP courses, essay writing, and the college application process.  ", 65, 5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (13, 'Joseph Martin', "I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. ", 70, 2);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (15, 'David Baek', " I have many years of tutoring experience, and I currently teach an introductory Computer Science class at a private school on the UWS. ", 75, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (16, 'Seamus Martin', "I moved to New York to join a research team at Columbia conducting community-based participatory research to alleviate depression in Harlem.", 45, 1);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (17, 'Isto Barton', "I hope to either go on to complete a PhD in Biology or further study education post-graduation, and I want to become a science educator in a college/university, high school, or museum. ", 30, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (21, 'Jeff Anderson', "I take a personalized approach to teaching and tailor my style to the student and tend to ask a lot of questions to check l for comprehension as we learn together.", 55, 3);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (39, 'Jeremy Hunter', "Masters student in Computer Science at NYU. Extensive tutoring experience with high school and college students for SHSAT, SAT, ACT, SAT II.", 100, 2.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (40, 'Mickey Marks', "Hello! I recently graduated from Cornell University's SC Johnson College of Business with a major in Hotel Administration. I have over 5 years of tutoring and teaching experience. During my time at Cornell, I served as a TA for business courses such as Marketing and Consumer Behavior. I have also spent time as a camp counselor for elementary school students. I mainly focus on tutoring high school students in standardized testing and college applications. Specifically, I assist with ACT/SAT Reading and Math, AP Literature and Language & Composition, and Common App writing.", 50, 3.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (41, 'Ian Cummings', "I am a math major graduated in 2014 from Columbia. I have been tutoring kids since junior year of college. My specialties lie in any quantitative subject but I do have a strong hold of qualitative subjects like Econ and finance.", 75, 4.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (42, 'Lawrence Heath', 'I am currently a grad student at NYU studying Marketing/Brand Management. I have a degree in BFA Graphic Design from the School of Visual Arts(2010) and worked for various corporate level brands for 6 years in the creative/digital marketing industry.', 70, 3.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (43, 'Jane Dee', 'Hi! My name is Jane, I am French and I moved to NY four years ago for college. I recently graduated from Fordham Gabelli School of Business where I optioned a degree in Marketing and Art History. Throughout my education back in France and at Fordham I received several diplomas such as the IGCSE (English) the Dele C1 (Spanish) and the French Baccalaureate with the International option. Because of my wide range of academic skills and my past experience tutoring, I truly believe I can help you.', 80, 3.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (44, 'Anna Blakely', 'Hello! I am a senior undergraduate student at St. Johns University studying Computer Science and Business Administration. I have been tutoring for 6 years now. I currently tutor SAT Math, SHSAT, Regents, Elementary through High School subjects and lastly Mandarin. I took nine years of Mandarin, so I am fluent in speaking, reading and writing it. My previous clients range from beginners to intermediate students. I can do translations from simple conversations to business conversations as well.', 60, 4.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (45, 'Robert Joseph', "Biology teacher at daytime, master student and Tutor at night time, and math teacher on weekend. I am specializing in helping high school students getting through their regents, SAT, and AP courses and preparing them to get to their dream colleges. My thousands of hours of tutoring and proven techniques in effectively scoring high have helped hundreds of students getting through their academics and achieving success.", 65, 2.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (46, 'Moseph Jartin', "Hello! I'm a recent graduate from Pomona College in Claremont, California. I earned a BA in Computer Science and maintained a 3.77 GPA while taking courses in a wide variety of fields, including math, psychology, and creative writing. I graduated from Stuyvesant High School in 2014 with a 96.9 GPA. While computer science and programming is my specialty, I am also highly proficient in math and writing. I look forward to working with you!", 70, 1.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (47, 'Rahul Krishna', "I am a current Master's student in finance and quantitative methods at the Columbia University School of International and Public Affairs. Prior to attending Columbia, I ran a SAT/ACT tutoring company in Beijing for two years, where I taught in one-on-one, group, and classroom settings. I also trained dozens of other tutors, allowing me to have the ideal knowledge of what makes a great instructor. Since returning from China, I have been teaching ACT and SAT privately for an additional two years. This experience, plus my work experience in finance and trading, allows me to both recognize the exact problems that most high school students face, as well as the best ways to teach tricky math problems and other complicated ideas to my students.", 85, 3.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (48, 'Peter Muir', 'I am currently a student at Columbia University double majoring in Mathematics and Chemical Physics. I have four years of professional tutoring experience and have helped students develop their ability to learn and retain information. I love working with others and look forward to working with all my students. I am fluent in Spanish and love Math as well as the Sciences. I can help develop ideas and work through problems in a lot of different areas of study. I have worked with students at all levels of education, from elementary school through college, throughout a range of different subjects. I also have two years experience with test prep for SAT and Math and Chemistry SAT II subject tests.', 80, 2.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (49, 'Talia Kahn', 'Hi! I recently graduated Cornell University with a BS in Biology and have studied a wide variety of subjects since high school. I have previously tutored SAT/ACT, mathematics, and the sciences for several years, with my students ranging from elementary to college-age students. I enjoy teaching and learning and look forward to having engaging sessions to increase achievement! :)', 55, 4.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (50, 'Harold Kumar', 'I hold a Masters degree in Biotechnology from Columbia University. In college, I completed double majors in Biology and Sociology. In addition, I also finished a writing minor. I have more than two years of experiences teaching and tutoring students in various subjects. I was a lead teacher teaching SHSAT summer class at a prep school this past summer. In addition, I have been tutoring various SAT subjects privately for two years. I specialize in test prep. I am very passionate about teaching and working with students!', 110, 3.0);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (51, 'Bruce Brenner', 'I am a math major graduated in 2014 from Columbia. I have been tutoring kids since junior year of college. My specialties lie in any quantitative subject but I do have a strong hold of qualitative subjects like Econ and finance.', 50, 3.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (52, 'Olivia Park', "I am double majoring in Computer Science at the Courant Institute, as well as Business Administration with a concentration in Data Science and Computing at the Stern school of business at NYU. I have worked for tech-startups but also large companies such as Bank of America. However, now I run my own start up with the help of my co-founder.", 115, 4.5);
+INSERT INTO tutors (id, Name, Bio, Price, Rating) VALUES (53, 'Donald Krump', "International Traveler & Owner of a travel startup, with experience in Human Resources, Marketing & many fields, I am happy to share my knowledge. Love to teach people about starting their own businesses, all things Entrepreneurship, Economics, Career Counseling, Mathematics, Communications & Psychology.", 120, 2.0);
 
 -- Photos
 INSERT INTO photos (user_id, location) VALUES (1, 'https://s3.amazonaws.com/tutorstream-files/download+(1).jpeg');
@@ -136,396 +117,216 @@ INSERT INTO photos (user_id, location) VALUES (15, 'https://s3.amazonaws.com/tut
 INSERT INTO photos (user_id, location) VALUES (16, 'https://s3.amazonaws.com/tutorstream-files/images+(3).jpeg');
 INSERT INTO photos (user_id, location) VALUES (17, 'https://s3.amazonaws.com/tutorstream-files/images+(5).jpeg');
 INSERT INTO photos (user_id, location) VALUES (21, 'https://s3.amazonaws.com/tutorstream-files/guy-fieri.jpeg');
+INSERT INTO photos (user_id, location) VALUES (39, 'https://s3.amazonaws.com/tutorstream-files/images+(19).jpeg');
+INSERT INTO photos (user_id, location) VALUES (40, 'https://s3.amazonaws.com/tutorstream-files/download+(3).jpeg');
+INSERT INTO photos (user_id, location) VALUES (41, 'https://s3.amazonaws.com/tutorstream-files/images+(11).jpeg');
+INSERT INTO photos (user_id, location) VALUES (42, 'https://s3.amazonaws.com/tutorstream-files/images+(14).jpeg');
+INSERT INTO photos (user_id, location) VALUES (43, 'https://s3.amazonaws.com/tutorstream-files/download+(2).jpeg');
+INSERT INTO photos (user_id, location) VALUES (44, 'https://s3.amazonaws.com/tutorstream-files/images+(7).jpeg');
+INSERT INTO photos (user_id, location) VALUES (45, 'https://s3.amazonaws.com/tutorstream-files/images+(15).jpeg');
+INSERT INTO photos (user_id, location) VALUES (46, 'https://s3.amazonaws.com/tutorstream-files/images+(12).jpeg');
+INSERT INTO photos (user_id, location) VALUES (47, 'https://s3.amazonaws.com/tutorstream-files/images+(13).jpeg');
+INSERT INTO photos (user_id, location) VALUES (48, 'https://s3.amazonaws.com/tutorstream-files/images+(16).jpeg');
+INSERT INTO photos (user_id, location) VALUES (49, 'https://s3.amazonaws.com/tutorstream-files/images+(8).jpeg');
+INSERT INTO photos (user_id, location) VALUES (50, 'https://s3.amazonaws.com/tutorstream-files/images+(18).jpeg');
+INSERT INTO photos (user_id, location) VALUES (51, 'https://s3.amazonaws.com/tutorstream-files/images+(17).jpeg');
+INSERT INTO photos (user_id, location) VALUES (52, 'https://s3.amazonaws.com/tutorstream-files/images+(9).jpeg');
+INSERT INTO photos (user_id, location) VALUES (53, 'https://s3.amazonaws.com/tutorstream-files/images+(10).jpeg');
 
 
 -- Tutor Tests
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (1, 11);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (2, 10);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (6, 9);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (8, 8);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (10, 7);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (11, 6);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (13, 5);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (15, 4);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (16, 3);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (17, 2);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (21, 1);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (1, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (2, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (10, 12);
-INSERT INTO tutor_tests
-    (tutor_id, test_id)
-VALUES
-    (13, 12);
-
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (1, 11);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (2, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (6, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (8, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (10, 7);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (11, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (13, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (15, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (16, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (17, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (21, 1);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (1, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (2, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (10, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (13, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (39, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (39, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (39, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (40, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (40, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (40, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (41, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (41, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (42, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (42, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (42, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (43, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (43, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (43, 7);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (44, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 11);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 7);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (45, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (46, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (46, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (46, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (46, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (47, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (47, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (48, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 11);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 12);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 3);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (49, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (50, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (50, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (51, 2);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (51, 4);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (51, 10);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (52, 1);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (52, 9);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (52, 8);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (53, 1);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (53, 5);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (53, 6);
+INSERT INTO tutor_tests (tutor_id, test_id) VALUES (53, 7);
 
 -- Feedback
-INSERT INTO feedback
-    (user_id, tutor_id, rating, content)
-VALUES
-    (12, 8, 5, 'Rose took the time to get into the details about my test prep');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (12, 8, 5, 'Rose took the time to get into the details about my test prep');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (2, 8, 4, 'Absolutely worth your time! I had issues grasping the material but Rose really kept me accountable. I spent 3 weeks with her and my score doubled');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (4, 8, 4, 'She is amazing! I have been with her for a 4 months now and I have improved after each session. She really cares about your outcome so she will keep you accountable');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (20, 15, 5, 'Before I met David, I had little to no motivation. Besides being really good at explaining fundamentals, David really helped motivate me to give my best');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (23, 15, 5, 'If I could give more than 5 stars, I would! David is outstanding and personable');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (26, 15, 4, 'Very professional and goes out of his way to find a time that works for you, a lot better than tutors I find on Gooroo');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (31, 11, 4, 'Very professional and goes above and beyond to find a time that works for you, much better than tutors I find on Gooroo');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (27, 11, 4, 'Jessica was outstanding. Her energy motivated me to study');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (29, 11, 4, 'I have been with TutorStream for a few a weeks, and she is the best Tutor I have had!');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (31, 16, 4, 'Seamus is has deep understanding of the material and really enjoys when you progress');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (27, 16, 5, 'Seamus is patient and explains the material in a way that is not too complicated.');
+INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (29, 16, 4, 'Absolutely outstanding! Thanks so much Seamus!');
 
---
 
--- -- Sessions 
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 3, '2018-10-10', '10:20:05',0);
-INSERT INTO sessions (test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-11-05', '06:05:07',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-11-05', '10:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 33, '2019-11-05', '07:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 32, '2019-11-05', '02:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-11-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 30, '2019-11-05', '04:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 28, '2019-11-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-11-05', '06:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-11-05', '04:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 29, '2019-11-05', '02:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 27, '2019-11-05', '04:09:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-11-05', '04:01:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 23, '2019-11-05', '04:02:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 36, '2019-11-05', '04:02:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-10-05', '06:05:07',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-02-05', '10:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 33, '2019-01-05', '07:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 32, '2019-04-05', '02:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-07-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 30, '2019-08-05', '04:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 28, '2019-12-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-10-05', '10:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 29, '2019-09-05', '02:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 27, '2019-09-05', '04:09:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-08-05', '04:01:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 23, '2019-10-10', '06:02:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 32, '2019-11-05', '04:02:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 13, 35, '2019-10-05', '07:05:03',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (2, 16, 34, '2019-02-05', '08:05:03',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (3, 17, 32, '2019-01-05', '10:05:02',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (4, 21, 33, '2019-04-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (5, 10, 31, '2019-07-05', '07:05:02',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (6, 6, 28, '2019-08-05', '02:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (7, 2, 30, '2019-12-05', '01:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (9, 1, 24, '2019-10-05', '11:05:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (10, 17, 27, '2019-09-05', '07:05:03',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (11, 6, 29, '2019-09-05', '04:09:02',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (12, 2, 26, '2019-08-05', '03:01:01',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 21, 32, '2019-10-10', '04:02:05',0);
-INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete) VALUES (1, 17, 23, '2019-11-05', '05:02:03',0);
-
--- insert into sessions(test_id, tutor_id, student_id, date) values (4, 5, 1, curdate());
--- insert into sessions(test_id, tutor_id, student_id, date) values (1, 8, 3, curdate());
-INSERT INTO sessions
-    ( test_id, tutor_id, student_id, date, time, complete)
-VALUES
-    (2, 11, 3, '2018-10-10', '10:20:05', 0);
-INSERT INTO sessions
-    ( test_id, tutor_id, student_id, date, time, complete)
-VALUES
-    (2, 11, 7, '2018-11-03', '02:20:05', 0);
-INSERT INTO sessions
-    ( test_id, tutor_id, student_id, date, time, complete)
-VALUES
-    (2, 11, 7, '2018-09-03', '04:05:05', 0);
+-- Sessions 
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 3, '2018-10-10', '10:20:05', 0, 65);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0, 65);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 7, '2018-09-03', '04:05:05',0, 65);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 13, 35, '2019-11-05', '06:05:07',0, 70);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 16, 34, '2019-11-05', '10:05:05',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (3, 17, 33, '2019-11-05', '07:05:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (4, 21, 32, '2019-11-05', '02:05:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (5, 10, 31, '2019-11-05', '01:05:05',0, 140);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (6, 6, 30, '2019-11-05', '04:05:05',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (7, 2, 28, '2019-11-05', '01:05:05',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (8, 8, 25, '2019-11-05', '06:05:05',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (9, 1, 24, '2019-11-05', '04:05:05',0, 40);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (10, 17, 29, '2019-11-05', '02:05:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (11, 6, 27, '2019-11-05', '04:09:05',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (12, 2, 26, '2019-11-05', '04:01:05',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 21, 23, '2019-11-05', '04:02:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 17, 36, '2019-11-05', '04:02:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 13, 35, '2019-10-05', '06:05:07',0, 70);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 16, 34, '2019-02-05', '10:05:05',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (3, 17, 33, '2019-01-05', '07:05:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (4, 21, 32, '2019-04-05', '02:05:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (5, 10, 31, '2019-07-05', '01:05:05',0, 140);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (6, 6, 30, '2019-08-05', '04:05:05',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (7, 2, 28, '2019-12-05', '01:05:05',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (9, 1, 24, '2019-10-05', '10:05:05',0, 40);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (10, 17, 29, '2019-09-05', '02:05:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (11, 6, 27, '2019-09-05', '04:09:05',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (12, 2, 26, '2019-08-05', '04:01:05',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 21, 23, '2019-10-10', '06:02:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 17, 32, '2019-11-05', '04:02:05',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 13, 35, '2019-10-05', '07:05:03',0, 70);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 16, 34, '2019-02-05', '08:05:03',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (3, 17, 32, '2019-01-05', '10:05:02',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (4, 21, 33, '2019-04-05', '01:05:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (5, 10, 31, '2019-07-05', '07:05:02',0, 140);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (6, 6, 28, '2019-08-05', '02:05:05',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (7, 2, 30, '2019-12-05', '01:05:05',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (8, 8, 25, '2019-10-05', '06:05:05',0, 45);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (9, 1, 24, '2019-10-05', '11:05:05',0, 40);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (10, 17, 27, '2019-09-05', '07:05:03',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (11, 6, 29, '2019-09-05', '04:09:02',0, 60);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (12, 2, 26, '2019-08-05', '03:01:01',0, 50);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 21, 32, '2019-10-10', '04:02:05',0, 55);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (1, 17, 23, '2019-11-05', '05:02:03',0, 30);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 3, '2018-10-10', '10:20:05', 0, 65);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 7, '2018-11-03', '02:20:05', 0, 65);
+INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 7, '2018-09-03', '04:05:05', 0, 65);
 
 --- Earnings
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-25', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-25', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-25', 2, 100);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-25', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-26', 11, 65);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-26', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-26', 2, 150);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-26', 6, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-27', 11, 65);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-27', 1, 80);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-27', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-27', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-28', 11, 260);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-28', 1, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-28', 2, 200);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-28', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-29', 11, 65);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-29', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-29', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-29', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-30', 11, 65);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-30', 1, 80);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-30', 2, 250);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-06-30', 6, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-01', 11, 195);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-01', 1, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-01', 2, 150);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-01', 6, 180);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-02', 11, 195);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-02', 1, 160);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-02', 2, 250);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-02', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-03', 11, 65);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-03', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-03', 2, 150);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-03', 6, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-04', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-04', 1, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-04', 2, 250);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-04', 6, 180);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-05', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-05', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-05', 2, 100);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-05', 6, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-06', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-06', 1, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-06', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-06', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-07', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-07', 1, 160);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-07', 2, 200);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-07', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-08', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-08', 1, 200);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-08', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-08', 6, 120);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-09', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-09', 1, 40);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-09', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-09', 6, 60);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-10', 11, 130);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-10', 1, 160);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-10', 2, 50);
-INSERT INTO earnings
-    (date, tutor_id, day_earnings)
-VALUES
-    ('2018-07-10', 6, 240);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25', 2, 100);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-25', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26', 11, 65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26', 2, 150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-26', 6, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27', 11, 65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27', 1, 80);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-27', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28', 11, 260);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28', 1, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28', 2, 200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-28', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29', 11, 65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-29', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30', 11, 65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30', 1, 80);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30', 2, 250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-06-30', 6, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01', 11, 195);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01', 1, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01', 2, 150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-01', 6, 180);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02', 11, 195);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02', 1, 160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02', 2, 250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-02', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03', 11, 65);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03', 2, 150);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-03', 6, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04', 1, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04', 2, 250);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-04', 6, 180);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05', 2, 100);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-05', 6, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06', 1, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-06', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07', 1, 160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07', 2, 200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-07', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08', 1, 200);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-08', 6, 120);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09', 1, 40);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-09', 6, 60);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10', 11, 130);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10', 1, 160);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10', 2, 50);
+INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('2018-07-10', 6, 240);
 
