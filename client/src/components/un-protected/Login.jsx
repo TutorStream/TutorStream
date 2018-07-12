@@ -79,7 +79,7 @@ class Login extends Component {
       return <Redirect to={from} {...this.props} />;
     }
     return (
-      <div>
+      <div className="background-img">
         <h4 className="title">
           <strong>Login:</strong>
         </h4>
@@ -89,7 +89,7 @@ class Login extends Component {
             this.handleLoginSubmit(e);
           }}
         >
-        <FormGroup bsClass="login-form" controlId="formControlsLoginEmail">
+        <FormGroup  controlId="formControlsLoginEmail">
           <ControlLabel>Email :</ControlLabel>
           <FormControl
             type="text"
@@ -100,8 +100,7 @@ class Login extends Component {
             }}
           />
         </FormGroup>
-        <br></br>
-        <FormGroup bsClass="login-form" controlId="formControlsLoginPassword">
+        <FormGroup  controlId="formControlsLoginPassword">
           <ControlLabel>Password: </ControlLabel>
           <FormControl
             type="text"
@@ -113,9 +112,11 @@ class Login extends Component {
           />
         </FormGroup>
         <br />
-        <Button bsStyle="info" type="submit" value="Submit">
-          Login
-        </Button>
+        <div>
+          <Button bsStyle="info" type="submit" value="Submit">
+            Login
+          </Button>
+        </div>
       </form>
 
         <Signup {...this.props} />

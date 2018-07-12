@@ -313,18 +313,36 @@ div.tutors{
 
 /* LOGIN & SIGNUP */
 
-.title {
-  margin: auto;
-  font-size: 400%;
-  color: #EDEDED;
+.background-img {
+  background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBPHXHRC2/library.jpg");
+  background-size: cover;
 }
 
-.login-form {
+.title {
   margin: auto;
-  padding-left: 20%;
-  padding-right: 20%;
+  font-size: 300%;
+  color: #EDEDED;
+  background-color: transparent;
+  box-shadow: 5px 4x 12px 4px deepskyblue;
+}
+
+.login {
+  margin: auto;
+  padding-left: 18%;
+  padding-right: 18%;
   padding-top: 2px;
   padding-bottom: 2x;
+}
+.login-form {
+  margin: auto;
+  padding-left: 18%;
+  padding-right: 18%;
+  padding-top: 2px;
+  padding-bottom: 2x;
+}
+
+#btn {
+  align-content: center;
 }
 
 /*  */

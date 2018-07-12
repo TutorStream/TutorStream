@@ -115,7 +115,7 @@ class SignUp extends React.Component {
           </h4>
         </div>
         <form onSubmit={e => this.handleSignup(e)}>
-          <FormGroup controlId="formControlsText">
+          <FormGroup bsClass="login-form" controlId="formControlsText">
             <ControlLabel>Name :</ControlLabel>
             <FormControl
               type="text"
@@ -124,7 +124,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsEmail">
+          <FormGroup bsClass="login-form" controlId="formControlsEmail">
             <ControlLabel>Email :</ControlLabel>
             <FormControl
               type="email"
@@ -133,7 +133,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsPassword">
+          <FormGroup bsClass="login-form" controlId="formControlsPassword">
             <ControlLabel>Password :</ControlLabel>
             <FormControl
               type="password"
@@ -142,7 +142,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup bsClass="login-form" controlId="formCOntrolsTests">
             <ControlLabel>Exams you're interested in :</ControlLabel>
             <div />
             {this.props.tests.map((test, index) => (
@@ -157,7 +157,7 @@ class SignUp extends React.Component {
               </Checkbox>
             ))}
           </FormGroup>
-          <FormGroup controlId="formControlsTextarea">
+          <FormGroup bsClass="login-form" controlId="formControlsTextarea">
             <ControlLabel>Bio :</ControlLabel>
             <FormControl
               componentClass="textarea"
@@ -167,7 +167,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
+          <FormGroup bsClass="login-form" controlId="formControlsFile" encType="multipart/form-data">
             <ControlLabel>Upload your profile picture :</ControlLabel>
             <FormControl
               type="file"
@@ -175,10 +175,14 @@ class SignUp extends React.Component {
               onChange={this.handleFileSelect}
             />
           </FormGroup>
-          <Button bsStyle="info" type="submit" value="Submit">
-            Sign Up
-          </Button>
+          <div>
+            <Button bsStyle="info" controlId="btn" type="submit" value="Submit">
+              Sign Up
+            </Button>
+          </div>
         </form>
+       <br></br>
+       <br></br>
       </div>
     );
   }
