@@ -3,23 +3,29 @@ import axios from 'axios';
 import moment from 'moment';
 import { Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
+import SessionCard from './SessionCard.jsx';
 
 class Sessions extends Component {
   state = {
     sessions: [],
-    isTutor: false
+    isTutor: false,
+    tests: []
   };
 
   componentDidMount() {
     var id = this.props.id;
     var info;
+    let testObj = {};
+    this.props.tests.forEach((test) => {
+      testObj[test.id] = test.Name;
+    });
     axios
       .get(`/users/info/${id}`)
       .then(({ data }) => {
         info = data[0];
-
         this.setState({
-          name: info.Name
+          name: info.Name,
+          tests: testObj
         });
       })
       .then(() => {
@@ -63,64 +69,19 @@ class Sessions extends Component {
       });
   };
 
-  updateSessionDisplay = () => {
-    return <div className="past-session">PAST SESSION</div>;
-  };
-
   render() {
     return (
       <div>
         <Jumbotron className="container">
           <div className="main-info">
-            <PageHeader> Booked Sessions</PageHeader>
-            <p className="tag-line">currently booked sessions</p>
-            <br />
-            <hr />
+            <PageHeader>Upcoming Sessions</PageHeader>
             <br />
             <div className="main-info">
               <Row>
                 <br />
                 {this.state.sessions.map((session, i) => (
-                  <Col sm="3" key={i}>
-                    <div className="indv-session" key={i}>
-                      {moment(session.date).isBefore()
-                        ? this.updateSessionDisplay()
-                        : null}
-                      <span className="session-name">
-                        <strong>
-                          {this.state.isTutor ? <u>Student</u> : <u>Tutor</u>}
-                        </strong>{' '}
-                        {session.Name}
-                      </span>
-                      <br />
-                      <span>
-                        <strong>
-                          <u>Date</u>:
-                        </strong>{' '}
-                        {session.date.slice(0, 10)}
-                      </span>
-                      <br />
-                      <span>
-                        <strong>
-                          <u>Start Time</u>:
-                        </strong>{' '}
-                        {Number(session.time.slice(0, 2)) < 12
-                          ? session.time.slice(0, 5) + ' a.m.'
-                          : String(24 - Number(session.time.slice(0, 2))) +
-                            session.time.slice(2, 5) +
-                            ' p.m.'}
-                      </span>
-                      <br />
-                      <button
-                        className="delete-btn"
-                        size="sm"
-                        onClick={() => {
-                          this.deleteSession(session.id);
-                        }}
-                      >
-                        Delete Session
-                      </button>
-                    </div>
+                  <Col sm="3" key={i} style={{'padding-bottom': '10px'}}>
+                    <SessionCard session={session} tests={this.state.tests} deleteSession={this.deleteSession} updateSessionDisplay={this.updateSessionDisplay} />
                   </Col>
                 ))}
               </Row>

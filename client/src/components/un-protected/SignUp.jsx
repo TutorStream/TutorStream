@@ -4,7 +4,8 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Checkbox
+  Checkbox,
+  Button
 } from 'react-bootstrap';
 import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
@@ -108,11 +109,11 @@ class SignUp extends React.Component {
     }
     return (
       <div>
-        <div>
-          <h4>Create a Profile :</h4>
-        </div>
+          <h4 className="title">
+            <strong> Create a Profile:</strong>
+          </h4>
         <form onSubmit={e => this.handleSignup(e)}>
-          <FormGroup controlId="formControlsText">
+          <FormGroup bsClass="login-form" controlId="formControlsText">
             <ControlLabel>Name :</ControlLabel>
             <FormControl
               type="text"
@@ -121,7 +122,8 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsEmail">
+          <br />
+          <FormGroup bsClass="login-form" controlId="formControlsEmail">
             <ControlLabel>Email :</ControlLabel>
             <FormControl
               type="email"
@@ -130,7 +132,8 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsPassword">
+          <br />
+          <FormGroup bsClass="login-form" controlId="formControlsPassword">
             <ControlLabel>Password :</ControlLabel>
             <FormControl
               type="password"
@@ -139,7 +142,8 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup>
+          <br />
+          <FormGroup bsClass="login-form" controlId="formCOntrolsTests">
             <ControlLabel>Exams you're interested in :</ControlLabel>
             <div />
             {this.props.tests.map((test, index) => (
@@ -148,13 +152,15 @@ class SignUp extends React.Component {
                 key={test.id}
                 value={test.id}
                 name={test.Name}
+                className="tests-select"
                 onClick={e => this.handleTestSelect(e)}
               >
                 {test.Name}
               </Checkbox>
             ))}
           </FormGroup>
-          <FormGroup controlId="formControlsTextarea">
+          <br />
+          <FormGroup bsClass="login-form" controlId="formControlsTextarea">
             <ControlLabel>Bio :</ControlLabel>
             <FormControl
               componentClass="textarea"
@@ -164,16 +170,24 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
+          <br />
+          <FormGroup bsClass="login-form" controlId="formControlsFile" encType="multipart/form-data">
             <ControlLabel>Upload your profile picture :</ControlLabel>
             <FormControl
               type="file"
               name="photo"
               onChange={this.handleFileSelect}
             />
+             <br />
+            <div style={ {'text-align': 'center'} }>
+              <Button bsStyle="info" type="submit" value="Submit">
+                Sign Up
+              </Button>
+            </div>
           </FormGroup>
-          <button type="submit">Sign Up</button>
-        </form>
+          </form>
+        <br></br>
+        <br></br>
       </div>
     );
   }

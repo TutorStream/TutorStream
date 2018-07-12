@@ -12,14 +12,17 @@ import {
   CardText,
   Button
 } from 'reactstrap';
-import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { PageHeader, Jumbotron, Image} from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
+import StarRatingComponent from 'react-star-rating-component'
+// const img = require('./../../../../dist/assets/brainstorm.png')
 
 class StudentView extends Component {
   state = {
     test_id: 1,
     tutor_id: null,
-    tutors: []
+    tutors: [],
+    photos: {}
   };
 
   getTutors = () => {
@@ -43,15 +46,24 @@ class StudentView extends Component {
         }
       })
       .then(({ data }) => {
+        this.setState({
+          tutors: data
+        });
         let idList = data.map(tutor => tutor.id).join(', ');
         return axios.get('/tutors/photo', {
           params: {
             idList
           }
         });
+      })
+      .then(({data})=>{
+        let photoObj = data.reduce((acc, item) => {
+          acc[item.user_id] = item.location
+          return acc
+        }, {})
         this.setState({
-          tutors: data
-        });
+          photos: photoObj
+        })
       })
       .catch(err => {
         console.error(err);
@@ -76,11 +88,16 @@ class StudentView extends Component {
   };
 
   componentDidMount = () => {
-    this.getTutors();
-    axios.ge;
+    this.getSelectTutors();
   };
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.test_id !== this.state.test_id) {
+      this.getSelectTutors()
+    }
+  }
 
   render() {
+
     return (
       <div>
         <Jumbotron className="container">
@@ -88,14 +105,14 @@ class StudentView extends Component {
           <hr className="my-2" />
           <br />
           <Row>
+          <Col xs={6} md={4}>
+      <Image className='calculation' circle />
+    </Col>
             <Col xs="6" sm="4">
-              .col
+            <Image className='brain' circle />
             </Col>
             <Col xs="6" sm="4">
-              .col
-            </Col>
-            <Col xs="6" sm="4">
-              .col
+            <Image className='notebook' circle />
             </Col>
           </Row>
         </Jumbotron>
@@ -109,20 +126,19 @@ class StudentView extends Component {
                   <Link to={`/tutors/${tutor.id}`}>
                     <div>
                       <Card>
-                        <CardImg
-                          className="img-circle"
-                          top
-                          width="20%"
+                        <Image
                           src={
-                            tutor.photo ||
-                            'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
+                            this.state.photos[tutor.id]
                           }
+                          circle
                           alt="default picture"
                         />
                         <CardBody>
                           <CardTitle>{tutor.Name}</CardTitle>
                           <CardText>{tutor.Bio}</CardText>
-                          <CardSubtitle>{tutor.Rating}</CardSubtitle>
+                          <CardSubtitle>
+                          <StarRatingComponent name={`${tutor.Name}'s rating`} editing={false} starCount={tutor.Rating} value={tutor.Rating}/>
+                          </CardSubtitle>
                           <Button color="info" size="sm">
                             See Profile
                           </Button>
