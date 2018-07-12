@@ -313,9 +313,26 @@ div.tutors{
 
 /* LOGIN & SIGNUP */
 
-.background-img {
-  background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBPHXHRC2/library.jpg");
+.background-container {
+  background-color: #2C325E;
+  padding-bottom: 5%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-top: 1%;
+  border-radius: 10px; 
+}
+
+.header-img {
+  background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBNSC2LQG/tutoring-banner-group.jpg");
   background-size: cover;
+  text-align: center;
+  padding: 5% 0%;
+  font-size: 400%;
+  font-family: 'Trebuchet MS';
+  font-style: italic;
+  position: relative;
+  margin: auto;
+  border-radius: 20px;
 }
 
 .title {
@@ -323,26 +340,33 @@ div.tutors{
   font-size: 300%;
   color: #EDEDED;
   background-color: transparent;
-  box-shadow: 5px 4x 12px 4px deepskyblue;
+  padding-top: 1%;
+  /* box-shadow: 5px 4x 12px 4px black; */
 }
 
 .login {
   margin: auto;
-  padding-left: 18%;
-  padding-right: 18%;
-  padding-top: 2px;
-  padding-bottom: 2x;
+  font-size: 120%;
+  padding-right: 20%;
+  /* padding-top: 2%;
+  padding-bottom: 8%; */
+  padding-left: 20%;
+  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
 }
 .login-form {
   margin: auto;
-  padding-left: 18%;
-  padding-right: 18%;
-  padding-top: 2px;
-  padding-bottom: 2x;
+  font-size: 120%;
+  padding-right: 20%;
+ /* padding-top: 2%;
+  padding-bottom: 8%; */
+  padding-left: 20%;
+  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
 }
 
-#btn {
-  align-content: center;
+.tests-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /*  */

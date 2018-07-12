@@ -109,11 +109,9 @@ class SignUp extends React.Component {
     }
     return (
       <div>
-        <div>
           <h4 className="title">
-            <strong>Create a Profile:</strong>
+            <strong> Create a Profile:</strong>
           </h4>
-        </div>
         <form onSubmit={e => this.handleSignup(e)}>
           <FormGroup bsClass="login-form" controlId="formControlsText">
             <ControlLabel>Name :</ControlLabel>
@@ -124,6 +122,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
+          <br />
           <FormGroup bsClass="login-form" controlId="formControlsEmail">
             <ControlLabel>Email :</ControlLabel>
             <FormControl
@@ -133,6 +132,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
+          <br />
           <FormGroup bsClass="login-form" controlId="formControlsPassword">
             <ControlLabel>Password :</ControlLabel>
             <FormControl
@@ -142,6 +142,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
+          <br />
           <FormGroup bsClass="login-form" controlId="formCOntrolsTests">
             <ControlLabel>Exams you're interested in :</ControlLabel>
             <div />
@@ -151,12 +152,14 @@ class SignUp extends React.Component {
                 key={test.id}
                 value={test.id}
                 name={test.Name}
+                className="tests-select"
                 onClick={e => this.handleTestSelect(e)}
               >
                 {test.Name}
               </Checkbox>
             ))}
           </FormGroup>
+          <br />
           <FormGroup bsClass="login-form" controlId="formControlsTextarea">
             <ControlLabel>Bio :</ControlLabel>
             <FormControl
@@ -167,6 +170,7 @@ class SignUp extends React.Component {
               onChange={e => this.inputHandler(e)}
             />
           </FormGroup>
+          <br />
           <FormGroup bsClass="login-form" controlId="formControlsFile" encType="multipart/form-data">
             <ControlLabel>Upload your profile picture :</ControlLabel>
             <FormControl
@@ -174,15 +178,16 @@ class SignUp extends React.Component {
               name="photo"
               onChange={this.handleFileSelect}
             />
+             <br />
+            <div style={ {'text-align': 'center'} }>
+              <Button bsStyle="info" type="submit" value="Submit">
+                Sign Up
+              </Button>
+            </div>
           </FormGroup>
-          <div>
-            <Button bsStyle="info" controlId="btn" type="submit" value="Submit">
-              Sign Up
-            </Button>
-          </div>
-        </form>
-       <br></br>
-       <br></br>
+          </form>
+        <br></br>
+        <br></br>
       </div>
     );
   }

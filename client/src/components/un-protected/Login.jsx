@@ -79,7 +79,10 @@ class Login extends Component {
       return <Redirect to={from} {...this.props} />;
     }
     return (
-      <div className="background-img">
+      <div className="background-container">
+        <div className="header-img">
+          <span>Join the party!</span>
+        </div>
         <h4 className="title">
           <strong>Login:</strong>
         </h4>
@@ -112,13 +115,12 @@ class Login extends Component {
           />
         </FormGroup>
         <br />
-        <div>
+        <div style={ {'text-align': 'center'} }>
           <Button bsStyle="info" type="submit" value="Submit">
             Login
           </Button>
         </div>
       </form>
-
         <Signup {...this.props} />
       </div>
     );
