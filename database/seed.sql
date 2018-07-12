@@ -213,7 +213,6 @@ INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (31, 16, 4, 'Se
 INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (27, 16, 5, 'Seamus is patient and explains the material in a way that is not too complicated.');
 INSERT INTO feedback (user_id, tutor_id, rating, content) VALUES (29, 16, 4, 'Absolutely outstanding! Thanks so much Seamus!');
 
-
 -- Sessions 
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 3, '2018-10-10', '10:20:05', 0, 65);
 INSERT INTO sessions ( test_id, tutor_id, student_id, date, time, complete, current_rate) VALUES (2, 11, 7, '2018-11-03', '02:20:05',0, 65);

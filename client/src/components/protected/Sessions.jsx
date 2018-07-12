@@ -11,6 +11,7 @@ class Sessions extends Component {
   };
 
   componentDidMount() {
+    console.log(this.state);
     var id = this.props.id;
     var info;
     axios
@@ -90,7 +91,7 @@ class Sessions extends Component {
                         : null}
                       <span className="session-name">
                         <strong>
-                          <u>Tutor</u>:
+                          {this.state.isTutor ? <u>Student</u> : <u>Tutor</u>}
                         </strong>{' '}
                         {session.Name}
                       </span>
