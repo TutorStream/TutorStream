@@ -3,7 +3,7 @@ body{
 }
 
 html{
-    background-color: #0081BF !important;
+    background-color: #2C325E !important;
 }
 
 .title{
@@ -61,7 +61,7 @@ html{
   .rdtPicker .rdtTimeToggle {
     text-align: center;
   }
-  
+
   .rdtPicker table {
     width: 100%;
     margin: 0;
@@ -252,7 +252,7 @@ html{
   }
 
   #app{
-    background-color: #0081BF;
+    background-color: #2C325E;
     color:white;
     padding: 1em
   }
@@ -303,10 +303,73 @@ div.tutors{
   background-color: white;
 }
 
-.login input{
-  color: #18A361;
+/* NAVBAR */
+
+.nav {
+  justify-content: center;
 }
 
+/*  */
+
+/* LOGIN & SIGNUP */
+
+.background-container {
+  background-color: #2C325E;
+  padding-bottom: 5%;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding-top: 1%;
+  border-radius: 10px; 
+}
+
+.header-img {
+  background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBNSC2LQG/tutoring-banner-group.jpg");
+  background-size: cover;
+  text-align: center;
+  padding: 5% 0%;
+  font-size: 400%;
+  font-family: 'Trebuchet MS';
+  font-style: italic;
+  position: relative;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.title {
+  margin: auto;
+  font-size: 300%;
+  color: #EDEDED;
+  background-color: transparent;
+  padding-top: 1%;
+  /* box-shadow: 5px 4x 12px 4px black; */
+}
+
+.login {
+  margin: auto;
+  font-size: 120%;
+  padding-right: 20%;
+  /* padding-top: 2%;
+  padding-bottom: 8%; */
+  padding-left: 20%;
+  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
+}
+.login-form {
+  margin: auto;
+  font-size: 120%;
+  padding-right: 20%;
+ /* padding-top: 2%;
+  padding-bottom: 8%; */
+  padding-left: 20%;
+  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
+}
+
+.tests-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*  */
 
 .tutor-registration input{
   color: teal
@@ -494,3 +557,33 @@ div.tutors{
 .axis text {
   color: white;
 }
+/* Find Tutor */
+.row-background {
+  height: 300px;
+  background-image: url("../assets/stil-734835-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+
+}
+
+.brain {
+  content: url("../assets/brainstorm.png")
+}
+
+.calculation{
+  content: url("../assets/calculation.png")
+}
+
+.notebook {
+  content: url("../assets/notebook.png")
+}
+
+.jumbotron {
+  background-color: #EDEDED;
+}
+
+
+.btn.btn-info.btn-sm{
+  background-color:#59B9DF !important;
+  border: 1px solid #59B9DF !important;
+  }
