@@ -11,7 +11,7 @@ import Earnings from './../tutorView/Earnings.jsx';
 
 class TutorRegistration extends React.Component {
   state = {
-    tests: this.props.tests,
+    tests: [],
     test: '',
     selectedTests: [],
     bio: '',
@@ -20,7 +20,16 @@ class TutorRegistration extends React.Component {
       // what goes in here?
     }
   };
-  componentDidMount() {}
+  componentDidMount() {
+    this.getTests();
+  }
+  getTests = () => {
+    axios.get('/tests').then(({ data }) => {
+      this.setState({
+        tests: data
+      });
+    });
+  };
   handleCheck = e => {
     console.log('lets check props : ', this.props);
     var array = this.state.selectedTests.slice();
@@ -111,7 +120,7 @@ class TutorRegistration extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            {/* {this.state.tests.map((test, i) => {
+            {this.state.tests.map((test, i) => {
               return (
                 <Checkbox
                   onChange={this.handleCheck}
@@ -122,7 +131,7 @@ class TutorRegistration extends React.Component {
                   {test.Name}
                 </Checkbox>
               );
-            })} */}
+            })}
           </FormGroup>
           <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
             Submit
