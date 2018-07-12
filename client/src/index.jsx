@@ -235,7 +235,7 @@ class App extends Component {
         <SecretRoute
           path="/sessions/:id"
           render={routerProps => (
-            <Sessions {...routerProps} id={this.state.id} />
+            <Sessions {...routerProps} id={this.state.id} tests={this.state.tests}/>
           )}
         />
         <SecretRoute
