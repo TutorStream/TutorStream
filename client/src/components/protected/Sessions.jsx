@@ -17,7 +17,6 @@ class Sessions extends Component {
       .get(`/users/info/${id}`)
       .then(({ data }) => {
         info = data[0];
-
         this.setState({
           name: info.Name
         });
