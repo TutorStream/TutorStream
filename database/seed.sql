@@ -394,6 +394,60 @@ INSERT INTO feedback
 VALUES
     (12, 8, 5, 'Rose took the time to get into the details about my test prep');
 
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (2, 8, 4, 'Absolutely worth your time! I had issues grasping the material but Rose really kept me accountable. I spent 3 weeks with her and my score doubled');
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (4, 8, 4, 'She is amazing! I have been with her for a 4 months now and I have improved after each session. She really cares about your outcome so she will keep you accountable');
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (20, 15, 5, 'Before I met David, I had little to no motivation. Besides being really good at explaining fundamentals, David really helped motivate me to give my best');
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (23, 15, 5, 'If I could give more than 5 stars, I would! David is outstanding and personable');
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (26, 15, 4, 'Very professional and goes out of his way to find a time that works for you, a lot better than tutors I find on Gooroo');
+
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (31, 11, 4, 'Very professional and goes out of her way to find a time that works for you, a lot better than tutors I find on Gooroo');
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (27, 11, 4, 'Jessica was outstanding. Her energy motivated me to study');
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (29, 11, 4, 'I have been with TutorStream for a few a weeks and she is the best Tutor I have had!');
+
+
+
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (31, 16, 4, 'Seamus is has deep understanding of the material and really enjoys when you progress');
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (27, 16, 5, 'Seamus is patient and explains the material in a way that is not too complicated.');
+INSERT INTO feedback
+    (user_id, tutor_id, rating, content)
+VALUES
+    (29, 16, 4, 'Absolutely outstanding! Thanks so much Seamus!');
+
 --
 
 -- -- Sessions 
