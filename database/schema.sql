@@ -17,7 +17,7 @@ CREATE TABLE tutors (
   Name varchar(255) NOT NULL,
   Bio TEXT,
   Price int NOT NULL,
-  Rating int DEFAULT 0,
+  Rating DECIMAL (2, 1),
   FOREIGN KEY (id) references users(id)
 );
 
@@ -26,13 +26,6 @@ CREATE TABLE tests (
   Name varchar (255) NOT NULL UNIQUE,
   Description TEXT NOT NULL
 );
-
-CREATE TABLE user_tests (
-  user_id int,
-  test_id int,
-  FOREIGN KEY (user_id) references users(id),
-  FOREIGN KEY (test_id) references tests(id)
-)
 
 CREATE TABLE tutor_tests (
   tutor_id int,

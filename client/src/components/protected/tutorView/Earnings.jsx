@@ -1,11 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import {FormGroup , ControlLabel, FormControl, Checkbox, Radio, FieldGroup, Button} from 'react-bootstrap';
-import * as d3 from "d3";
-import {BarChart} from 'react-d3-components';
+import {
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Checkbox,
+  Radio,
+  FieldGroup,
+  Button
+} from 'react-bootstrap';
+import * as d3 from 'd3';
+import { BarChart } from 'react-d3-components';
 import { ClipLoader } from 'react-spinners';
 import moment from 'moment';
-
 
 
 class Earnings extends React.Component {
@@ -51,11 +58,14 @@ class Earnings extends React.Component {
             })
     }
 
-    spreadData(data){
-        var results = []
-        data.forEach((singleDay)=>{
-            results.push({'x': singleDay.date.slice(5,10),'y': singleDay.day_earnings})
-        })
+  spreadData = data => {
+    var results = [];
+    data.forEach(singleDay => {
+      results.push({
+        x: singleDay.date.slice(5, 10),
+        y: singleDay.day_earnings
+      });
+    });
 
         return results.slice(-7);
     }

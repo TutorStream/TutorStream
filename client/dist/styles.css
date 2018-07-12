@@ -408,7 +408,13 @@ div.tutors{
   border-radius: 5px 20px 5px !important;
   overflow: hidden;
   max-height: 300px;
-  max-width: 200px;
+  max-width: 175px;
+}
+
+.card-img-top {
+  height: 150px;
+  width: auto;
+  position: relative;
 }
 
 .image-settings {

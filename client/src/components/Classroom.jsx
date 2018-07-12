@@ -26,6 +26,7 @@ class Classroom extends Component {
 
   componentDidMount() {
     var id = this.props.id;
+    var info;
     this.interval = setInterval(() => this.getUserInfo(id), 4000);
   }
 
@@ -67,6 +68,7 @@ class Classroom extends Component {
       .put(`/sessions/${this.state.session_id}`)
       .then(() => console.log('Marked Complete'));
   };
+  //if isTutor is true get tutor session, else get user session
   getUpcomingSessionInfo = id => {
     axios
       .get(`/sessions/${id}`, {
@@ -95,15 +97,14 @@ class Classroom extends Component {
                   },
                   () => {
                     var timer = this.state.countdown;
+
                     if (
                       (Number(this.state.countdown.slice(0, 2)) <= 2 &&
                         (timer.slice(-7) === 'minutes' ||
                           timer.slice(-7) === 'seconds')) ||
                       timer.slice(-6) === 'minute'
                     ) {
-                      this.setState({
-                        tooEarly: false
-                      });
+                      this.setState({ tooEarly: false });
                     }
                   }
                 );
@@ -134,6 +135,13 @@ class Classroom extends Component {
         currentSession = session;
         break;
       }
+    }
+
+    if (currentSession) {
+      this.setState({
+        upcomingSession: currentSession,
+        session_id: currentSession.id
+      });
     }
   };
 

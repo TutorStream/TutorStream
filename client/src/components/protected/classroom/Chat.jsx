@@ -11,58 +11,64 @@ class Chat extends Component {
       message: '',
       messages: ['bingo']
     };
-    
-    // SOCKET.IO : Client-Side Listeners
-    socket.on('sending-back', (msg) => {
-      console.log('what does this msg look like on client side :', msg);
+    // SOCKET.IO : Client-Side Listeners --> put all here in constructor
+    socket.on('new-message', msg => {
       this.setState({
         messages: [msg, ...this.state.messages]
       });
     });
   }
 
-  componentDidMount () {
-    console.log('chat user id', this.props)
-    axios.get(`users/username/${this.props.id}`)
-      .then(({data}) => {
-        this.setState({
-          username : data[0].Name
-        }, () => {
-          console.log('username ', this.state.username);
-        })
+  componentDidMount() {
+    console.log('chat user id', this.props);
+    axios
+      .get(`users/username/${this.props.id}`)
+      .then(({ data }) => {
+        this.setState(
+          {
+            username: data[0].Name
+          },
+          () => {
+            console.log('username ', this.state.username);
+          }
+        );
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
-      })
+      });
     console.log('chat mounting?');
-    socket.emit('room', {room : this.props.session_id});
+    socket.emit('room', { room: this.props.session_id });
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     socket.on('leaving-room', {
-      room : this.state.sessionId
-    })
+      room: this.state.sessionId
+    });
   }
 
   clearInput = () => {
     this.setState({
       message: ''
     });
-  }
+  };
 
-  messageHandler = (e) => {
+  messageHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
-  postMessage = (e) => {
+  postMessage = e => {
     e.preventDefault();
     socket['name'] = this.state.username;
+    console.log(this.state.messages);
     if (this.state.message.length > 0) {
       this.setState(
         {
-          messages: [this.state.message, ...this.state.messages]
+          messages: [
+            { user: this.state.username, message: this.state.message },
+            ...this.state.messages
+          ]
         },
         () => {
           socket.emit('new-message', {
@@ -74,21 +80,20 @@ class Chat extends Component {
         }
       );
     }
-  }
+  };
 
-  render () {
-    console.log(this.props.upcomingSession, 'upcoming session');
+  render() {
     return (
       <div className="chat-container">
         <h1 className="header">Chat Channel</h1>
         <div className="all-messages">
-            {this.state.messages.map((msg, i) => {
-              return (
-                <div key={i} className="msg">
-                  <strong> {this.state.username}: </strong> {msg}
-                </div>
-              )
-            })}
+          {this.state.messages.map((msg, i) => {
+            return (
+              <div key={i} className="msg">
+                <strong> {msg.user}: </strong> {msg.message}
+              </div>
+            );
+          })}
         </div>
         <form
           className="add-new-message"

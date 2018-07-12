@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TutorCard from './TutorCard.jsx';
 import { Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 class TestProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      description: '',
-      tutors: []
-    };
-  }
+  state = {
+    name: '',
+    description: '',
+    tutors: []
+  };
 
-  getTestInfo = (test_id) => {
+  getTestInfo = test_id => {
     axios
       .get(`/tests/${test_id}`)
       .then(({ data }) => {
@@ -28,15 +25,15 @@ class TestProfile extends Component {
       .catch(err => {
         console.error('There was an error getting your test info: ', err);
       });
-  }
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     const { id } = this.props.match.params;
     this.getTestInfo(id);
     this.getTutors(id);
   }
 
-  getTutors = (test_id) => {
+  getTutors = test_id => {
     axios
       .get(`/tutors/selectTutors`, {
         params: {
@@ -54,7 +51,7 @@ class TestProfile extends Component {
           err
         );
       });
-  }
+  };
 
   render() {
     return (
