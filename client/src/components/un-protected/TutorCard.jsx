@@ -20,7 +20,7 @@ const TutorCard = props => {
             props.photo ||
             'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
           }
-          alt="default picture"
+          alt="profile picture"
         />
         <CardBody>
           <CardTitle>{props.name}</CardTitle>
