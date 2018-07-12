@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Row, Col , Card,
+import {
+  Row,
+  Col,
+  Card,
   CardImg,
   CardBody,
   CardTitle,
   CardSubtitle,
   CardText,
-  Button} from 'reactstrap';
+  Button
+} from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
 
@@ -39,12 +43,12 @@ class StudentView extends Component {
         }
       })
       .then(({ data }) => {
-        let idList = data.map(tutor => tutor.id).join(', ')
+        let idList = data.map(tutor => tutor.id).join(', ');
         return axios.get('/tutors/photo', {
-        params: {
-          idList
+          params: {
+            idList
           }
-      })
+        });
         this.setState({
           tutors: data
         });
@@ -73,28 +77,30 @@ class StudentView extends Component {
 
   componentDidMount = () => {
     this.getTutors();
-    axios.ge
+    axios.ge;
   };
 
   render() {
     return (
       <div>
         <Jumbotron className="container">
-        <div className="row-background">
-  
-        </div>
-        <hr className="my-2" />
-        <br />
-        <Row>
-        <Col xs="6" sm="4">.col</Col>
-          <Col xs="6" sm="4">.col</Col>
-          <Col xs="6" sm="4">.col</Col>
-
-  
-        </Row>
-      </Jumbotron>
+          <div className="row-background" />
+          <hr className="my-2" />
+          <br />
+          <Row>
+            <Col xs="6" sm="4">
+              .col
+            </Col>
+            <Col xs="6" sm="4">
+              .col
+            </Col>
+            <Col xs="6" sm="4">
+              .col
+            </Col>
+          </Row>
+        </Jumbotron>
         <Jumbotron className="container">
-            <div className="main-info">
+          <div className="main-info">
             <h2>Featured Tutors:</h2> <TestList setTestid={this.setTestid} />
             <Row>
               <br />
