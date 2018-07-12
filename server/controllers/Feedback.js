@@ -1,14 +1,13 @@
 const Feedback = require('./../models/feedbackModel');
 const Tutor = require('./../models/tutorModel');
 
-
 exports.addFeedback = (req, res) => {
   Feedback.addFeedback(req.body, (err, newFeedback) => {
     if (err) {
-      console.log('big problem!!!!!!!!', err)
+      console.log('Error adding review to databse', err);
       res.sendStatus(400);
     } else {
-      console.log('added!!')
+      console.log('Added feedback to database');
       res.send(201);
     }
   });

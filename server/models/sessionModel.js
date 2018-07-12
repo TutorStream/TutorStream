@@ -45,7 +45,7 @@ exports.getSession = (form, callback) => {
   // need name field tutors table
 
   if (form.isTutor) {
-    console.log('is tutor', form);
+   
     let queryStr = `SELECT * FROM sessions JOIN users ON sessions.student_id = users.id WHERE tutor_id = ${Number(
       form.id
     )} AND complete = 0 ORDER BY date ASC, time ASC`;
