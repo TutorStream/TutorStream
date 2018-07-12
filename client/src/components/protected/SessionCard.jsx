@@ -7,6 +7,7 @@ import {
   CardSubtitle,
   Button
 } from 'reactstrap';
+import StarRatingComponent from 'react-star-rating-component';
 
 const SessionCard = props => {
   return (
@@ -15,7 +16,8 @@ const SessionCard = props => {
         <CardBody>
           <CardTitle><p>{props.tests[props.session.test_id]}</p></CardTitle>
           <CardSubtitle>
-            Tutor: {props.session.Name}<br/>
+            {props.session.Name}<br/>
+            <StarRatingComponent name={`${props.session.Name}'s rating`} editing={false} starCount={props.session.Rating} value={props.session.Rating}/><br/>
             Date: {props.session.date.slice(0, 10)}<br/>
             Time: {Number(props.session.time.slice(0, 2)) < 12
             ? props.session.time.slice(0, 5) + ' a.m.' : 
