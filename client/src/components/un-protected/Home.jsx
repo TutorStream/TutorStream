@@ -23,15 +23,7 @@ class Home extends Component {
     axios
       .get('/tutors')
       .then(({ data }) => {
-        data = data.slice(0, 9);
-        let idList = '';
-        for (let i = 0; i < data.length; i++) {
-          if (i === data.length - 1) {
-            idList += data[i].id;
-          } else {
-            idList += data[i].id + ', ';
-          }
-        }
+        let idList = data.map(tutor => tutor.id).join(', ');
         this.setState({
           tutors: data
         });
@@ -43,11 +35,10 @@ class Home extends Component {
         
       })
       .then(({ data }) => {
-        let photoObj = {};
-        for (let i = 0; i < data.length; i++) {
-          photoObj[data[i].user_id] = data[i].location;
-        }
-        console.log('photo obj', photoObj)
+        let photoObj = data.reduce((acc, item) => {
+          acc[item.user_id] = item.location
+          return acc
+        }, {})
         this.setState({
           photos: photoObj
         });

@@ -3,7 +3,7 @@ body{
 }
 
 html{
-    background-color: #0081BF !important;
+    background-color: #2C325E !important;
 }
 
 .title{
@@ -252,7 +252,7 @@ html{
   }
 
   #app{
-    background-color: #0081BF;
+    background-color: #2C325E;
     color:white;
     padding: 1em
   }
@@ -485,3 +485,25 @@ div.tutors{
   background-size: cover;
 
 }
+
+.brain {
+  content: url("../assets/brainstorm.png")
+}
+
+.calculation{
+  content: url("../assets/calculation.png")
+}
+
+.notebook {
+  content: url("../assets/notebook.png")
+}
+
+.jumbotron {
+  background-color: #EDEDED;
+}
+
+
+.btn.btn-info.btn-sm{
+  background-color:#59B9DF !important;
+  border: 1px solid #59B9DF !important;
+  }

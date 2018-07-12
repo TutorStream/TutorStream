@@ -12,8 +12,10 @@ import {
   CardText,
   Button
 } from 'reactstrap';
-import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { PageHeader, Jumbotron, Image} from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
+
+// const img = require('./../../../../dist/assets/brainstorm.png')
 
 class StudentView extends Component {
   state = {
@@ -61,7 +63,7 @@ class StudentView extends Component {
         }, {})
         this.setState({
           photos: photoObj
-        },() => console.log(photoObj))
+        })
       })
       .catch(err => {
         console.error(err);
@@ -95,7 +97,7 @@ class StudentView extends Component {
   }
 
   render() {
-    console.log('state',this.state)
+
     return (
       <div>
         <Jumbotron className="container">
@@ -103,14 +105,14 @@ class StudentView extends Component {
           <hr className="my-2" />
           <br />
           <Row>
+          <Col xs={6} md={4}>
+      <Image className='calculation' circle />
+    </Col>
             <Col xs="6" sm="4">
-              .col
+            <Image className='brain' circle />
             </Col>
             <Col xs="6" sm="4">
-              .col
-            </Col>
-            <Col xs="6" sm="4">
-              .col
+            <Image className='notebook' circle />
             </Col>
           </Row>
         </Jumbotron>
@@ -124,13 +126,11 @@ class StudentView extends Component {
                   <Link to={`/tutors/${tutor.id}`}>
                     <div>
                       <Card>
-                        <CardImg
-                          className="img-circle"
-                          top
-                          width="20%"
+                        <Image
                           src={
                             this.state.photos[tutor.id]
                           }
+                          circle
                           alt="default picture"
                         />
                         <CardBody>
