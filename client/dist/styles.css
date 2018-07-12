@@ -380,10 +380,15 @@ overflow: hidden;
 max-height: 300px;
 max-width: 175px;
 }
+
+.col {
+  padding-bottom: 20px !important;
+}
+
 .card-img-top {
-height: 150px;
-width: auto;
-position: relative;
+  height: 100px;
+  width: auto;
+  position: relative;
 }
 .main-info {
 text-align: center;
@@ -395,6 +400,11 @@ text-align: center;
 .col-sm-4 {
 padding-bottom: 15px;
 }
+
+.col-sm-3 {
+  padding-bottom: 20px;
+}
+
 /* SESSIONS */
 .all-sessions {
 background-color: lightblue;
