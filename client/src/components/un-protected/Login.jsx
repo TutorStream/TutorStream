@@ -106,7 +106,7 @@ class Login extends Component {
         <FormGroup  controlId="formControlsLoginPassword">
           <ControlLabel>Password: </ControlLabel>
           <FormControl
-            type="text"
+            type="password"
             placeholder="let's get that password in here"
             name="Password"
             onChange={e => {
