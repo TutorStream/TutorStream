@@ -351,6 +351,32 @@ div.tutors{
   font-size: 150%;
 }
 
+.img-circle {
+  border-radius: 5px 20px 5px !important;
+  overflow: hidden;
+  max-height: 300px;
+  max-width: 175px;
+}
+
+.card-img-top {
+  height: 150px;
+  width: auto;
+  position: relative;
+}
+
+.main-info {
+  text-align: center;
+  color: #0081BF;
+}
+
+.image-settings {
+  text-align: center;
+}
+
+.col-sm-4 {
+  padding-bottom: 15px;
+}
+
 /* SESSIONS */
 
 .all-sessions {
@@ -399,31 +425,14 @@ div.tutors{
   color: lightsalmon;
 }
 
-.main-info {
-  text-align: center;
-  color: #0081BF;
+.card-border {
+  border-style: ridge;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: #0081BF;
+  padding-bottom: 5px;
 }
 
-.img-circle {
-  border-radius: 5px 20px 5px !important;
-  overflow: hidden;
-  max-height: 300px;
-  max-width: 175px;
-}
-
-.card-img-top {
-  height: 150px;
-  width: auto;
-  position: relative;
-}
-
-.image-settings {
-  text-align: center;
-}
-
-.col-sm-4 {
-  padding-bottom: 15px;
-}
 
 #myvideo:-webkit-full-screen {
   width: 100%;
