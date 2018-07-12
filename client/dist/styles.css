@@ -61,7 +61,7 @@ html{
   .rdtPicker .rdtTimeToggle {
     text-align: center;
   }
-  
+
   .rdtPicker table {
     width: 100%;
     margin: 0;
@@ -303,10 +303,31 @@ div.tutors{
   background-color: white;
 }
 
-.login input{
-  color: #18A361;
+/* NAVBAR */
+
+.nav {
+  justify-content: center;
 }
 
+/*  */
+
+/* LOGIN & SIGNUP */
+
+.title {
+  margin: auto;
+  font-size: 400%;
+  color: #EDEDED;
+}
+
+.login-form {
+  margin: auto;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 2px;
+  padding-bottom: 2x;
+}
+
+/*  */
 
 .tutor-registration input{
   color: teal

@@ -4,7 +4,8 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Checkbox
+  Checkbox,
+  Button
 } from 'react-bootstrap';
 import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
@@ -109,7 +110,9 @@ class SignUp extends React.Component {
     return (
       <div>
         <div>
-          <h4>Create a Profile :</h4>
+          <h4 className="title">
+            <strong>Create a Profile:</strong>
+          </h4>
         </div>
         <form onSubmit={e => this.handleSignup(e)}>
           <FormGroup controlId="formControlsText">
@@ -172,7 +175,9 @@ class SignUp extends React.Component {
               onChange={this.handleFileSelect}
             />
           </FormGroup>
-          <button type="submit">Sign Up</button>
+          <Button bsStyle="info" type="submit" value="Submit">
+            Sign Up
+          </Button>
         </form>
       </div>
     );

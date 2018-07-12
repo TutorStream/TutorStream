@@ -3,6 +3,13 @@ import axios from 'axios';
 import AuthService from './../../Auth/AuthService';
 import { Redirect } from 'react-router-dom';
 import Signup from './SignUp.jsx';
+import {
+  FormGroup,
+  FormControl,
+  ControlLabel,
+  Checkbox, 
+  Button
+} from 'react-bootstrap';
 
 class Login extends Component {
   state = {
@@ -73,35 +80,43 @@ class Login extends Component {
     }
     return (
       <div>
+        <h4 className="title">
+          <strong>Login:</strong>
+        </h4>
         <form
           className="login"
           onSubmit={e => {
             this.handleLoginSubmit(e);
           }}
         >
-          <label>Email</label>
-          <input
-            value={this.state.Email}
+        <FormGroup bsClass="login-form" controlId="formControlsLoginEmail">
+          <ControlLabel>Email :</ControlLabel>
+          <FormControl
+            type="text"
+            placeholder="what's your email again?"
             name="Email"
             onChange={e => {
               this.inputHandler(e);
             }}
           />
-          <br />
-          <label>Password</label>
-          <input
-            type="password"
-            value={this.state.loginPassword}
+        </FormGroup>
+        <br></br>
+        <FormGroup bsClass="login-form" controlId="formControlsLoginPassword">
+          <ControlLabel>Password: </ControlLabel>
+          <FormControl
+            type="text"
+            placeholder="let's get that password in here"
             name="Password"
             onChange={e => {
               this.inputHandler(e);
             }}
           />
-          <br />
-          <button type="submit" value="Submit">
-            Login
-          </button>
-        </form>
+        </FormGroup>
+        <br />
+        <Button bsStyle="info" type="submit" value="Submit">
+          Login
+        </Button>
+      </form>
 
         <Signup {...this.props} />
       </div>
