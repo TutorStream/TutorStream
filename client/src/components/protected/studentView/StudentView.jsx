@@ -39,6 +39,12 @@ class StudentView extends Component {
         }
       })
       .then(({ data }) => {
+        let idList = data.map(tutor => tutor.id).join(', ')
+        return axios.get('/tutors/photo', {
+        params: {
+          idList
+          }
+      })
         this.setState({
           tutors: data
         });
@@ -67,6 +73,7 @@ class StudentView extends Component {
 
   componentDidMount = () => {
     this.getTutors();
+    axios.ge
   };
 
   render() {
@@ -74,7 +81,7 @@ class StudentView extends Component {
       <div>
         <Jumbotron className="container">
         <div className="row-background">
-   
+  
         </div>
         <hr className="my-2" />
         <br />
@@ -87,25 +94,6 @@ class StudentView extends Component {
         </Row>
       </Jumbotron>
         <Jumbotron className="container">
-            {/* {this.state.tutors.map((tutor, i) => {
-              return (
-                <div className="indv-tutor" key={i}>
-                  <Link to={`/tutors/${tutor.id}`}>
-                    <span className="tutor-name">{tutor.Name}</span>
-                  </Link>
-                  <br />
-                  <div>Bio: {tutor.Bio}</div>
-                  <br />
-                  <br />
-                  <div>Rating: {tutor.Rating}</div>
-                  <br />
-                  <br />
-                  <div>Price: ${tutor.Price} / hr</div>
-                  <br />
-                </div>
-              );
-            })} */}
-
             <div className="main-info">
             <h2>Featured Tutors:</h2> <TestList setTestid={this.setTestid} />
             <Row>
