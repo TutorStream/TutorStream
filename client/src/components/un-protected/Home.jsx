@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
@@ -77,7 +77,7 @@ class Home extends Component {
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
-                <Col xs="6" sm="4" key={tutor.id}>
+                <Col xs="auto" sm="3" key={tutor.id}>
                   <Link to={`/tutors/${tutor.id}`}>
                     <TutorCard
                       key={tutor.id}
@@ -104,6 +104,7 @@ class Home extends Component {
                 </Col>
               ))}
             </Row>
+            
           </div>
         </Jumbotron>
       </div>
