@@ -19,7 +19,8 @@ class StudentView extends Component {
   state = {
     test_id: 1,
     tutor_id: null,
-    tutors: []
+    tutors: [],
+    photos: {}
   };
 
   getTutors = () => {
@@ -43,15 +44,24 @@ class StudentView extends Component {
         }
       })
       .then(({ data }) => {
+        this.setState({
+          tutors: data
+        });
         let idList = data.map(tutor => tutor.id).join(', ');
         return axios.get('/tutors/photo', {
           params: {
             idList
           }
         });
+      })
+      .then(({data})=>{
+        let photoObj = data.reduce((acc, item) => {
+          acc[item.user_id] = item.location
+          return acc
+        }, {})
         this.setState({
-          tutors: data
-        });
+          photos: photoObj
+        },() => console.log(photoObj))
       })
       .catch(err => {
         console.error(err);
@@ -76,11 +86,16 @@ class StudentView extends Component {
   };
 
   componentDidMount = () => {
-    this.getTutors();
-    axios.ge;
+    this.getSelectTutors();
   };
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.test_id !== this.state.test_id) {
+      this.getSelectTutors()
+    }
+  }
 
   render() {
+    console.log('state',this.state)
     return (
       <div>
         <Jumbotron className="container">
@@ -114,8 +129,7 @@ class StudentView extends Component {
                           top
                           width="20%"
                           src={
-                            tutor.photo ||
-                            'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
+                            this.state.photos[tutor.id]
                           }
                           alt="default picture"
                         />
