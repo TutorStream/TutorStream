@@ -5,7 +5,28 @@ exports.addSession = (
   callback
 ) => {
   let queryStr = `INSERT INTO sessions (test_id, tutor_id, student_id, date, time, current_rate) VALUES (${test_id}, ${tutor_id}, ${id}, '${date}', '${time}', ${rate});`;
-  db.query(queryStr, callback);
+  db.query(queryStr, (err,results)=>{
+    if(err) console.error(err);
+    else{
+      let conditionalUpdate = `select * from earnings where tutor_id = ${tutor_id} and date ='${date}'`
+      db.query(conditionalUpdate,(err,results)=>{
+        if(err) console.error(err);
+        else {
+          console.log('results exists ??? : ', results[0].day_earnings)
+            if(results.length === 0){
+              let queryStr2 = `INSERT INTO earnings (date, tutor_id, day_earnings) VALUES ('${date}',${tutor_id},${rate});`
+              db.query(queryStr2,callback);
+            }else{ //an earning has already been initiated for current date
+              var total = results[0].day_earnings + rate;
+              console.log('total : ', total)
+              console.log('we would like to update earnings to new earnings')
+              let queryStr2 = `UPDATE earnings SET day_earnings = ${total} where tutor_id = ${tutor_id} and date ='${date}'`
+              db.query(queryStr2,callback);
+            }
+        }
+      })
+  }
+  })
 };
 
 exports.deleteSession = ({ id }, callback) => {
