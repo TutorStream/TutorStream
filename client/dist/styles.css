@@ -358,8 +358,12 @@ div.tutors{
   max-width: 175px;
 }
 
+.col {
+  padding-bottom: 20px !important;
+}
+
 .card-img-top {
-  height: 150px;
+  height: 100px;
   width: auto;
   position: relative;
 }
@@ -375,6 +379,10 @@ div.tutors{
 
 .col-sm-4 {
   padding-bottom: 15px;
+}
+
+.col-sm-3 {
+  padding-bottom: 20px;
 }
 
 /* SESSIONS */
