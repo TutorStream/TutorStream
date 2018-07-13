@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Button
+} from 'reactstrap';
+import { PageHeader, Jumbotron, Image} from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
+import StarRatingComponent from 'react-star-rating-component'
+// const img = require('./../../../../dist/assets/brainstorm.png')
 
 class StudentView extends Component {
   state = {
     test_id: 1,
     tutor_id: null,
-    tutors: []
+    tutors: [],
+    photos: {}
   };
 
   getTutors = () => {
@@ -34,6 +49,21 @@ class StudentView extends Component {
         this.setState({
           tutors: data
         });
+        let idList = data.map(tutor => tutor.id).join(', ');
+        return axios.get('/tutors/photo', {
+          params: {
+            idList
+          }
+        });
+      })
+      .then(({data})=>{
+        let photoObj = data.reduce((acc, item) => {
+          acc[item.user_id] = item.location
+          return acc
+        }, {})
+        this.setState({
+          photos: photoObj
+        })
       })
       .catch(err => {
         console.error(err);
@@ -58,40 +88,69 @@ class StudentView extends Component {
   };
 
   componentDidMount = () => {
-    this.getTutors();
+    this.getSelectTutors();
   };
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevState.test_id !== this.state.test_id) {
+      this.getSelectTutors()
+    }
+  }
 
   render() {
+
     return (
       <div>
-        <div>
-          <div>
-            <TestList setTestid={this.setTestid} />
+        <Jumbotron className="container">
+          <div className="row-background" />
+          <hr className="my-2" />
+          <br />
+          <Row>
+          <Col xs={6} md={4}>
+      <Image className='calculation' circle />
+    </Col>
+            <Col xs="6" sm="4">
+            <Image className='brain' circle />
+            </Col>
+            <Col xs="6" sm="4">
+            <Image className='notebook' circle />
+            </Col>
+          </Row>
+        </Jumbotron>
+        <Jumbotron className="container">
+          <div className="main-info">
+            <h2>Featured Tutors:</h2> <TestList setTestid={this.setTestid} />
+            <Row>
+              <br />
+              {this.state.tutors.map(tutor => (
+                <Col xs="6" sm="4" key={tutor.id}>
+                  <Link to={`/tutors/${tutor.id}`}>
+                    <div>
+                      <Card>
+                        <Image
+                          src={
+                            this.state.photos[tutor.id]
+                          }
+                          circle
+                          alt="default picture"
+                        />
+                        <CardBody>
+                          <CardTitle>{tutor.Name}</CardTitle>
+                          <CardText>{tutor.Bio}</CardText>
+                          <CardSubtitle>
+                          <StarRatingComponent name={`${tutor.Name}'s rating`} editing={false} starCount={tutor.Rating} value={tutor.Rating}/>
+                          </CardSubtitle>
+                          <Button color="info" size="sm">
+                            See Profile
+                          </Button>
+                        </CardBody>
+                      </Card>
+                    </div>
+                  </Link>
+                </Col>
+              ))}
+            </Row>
           </div>
-          <div className="tutors-container">
-            <div className="all-tutors">
-              {this.state.tutors.map((tutor, i) => {
-                return (
-                  <div className="indv-tutor" key={i}>
-                    <Link to={`/tutors/${tutor.id}`}>
-                      <span className="tutor-name">{tutor.Name}</span>
-                    </Link>
-                    <br />
-                    <div>Bio: {tutor.Bio}</div>
-                    <br />
-                    <br />
-                    <div>Rating: {tutor.Rating}</div>
-                    <br />
-                    <br />
-                    <div>Price: ${tutor.Price} / hr</div>
-                    <br />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div />
-        </div>
+        </Jumbotron>
       </div>
     );
   }

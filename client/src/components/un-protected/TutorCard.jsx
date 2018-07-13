@@ -7,6 +7,7 @@ import {
   CardSubtitle,
   Button
 } from 'reactstrap';
+import StarRatingComponent from 'react-star-rating-component';
 
 const TutorCard = props => {
   return (
@@ -20,11 +21,11 @@ const TutorCard = props => {
             props.photo ||
             'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
           }
-          alt="default picture"
+          alt="profile picture"
         />
         <CardBody>
           <CardTitle>{props.name}</CardTitle>
-          <CardSubtitle>{props.rating}</CardSubtitle>
+          <CardSubtitle><StarRatingComponent name={`${props.name}'s rating`} editing={false} starCount={props.rating} value={props.rating}/></CardSubtitle>
           <Button color="info" size="sm">
             See Profile
           </Button>

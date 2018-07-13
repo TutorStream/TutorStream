@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
@@ -23,29 +23,22 @@ class Home extends Component {
     axios
       .get('/tutors')
       .then(({ data }) => {
-        data = data.slice(0, 9);
-        let idList = '';
-        for (let i = 0; i < data.length; i++) {
-          if (i === data.length - 1) {
-            idList += data[i].id;
-          } else {
-            idList += data[i].id + ', ';
-          }
-        }
+        let idList = data.map(tutor => tutor.id).join(', ');
         this.setState({
-          tutors: data
+          tutors: data.slice(0, 8)
         });
         return axios.get('/tutors/photo', {
           params: {
             idList
           }
         });
+        
       })
       .then(({ data }) => {
-        let photoObj = {};
-        for (let i = 0; i < data.length; i++) {
-          photoObj[data[i].user_id] = data[i].location;
-        }
+        let photoObj = data.reduce((acc, item) => {
+          acc[item.user_id] = item.location;
+          return acc;
+        }, {});
         this.setState({
           photos: photoObj
         });
@@ -81,15 +74,16 @@ class Home extends Component {
           
           <div className="main-info">
             <h2>Featured Tutors:</h2>
+            <br />
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
-                <Col xs="6" sm="4" key={tutor.id}>
+                <Col xs="auto" sm="3" key={tutor.id}>
                   <Link to={`/tutors/${tutor.id}`}>
                     <TutorCard
                       key={tutor.id}
                       name={tutor.Name}
-                      rating={`${tutor.Rating}.0`}
+                      rating={tutor.Rating}
                       photo={this.state.photos[tutor.id]}
                     />
                   </Link>
@@ -115,6 +109,7 @@ class Home extends Component {
                 </Col>
               ))}
             </Row>
+            
           </div>
         </Jumbotron>
         <div className="footer">
