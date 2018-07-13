@@ -100,19 +100,14 @@ class Settings extends Component {
       this.setState(
         {
           selectedTests: [...this.state.selectedTests, e.target.value]
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     } else {
       var idx = array.indexOf(Number(e.target.value));
-      console.log('idx', idx);
       array.splice(idx, 1);
       this.setState(
         {
           selectedTests: array
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     }
   };
 
