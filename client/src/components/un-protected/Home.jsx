@@ -63,15 +63,15 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <Jumbotron className="container">
-          <div className="main-info">
-            <PageHeader> TutorStream </PageHeader>
+      <div className="home">
+        <div className="main-info pic-bckgrnd">
+          <h1> TutorStream </h1>
             <p>You have questions, we have tutors.</p>
           </div>
-          <br />
-          <hr />
-          <br />
+      
+        <Jumbotron className="container">
+        
+          
           <div className="main-info">
             <h2>Featured Tutors:</h2>
             <br />
@@ -93,10 +93,14 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <div className="main-info">
+          <div className="preselected">
+          <h2>Our tutors have attended:</h2>
+          <div className="universities"></div>
+          </div>
+          <div className="main-info tests-bckgrnd">
             <h2>Tests Available for Tutoring:</h2>
             <br />
-            <Row>
+            <Row className='transparent-tests'>
               {this.state.tests.map(test => (
                 <Col sm="3" key={test.id}>
                   <Link to={`/tests/${test.id}`}>
@@ -108,6 +112,9 @@ class Home extends Component {
             
           </div>
         </Jumbotron>
+        <div className="footer">
+        <p>© 2018 All Rights reserved</p>
+        </div>
       </div>
     );
   }

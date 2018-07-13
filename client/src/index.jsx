@@ -162,8 +162,8 @@ class App extends Component {
     let conditionalTitle =
       this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
-      <div>
-        <Navbar style={{ fontSize: `130%`}}>
+      <div className="navigate">
+        <Navbar style={{ fontSize: `130%`, backgroundColor: 'transparent' ,zIndex:'99999999', color:'white'}}>
           <Nav>
             <LinkContainer to={'/'}>
               <NavItem>Home</NavItem>
