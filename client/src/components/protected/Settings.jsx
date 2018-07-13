@@ -66,14 +66,9 @@ class Settings extends Component {
         });
       })
       .then(({ data }) => {
-        let newData;
-        if (!data[0]) {
-          newData = '';
-        } else {
-          newData = data[0].location;
-        }
+        console.log('what is the data coming through?', data);
         this.setState({
-          photo: newData
+          photo: data[0].location
         });
       })
       .catch(err => {
@@ -248,59 +243,59 @@ class Settings extends Component {
     }
 
     return (
-      <div className="settings">
-        <h1>Settings</h1>
-        <br />
-        <div className="image-settings">
-          <img
-            className="img-circle"
-            src={this.state.photo}
-            alt={`${this.state.name}'s profile picture`}
-          />
+        <div className="settings">
+          <h1 className="settings-header">Settings</h1>
+          <br />
+          <div className="image-settings">
+            <img
+              className="img-circle"
+              src={this.state.photo}
+              alt={`${this.state.name}'s profile picture`}
+            />
+          </div>
+
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>Name</ControlLabel>
+            <FormControl
+              maxLength="255"
+              componentClass="textarea"
+              placeholder="Enter text (Max: 255 characters)"
+              name="name"
+              readonly="readonly"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>Bio</ControlLabel>
+            <FormControl
+              componentClass="textarea"
+              placeholder="Enter text (Max: 255 characters)"
+              name="bio"
+              value={this.state.bio}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <br />
+          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
+            <ControlLabel>Update your profile picture :</ControlLabel>
+            <FormControl
+              type="file"
+              name="photo"
+              onChange={this.handleFileSelect}
+            />
+          </FormGroup>
+
+          <h1>_________________________________________</h1>
+
+          {conditionalDisplay}
+          <br />
+          <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
+            Submit
+          </Button>
         </div>
-
-        <FormGroup controlId="formControlsTextarea">
-          <ControlLabel>Name</ControlLabel>
-          <FormControl
-            maxLength="255"
-            componentClass="textarea"
-            placeholder="Enter text (Max: 255 characters)"
-            name="name"
-            readonly="readonly"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <FormGroup controlId="formControlsTextarea">
-          <ControlLabel>Bio</ControlLabel>
-          <FormControl
-            componentClass="textarea"
-            placeholder="Enter text (Max: 255 characters)"
-            name="bio"
-            value={this.state.bio}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-
-        <br />
-        <FormGroup controlId="formControlsFile" encType="multipart/form-data">
-          <ControlLabel>Update your profile picture :</ControlLabel>
-          <FormControl
-            type="file"
-            name="photo"
-            onChange={this.handleFileSelect}
-          />
-        </FormGroup>
-
-        <h1>_____________</h1>
-
-        {conditionalDisplay}
-        <br />
-        <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
-          Submit
-        </Button>
-      </div>
     );
   }
 }

@@ -74,7 +74,7 @@ class Sessions extends Component {
       <div>
         <Jumbotron className="container">
           <div className="main-info">
-            <PageHeader>Upcoming Sessions</PageHeader>
+            <PageHeader style={ {'color': '#59B9DF'} }>Upcoming Sessions</PageHeader>
             <br />
             <div className="main-info">
               <Row>
