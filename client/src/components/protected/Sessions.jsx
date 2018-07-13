@@ -19,6 +19,7 @@ class Sessions extends Component {
     this.props.tests.forEach((test) => {
       testObj[test.id] = test.Name;
     });
+    console.log(id, 'jess id')
     axios
       .get(`/users/info/${id}`)
       .then(({ data }) => {

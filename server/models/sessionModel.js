@@ -35,6 +35,7 @@ exports.updateSession = (id, callback) => {
 };
 
 exports.getSession = (form, callback) => {
+  console.log('form', form);
   if (form.isTutor) {
     let queryStr = `SELECT * FROM users RIGHT JOIN sessions ON users.id = sessions.student_id WHERE tutor_id = ${form.id} AND complete = 0 ORDER BY date ASC, time ASC`;
     db.query(queryStr, callback);
