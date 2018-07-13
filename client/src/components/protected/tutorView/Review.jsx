@@ -18,13 +18,10 @@ class Review extends Component {
           reviews: data
         },
         () => {
-          console.log('Reviews', this.state.reviews);
           this.setState(
-            {
-              averageRating: this.getAverage(data)
-            },
-            () => console.log('this.state updated average: ', this.state)
-          );
+          {
+            averageRating: this.getAverage(data)  
+          });
         }
       );
     });
@@ -33,16 +30,8 @@ class Review extends Component {
   getAverage = array => {
     var sum = 0;
     array.forEach(review => {
-      console.log(
-        'rating for each is : ',
-        review.rating,
-        'and current sum: ',
-        sum
-      );
       sum += review.rating;
-      console.log('sum now is : ', sum);
     });
-    console.log('AVG is :', sum / array.length);
     return sum / array.length;
   };
 

@@ -8,7 +8,7 @@ import SessionCard from './SessionCard.jsx';
 class Sessions extends Component {
   state = {
     sessions: [],
-    isTutor: false,
+    isTutor: 0,
     tests: []
   };
 
@@ -32,7 +32,7 @@ class Sessions extends Component {
         if (info.Tutor === 1) {
           this.setState(
             {
-              isTutor: true
+              isTutor: 1
             },
             () => {
               this.getUpcomingSessions(id);
@@ -52,7 +52,6 @@ class Sessions extends Component {
         }
       })
       .then(({ data }) => {
-        console.log('did i get the sessions?', data);
         this.setState({
           sessions: data
         });
@@ -75,7 +74,7 @@ class Sessions extends Component {
       <div>
         <Jumbotron className="container">
           <div className="main-info">
-            <PageHeader>Upcoming Sessions</PageHeader>
+            <PageHeader style={ {'color': '#59B9DF'} }>Upcoming Sessions</PageHeader>
             <br />
             <div className="main-info">
               <Row>
