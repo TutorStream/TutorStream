@@ -614,10 +614,6 @@ color: lightsalmon;
 /*  */
 
 .card-border {
-border-style: ridge;
-border-width: 5px;
-border-radius: 25px;
-border-color: #0081BF;
 padding-bottom: 5px;
 }
 #myvideo:-webkit-full-screen {
