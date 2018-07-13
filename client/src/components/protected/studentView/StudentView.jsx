@@ -19,7 +19,7 @@ import StarRatingComponent from 'react-star-rating-component'
 
 class StudentView extends Component {
   state = {
-    test_id: 1,
+    test_id: 5,
     tutor_id: null,
     tutors: [],
     photos: {}

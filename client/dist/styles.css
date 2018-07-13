@@ -375,7 +375,6 @@ font-size: 150%;
  
 }
 
-/* SETTINGS */
 
 .settings {
   margin: auto;
@@ -384,11 +383,14 @@ font-size: 150%;
   padding-left: 20%;
 }
 
-.settings-header {
+/* .settings-header {
   margin: auto;
   font-size: 300%;
   text-align: center;
-}
+} */
+
+
+
 
 a, li{
   color:white;
@@ -424,11 +426,13 @@ background-color: #0081BF;
 .tutors ul{
 background-color: white;
 }
+
 /* NAVBAR */
 .nav {
-justify-content: center;
+  justify-content: center;
 }
 /*  */
+
 /* LOGIN & SIGNUP */
 .background-container {
 background-color: #2C325E;
@@ -454,6 +458,23 @@ position: relative;
 margin: 0;
 
 }
+
+.header-img settings {
+  background:linear-gradient(
+                       rgba(20,20,20, .4), 
+                       rgba(20,20,20, .4)),
+                       url("./assets/test-prep-tutoring.jpg");
+  top: -2em;
+  background-size: cover;
+  text-align: center;
+  padding: 28rem 1em;
+  font-size: 250%;
+  font-family: 'Trebuchet MS';
+  font-style: italic;
+  position: relative;
+  margin: 0;
+  
+  }
 
 
 .title {
@@ -614,10 +635,6 @@ color: lightsalmon;
 /*  */
 
 .card-border {
-border-style: ridge;
-border-width: 5px;
-border-radius: 25px;
-border-color: #0081BF;
 padding-bottom: 5px;
 }
 #myvideo:-webkit-full-screen {

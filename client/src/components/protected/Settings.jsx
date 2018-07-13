@@ -243,9 +243,10 @@ class Settings extends Component {
     }
 
     return (
-        <div className="settings">
-          <h1 className="settings-header">Settings</h1>
-          <br />
+        <div>
+          <div>
+            <h1 className="header-img">Settings</h1>
+          </div>
           <div className="image-settings">
             <img
               className="img-circle"
@@ -253,48 +254,49 @@ class Settings extends Component {
               alt={`${this.state.name}'s profile picture`}
             />
           </div>
+          <div className="settings">
+            <FormGroup controlId="formControlsTextarea">
+              <ControlLabel>Name</ControlLabel>
+              <FormControl
+                maxLength="255"
+                componentClass="textarea"
+                placeholder="Enter text (Max: 255 characters)"
+                name="name"
+                readonly="readonly"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
 
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>Name</ControlLabel>
-            <FormControl
-              maxLength="255"
-              componentClass="textarea"
-              placeholder="Enter text (Max: 255 characters)"
-              name="name"
-              readonly="readonly"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
+            <FormGroup controlId="formControlsTextarea">
+              <ControlLabel>Bio</ControlLabel>
+              <FormControl
+                componentClass="textarea"
+                placeholder="Enter text (Max: 255 characters)"
+                name="bio"
+                value={this.state.bio}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
 
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>Bio</ControlLabel>
-            <FormControl
-              componentClass="textarea"
-              placeholder="Enter text (Max: 255 characters)"
-              name="bio"
-              value={this.state.bio}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
+            <br />
+            <FormGroup controlId="formControlsFile" encType="multipart/form-data">
+              <ControlLabel>Update your profile picture :</ControlLabel>
+              <FormControl
+                type="file"
+                name="photo"
+                onChange={this.handleFileSelect}
+              />
+            </FormGroup>
 
-          <br />
-          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
-            <ControlLabel>Update your profile picture :</ControlLabel>
-            <FormControl
-              type="file"
-              name="photo"
-              onChange={this.handleFileSelect}
-            />
-          </FormGroup>
+            <h1>_________________________________________</h1>
 
-          <h1>_________________________________________</h1>
-
-          {conditionalDisplay}
-          <br />
-          <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
-            Submit
-          </Button>
+            {conditionalDisplay}
+            <br />
+            <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </div>
         </div>
     );
   }
