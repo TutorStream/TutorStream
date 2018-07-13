@@ -52,6 +52,7 @@ class Sessions extends Component {
         }
       })
       .then(({ data }) => {
+        console.log('did i get the sessions?', data);
         this.setState({
           sessions: data
         });

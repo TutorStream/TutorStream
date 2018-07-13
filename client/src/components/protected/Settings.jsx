@@ -66,9 +66,14 @@ class Settings extends Component {
         });
       })
       .then(({ data }) => {
-        console.log('what is the data coming through?', data);
+        let newData;
+        if (!data[0]) {
+          newData = '';
+        } else {
+          newData = data[0].location;
+        }
         this.setState({
-          photo: data[0].location
+          photo: newData
         });
       })
       .catch(err => {
@@ -111,13 +116,13 @@ class Settings extends Component {
     }
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  isPreselectedTests = id => {
+  isPreselectedTests = (id) => {
     if (this.state.selectedTests.indexOf(id) !== -1) {
       return true;
     } else {
@@ -204,7 +209,6 @@ class Settings extends Component {
         <FormGroup controlId="formControlsTextarea">
           <ControlLabel>Tutor Bio</ControlLabel>
           <FormControl
-            maxLength="255"
             componentClass="textarea"
             placeholder="Enter text (Max: 255 characters)"
             name="tutorBio"
@@ -267,6 +271,7 @@ class Settings extends Component {
             componentClass="textarea"
             placeholder="Enter text (Max: 255 characters)"
             name="name"
+            readonly="readonly"
             value={this.state.name}
             onChange={this.handleChange}
           />
@@ -275,7 +280,6 @@ class Settings extends Component {
         <FormGroup controlId="formControlsTextarea">
           <ControlLabel>Bio</ControlLabel>
           <FormControl
-            maxLength="255"
             componentClass="textarea"
             placeholder="Enter text (Max: 255 characters)"
             name="bio"
