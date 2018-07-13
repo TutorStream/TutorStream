@@ -58,7 +58,6 @@ class Login extends Component {
       .then(({ data }) => {
         var id = data.id;
         this.props.getid(id);
-        console.log('props for login: ', this.props);
         this.props.checkTutorStatus(id, this.props.tutors_ids);
         if (!!data.id) {
           AuthService.authenticate();
@@ -81,7 +80,7 @@ class Login extends Component {
     return (
       <div className="background-container">
         <div className="header-img">
-          <span>Join the party!</span>
+          <span>Join the study party!</span>
         </div>
         <h4 className="title">
           <strong>Login:</strong>
@@ -96,7 +95,7 @@ class Login extends Component {
           <ControlLabel>Email :</ControlLabel>
           <FormControl
             type="text"
-            placeholder="what's your email again?"
+            placeholder="Email"
             name="Email"
             onChange={e => {
               this.inputHandler(e);
@@ -107,7 +106,7 @@ class Login extends Component {
           <ControlLabel>Password: </ControlLabel>
           <FormControl
             type="password"
-            placeholder="let's get that password in here"
+            placeholder="Password"
             name="Password"
             onChange={e => {
               this.inputHandler(e);
