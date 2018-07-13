@@ -34,7 +34,7 @@ exports.getSession = (req, res) => {
   console.log('req.query', req.query)
   var form = {
     id: req.params.id,
-    isTutor: req.query.isTutor
+    isTutor: Number(req.query.isTutor)
   };
   console.log('form', form);
   sessionModel.getSession(form, (err, result) => {
