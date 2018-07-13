@@ -25,15 +25,11 @@ class WriteReview extends Component {
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value }, () => {
-      console.log('We just updated : ', this.state.feedback);
-    });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('State now is : ', this.state);
-    //need to refactor below to match desired purposes
     var form = {
       feedback: this.state.feedback,
       tutor_id: this.props.tutor_id,
@@ -42,11 +38,9 @@ class WriteReview extends Component {
       date: this.props.activeSession.date.slice(0, 10),
       time: this.props.activeSession.time
     };
-    console.log('form', form);
     axios
       .post(`/feedback/${this.state.tutor_id}`, form)
       .then(() => {
-        console.log('Updated Feedback!');
         this.setState({
           submitted: true
         });
