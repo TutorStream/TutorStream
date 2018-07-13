@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import {Popover, FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap'
+import {
+  Popover,
+  FormGroup,
+  FormControl,
+  InputGroup,
+  Button
+} from 'react-bootstrap';
 import io from 'socket.io-client';
 import axios from 'axios';
 const socket = io();
@@ -53,7 +59,7 @@ class Chat extends Component {
   };
 
   messageHandler = e => {
-    console.log(e)
+    console.log(e);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -84,18 +90,20 @@ class Chat extends Component {
   };
 
   render() {
-    let top = 50
+    let top = 50;
     return (
       <div className="chat-container">
-              <h1 className="header">Chat Channel</h1>
-        <div className="all-messages" style={{ height: 120}}>
-         
-         {this.state.messages.length ? this.state.messages.map((msg,i) => {
-           return (
-              <div><span>{msg.user}</span>: <span>{msg.message}</span></div>
-           );
-         }) : null}
- 
+        <h1 className="header">Chat Channel</h1>
+        <div className="all-messages" style={{ height: 250 }}>
+          {this.state.messages.length
+            ? this.state.messages.map((msg, i) => {
+                return (
+                  <div>
+                    <span>{msg.user}</span>: <span>{msg.message}</span>
+                  </div>
+                );
+              })
+            : null}
         </div>
         <form
           className="add-new-message"
@@ -103,12 +111,19 @@ class Chat extends Component {
             this.postMessage(e);
           }}
         >
-            <InputGroup>
-              <InputGroup.Button>
-                <Button type = 'submit' value ='Submit'>Send</Button>
-              </InputGroup.Button>
-              <FormControl type="text" name = 'message' value = {this.state.message} onChange={this.messageHandler}/>
-            </InputGroup>
+          <InputGroup>
+            <InputGroup.Button>
+              <Button type="submit" value="Submit">
+                Send
+              </Button>
+            </InputGroup.Button>
+            <FormControl
+              type="text"
+              name="message"
+              value={this.state.message}
+              onChange={this.messageHandler}
+            />
+          </InputGroup>
         </form>
       </div>
     );
