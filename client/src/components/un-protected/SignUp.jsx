@@ -149,6 +149,7 @@ class SignUp extends React.Component {
             {this.props.tests.map((test, index) => (
               <Checkbox
                 inline
+                style={{'text-align' : 'center'}}
                 key={test.id}
                 value={test.id}
                 name={test.Name}
@@ -178,7 +179,7 @@ class SignUp extends React.Component {
               name="photo"
               onChange={this.handleFileSelect}
             />
-             <br />
+            <br />
             <div style={ {'text-align': 'center'} }>
               <Button bsStyle="info" type="submit" value="Submit">
                 Sign Up
