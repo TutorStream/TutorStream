@@ -66,9 +66,14 @@ class Settings extends Component {
         });
       })
       .then(({ data }) => {
-        console.log('what is the data coming through?', data);
+        let newData;
+        if (!data[0]) {
+          newData = '';
+        } else {
+          newData = data[0].location;
+        }
         this.setState({
-          photo: data[0].location
+          photo: newData
         });
       })
       .catch(err => {
