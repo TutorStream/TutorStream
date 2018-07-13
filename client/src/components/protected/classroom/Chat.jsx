@@ -9,7 +9,7 @@ class Chat extends Component {
     this.state = {
       username: '',
       message: '',
-      messages: ['bingo']
+      messages: ['']
     };
     // SOCKET.IO : Client-Side Listeners --> put all here in constructor
     socket.on('new-message', msg => {
@@ -30,13 +30,17 @@ class Chat extends Component {
           },
           () => {
             console.log('username ', this.state.username);
-          }
-        );
+            // this.setState({
+            //   messages: [
+            //     { user: this.state.username, message: this.state.message },
+            //     ...this.state.messages
+            //   ]
+            // })
+          });
       })
       .catch(err => {
         console.error(err);
       });
-    console.log('chat mounting?');
     socket.emit('room', { room: this.props.session_id });
   }
 
