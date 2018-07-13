@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 import { PageHeader, Jumbotron, Image} from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
-
+import StarRatingComponent from 'react-star-rating-component'
 // const img = require('./../../../../dist/assets/brainstorm.png')
 
 class StudentView extends Component {
@@ -104,7 +104,7 @@ class StudentView extends Component {
           <div className="row-background" />
           <hr className="my-2" />
           <br />
-          <Row>
+          <Row className="find-tutor-icons">
           <Col xs={6} md={4}>
       <Image className='calculation' circle />
     </Col>
@@ -135,8 +135,9 @@ class StudentView extends Component {
                         />
                         <CardBody>
                           <CardTitle>{tutor.Name}</CardTitle>
-                          <CardText>{tutor.Bio}</CardText>
-                          <CardSubtitle>{tutor.Rating}</CardSubtitle>
+                          <CardSubtitle>
+                          <StarRatingComponent name={`${tutor.Name}'s rating`} editing={false} starCount={tutor.Rating} value={tutor.Rating}/>
+                          </CardSubtitle>
                           <Button color="info" size="sm">
                             See Profile
                           </Button>

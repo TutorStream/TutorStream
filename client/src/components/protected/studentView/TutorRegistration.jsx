@@ -87,15 +87,16 @@ class TutorRegistration extends React.Component {
       .catch(err => console.error(err));
   };
   render() {
+    console.log(this.props.isTutor, 'waht is wies is tutor')
     let conditional =
       this.props.isTutor > -1 ? (
         <div>
           <Earnings id={this.props.id} />
         </div>
       ) : (
-        <div>
+        <div className="tutor-render">
           {' '}
-          <h1>Tutor Registration</h1>
+          <h1 className="title">Tutor Registration</h1>
           <br />
           <br />
           <FormGroup controlId="formControlsTextarea">
@@ -109,7 +110,7 @@ class TutorRegistration extends React.Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="formControlsTextarea">
+          <FormGroup controlId="formControlsRate">
             <ControlLabel>Rate: (hourly)</ControlLabel>
             <FormControl
               type="number"

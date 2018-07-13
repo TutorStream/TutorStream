@@ -23,7 +23,6 @@ class Sessions extends Component {
       .get(`/users/info/${id}`)
       .then(({ data }) => {
         info = data[0];
-
         this.setState({
           name: info.Name,
           tests: testObj
@@ -53,6 +52,7 @@ class Sessions extends Component {
         }
       })
       .then(({ data }) => {
+        console.log('did i get the sessions?', data);
         this.setState({
           sessions: data
         });
@@ -75,7 +75,7 @@ class Sessions extends Component {
       <div>
         <Jumbotron className="container">
           <div className="main-info">
-            <PageHeader>Upcoming Sessions</PageHeader>
+            <PageHeader style={ {'color': '#59B9DF'} }>Upcoming Sessions</PageHeader>
             <br />
             <div className="main-info">
               <Row>
