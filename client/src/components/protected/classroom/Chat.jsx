@@ -33,15 +33,6 @@ class Chat extends Component {
         this.setState(
           {
             username: data[0].Name
-          },
-          () => {
-            console.log('username ', this.state.username);
-            // this.setState({
-            //   messages: [
-            //     { user: this.state.username, message: this.state.message },
-            //     ...this.state.messages
-            //   ]
-            // })
           });
       })
       .catch(err => {
@@ -63,7 +54,6 @@ class Chat extends Component {
   };
 
   messageHandler = e => {
-    console.log(e);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -72,7 +62,6 @@ class Chat extends Component {
   postMessage = e => {
     e.preventDefault();
     socket['name'] = this.state.username;
-    console.log(this.state.messages);
     if (this.state.message.length > 0) {
       this.setState(
         {

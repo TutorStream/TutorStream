@@ -31,37 +31,24 @@ class TutorRegistration extends React.Component {
     });
   };
   handleCheck = e => {
-    console.log('lets check props : ', this.props);
     var array = this.state.selectedTests.slice();
     if (array.indexOf(e.target.value) === -1) {
       this.setState(
         {
           selectedTests: [...this.state.selectedTests, e.target.value]
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     } else {
       var idx = array.indexOf(e.target.value);
-      console.log('idx', idx);
       array.splice(idx, 1);
       this.setState(
         {
           selectedTests: array
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     }
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value }, () => {
-      console.log(
-        'We just updated : ',
-        this.state.bio,
-        ' and ',
-        this.state.rate
-      );
-    });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
@@ -80,10 +67,8 @@ class TutorRegistration extends React.Component {
       rate: Number(this.state.rate),
       id: this.props.id
     };
-    console.log('form', form);
     axios
       .post(`/tutors/${this.props.id}`, form)
-      .then(() => console.log('Updated and registered as tutor!'))
       .catch(err => console.error(err));
   };
   render() {

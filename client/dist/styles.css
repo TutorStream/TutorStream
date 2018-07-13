@@ -635,10 +635,6 @@ color: lightsalmon;
 /*  */
 
 .card-border {
-border-style: ridge;
-border-width: 5px;
-border-radius: 25px;
-border-color: #0081BF;
 padding-bottom: 5px;
 }
 #myvideo:-webkit-full-screen {
@@ -876,10 +872,17 @@ font-family: 'Dosis', sans-serif;
 }
 /* Find Tutor */
 .row-background {
-height: 300px;
-background-image: url("../assets/stil-734835-unsplash.jpg");
+height: 400px;
+background:linear-gradient(
+                     rgba(20,20,20, .12), 
+                     rgba(20,20,20, .12)),
+                     url("./assets/stil-734835-unsplash.jpg");
+
 background-position: center;
 background-size: cover;
+position: relative;
+top: -5em;
+
 }
 .brain {
 content: url("../assets/brainstorm.png")
