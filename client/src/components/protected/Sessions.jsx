@@ -8,7 +8,7 @@ import SessionCard from './SessionCard.jsx';
 class Sessions extends Component {
   state = {
     sessions: [],
-    isTutor: false,
+    isTutor: 0,
     tests: []
   };
 
@@ -32,7 +32,7 @@ class Sessions extends Component {
         if (info.Tutor === 1) {
           this.setState(
             {
-              isTutor: true
+              isTutor: 1
             },
             () => {
               this.getUpcomingSessions(id);
