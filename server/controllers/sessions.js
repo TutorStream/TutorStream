@@ -33,7 +33,7 @@ exports.updateSession = (req, res) => {
 exports.getSession = (req, res) => {
   var form = {
     id: req.params.id,
-    isTutor: req.query.isTutor
+    isTutor: Number(req.query.isTutor)
   };
   sessionModel.getSession(form, (err, result) => {
     if (err) {
