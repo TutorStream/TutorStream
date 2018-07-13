@@ -18,7 +18,7 @@ class Chat extends Component {
       message: '',
       messages: []
     };
-    // SOCKET.IO : Client-Side Listeners --> put all here in constructor
+    
     socket.on('new-message', msg => {
       this.setState({
         messages: [msg, ...this.state.messages]

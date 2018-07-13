@@ -67,7 +67,7 @@ class Classroom extends Component {
     axios
       .put(`/sessions/${this.state.session_id}`)
   };
-  //if isTutor is true get tutor session, else get user session
+  
   getUpcomingSessionInfo = id => {
     axios
       .get(`/sessions/${id}`, {

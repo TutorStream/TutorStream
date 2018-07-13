@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import TutorProfile from './TutorProfile.jsx';
 import { Button } from 'react-bootstrap';
 
 class VideoChat extends Component {
@@ -11,7 +10,7 @@ class VideoChat extends Component {
     countdown: null
   };
   render() {
-    //room currently hardcoded.. will change it to session id as a chat room number
+    
     var callerType = this.props.isTutor ? 'Student' : 'Tutor';
     return (
       <div>

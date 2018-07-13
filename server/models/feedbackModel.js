@@ -6,7 +6,6 @@ exports.addFeedback = (data, callback) => {
     `INSERT INTO feedback (user_id, tutor_id, rating, content, date, time) VALUES (?, ?, ?, ?, ?, ?)`
     let params = [Number(user_id), Number(tutor_id), Number(rating), String(feedback),String(date), String(time)]
   db.query(queryStr, params,(err,result)=>{
-    // get number of total sessions tutor gave.. divide total rating points by that number
     if (err) {
       console.error('There was an error adding feedback: ', err);
     } else {

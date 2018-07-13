@@ -34,26 +34,6 @@ class TestProfile extends Component {
     this.getTutors(id);
   }
 
-  // getTutors = test_id => {
-  //   axios
-  //     .get(`/tutors/selectTutors`, {
-  //       params: {
-  //         test_id: test_id
-  //       }
-  //     })
-  //     .then(({ data }) => {
-  //       this.setState({
-  //         tutors: data
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.error(
-  //         'There was an error getting the tutors for this test: ',
-  //         err
-  //       );
-  //     });
-  // };
-
   getTutors = (test_id) => {
     axios
       .get('/tutors/selectTutors', {

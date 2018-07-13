@@ -16,9 +16,7 @@ class TutorRegistration extends React.Component {
     selectedTests: [],
     bio: '',
     rate: '',
-    form: {
-      // what goes in here?
-    }
+    form: {}
   };
   componentDidMount() {
     this.getTests();

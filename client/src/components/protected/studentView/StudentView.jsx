@@ -15,7 +15,6 @@ import {
 import { PageHeader, Jumbotron, Image} from 'react-bootstrap';
 import TestList from './../../un-protected/TestList.jsx';
 import StarRatingComponent from 'react-star-rating-component'
-// const img = require('./../../../../dist/assets/brainstorm.png')
 
 class StudentView extends Component {
   state = {
