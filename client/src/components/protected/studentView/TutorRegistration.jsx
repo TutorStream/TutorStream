@@ -31,37 +31,24 @@ class TutorRegistration extends React.Component {
     });
   };
   handleCheck = e => {
-    console.log('lets check props : ', this.props);
     var array = this.state.selectedTests.slice();
     if (array.indexOf(e.target.value) === -1) {
       this.setState(
         {
           selectedTests: [...this.state.selectedTests, e.target.value]
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     } else {
       var idx = array.indexOf(e.target.value);
-      console.log('idx', idx);
       array.splice(idx, 1);
       this.setState(
         {
           selectedTests: array
-        },
-        () => console.log(this.state.selectedTests)
-      );
+        });
     }
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value }, () => {
-      console.log(
-        'We just updated : ',
-        this.state.bio,
-        ' and ',
-        this.state.rate
-      );
-    });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
@@ -80,10 +67,8 @@ class TutorRegistration extends React.Component {
       rate: Number(this.state.rate),
       id: this.props.id
     };
-    console.log('form', form);
     axios
       .post(`/tutors/${this.props.id}`, form)
-      .then(() => console.log('Updated and registered as tutor!'))
       .catch(err => console.error(err));
   };
   render() {
@@ -94,48 +79,50 @@ class TutorRegistration extends React.Component {
         </div>
       ) : (
         <div>
-          {' '}
-          <h1>Tutor Registration</h1>
-          <br />
-          <br />
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>Bio</ControlLabel>
-            <FormControl
-              maxLength="255"
-              componentClass="textarea"
-              placeholder="Enter text (Max: 255 characters)"
-              name="bio"
-              value={this.state.bio}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="formControlsTextarea">
-            <ControlLabel>Rate: (hourly)</ControlLabel>
-            <FormControl
-              type="number"
-              placeholder="$$$"
-              name="rate"
-              value={this.state.rate}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            {this.state.tests.map((test, i) => {
-              return (
-                <Checkbox
-                  onChange={this.handleCheck}
-                  inline
-                  key={i}
-                  value={test.id}
-                >
-                  {test.Name}
-                </Checkbox>
-              );
-            })}
-          </FormGroup>
-          <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
-            Submit
-          </Button>
+          <div>
+              <h1 className="header-img">Tutor Registration</h1>
+          </div>
+          <div className="tutor-render">
+            <br />
+            <FormGroup controlId="formControlsTextarea">
+              <ControlLabel>Bio</ControlLabel>
+              <FormControl
+                maxLength="255"
+                componentClass="textarea"
+                placeholder="Enter text (Max: 255 characters)"
+                name="bio"
+                value={this.state.bio}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup controlId="formControlsRate">
+              <ControlLabel>Rate: (hourly)</ControlLabel>
+              <FormControl
+                type="number"
+                placeholder="$$$"
+                name="rate"
+                value={this.state.rate}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              {this.state.tests.map((test, i) => {
+                return (
+                  <Checkbox
+                    onChange={this.handleCheck}
+                    inline
+                    key={i}
+                    value={test.id}
+                  >
+                    {test.Name}
+                  </Checkbox>
+                );
+              })}
+            </FormGroup>
+            <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </div>
         </div>
       );
     return <div className="tutor-registration">{conditional}</div>;
