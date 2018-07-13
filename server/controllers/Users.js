@@ -26,7 +26,7 @@ exports.loginUserCheck = (req, res) => {
   // eventually, this will just be checking for the existence of some authorization attached to HTTP request
   User.loginUser(req.body, (err, user) => {
     if (err) {
-      console.log('Error in loginUserCheck controller', err);
+      console.error('Error in loginUserCheck controller', err);
     } else {
       var id = user[0] === undefined ? 0 : user[0].id;
       res.send({ id });
@@ -37,7 +37,7 @@ exports.loginUserCheck = (req, res) => {
 exports.getUserInfo = (req, res) => {
   User.getUserInfoDB(req.params.id, (err, user) => {
     if (err) {
-      console.log('Error in getUserInfo controller', err);
+      console.error('Error in getUserInfo controller', err);
     } else {
       res.status(200).send(user);
     }
@@ -47,7 +47,7 @@ exports.getUserInfo = (req, res) => {
 exports.getUsernameById = (req, res) => {
   User.getUsernameById(req.params.id, (err, username) => {
     if (err) {
-      console.log('Error in getUsernamebyId controller', err);
+      console.error('Error in getUsernamebyId controller', err);
     } else {
       res.status(200).send(username);
     }
