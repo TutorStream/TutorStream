@@ -131,8 +131,12 @@ class Earnings extends React.Component {
         <div>
         <br/>
         <br/>
+        <div className="week-earnings">
         <h3>This week's earnings</h3>
+        </div>
+        <div className="week-numbers">
         <h2>${this.state.weekly}</h2>
+        </div>
         <hr/>
         <BarChart
         data={data}
@@ -145,8 +149,10 @@ class Earnings extends React.Component {
 
         return (
             <div className='earnings'>
+                <div className="row-background" />
+                <div className="earnings-greeting">
                <h1>Hello {this.state.name[0]},</h1>
-               <h2>Here are your most recent earnings: </h2>
+               </div>
                {conditionalDisplay}
                
             </div> 
