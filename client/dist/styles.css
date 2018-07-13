@@ -680,7 +680,7 @@ color: #2C325E;
 
 .container{
   margin: 0em auto;
-  font-family: 'Baloo', cursive !important;
+  font-family: 'Overlock', cursive !important;
   border-radius: 16px;
 }
 
@@ -747,12 +747,13 @@ padding-left:15rem !important;
 }
 
 .main-info.pic-bckgrnd h1{
- font-size: 9em;
+ font-size: 11em;
   position: absolute;
-  right: 3rem;
+  right: 8rem;
+  top: 21rem;
   -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-font-family: 'Baloo', cursive;
+font-family: 'Dosis', sans-serif;
 }
 
 .main-info.pic-bckgrnd p{
