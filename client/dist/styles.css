@@ -452,8 +452,7 @@ background-size: cover;
 text-align: center;
 padding: 28rem 1em;
 font-size: 400%;
-font-family: 'Trebuchet MS';
-font-style: italic;
+font-family: 'Dosis', sans-serif;
 position: relative;
 margin: 0;
 
@@ -469,8 +468,7 @@ margin: 0;
   text-align: center;
   padding: 28rem 1em;
   font-size: 250%;
-  font-family: 'Trebuchet MS';
-  font-style: italic;
+  font-family: 'Dosis', sans-serif;
   position: relative;
   margin: 0;
   
@@ -894,6 +892,11 @@ content: url("../assets/notebook.png")
 .jumbotron {
 background-color: #EDEDED;
 }
+
+.jumbotron h1 {
+  font-family: 'Dosis', sans-serif;
+}
+
 .btn.btn-info.btn-sm{
 background-color:#59B9DF !important;
 border: 1px solid #59B9DF !important;
