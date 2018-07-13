@@ -60,11 +60,7 @@ class TutorProfile extends Component {
             photo:
               data[0].location ||
               'https://cdn-images-1.medium.com/max/1200/1*MccriYX-ciBniUzRKAUsAw.png'
-          },
-          () => {
-            console.log(this.state);
-          }
-        );
+          });
       })
       .catch(err => {
         console.error('There was an error retrieving the tutor profile: ', err);
