@@ -22,7 +22,6 @@ app.use(compression({ filter: shouldCompress }));
 
 function shouldCompress(req, res) {
   if (req.headers['x-no-compression']) {
-    // don't compress responses with this request header
     return false;
   }
 
@@ -51,10 +50,7 @@ io.on('connection', socket => {
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
-    socket.leave(room, () => {
-      console.log('successfully left room');
-    });
+    socket.leave(room);
   });
 });
 

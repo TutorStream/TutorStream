@@ -5,10 +5,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-/* Import Services */
 import AuthStatus from './Auth/AuthStatus.js';
-
-/* Lazy Loaders */
 import Async from 'react-code-splitting';
 
 const Login = props => (
@@ -162,8 +159,8 @@ class App extends Component {
     let conditionalTitle =
       this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
-      <div>
-        <Navbar style={{ fontSize: `130%` }}>
+      <div className="navigate">
+        <Navbar style={{ fontSize: `130%`, backgroundColor: 'transparent' ,zIndex:'99999999', color:'white'}}>
           <Nav>
             <LinkContainer to={'/'}>
               <NavItem>Home</NavItem>

@@ -66,9 +66,8 @@ class Classroom extends Component {
   markSessionComplete = () => {
     axios
       .put(`/sessions/${this.state.session_id}`)
-      .then(() => console.log('Marked Complete'));
   };
-  //if isTutor is true get tutor session, else get user session
+  
   getUpcomingSessionInfo = id => {
     axios
       .get(`/sessions/${id}`, {

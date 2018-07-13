@@ -9,7 +9,8 @@ class TestProfile extends Component {
   state = {
     name: '',
     description: '',
-    tutors: []
+    tutors: [],
+    photos: {}
   };
 
   getTestInfo = test_id => {
@@ -33,23 +34,43 @@ class TestProfile extends Component {
     this.getTutors(id);
   }
 
-  getTutors = test_id => {
+  getTutors = (test_id) => {
     axios
-      .get(`/tutors/selectTutors`, {
+      .get('/tutors/selectTutors', {
         params: {
           test_id: test_id
         }
       })
       .then(({ data }) => {
+        data = data.slice(0, 12);
+        let idList = '';
+        for (let i = 0; i < data.length; i++) {
+          if (i === data.length - 1) {
+            idList += data[i].id;
+          } else {
+            idList += data[i].id + ', ';
+          }
+        }
         this.setState({
           tutors: data
         });
+        return axios.get('/tutors/photo', {
+          params: {
+            idList
+          }
+        });
+      })
+      .then(({ data }) => {
+        let photoObj = {};
+        for (let i = 0; i < data.length; i++) {
+          photoObj[data[i].user_id] = data[i].location;
+        }
+        this.setState({
+          photos: photoObj
+        });
       })
       .catch(err => {
-        console.error(
-          'There was an error getting the tutors for this test: ',
-          err
-        );
+        console.error('There was an error getting the tutors for this test: ', err);
       });
   };
 
@@ -74,6 +95,7 @@ class TestProfile extends Component {
                       key={tutor.id}
                       name={tutor.Name}
                       rating={tutor.Rating}
+                      photo={this.state.photos[tutor.id]}
                     />
                   </Link>
                 </Col>

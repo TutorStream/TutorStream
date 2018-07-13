@@ -33,9 +33,9 @@ class Earnings extends React.Component {
         this.getUserInfo(this.props.id)
         
     }
-//this.spreadData(data.data)
+
     getEarnings(id){
-        console.log('id:', id)
+        
         axios.get(`/earnings/${id}`)
             .then((data)=>{
                 this.setState({
@@ -45,17 +45,15 @@ class Earnings extends React.Component {
                 })
             })
             .then(()=>{
-
-                console.log('earnings : ', this.state)
                 var currentMoment = moment();
                 var sessionMoment = moment(this.state.earnings[this.state.earnings.length-1].date);
-                var weekdays = moment().subtract(7,"days").format("DD-MM")
-                console.log('sessionMoment : ',sessionMoment)
+                var weekdays = moment().subtract(7,"days").format("DD-MM");
                 var daysBetween = currentMoment.diff(sessionMoment, 'days');
-                console.log('daysBetween :', daysBetween)
-                console.log('days of the week', this.state.week)
                 this.checkForEarnings();
             })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
   spreadData = data => {
@@ -74,43 +72,36 @@ class Earnings extends React.Component {
         var results = []
 
         for( var i = 0; i < 7; i++){
-            var day = this.state.week[i] // ["07-11", "07-10", "07-09", "07-08", "07-07", "07-06", "07-05"]
-            console.log('day is : ', day)
-            for(var j = 0; j < this.state.earnings.length;j++){
-                var workday = this.state.earnings[j].date.slice(5,10)
-                var workdays = this.state.earnings.map(a=>a.date.slice(5,10))
-
-                
-                var idx = workdays.indexOf(day)
-               console.log('idx is >>> ',idx) 
+            var day = this.state.week[i];
+            for(var j = 0; j < this.state.earnings.length;j++) {
+                var workday = this.state.earnings[j].date.slice(5,10);
+                var workdays = this.state.earnings.map(a=>a.date.slice(5,10));
+                var idx = workdays.indexOf(day);
                 if(idx > -1){
-                    results.push({'x': day,'y': this.state.earnings[idx].day_earnings})
+                    results.push({'x': day,'y': this.state.earnings[idx].day_earnings});
                     break;
                 }else {
-                    
-                    results.push({'x': day,'y': 0})
+                    results.push({'x': day,'y': 0});
                     break;
                 }
             }
         }
-        
-        console.log('results : ', results)
         this.setState({
             ready: true,
             values : results.reverse(),
             weekly : results.map(a=>a.y).reduce((a, b) => a + b, 0)
-        })
+        });
 
-    }
+    };
 
 
     lastWeek = () => {
-        var week = []
+        var week = [];
         for(var i = 0; i < 7; i++){
             week.push(moment().subtract(i,"days").format("MM-DD"))
         }
         return week;
-    }
+    };
 
 
 
@@ -121,34 +112,31 @@ class Earnings extends React.Component {
         axios.get(`/users/info/${id}`)
         .then(({data}) => {
             info = data[0]
-            console.log('data recieved in settings: ', info)
             this.setState({
                 name: info.Name.split(' ')
-            })
+            });
         })
         .then(()=>this.getEarnings(this.props.id))
-    }
+    };
 
     
-  
+
     render() {
-        var x = this.state.values
-        
-
-
-        console.log('x : ', x)
-        
+        var x = this.state.values;
         var data = [{
             label: 'somethingA',
             values: this.state.values
         }];
-
         var conditionalDisplay = this.state.ready ? 
         <div>
         <br/>
         <br/>
+        <div className="week-earnings">
         <h3>This week's earnings</h3>
+        </div>
+        <div className="week-numbers">
         <h2>${this.state.weekly}</h2>
+        </div>
         <hr/>
         <BarChart
         data={data}
@@ -161,8 +149,10 @@ class Earnings extends React.Component {
 
         return (
             <div className='earnings'>
+                <div className="row-background" />
+                <div className="earnings-greeting">
                <h1>Hello {this.state.name[0]},</h1>
-               <h2>Here are your most recent earnings: </h2>
+               </div>
                {conditionalDisplay}
                
             </div> 

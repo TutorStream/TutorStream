@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { PageHeader, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import TutorCard from './TutorCard.jsx';
@@ -25,7 +25,7 @@ class Home extends Component {
       .then(({ data }) => {
         let idList = data.map(tutor => tutor.id).join(', ');
         this.setState({
-          tutors: data
+          tutors: data.slice(0, 8)
         });
         return axios.get('/tutors/photo', {
           params: {
@@ -36,9 +36,9 @@ class Home extends Component {
       })
       .then(({ data }) => {
         let photoObj = data.reduce((acc, item) => {
-          acc[item.user_id] = item.location
-          return acc
-        }, {})
+          acc[item.user_id] = item.location;
+          return acc;
+        }, {});
         this.setState({
           photos: photoObj
         });
@@ -63,26 +63,27 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <Jumbotron className="container">
-          <div className="main-info">
-            <PageHeader> TutorStream </PageHeader>
+      <div className="home">
+        <div className="main-info pic-bckgrnd">
+          <h1> TutorStream </h1>
             <p>You have questions, we have tutors.</p>
           </div>
-          <br />
-          <hr />
-          <br />
+      
+        <Jumbotron className="container">
+        
+          
           <div className="main-info">
             <h2>Featured Tutors:</h2>
+            <br />
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
-                <Col xs="6" sm="4" key={tutor.id}>
+                <Col xs="auto" sm="3" key={tutor.id}>
                   <Link to={`/tutors/${tutor.id}`}>
                     <TutorCard
                       key={tutor.id}
                       name={tutor.Name}
-                      rating={`${tutor.Rating}.0`}
+                      rating={tutor.Rating}
                       photo={this.state.photos[tutor.id]}
                     />
                   </Link>
@@ -92,10 +93,14 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <div className="main-info">
+          <div className="preselected">
+          <h2>Our tutors have attended:</h2>
+          <div className="universities"></div>
+          </div>
+          <div className="main-info tests-bckgrnd">
             <h2>Tests Available for Tutoring:</h2>
             <br />
-            <Row>
+            <Row className='transparent-tests'>
               {this.state.tests.map(test => (
                 <Col sm="3" key={test.id}>
                   <Link to={`/tests/${test.id}`}>
@@ -104,8 +109,12 @@ class Home extends Component {
                 </Col>
               ))}
             </Row>
+            
           </div>
         </Jumbotron>
+        <div className="footer">
+        <p>© 2018 All Rights reserved</p>
+        </div>
       </div>
     );
   }
