@@ -13,7 +13,7 @@ exports.bookSession = (req, res) => {
 exports.deleteSession = (req, res) => {
   sessionModel.deleteSession(req.params, (err, result) => {
     if (err) {
-      console.log('Error deleting session from database', err);
+      console.error('Error deleting session from database', err);
     } else {
       res.status(201).end();
     }
@@ -31,12 +31,10 @@ exports.updateSession = (req, res) => {
 };
 
 exports.getSession = (req, res) => {
-  console.log('req.query', req.query)
   var form = {
     id: req.params.id,
     isTutor: Number(req.query.isTutor)
   };
-  console.log('form', form);
   sessionModel.getSession(form, (err, result) => {
     if (err) {
       console.error('There was an error getting the session info: ', err);
