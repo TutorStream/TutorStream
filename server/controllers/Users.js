@@ -23,7 +23,6 @@ exports.addNewUser = (req, res) => {
 };
 
 exports.loginUserCheck = (req, res) => {
-  // eventually, this will just be checking for the existence of some authorization attached to HTTP request
   User.loginUser(req.body, (err, user) => {
     if (err) {
       console.error('Error in loginUserCheck controller', err);
