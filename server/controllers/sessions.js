@@ -13,7 +13,7 @@ exports.bookSession = (req, res) => {
 exports.deleteSession = (req, res) => {
   sessionModel.deleteSession(req.params, (err, result) => {
     if (err) {
-      console.log('Error deleting session from database', err);
+      console.error('Error deleting session from database', err);
     } else {
       res.status(201).end();
     }
