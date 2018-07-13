@@ -87,6 +87,7 @@ class TutorRegistration extends React.Component {
       .catch(err => console.error(err));
   };
   render() {
+    console.log(this.props.isTutor, 'waht is wies is tutor')
     let conditional =
       this.props.isTutor > -1 ? (
         <div>
