@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Popover, FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap'
 import io from 'socket.io-client';
 import axios from 'axios';
 const socket = io();
@@ -9,7 +10,7 @@ class Chat extends Component {
     this.state = {
       username: '',
       message: '',
-      messages: ['bingo']
+      messages: []
     };
     // SOCKET.IO : Client-Side Listeners --> put all here in constructor
     socket.on('new-message', msg => {
@@ -20,7 +21,6 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    console.log('chat user id', this.props);
     axios
       .get(`users/username/${this.props.id}`)
       .then(({ data }) => {
@@ -53,6 +53,7 @@ class Chat extends Component {
   };
 
   messageHandler = e => {
+    console.log(e)
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -83,17 +84,18 @@ class Chat extends Component {
   };
 
   render() {
+    let top = 50
     return (
       <div className="chat-container">
-        <h1 className="header">Chat Channel</h1>
-        <div className="all-messages">
-          {this.state.messages.map((msg, i) => {
-            return (
-              <div key={i} className="msg">
-                <strong> {msg.user}: </strong> {msg.message}
-              </div>
-            );
-          })}
+              <h1 className="header">Chat Channel</h1>
+        <div className="all-messages" style={{ height: 120}}>
+         
+         {this.state.messages.length ? this.state.messages.map((msg,i) => {
+           return (
+              <div><span>{msg.user}</span>: <span>{msg.message}</span></div>
+           );
+         }) : null}
+ 
         </div>
         <form
           className="add-new-message"
@@ -101,17 +103,12 @@ class Chat extends Component {
             this.postMessage(e);
           }}
         >
-          <label>New Message:</label>
-          <input
-            type="text"
-            name="message"
-            className="input-msg"
-            value={this.state.message}
-            onChange={this.messageHandler}
-          />
-          <button type="submit" value="Submit">
-            Send
-          </button>
+            <InputGroup>
+              <InputGroup.Button>
+                <Button type = 'submit' value ='Submit'>Send</Button>
+              </InputGroup.Button>
+              <FormControl type="text" name = 'message' value = {this.state.message} onChange={this.messageHandler}/>
+            </InputGroup>
         </form>
       </div>
     );

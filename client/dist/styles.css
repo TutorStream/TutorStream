@@ -1,424 +1,384 @@
 body{
-    color: maroon;
+  color: maroon;
 }
-
 html{
-    background-color: #2C325E !important;
+  background-color: #2C325E !important;
 }
-
 .title{
-    font-size: 3em;
-    color: white;
-    text-align: center;
-    background-color: #0081BF;
-}
-
-.student-view{
-    border:1px solid blue;
-}
-
-
-.student-main{
-    display: flex;
-    border:1px solid teal;
-    justify-content: space-evenly;
-}
-
-.student-options{
-    border: 1px solid maroon;
-    display: flex;
-    flex-direction: column;
-}
-
-.student-option{
-    padding: 3px;
-}
-
-
-.rdt {
-    position: relative;
-    color: teal !important;
-  }
-  .rdtPicker {
-    display: none;
-    position: absolute;
-    width: 250px;
-    padding: 4px;
-    margin-top: 1px;
-    z-index: 99999 !important;
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,.1);
-    border: 1px solid #f9f9f9;
-  }
-  .rdtOpen .rdtPicker {
-    display: block;
-  }
-  .rdtStatic .rdtPicker {
-    box-shadow: none;
-    position: static;
-  }
-  
-  .rdtPicker .rdtTimeToggle {
-    text-align: center;
-  }
-
-  .rdtPicker table {
-    width: 100%;
-    margin: 0;
-  }
-  .rdtPicker td,
-  .rdtPicker th {
-    text-align: center;
-    height: 28px;
-  }
-  .rdtPicker td {
-    cursor: pointer;
-  }
-  .rdtPicker td.rdtDay:hover,
-  .rdtPicker td.rdtHour:hover,
-  .rdtPicker td.rdtMinute:hover,
-  .rdtPicker td.rdtSecond:hover,
-  .rdtPicker .rdtTimeToggle:hover {
-    background: #eeeeee;
-    cursor: pointer;
-  }
-  .rdtPicker td.rdtOld,
-  .rdtPicker td.rdtNew {
-    color: #999999;
-  }
-  .rdtPicker td.rdtToday {
-    position: relative;
-  }
-  .rdtPicker td.rdtToday:before {
-    content: '';
-    display: inline-block;
-    border-left: 7px solid transparent;
-    border-bottom: 7px solid #428bca;
-    border-top-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-  }
-  .rdtPicker td.rdtActive,
-  .rdtPicker td.rdtActive:hover {
-    background-color: #428bca;
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  }
-  .rdtPicker td.rdtActive.rdtToday:before {
-    border-bottom-color: #fff;
-  }
-  .rdtPicker td.rdtDisabled,
-  .rdtPicker td.rdtDisabled:hover {
-    background: none;
-    color: #999999;
-    cursor: not-allowed;
-  }
-  
-  .rdtPicker td span.rdtOld {
-    color: #999999;
-  }
-  .rdtPicker td span.rdtDisabled,
-  .rdtPicker td span.rdtDisabled:hover {
-    background: none;
-    color: #999999;
-    cursor: not-allowed;
-  }
-  .rdtPicker th {
-    border-bottom: 1px solid #f9f9f9;
-  }
-  .rdtPicker .dow {
-    width: 14.2857%;
-    border-bottom: none;
-    cursor: default;
-  }
-  .rdtPicker th.rdtSwitch {
-    width: 100px;
-  }
-  .rdtPicker th.rdtNext,
-  .rdtPicker th.rdtPrev {
-    font-size: 21px;
-    vertical-align: top;
-  }
-  
-  .rdtPrev span,
-  .rdtNext span {
-    display: block;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;
-  }
-  
-  .rdtPicker th.rdtDisabled,
-  .rdtPicker th.rdtDisabled:hover {
-    background: none;
-    color: #999999;
-    cursor: not-allowed;
-  }
-  .rdtPicker thead tr:first-child th {
-    cursor: pointer;
-  }
-  .rdtPicker thead tr:first-child th:hover {
-    background: #eeeeee;
-  }
-  
-  .rdtPicker tfoot {
-    border-top: 1px solid #f9f9f9;
-  }
-  
-  .rdtPicker button {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
-  .rdtPicker button:hover {
-    background-color: #eee;
-  }
-  
-  .rdtPicker thead button {
-    width: 100%;
-    height: 100%;
-  }
-  
-  td.rdtMonth,
-  td.rdtYear {
-    height: 50px;
-    width: 25%;
-    cursor: pointer;
-  }
-  td.rdtMonth:hover,
-  td.rdtYear:hover {
-    background: #eee;
-  }
-  
-  .rdtCounters {
-    display: inline-block;
-  }
-  
-  .rdtCounters > div {
-    float: left;
-  }
-  
-  .rdtCounter {
-    height: 100px;
-  }
-  
-  .rdtCounter {
-    width: 40px;
-  }
-  
-  .rdtCounterSeparator {
-    line-height: 100px;
-  }
-  
-  .rdtCounter .rdtBtn {
-    height: 40%;
-    line-height: 40px;
-    cursor: pointer;
-    display: block;
-  
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;
-  }
-  .rdtCounter .rdtBtn:hover {
-    background: #eee;
-  }
-  .rdtCounter .rdtCount {
-    height: 20%;
-    font-size: 1.2em;
-  }
-  
-  .rdtMilli {
-    vertical-align: middle;
-    padding-left: 8px;
-    width: 48px;
-  }
-  
-  .rdtMilli input {
-    width: 100%;
-    font-size: 1.2em;
-    margin-top: 37px;
-  }
-  
-  .rdtTime td {
-    cursor: default;
-  }
-
-  #app{
-    background-color: #2C325E;
-    color:white;
-    padding: 1em
-  }
-  
-  a, li{
-    color:white;
-  }
-
-  .tutors{
-    margin: 2em 0em;
-    width: 100%;
-    background-color: white;
-  }
-
-  input.signup-input{
-    color: #18A361;
-    border-radius: 8px;
-
-  }
-
-  input #button{
-    background-color: #18A361;
-    border-radius: 8px;
-
-  }
-
-  button{
-    margin: 2em 0em;
-    padding: 1em;
-    background-color: #18A361;
-    border-radius: 8px;
-
-  }
-
-  option{
- background-color: #18A361;
-}
-
-select{
-  background-color: #18A361;
-}
-
-div.tutors{
+  font-size: 3em;
+  color: white;
+  text-align: center;
   background-color: #0081BF;
 }
+.student-view{
+  border:1px solid blue;
+}
+.student-main{
+  display: flex;
+  border:1px solid teal;
+  justify-content: space-evenly;
+}
+.student-options{
+  border: 1px solid maroon;
+  display: flex;
+  flex-direction: column;
+}
+.student-option{
+  padding: 3px;
+}
+.rdt {
+  position: relative;
+  color: teal !important;
+}
+.rdtPicker {
+  display: none;
+  position: absolute;
+  width: 250px;
+  padding: 4px;
+  margin-top: 1px;
+  z-index: 99999 !important;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  border: 1px solid #f9f9f9;
+}
+.rdtOpen .rdtPicker {
+  display: block;
+}
+.rdtStatic .rdtPicker {
+  box-shadow: none;
+  position: static;
+}
 
-.tutors ul{
+.rdtPicker .rdtTimeToggle {
+  text-align: center;
+}
+.rdtPicker table {
+  width: 100%;
+  margin: 0;
+}
+.rdtPicker td,
+.rdtPicker th {
+  text-align: center;
+  height: 28px;
+}
+.rdtPicker td {
+  cursor: pointer;
+}
+.rdtPicker td.rdtDay:hover,
+.rdtPicker td.rdtHour:hover,
+.rdtPicker td.rdtMinute:hover,
+.rdtPicker td.rdtSecond:hover,
+.rdtPicker .rdtTimeToggle:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.rdtPicker td.rdtOld,
+.rdtPicker td.rdtNew {
+  color: #999999;
+}
+.rdtPicker td.rdtToday {
+  position: relative;
+}
+.rdtPicker td.rdtToday:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid #428bca;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+.rdtPicker td.rdtActive,
+.rdtPicker td.rdtActive:hover {
+  background-color: #428bca;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.rdtPicker td.rdtActive.rdtToday:before {
+  border-bottom-color: #fff;
+}
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.rdtPicker td span.rdtOld {
+  color: #999999;
+}
+.rdtPicker td span.rdtDisabled,
+.rdtPicker td span.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+.rdtPicker th {
+  border-bottom: 1px solid #f9f9f9;
+}
+.rdtPicker .dow {
+  width: 14.2857%;
+  border-bottom: none;
+  cursor: default;
+}
+.rdtPicker th.rdtSwitch {
+  width: 100px;
+}
+.rdtPicker th.rdtNext,
+.rdtPicker th.rdtPrev {
+  font-size: 21px;
+  vertical-align: top;
+}
+
+.rdtPrev span,
+.rdtNext span {
+  display: block;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.rdtPicker th.rdtDisabled,
+.rdtPicker th.rdtDisabled:hover {
+  background: none;
+  color: #999999;
+  cursor: not-allowed;
+}
+.rdtPicker thead tr:first-child th {
+  cursor: pointer;
+}
+.rdtPicker thead tr:first-child th:hover {
+  background: #eeeeee;
+}
+
+.rdtPicker tfoot {
+  border-top: 1px solid #f9f9f9;
+}
+
+.rdtPicker button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.rdtPicker button:hover {
+  background-color: #eee;
+}
+
+.rdtPicker thead button {
+  width: 100%;
+  height: 100%;
+}
+
+td.rdtMonth,
+td.rdtYear {
+  height: 50px;
+  width: 25%;
+  cursor: pointer;
+}
+td.rdtMonth:hover,
+td.rdtYear:hover {
+  background: #eee;
+}
+
+.rdtCounters {
+  display: inline-block;
+}
+
+.rdtCounters > div {
+  float: left;
+}
+
+.rdtCounter {
+  height: 100px;
+}
+
+.rdtCounter {
+  width: 40px;
+}
+
+.rdtCounterSeparator {
+  line-height: 100px;
+}
+
+.rdtCounter .rdtBtn {
+  height: 40%;
+  line-height: 40px;
+  cursor: pointer;
+  display: block;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+}
+.rdtCounter .rdtBtn:hover {
+  background: #eee;
+}
+.rdtCounter .rdtCount {
+  height: 20%;
+  font-size: 1.2em;
+}
+
+.rdtMilli {
+  vertical-align: middle;
+  padding-left: 8px;
+  width: 48px;
+}
+
+.rdtMilli input {
+  width: 100%;
+  font-size: 1.2em;
+  margin-top: 37px;
+}
+
+.rdtTime td {
+  cursor: default;
+}
+#app{
+  background-color: #2C325E;
+  color:white;
+  padding: 1em
+}
+
+a, li{
+  color:white;
+}
+.tutors{
+  margin: 2em 0em;
+  width: 100%;
   background-color: white;
 }
-
+input.signup-input{
+  color: #18A361;
+  border-radius: 8px;
+}
+input #button{
+  background-color: #18A361;
+  border-radius: 8px;
+}
+button{
+  margin: 2em 0em;
+  padding: 1em;
+  background-color: #18A361;
+  border-radius: 8px;
+}
+option{
+background-color: #18A361;
+}
+select{
+background-color: #18A361;
+}
+div.tutors{
+background-color: #0081BF;
+}
+.tutors ul{
+background-color: white;
+}
 /* NAVBAR */
-
 .nav {
-  justify-content: center;
+justify-content: center;
 }
-
 /*  */
-
 /* LOGIN & SIGNUP */
-
 .background-container {
-  background-color: #2C325E;
-  padding-bottom: 5%;
-  padding-right: 2%;
-  padding-left: 2%;
-  padding-top: 1%;
-  border-radius: 10px; 
+background-color: #2C325E;
+padding-bottom: 5%;
+padding-right: 2%;
+padding-left: 2%;
+padding-top: 1%;
+border-radius: 10px; 
 }
-
 .header-img {
-  background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBNSC2LQG/tutoring-banner-group.jpg");
-  background-size: cover;
-  text-align: center;
-  padding: 5% 0%;
-  font-size: 400%;
-  font-family: 'Trebuchet MS';
-  font-style: italic;
-  position: relative;
-  margin: auto;
-  border-radius: 20px;
+background-image: url("https://files.slack.com/files-pri/T2SUXDE72-FBNSC2LQG/tutoring-banner-group.jpg");
+background-size: cover;
+text-align: center;
+padding: 5% 0%;
+font-size: 400%;
+font-family: 'Trebuchet MS';
+font-style: italic;
+position: relative;
+margin: auto;
+border-radius: 20px;
 }
-
 .title {
-  margin: auto;
-  font-size: 300%;
-  color: #EDEDED;
-  background-color: transparent;
-  padding-top: 1%;
-  /* box-shadow: 5px 4x 12px 4px black; */
+margin: auto;
+font-size: 300%;
+color: #EDEDED;
+background-color: transparent;
+padding-top: 1%;
+/* box-shadow: 5px 4x 12px 4px black; */
 }
-
 .login {
-  margin: auto;
-  font-size: 120%;
-  padding-right: 20%;
-  /* padding-top: 2%;
-  padding-bottom: 8%; */
-  padding-left: 20%;
-  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
+margin: auto;
+font-size: 120%;
+padding-right: 20%;
+/* padding-top: 2%;
+padding-bottom: 8%; */
+padding-left: 20%;
+/* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
 }
 .login-form {
-  margin: auto;
-  font-size: 120%;
-  padding-right: 20%;
- /* padding-top: 2%;
-  padding-bottom: 8%; */
-  padding-left: 20%;
-  /* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
+margin: auto;
+font-size: 120%;
+padding-right: 20%;
+/* padding-top: 2%;
+padding-bottom: 8%; */
+padding-left: 20%;
+/* text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6; */
 }
-
 .tests-select {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
 }
-
 /*  */
-
 .tutor-registration input{
-  color: teal
+color: teal
 }
-
-
 /* TUTORS */
-
 .tutors-container {
-  padding-top: 1%;
+padding-top: 1%;
 }
-
 .all-tutors {
-  background-color: lightblue;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: left;
-  border-radius: 5%;
-  flex-wrap: wrap;
-  align-items: stretch;
-  align-content: center;
-  justify-content: center;
-  box-shadow: 7px 4px 15px 5px #333333;
+background-color: lightblue;
+display: flex;
+flex-flow: row wrap;
+justify-content: left;
+border-radius: 5%;
+flex-wrap: wrap;
+align-items: stretch;
+align-content: center;
+justify-content: center;
+box-shadow: 7px 4px 15px 5px #333333;
 }
-
 .indv-tutor {
-  background-color: #18A361;
-  border-style: solid; 
-  justify-content: center;
-  align-content: center;
-  align-self: center;
-  text-align: center;
-  font-size: 95%;
-  padding-right: 5%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-left: 5%;
-  text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
+background-color: #18A361;
+border-style: solid; 
+justify-content: center;
+align-content: center;
+align-self: center;
+text-align: center;
+font-size: 95%;
+padding-right: 5%;
+padding-top: 2%;
+padding-bottom: 2%;
+padding-left: 5%;
+text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
 }
-
 .tutor-name {
-  font-size: 150%;
+font-size: 150%;
 }
-
 .img-circle {
-  border-radius: 5px 20px 5px !important;
-  overflow: hidden;
-  max-height: 300px;
-  max-width: 175px;
+border-radius: 5px 20px 5px !important;
+overflow: hidden;
+max-height: 300px;
+max-width: 175px;
 }
 
 .col {
@@ -430,18 +390,15 @@ div.tutors{
   width: auto;
   position: relative;
 }
-
 .main-info {
-  text-align: center;
-  color: #0081BF;
+text-align: center;
+color: #0081BF;
 }
-
 .image-settings {
-  text-align: center;
+text-align: center;
 }
-
 .col-sm-4 {
-  padding-bottom: 15px;
+padding-bottom: 15px;
 }
 
 .col-sm-3 {
@@ -449,141 +406,120 @@ div.tutors{
 }
 
 /* SESSIONS */
-
 .all-sessions {
-  background-color: lightblue;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: left;
-  /* border-radius: 5%; */
-  flex-wrap: wrap;
-  align-items: stretch;
-  align-content: center;
-  justify-content: center;
-  box-shadow: 7px 4px 15px 5px #333333;
+background-color: lightblue;
+display: flex;
+flex-flow: row wrap;
+justify-content: left;
+/* border-radius: 5%; */
+flex-wrap: wrap;
+align-items: stretch;
+align-content: center;
+justify-content: center;
+box-shadow: 7px 4px 15px 5px #333333;
 }
-
 .indv-session {
-  background-color: #18A361;
-  border-style: solid; 
-  justify-content: center;
-  align-content: center;
-  align-self: center;
-  text-align: center;
-  font-size: 95%;
-  padding-right: 5%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  padding-left: 5%;
-  text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
+background-color: #18A361;
+border-style: solid; 
+justify-content: center;
+align-content: center;
+align-self: center;
+text-align: center;
+font-size: 95%;
+padding-right: 5%;
+padding-top: 2%;
+padding-bottom: 2%;
+padding-left: 5%;
+text-shadow: 1px 1px 3px #757575, 2px 2px 8px #f6f5f6;
 }
-
 .delete-btn:hover {
-  background-color: salmon;
+background-color: salmon;
 }
-
 .past-session {
-  background-color: red;
+background-color: red;
 }
-
 .session-name {
-  font-size: 200%;
-  color: lightsalmon;
+font-size: 200%;
+color: lightsalmon;
 }
-
 .sessions-header {
-  font-size: 400%;
-  color: lightsalmon;
+font-size: 400%;
+color: lightsalmon;
 }
-
 .card-border {
-  border-style: ridge;
-  border-width: 5px;
-  border-radius: 25px;
-  border-color: #0081BF;
-  padding-bottom: 5px;
+border-style: ridge;
+border-width: 5px;
+border-radius: 25px;
+border-color: #0081BF;
+padding-bottom: 5px;
 }
-
-
 #myvideo:-webkit-full-screen {
-  width: 100%;
-  height: 100%;
+width: 100%;
+height: 100%;
 }
-
 /* LIVE CHAT */
-
 .header {
-  text-align: center;
+text-align: center;
 }
-
 .chat-container {
-  padding: 20px;
+padding: 20px;
+}
+.all-messages {
+background-color:#EDEDED;
+border-radius: 4px;
+border : white solid;
+color: black;
+margin-bottom: 10px;
+overflow: scroll;
 }
 
-.all-messages {
-  background-color: lightsalmon;
-  border : white solid;
-}
 
 .msg {
-  color: white;
-  padding-left: 2%;
+color: white;
+padding-left: 2%;
 }
-
 .input-msg {
-  color : white;
+color : white;
 }
-
 .add-new-message {
-  text-align: center;
+text-align: center;
 }
-
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #FFF;
-  shape-rendering: crispEdges;
+fill: none;
+stroke: #FFF;
+shape-rendering: crispEdges;
 }
-
 .bar {
-  fill: white;
+fill: white;
 }
-
 .x.axis path {
-  /* display: none; */
-  color: white;
+/* display: none; */
+color: white;
 }
-
 .axis text {
-  color: white;
+color: white;
 }
 /* Find Tutor */
 .row-background {
-  height: 300px;
-  background-image: url("../assets/stil-734835-unsplash.jpg");
-  background-position: center;
-  background-size: cover;
-
+height: 300px;
+background-image: url("../assets/stil-734835-unsplash.jpg");
+background-position: center;
+background-size: cover;
 }
-
 .brain {
-  content: url("../assets/brainstorm.png")
+content: url("../assets/brainstorm.png")
 }
-
 .calculation{
-  content: url("../assets/calculation.png")
+content: url("../assets/calculation.png")
 }
-
 .notebook {
-  content: url("../assets/notebook.png")
+content: url("../assets/notebook.png")
 }
-
 .jumbotron {
-  background-color: #EDEDED;
+background-color: #EDEDED;
 }
-
-
 .btn.btn-info.btn-sm{
-  background-color:#59B9DF !important;
-  border: 1px solid #59B9DF !important;
-  }
+background-color:#59B9DF !important;
+border: 1px solid #59B9DF !important;
+}
