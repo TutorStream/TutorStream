@@ -100,11 +100,9 @@ class StudentView extends Component {
 
     return (
       <div>
+        <div className="row-background" />
         <Jumbotron className="container">
-          <div className="row-background" />
-          <hr className="my-2" />
-          <br />
-          <Row className="find-tutor-icons">
+        <Row className="find-tutor-icons">
           <Col xs={6} md={4}>
       <Image className='calculation' circle />
     </Col>
@@ -115,8 +113,6 @@ class StudentView extends Component {
             <Image className='notebook' circle />
             </Col>
           </Row>
-        </Jumbotron>
-        <Jumbotron className="container">
           <div className="main-info">
             <h2>Featured Tutors:</h2> <TestList setTestid={this.setTestid} />
             <Row>
