@@ -887,3 +887,51 @@ border: 1px solid #59B9DF !important;
 .find-tutor-icons{
   padding-left: 8em;
 }
+svg{
+  border-radius: 12px;
+  background-color: #59B9DF;
+  padding-top:1em;
+  display: block;
+  margin: auto;
+  margin-bottom: 3em;
+}
+svg .bar:hover {
+  fill: #2C325E;
+}
+
+.week-earnings {
+
+  display: flex;
+  margin: 0 auto;
+}
+
+.week-earnings h3{
+
+  display: block;
+  margin: 0 auto;
+}
+
+.week-numbers {
+  display: flex;
+  margin: 0 auto;
+}
+
+.week-numbers h2{
+
+  display: block;
+  margin: 1em auto;
+}
+
+.earnings-greeting h1{
+  position:relative;
+    display: block;
+  margin: 0 auto;
+}
+
+.earnings-greeting {
+  display: flex;
+  margin: 2 auto;
+
+
+}
+
