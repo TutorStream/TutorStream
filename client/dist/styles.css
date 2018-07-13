@@ -375,6 +375,23 @@ font-size: 150%;
  
 }
 
+/* SETTINGS */
+
+.settings {
+  margin: auto;
+  font-size: 120%;
+  padding-right: 20%;
+  padding-left: 20%;
+}
+
+.settings-header {
+  margin: auto;
+  font-size: 300%;
+  text-align: center;
+}
+
+/*  */
+
 a, li{
   color:white;
 }
@@ -422,6 +439,7 @@ background-color: #2C325E;
 padding-top: 1%;
 border-radius: 10px; 
 }
+
 .header-img {
 background:linear-gradient(
                      rgba(20,20,20, .4), 
@@ -438,6 +456,8 @@ position: relative;
 margin: 0;
 
 }
+
+
 .title {
 margin: auto;
 font-size: 300%;
@@ -555,7 +575,6 @@ justify-content: center;
 box-shadow: 7px 4px 15px 5px #333333;
 }
 
-
 .indv-session {
 background-color: #18A361;
 border-style: solid; 
@@ -585,8 +604,16 @@ font-size: 400%;
 color: lightsalmon;
 }
 
+/* TUTOR REGISTRATION */
 
+.tutor-render {
+  margin: auto;
+  font-size: 120%;
+  padding-right: 20%;
+  padding-left: 20%;
+}
 
+/*  */
 
 .card-border {
 border-style: ridge;
@@ -599,6 +626,7 @@ padding-bottom: 5px;
 width: 100%;
 height: 100%;
 }
+
 /* LIVE CHAT */
 .header {
 text-align: center;
@@ -801,9 +829,6 @@ font-family: 'Dosis', sans-serif;
 
 
 /*responsive queries */
-
-
-
 
 
 
