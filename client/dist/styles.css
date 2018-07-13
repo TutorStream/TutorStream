@@ -743,10 +743,10 @@ width: 1000px;
 height: auto;
 margin: 0 auto;
 position: relative;
-padding-left:13rem !important;
+padding-left:15rem !important;
 }
 
-.main-info h1{
+.main-info.pic-bckgrnd h1{
  font-size: 9em;
   position: absolute;
   right: 3rem;
@@ -755,14 +755,13 @@ padding-left:13rem !important;
 font-family: 'Baloo', cursive;
 }
 
-.main-info p{
+.main-info.pic-bckgrnd p{
  font-size:2.25em;
-  position: absolute;
-  right: 42rem;
-  -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-font-family: 'Overlock', cursive;
-
+ position: absolute;
+ right: 42rem;
+ -webkit-transform: scaleX(-1);
+ transform: scaleX(-1);
+ font-family: 'Overlock', cursive;
 }
 
 
@@ -852,4 +851,8 @@ background-color: #EDEDED;
 .btn.btn-info.btn-sm{
 background-color:#59B9DF !important;
 border: 1px solid #59B9DF !important;
+}
+
+.find-tutor-icons{
+  padding-left: 8em;
 }

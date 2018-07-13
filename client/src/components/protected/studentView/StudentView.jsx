@@ -104,7 +104,7 @@ class StudentView extends Component {
           <div className="row-background" />
           <hr className="my-2" />
           <br />
-          <Row>
+          <Row className="find-tutor-icons">
           <Col xs={6} md={4}>
       <Image className='calculation' circle />
     </Col>
