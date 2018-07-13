@@ -51,10 +51,7 @@ io.on('connection', socket => {
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
-    socket.leave(room, () => {
-      console.log('successfully left room');
-    });
+    socket.leave(room);
   });
 });
 
