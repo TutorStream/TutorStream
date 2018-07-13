@@ -135,7 +135,6 @@ class StudentView extends Component {
                         />
                         <CardBody>
                           <CardTitle>{tutor.Name}</CardTitle>
-                          <CardText>{tutor.Bio}</CardText>
                           <CardSubtitle>
                           <StarRatingComponent name={`${tutor.Name}'s rating`} editing={false} starCount={tutor.Rating} value={tutor.Rating}/>
                           </CardSubtitle>
