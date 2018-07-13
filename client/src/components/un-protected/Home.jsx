@@ -25,7 +25,7 @@ class Home extends Component {
       .then(({ data }) => {
         let idList = data.map(tutor => tutor.id).join(', ');
         this.setState({
-          tutors: data
+          tutors: data.slice(0, 8)
         });
         return axios.get('/tutors/photo', {
           params: {
@@ -36,9 +36,9 @@ class Home extends Component {
       })
       .then(({ data }) => {
         let photoObj = data.reduce((acc, item) => {
-          acc[item.user_id] = item.location
-          return acc
-        }, {})
+          acc[item.user_id] = item.location;
+          return acc;
+        }, {});
         this.setState({
           photos: photoObj
         });
@@ -74,6 +74,7 @@ class Home extends Component {
           <br />
           <div className="main-info">
             <h2>Featured Tutors:</h2>
+            <br />
             <Row>
               <br />
               {this.state.tutors.map(tutor => (
@@ -82,7 +83,7 @@ class Home extends Component {
                     <TutorCard
                       key={tutor.id}
                       name={tutor.Name}
-                      rating={`${tutor.Rating}.0`}
+                      rating={tutor.Rating}
                       photo={this.state.photos[tutor.id]}
                     />
                   </Link>
