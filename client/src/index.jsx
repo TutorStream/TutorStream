@@ -86,7 +86,7 @@ const SecretRoute = props => (
 
 class App extends Component {
   state = {
-    id: null,
+    id: 7,
     tests: [],
     tutors: [],
     isTutor: -1
