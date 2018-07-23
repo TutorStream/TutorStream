@@ -86,10 +86,10 @@ const SecretRoute = props => (
 
 class App extends Component {
   state = {
-    id: 11,
+    id: 7,
     tests: [],
     tutors: [],
-    isTutor: 1
+    isTutor: -1
   };
 
   componentDidMount() {
