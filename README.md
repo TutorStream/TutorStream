@@ -2,6 +2,8 @@
 
 > TutorStream is a platform that connects students to tutors of various disciplines for guidance via real-time video chat.
 
+[Deployment hosted on AWS](http://bit.ly/tutorstream)
+
 ## Features
 
 - In-app streaming videochat component
