@@ -160,7 +160,14 @@ class App extends Component {
       this.state.isTutor > -1 ? 'Earnings' : 'Become a Tutor';
     return (
       <div className="navigate">
-        <Navbar style={{ fontSize: `130%`, backgroundColor: 'transparent' ,zIndex:'99999999', color:'white'}}>
+        <Navbar
+          style={{
+            fontSize: `130%`,
+            backgroundColor: 'transparent',
+            zIndex: '99999999',
+            color: 'white'
+          }}
+        >
           <Nav>
             <LinkContainer to={'/'}>
               <NavItem>Home</NavItem>
@@ -232,7 +239,11 @@ class App extends Component {
         <SecretRoute
           path="/sessions/:id"
           render={routerProps => (
-            <Sessions {...routerProps} id={this.state.id} tests={this.state.tests}/>
+            <Sessions
+              {...routerProps}
+              id={this.state.id}
+              tests={this.state.tests}
+            />
           )}
         />
         <SecretRoute
