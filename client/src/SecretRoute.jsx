@@ -5,7 +5,7 @@ import {Route, Redirect} from 'react-router-dom'
 const SecretRoute = ({ render: Component, ...rest }) => {
   return(
   <Route {...rest} render={(props) => (
-    AuthService.isAuthenticated === true 
+    typeof AuthService.isAuthenticated === "boolean"
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/login',
