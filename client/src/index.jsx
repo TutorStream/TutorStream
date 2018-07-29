@@ -167,7 +167,11 @@ class App extends Component {
             zIndex: '99999999',
             color: 'white'
           }}
+          // collapseOnSelects
+          expanded={true}
         >
+          {/* <Navbar.Toggle /> */}
+          {/* <Navbar.Collapse> */}
           <Nav>
             <LinkContainer to={'/'}>
               <NavItem>Home</NavItem>
@@ -189,6 +193,7 @@ class App extends Component {
             </LinkContainer>
             <AuthStatus />
           </Nav>
+          {/* </Navbar.Collapse> */}
         </Navbar>
         <Route
           exact
