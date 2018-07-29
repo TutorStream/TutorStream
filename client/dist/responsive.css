@@ -1,0 +1,10 @@
+@media screen and (max-width: 500px) {
+  button.navbar-toggle {
+    display: block;
+    height: 40px;
+    width: 100%;
+  }
+  div.main-info.pic-bckgrnd {
+    display: none;
+  }
+}

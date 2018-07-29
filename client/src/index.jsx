@@ -167,28 +167,32 @@ class App extends Component {
             zIndex: '99999999',
             color: 'white'
           }}
+          collapseOnSelect
         >
-          <Nav>
-            <LinkContainer to={'/'}>
-              <NavItem>Home</NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/findTutor'}>
-              <NavItem>Find A Tutor</NavItem>
-            </LinkContainer>
-            <LinkContainer to={`/sessions/${this.state.id}`}>
-              <NavItem>All Sessions</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/classroom">
-              <NavItem>Classroom</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/tutor">
-              <NavItem>{conditionalTitle}</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/settings">
-              <NavItem>Settings</NavItem>
-            </LinkContainer>
-            <AuthStatus />
-          </Nav>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Nav>
+              <LinkContainer to={'/'}>
+                <NavItem>Home</NavItem>
+              </LinkContainer>
+              <LinkContainer to={'/findTutor'}>
+                <NavItem>Find A Tutor</NavItem>
+              </LinkContainer>
+              <LinkContainer to={`/sessions/${this.state.id}`}>
+                <NavItem>All Sessions</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/classroom">
+                <NavItem>Classroom</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/tutor">
+                <NavItem>{conditionalTitle}</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/settings">
+                <NavItem>Settings</NavItem>
+              </LinkContainer>
+              <AuthStatus />
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
         <Route
           exact
