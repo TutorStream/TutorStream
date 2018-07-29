@@ -239,12 +239,15 @@ class Settings extends Component {
       return <Redirect to="/findTutor" />;
     }
 
+    const center = {
+      marginTop: '50px'
+    };
     return (
       <div>
         <div className="row-background">
           <h1 className="header-img">Settings</h1>
         </div>
-        <div className="image-settings">
+        <div className="image-settings" style={center}>
           <img
             className="img-circle"
             src={this.state.photo}
