@@ -91,27 +91,25 @@ class Settings extends Component {
   handleCheck = e => {
     var array = this.state.selectedTests.slice();
     if (array.indexOf(Number(e.target.value)) === -1) {
-      this.setState(
-        {
-          selectedTests: [...this.state.selectedTests, e.target.value]
-        });
+      this.setState({
+        selectedTests: [...this.state.selectedTests, e.target.value]
+      });
     } else {
       var idx = array.indexOf(Number(e.target.value));
       array.splice(idx, 1);
-      this.setState(
-        {
-          selectedTests: array
-        });
+      this.setState({
+        selectedTests: array
+      });
     }
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  isPreselectedTests = (id) => {
+  isPreselectedTests = id => {
     if (this.state.selectedTests.indexOf(id) !== -1) {
       return true;
     } else {
@@ -242,61 +240,61 @@ class Settings extends Component {
     }
 
     return (
-        <div>
-          <div>
-            <h1 className="header-img">Settings</h1>
-          </div>
-          <div className="image-settings">
-            <img
-              className="img-circle"
-              src={this.state.photo}
-              alt={`${this.state.name}'s profile picture`}
-            />
-          </div>
-          <div className="settings">
-            <FormGroup controlId="formControlsTextarea">
-              <ControlLabel>Name</ControlLabel>
-              <FormControl
-                maxLength="255"
-                componentClass="textarea"
-                placeholder="Enter text (Max: 255 characters)"
-                name="name"
-                readonly="readonly"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-
-            <FormGroup controlId="formControlsTextarea">
-              <ControlLabel>Bio</ControlLabel>
-              <FormControl
-                componentClass="textarea"
-                placeholder="Enter text (Max: 255 characters)"
-                name="bio"
-                value={this.state.bio}
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-
-            <br />
-            <FormGroup controlId="formControlsFile" encType="multipart/form-data">
-              <ControlLabel>Update your profile picture :</ControlLabel>
-              <FormControl
-                type="file"
-                name="photo"
-                onChange={this.handleFileSelect}
-              />
-            </FormGroup>
-
-            <h1>_________________________________________</h1>
-
-            {conditionalDisplay}
-            <br />
-            <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
-              Submit
-            </Button>
-          </div>
+      <div>
+        <div className="row-background">
+          <h1 className="header-img">Settings</h1>
         </div>
+        <div className="image-settings">
+          <img
+            className="img-circle"
+            src={this.state.photo}
+            alt={`${this.state.name}'s profile picture`}
+          />
+        </div>
+        <div className="settings">
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>Name</ControlLabel>
+            <FormControl
+              maxLength="255"
+              componentClass="textarea"
+              placeholder="Enter text (Max: 255 characters)"
+              name="name"
+              readonly="readonly"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>Bio</ControlLabel>
+            <FormControl
+              componentClass="textarea"
+              placeholder="Enter text (Max: 255 characters)"
+              name="bio"
+              value={this.state.bio}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          <br />
+          <FormGroup controlId="formControlsFile" encType="multipart/form-data">
+            <ControlLabel>Update your profile picture :</ControlLabel>
+            <FormControl
+              type="file"
+              name="photo"
+              onChange={this.handleFileSelect}
+            />
+          </FormGroup>
+
+          <h1>_________________________________________</h1>
+
+          {conditionalDisplay}
+          <br />
+          <Button bsStyle="success" type="submit" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+        </div>
+      </div>
     );
   }
 }

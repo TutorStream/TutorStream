@@ -77,7 +77,7 @@ class TutorRegistration extends React.Component {
         </div>
       ) : (
         <div>
-          <div>
+          <div className="row-background">
               <h1 className="header-img">Tutor Registration</h1>
           </div>
           <div className="tutor-render">
