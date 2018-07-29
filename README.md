@@ -8,6 +8,7 @@
 
 - In-app streaming videochat component
 - Real-time tutor-student messaging functionality
+- Responsive web design for web and mobile views
 
 ## Requirements
 
