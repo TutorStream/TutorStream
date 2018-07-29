@@ -3,6 +3,12 @@
     display: block;
     height: 40px;
     width: 100%;
+    padding: 0;
+    cursor: pointer;
+  }
+  button.navbar-toggle.collapsed {
+    background-color: #ddd;
+    cursor: pointer;
   }
   div.main-info.pic-bckgrnd {
     display: none;
@@ -12,5 +18,8 @@
   }
   .find-tutor-icons {
     display: none;
+  }
+  .home {
+    top: 0;
   }
 }
