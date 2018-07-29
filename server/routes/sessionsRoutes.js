@@ -9,5 +9,4 @@ sessionsRouter.put('/:id', sessionControllers.updateSession);
 
 sessionsRouter.get('/:id', sessionControllers.getSession);
 
-
 module.exports = sessionsRouter;

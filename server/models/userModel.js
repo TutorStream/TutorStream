@@ -1,7 +1,8 @@
 const db = require('./../../database');
 
 exports.addNewUser = (newUser, callback) => {
-  let queryStr = 'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
+  let queryStr =
+    'INSERT INTO users (Name, Password, Email, Tutor, Bio) VALUES (?, ?, ?, ?, ?)';
   let params = [
     newUser.name,
     newUser.password,
@@ -44,7 +45,9 @@ exports.addPhoto = (userPhoto, callback) => {
 };
 
 exports.updatePhoto = (userPhoto, callback) => {
-  let updateStr = `UPDATE photos SET location = '${userPhoto.location}' WHERE user_id = ${userPhoto.user_id}`;
+  let updateStr = `UPDATE photos SET location = '${
+    userPhoto.location
+  }' WHERE user_id = ${userPhoto.user_id}`;
   db.query(updateStr, callback);
 };
 

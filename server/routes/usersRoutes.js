@@ -15,5 +15,4 @@ usersRouter.get('/info/:id', usersControllers.getUserInfo);
 
 usersRouter.get('/username/:id', usersControllers.getUsernameById);
 
-
 module.exports = usersRouter;

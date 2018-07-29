@@ -1,7 +1,5 @@
 const Earnings = require('./../models/earningsModel');
 
-
-
 exports.getEarnings = (req, res) => {
   Earnings.getEarnings(req.params.id, (err, newEarnings) => {
     if (err) {

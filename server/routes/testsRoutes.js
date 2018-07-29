@@ -5,5 +5,4 @@ testsRouter.get('/', testsControllers.getAllTests);
 
 testsRouter.get('/:testId', testsControllers.testSearch);
 
-
 module.exports = testsRouter;
