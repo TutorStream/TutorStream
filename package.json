@@ -74,7 +74,7 @@
     "react-d3-basic": "^1.6.11",
     "react-d3-components": "^0.9.1",
     "react-datetime": "^2.14.0",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-edit-inline": "^1.0.8",
     "react-inline-editing": "^1.0.10",
     "react-moment": "^0.7.7",
